@@ -1,0 +1,104 @@
+\mytitle{Bosonization for Beginners - Refermionization for Experts}
+\begin{defn}
+Consider a set of fermion creation and annihilation operators
+\begin{align}
+\{c_{k,\eta},c_{k',\eta'}^\dagger \}&=\delta_{\eta\eta'}\delta_{kk'}\\
+\{c_{k,\eta},c_{k',\eta'} \}&=0
+\end{align}
+where $\eta=1,\cdots,M$ is a \textbf{species index}, and $k$ is a discrete, unbounded \textbf{momentum index} with
+\begin{equation}
+k=\frac{2\pi}{L}\left(n_k-\frac{1}{2}\delta_b\right),\quad n_k\in \mathbb{Z}, \delta_b\in [0,2)
+\end{equation}
+Here $L$ is the \textbf{length} of the system and $\delta_b$ is called a \textbf{boundary condition parameter}.
+
+Now the fermion fields can be defined as following.
+\begin{equation}
+\psi_\eta(x)\coloneqq \sqrt{\frac{2\pi}{L}}\sum_{k=-\infty}^\infty e^{-ikx}c_{k\eta}
+\end{equation}
+whose inverse is
+\begin{equation}
+c_{k\eta}=\sqrt{2\pi L}\int_{-L/2}^{L/2} dx\, e^{ikx}\psi_{\eta}(x)
+\end{equation}
+\end{defn}
+
+\begin{prop}
+The fermion field $\psi_\eta$ obeys the following \textbf{periodicity condition}.
+\begin{equation}
+\psi_\eta(x+L/2)=e^{i\pi \delta_b}\psi_\eta (x-L/2)
+\end{equation}
+\end{prop}
+\begin{proof}
+Notice that
+\begin{equation}
+k(x+L/2)=k(x-L/2)+2\pi\left(n_k-\frac{1}{2}\delta_b\right)
+\end{equation}
+taking exponential of this term, $2\pi n_k$ vanishes and only $\pi\delta_b$ lefts, which gives the desired result.
+\end{proof}
+
+\begin{prop}
+The fermion field $\psi_\eta$ obeys the following anti-commutation relations.
+\begin{align}
+\{\psi_{\eta}(x),\psi_{\eta'}^\dagger(x')\}&=\delta_{\eta\eta'}2\pi\sum_{n\in \mathbb{Z}}\delta(x-x'-nL)e^{i\pi n\delta_b}\\
+\{\psi_{\eta}(x),\psi_{\eta'}(x')\}&=0
+\end{align}
+\end{prop}
+\begin{proof}
+For the first one
+\begin{align*}
+\{\psi_{\eta}(x),\psi_{\eta'}^\dagger(x')\}&=\frac{2\pi}{L}\sum_{k,k'=-\infty}^{\infty} e^{-ikx+ik'x'}\{c_{k\eta},c_{k'\eta'}^\dagger\}\\
+&=\frac{2\pi}{L}\delta_{\eta\eta'}\sum_{k=-\infty}^{\infty} e^{-ik(x-x')}\\
+&=\frac{2\pi}{L}\delta_{\eta\eta'}\sum_{n=-\infty}^{\infty} e^{-2\pi i n(x-x')/L}e^{\pi i\delta_b(x-x')/L}\\
+&=\delta_{\eta\eta'}\sum_{n=-\infty}^{\infty} \delta(x-x'-nL)e^{\pi i\delta_b(x-x')/L}\\
+&=\delta_{\eta\eta'}\sum_{n=-\infty}^{\infty} \delta(x-x'-nL)e^{\pi i\delta_bn}\\
+\end{align*}
+Second one is true since the anticommutator between annihilation operators are zero.
+\end{proof}
+
+\begin{defn} A \textbf{vacuum state} $|\vec{0}\rangle_0$ is a state which is defined by the properties
+\begin{equation}
+\begin{cases}
+c_{k\eta}|\vec{0}\rangle_0\coloneqq 0,& k>0(\leftrightarrow n_k>0)\\
+c_{k\eta}^\dagger|\vec{0}\rangle_0\coloneqq 0,& k\leq 0(\leftrightarrow n_k\leq 0)\\
+\end{cases}
+\end{equation}
+A \textbf{normal ordering with respect to the vacuum state} of a function of $c,c^\dagger$'s is a re-ordering of $c,c^\dagger$ with all $c_{k\eta}$ with $k>0$ and all $c^\dagger_{k\eta}$ with $k\leq 0$ are moved to the right of all other operators, which gives
+\begin{equation}
+:ABC\cdots:=ABC\cdots-{}_0\langle \vec{0}|ABC\cdots|\vec{0}\rangle_0,\quad A,B,C\in \{c_{k\eta};c_{k\eta}^\dagger\}
+\end{equation}
+\end{defn}
+
+\begin{defn}
+The operator $\hat{N}_\eta$ is the operator that counts the number of $\eta$-electrons relative to $|\vec{0}\rangle_0$, which is defined as
+\begin{equation}
+\hat{N}_\eta\coloneqq \sum_k :c_{k\eta}^\dagger c_{k\eta}:=\sum_k \left[c_{k\eta}^\dagger c_{k\eta}-{}_0\langle \vec{0}|c_{k\eta}^\dagger c_{k\eta}|\vec{0}\rangle_0\right]
+\end{equation}
+The set of all states with the same $\hat{N}_\eta$ eigenvalues $\vec{N}=(N_1,\cdots,N_M)$ is called the $\vec{N}$-particle Hilbert space $H_{\vec{N}}$.
+
+The \textbf{$\vec{N}$-particle ground state} is a state defined as following.
+\begin{equation}
+|\vec{N}_\eta\rangle_0\coloneqq (C_1)^{N_1}\cdots(C_M)^{N_M}|\vec{0}\rangle_0
+\end{equation}
+Here,
+\begin{equation}
+(C_\eta)^{N_\eta}\coloneqq\begin{cases}
+c_{N_\eta \eta}^\dagger c_{(N_\eta-1)\eta}^\dagger \cdots c_{1\eta}^\dagger,& N_\eta>0\\
+1,&N_\eta=0\\
+c_{(N_\eta+1)\eta}c_{(N_\eta+2)\eta}\cdots c_{0\eta},&N_\eta<0
+\end{cases}
+\end{equation}
+\end{defn}
+
+\begin{defn} For $q\coloneqq \frac{2\pi}{L}n_q>0$ with $n_q\in \mathbb{Z}^+$, the \textbf{bosonic creation and annihilation operators} are defined as
+\begin{equation}
+b_{q\eta}^\dagger \coloneqq \frac{i}{\sqrt{n_q}}\sum_k c_{(k+q)\eta}^\dagger c_{k\eta},\quad b_{q\eta}\coloneqq \frac{-i}{\sqrt{n_q}}\sum_k c_{(k-q)\eta}^\dagger c_{k\eta}
+\end{equation}
+\end{defn}
+
+\begin{prop} The bosonic creation and annihilation operators satisfies the bosonic commutation relations.
+\begin{equation}
+[b_{q\eta},b_{q'\eta'}]=[N_{q\eta},b_{q'\eta'}]=0,\quad [b_{q\eta},b_{q'\eta'}^\dagger]=\delta_{\eta\eta'}\delta_{qq'}
+\end{equation}
+\end{prop}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

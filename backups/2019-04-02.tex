@@ -1,0 +1,36 @@
+\mytitle{Algebraic topology}
+\begin{exmp} Again, $S^2/S^0\simeq S^1\vee S^2$. Indeed, consider $A\subset S^2$ be the arc connecting north and south pole, and define $f,g:A\rightarrow S^1$ as $f(\theta)=(\cos \theta, \sin\theta)$ and $g(\theta)=(1,0)$, where $A$ is parametrized by $\theta$. Since $f,g$ are homotopic by
+\begin{equation}
+F(\theta,t)=(\cos (t\theta),\sin(t\theta)),
+\end{equation}
+and $S^2\sqcup_f S^1\simeq S^2/S^0$ and $S^2\sqcup_g S^1\simeq S^1\vee S^2$, we get the desired result.
+\end{exmp}
+
+\begin{prop} Suppose $(X,A)$ and $(Y,A)$ satisfies the homotopy extension property, and $f:X\rightarrow Y$ is a homotopy equivalence with $f|_A=1_A$. Then $f$ is a homotopy equivalence $\textrm{ rel }A$.
+\end{prop}
+\begin{proof}
+Let $g:Y\rightarrow X$ be a homotopy inverse of $f$.
+
+First, let $h_t:X\rightarrow X$ be a homotopy from $g\circ f=h_0$ to $1_X=h_1$. Then restricting $h_t$ to $A$, we can say $h_t|_A$ is the homotopy from $g|_A$ to $1_A$, since $f|_A=1_A$. Now using the homotopy extension property of $(Y,A)$, we may construct a homotopy $g_t:Y\rightarrow X$ from $g=g_0$ to $g_1$ where $g_1|_A=1_A$. Now we want to show that $g_1\circ f\simeq 1_X \textrm{ rel } A$.
+
+We have homotopy
+\begin{align*}
+k_t=\begin{cases}
+g_{1-2t}\circ f,&0\leq t\leq \frac{1}{2}\\
+h_{2t-1},&\frac{1}{2}\leq t \leq 1
+\end{cases}
+\end{align*}
+between $g_1\circ f$ and $1_X=h_1$, which is not needed to have $k_t|_A=1_A$, but $k_0|_A=k_1|_A=1_A$. Also since $g_t|_A=h_t|_A$, $k_t|_A=k_{1-t}|_A$. Now we define $k_{tu}:A\rightarrow X$ as
+\begin{align*}
+k_{tu}=\begin{cases}
+k_{t}|_A, & u\leq 2t-1 \textrm{ or } u\leq -2t+1\\
+k_{\frac{u+1}{2}}|_A, & -2t+1\leq u \textrm{ and } -2t+1\leq u
+\end{cases}
+\end{align*}
+Then, along the line $\{0\}\times [0,1]\cup [0,1]\times \{1\}\cup \{1\}\times [0,1]$, we get $k_{tu}=1_A$. Also since $k_{00}=g_1\circ f$ and $k_{01}=h_1=1_X$, we have homotopy $g_1\circ f \simeq 1_X \textrm{ rel } A$.
+
+Now, since $f\circ g\simeq f\circ g_1\simeq 1_Y$, we may redo the above argument, which gives a map $f_1$ which is homotopic with $f$, $f_1|_A=1_A$, and $f_1\circ g_1\simeq 1_Y \textrm{ rel } A$. Since $g_1\circ f\simeq 1_X \textrm{ rel }A$, we get $f_1\simeq f_1\circ g_1\circ f \simeq f \textrm{ rel }A$. Therefore $f_1\circ g_1\simeq f\circ g_1\simeq 1_Y \textrm{ rel }A$.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

@@ -1,0 +1,20 @@
+\mytitle{Algebraic Topology}
+\begin{defn} The \textbf{diameter} of a space $X\subset \mathbb{R}^n$ is the maximum distance between any two points of $X$. The diameter of $X$ is written as $d(X)$.
+\end{defn}
+
+\begin{prop} For a simplex $[v_0,\cdots,v_n]$, $d([v_0,\cdots,v_n])=\max_{i,j}|v_i-v_j|$.
+\end{prop}
+\begin{proof} For any two points $v,w=\sum_i t_i v_i\in [v_0,\cdots,v_n]$,
+\begin{equation}
+|v-\sum_i t_i v_i|=|\sum_i t_i(v-v_i)|\leq \sum_i t_i |v-v_i|\leq \max_i |v-v_i|
+\end{equation}
+Letting $v=\sum_i k_i v_i$ and using above relation again, we get $|v-w|\leq \max_{i,j}|v_i-v_j|$. Thus $d([v_0,\cdots,v_n])\leq \max_{i,j}|v_i-v_j|$. Since $d([v_0,\cdots,v_n])\geq |v_i-v_j|$ for all $i,j$, we get $d([v_0,\cdots,v_n])=\max_{i,j}|v_i-v_j|$.
+\end{proof}
+
+\begin{prop} For a simplex $[v_0,\cdots,v_n]$, the diameter of each simplex of its barycentric subdivision is at most $d([v_0,\cdots,v_n])\cdot n/(n+1)$.\marginnote{Thus, $r$ times repeated barycentric subdivision of a $n$-simplex with diameter $1$ gives the simplexes with radius $\left(\frac{n}{n+1}\right)^r$, which approaches to 0 when $r\rightarrow \infty$.}
+\end{prop}
+\begin{proof}
+Let $[w_0,\cdots,w_n]$ be a simplex of the barycentric subdivision of $[v_0,\cdots,v_n]$. If $w_i,w_j$ are not the barycenter $b$ of the simplex $[v_0,\cdots,v_n]$, then $w_i,w_j$ are in the barycentric subdivision of a face of $[v_0,\cdots,v_n]$. By induction with induction trigger $n=1$, $|w_i,w_j|\leq \frac{n-1}{n}\max_{i,j\neq k}|v_i-v_j|\leq \frac{n-1}{n}\max_{i,j}|v_i-v_j|\leq \frac{n}{n+1}d([v_0,\cdots,v_n])$. Now let $w_i=b$. From the proof of previous proposition, we may suppose $w_j$ as $v_k$. Now if $b_i$ is the barycenter of the face $[v_0,\cdots,\hat{v}_i,\cdots,v_n]$, then $b=\frac{1}{n+1}v_i+\frac{n}{n+1}b_i$, thus $b$ lies on the line segment $[v_i,b_i]$, and the distance between $b$ to $v_i$ is $\frac{n}{n+1}d([v_i,b_i])\leq \frac{n}{n+1}d([v_0,\cdots,v_n])$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

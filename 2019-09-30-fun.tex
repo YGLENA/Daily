@@ -1,0 +1,85 @@
+\mytitle{Functional Analysis}
+\begin{defn} We define
+\begin{equation}
+\phi^{**}(x)=\sup_{f\in E^*} \{\langle f,x\rangle-\phi^*(f)\},\quad x \in E
+\end{equation}
+\end{defn}
+
+\begin{thm}[Fenchel-Moreau] Assume that $\phi:E\rightarrow (-\infty,\infty]$ is convex and lower semicontinuous, and $\phi\not\equiv \infty$. Then $\phi^**=\phi$.
+\end{thm}
+\begin{proof}
+First we assume that $\phi\geq 0$. Then since $\langle f,x\rangle-\phi^*(f)\leq \phi(x)$ for all $x\in E$ and $f\in E^*$, $\phi^**\leq \phi$. Suppose that $\phi^{**}(x_0)<\phi(x_0)$ for some $x_0\in E$. Then $\phi^{**}(x_0)$ is finite. Applying second geometric form of Hahn-Banach theorem in the space $E\times \mathbb{R}$ with $A=\textrm{epi}\phi$ and $B=[x_0,\phi^{**}(x_0)]$, there is $f\in E^*, k\in \mathbb{R}, \alpha\in \mathbb{R}$ such that
+\begin{equation}
+\langle f,x\rangle+k\lambda>\alpha,\quad \forall[x,\lambda]\in \textrm{epi}\phi
+\end{equation}
+and
+\begin{equation}
+\langle f,x_0\rangle+k\phi^{**}(x_0)<\alpha
+\end{equation}
+Fixing $x\in D(\phi)$ and taking $\lambda\rightarrow \infty$ gives $k\geq 0$.\marginnote{This result is different from previous one, because $x_0$ can or cannot be in $D(\phi)$.} Now take $\epsilon>0$. Since $\phi\geq 0$, we have
+\begin{equation}
+\langle f,x\rangle+(k+\epsilon)\phi(x)\geq \alpha,\quad \forall x\in D(\phi)
+\end{equation}
+Thus
+\begin{equation}
+\phi^*\left(-\frac{f}{k+\epsilon}\right)\leq -\frac{\alpha}{k+\epsilon}
+\end{equation}
+and by the definition of $\phi^{**}(x_0)$,
+\begin{equation}
+\phi^{**}(x_0)\geq \left\langle -\frac{f}{k+\epsilon},x_0\right\rangle-\phi^*\left(-\frac{f}{k+\epsilon}\right)\geq \left\langle -\frac{f}{k+\epsilon},x_0\right\rangle+\frac{\alpha}{k+\epsilon}
+\end{equation}
+Thus
+\begin{equation}
+\langle f,x_0\rangle+(k+\epsilon)\phi^{**}(x_0)\geq \alpha,\quad \forall \epsilon>0
+\end{equation}
+This contradicts $\langle f,x_0\rangle+k\phi^{**}(x_0)<\alpha$.
+
+Now for general case, fix $f_0\in D(\phi^*)$,\marginnote{$D(\phi^*)\neq \emptyset$, because of the previous proposition.} and define
+\begin{equation}
+\bar{\pi}(x)=\phi(x)-\langle f_0,x\rangle+\phi^*(f_0)
+\end{equation}
+Then $\bar{\phi}$ is convex, lower semicontinuous, $\bar{\phi}\not\equiv \infty$, and $\bar{\phi}\geq 0$. Thus $(\bar{\phi})^{**}=\bar{\phi}$. Now,
+\begin{equation}
+(\bar{\phi})^*(f)=\phi^*(f+f_0)-\phi^*(f_0)
+\end{equation}
+and
+\begin{equation}
+(\bar{\phi})^{**}(x)=\phi^{**}(x)-\langle f_0,x\rangle+\phi^*(f_0)=\bar{\phi}
+\end{equation}
+This gives $\phi^{**}=\phi$.
+\end{proof}
+
+\begin{exmp} Consider $\phi(x)=\|x\|$. Then
+\begin{equation}
+\phi^*(f)=\sup_{x\in E}\{\langle f,x\rangle-\|x\|\}
+\end{equation}
+Since $\langle f,kx\rangle-\|kx\|=k(\langle f,x\rangle-\|x\|)$, the result must be $0$ or $\infty$. If $\|f\|\leq 1$, then at $\|x\|=1$ we have $\langle f,x\rangle-\|x\|\leq 0$, and thus for all $x\in E$ it also holds. Thus $\phi^*(f)=0$. If $\|f\|>1$, then we have some $x\in E$ such that $\|x\|=1$ and $\langle f,x\rangle>1$. Thus $\phi^*(f)=\infty$. In summary,
+\begin{equation}
+\phi^*(f)=\begin{cases}0,&\|f\|\leq 1\\
+\infty,&\|f\|>1
+\end{cases}
+\end{equation}
+Now thus
+\begin{equation}
+\phi^{**}(x)=\sup_{f\in E^*,\|f\|\leq 1}\langle f,x\rangle
+\end{equation}
+Using $\phi^{**}=\phi$, we again obtain
+\begin{equation}
+\|x\|=\sup_{f\in E^*,\|f\|\leq 1}\langle f,x\rangle
+\end{equation}
+\end{exmp}
+
+\begin{exmp} For a nonempty set $K\subset E$, take
+\begin{equation}
+I_K(x)=\begin{cases}0,&x\in K\\
+\infty,&x\notin K
+\end{cases}
+\end{equation}
+which is called the \textbf{indicator function}. Notice that $I_K$ is convex if and only if $K$ is convex, and $I_K$ is lower semicontinuous if and only if $K$ is closed. The conjugate function $(I_K)^*$ is called the \textbf{supporting function} of $K$. Now if $K=M$ is a linear subspace, then
+\begin{equation}
+(I_M)^*(f)=\sup_{x\in E}\{\langle f,x\rangle-I_K(x)\}
+\end{equation}
+If $f\in M^{\perp}$, then all $x\in M$ gives $\langle f,x\rangle-I_M(x)=0$ and all $x\notin M$ gives $-\infty$, thus $(I_M)^*(f)=0$. If $f\notin M^{\perp}$, then there is $x\in M$ such that $\langle f,x\rangle-I_M(x)=\langle f,x\rangle\neq 0$. Putting $\lambda x$ and taking $\lambda\rightarrow \infty$ gives $(I_M)^*(f)=\infty$, thus $(I_M)^*=I_{M^\perp}$. Using this again, $(I_M)^{**}=I_{(M^\perp)^\perp}$. Setting $M$ be a closed linear space to use $(I_M)^{**}=I_M$, we get $(M^\perp)^\perp=M$ again. 
+\end{exmp}
+\noindent\rule{\textwidth}{1pt}
+\newline

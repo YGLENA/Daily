@@ -1,0 +1,40 @@
+\mytitle{Category theory in context}
+\begin{exer} Find an example to show that the objects and morphisms in the image of the functor $F:\mathsf{C}\rightarrow \mathsf{D}$ do not necessarily define a subcategory of $\mathsf{D}$.
+\end{exer}
+\begin{solution} Take a category $\mathsf{C}$ with objects $\{a,b,c,d\}$ and nontrivial morphisms $a\rightarrow b, c\rightarrow d$. Take another category $\mathsf{D}$ with objects $x,y,z$ and nontrivial morphisms $x\rightarrow y, y\rightarrow z, x\rightarrow z$. Now take a functor $F$ such that $F(a)=x, F(b)=F(c)=y, F(d)=z$ for objects and works accordingly on morphisms. Then the image only has nontrivial morphisms $x\rightarrow y$ and $y\rightarrow z$ but no $x\rightarrow z$, which has no composition. 
+\end{solution}
+
+\begin{exer}Given functors $F:\mathsf{D}\rightarrow \mathsf{C}$ and $G:\mathsf{E}\rightarrow \mathsf{C}$, show that there is a category $F\downarrow G$, the \textbf{comma category}, which has:
+\begin{itemize}
+\item triples $(d\in\mathsf{D}, e\in\mathsf{E},f:F(d)\rightarrow G(e)\in\mathsf{C})$ as objects;
+\item a pair of morphisms $(h:d\rightarrow d',k:e\rightarrow e')$ so that $f'\circ F(h)=G(k)\circ f$ as morphisms $(d,e,f)\rightarrow (d',e',f')$
+\end{itemize}
+We define a pair of projection functors $\mathrm{dom}:F\downarrow G\rightarrow \mathsf{D}$ and $\mathrm{cod}:F\downarrow G\rightarrow \mathsf{E}$.
+\end{exer}\marginnote{Slice categories, $c/\mathsf{C}$ and $\mathsf{C}/c$, are the special cases of this comma category: write the functor from one object category to $\mathsf{C}$ whose image is $c\in \mathsf{C}$ as $c$, and the identity functor on $\mathsf{C}$ as $1_{\mathsf{C}}$. Then we get $c/\mathsf{C}=c\downarrow 1_{\mathsf{C}}$ and $\mathsf{C}/c=1_{\mathsf{C}}\downarrow c$.} 
+\begin{solution} We can take a pair of identity morphisms for identity morphism, so what we need to show is the composition rule. Suppose we have two morphisms $(d,e,f)\xrightarrow{(h,k)}(d',e',f')\xrightarrow{(h',k')}(d'',e'',f'')$. The composition of pair of morphisms will be taken as $(h'\circ h,k'\circ k)$, so what we need to show is $f''\circ F(h'\circ h)=G(k'\circ k)\circ f$. But due to the property of functor, we can re-write this as $f''\circ F(h')\circ F(h)=G(k')\circ G(k)\circ f$. Now, $f''\circ F(h')\circ F(h)=G(k')\circ f'\circ F(h)=G(k')\circ G(k)\circ f$ due to the definition.
+\end{solution}
+
+\begin{exer} Show that functors need not reflect isomorphisms. That is, find a functor $F:\mathsf{C}\rightarrow \mathsf{D}$ and a morphism $f\in\mathsf{C}$ such that $F(f)$ is an isomorpihsm in $\mathsf{D}$ but $f$ is not an isomorphism in $\mathsf{C}$.
+\end{exer}
+\begin{solution} Let $\mathsf{C},\mathsf{D}$ are categories with two objects $\bullet,\circ$, where $\bullet\rightarrow \circ\in\mathsf{C},\mathsf{D}$ and $\circ\rightarrow \bullet\in\mathsf{D}$. Take functor $F:\mathsf{C},\mathsf{D}$ as $F(\bullet)=\bullet, F(\circ)=\circ,$ and $F(\bullet\rightarrow\circ)=\bullet\rightarrow \circ$. Then $F(\bullet\rightarrow\circ)$ is isomorphism because we have $\circ\rightarrow \bullet$ in $\mathsf{D}$, but $\bullet\rightarrow \circ$ is not an isomorphism in $\mathsf{C}$.
+\end{solution}
+
+However there is some unnatural point for isomorphism of categories. Consider a category $\mathsf{Set}^{\partial}$ whose objects are sets and morphisms are \textbf{partial functions}: $f:X\rightarrow Y$ is a function from $X'\subset X$ to $Y$. The composition of two partial functions is defined as the composition of functions.
+
+Now we take the functor $(-)_+:\mathsf{Set}^\partial \rightarrow \mathsf{Set}_*$ which sends $X$ to the pointed set $X_+$, the disjoint union of $X$ and freely-added basepoint: we may take set as $X_+\coloneqq X\cup \{X\}$ and the basepoint as $X$ due to the axiom of regularity.\marginnote{The \textbf{axiom of regularity} is the axiom of ZF(Zermelo-Fraenkel) set theory, which says that the set does not contains itself as its element. This shows that $X$ and $\{X\}$ is a disjoint set.} The partial function $f:X\rightarrow Y$ becomes the pointed function $f_+:X_+\rightarrow Y_+$ where all the elements outside of the domain of definition of $f$ maps to the basepoint of $Y_+$. Conversely, we take the inverse functor $U:\mathsf{Set}_*\rightarrow \mathsf{Set}^\partial$ discarding the basepoint and following functional inverse.
+
+The construction says that $U(-)_+$ is the identity endofunctor of $\mathsf{Set}^\partial$, but $(U-)_+$ sends $(X,x)\rightarrow (X-\{x\}\cup \{X-\{x\}\},X-\{x\})$, which is isomorphic but not identical, hence not isomorphic. But the structure of these are very same.
+
+To solve this problem, we need to relax the condition $GF=1_D,FG=1_C$ of isomorphism for category, which is possible since the collections $\Hom(\mathsf{C},\mathsf{C})$ is not just a set but higher-dimensional structure. In general, the collection of functors $\mathrm{Hom}(\mathsf{C},\mathsf{D})$ is itself a category. What is morphism between them then?
+
+\begin{defn} Given categories $\mathsf{C},\mathsf{D}$ and functors $F,G:\mathsf{C}\rightarrow \mathsf{D}$, a \textbf{natural transformaion} $\alpha:F\Rightarrow G$ consists of a morphism $\alpha_c:F(c)\rightarrow G(c)$ in $\mathsf{D}$ for each object $c\in\mathsf{C}$, the collection of which define the \textbf{components} of the natural transformation, so  that for any morphism $f:c\rightarrow c'\in\mathsf{C}$, $G(f)\circ \alpha_c=\alpha_{c'}\circ F(f)$ holds. A \textbf{natural isomorphism} is a natural transformation $\alpha:F\Rightarrow G$ in which every component $\alpha_c$ is an isomorphism.
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item For vector space of any dimension over the field $\mathbb{K}$, the map $\mathrm{ev}:V\rightarrow V^{**}$ that sends $v\in V$ to $\mathrm{ev}_v:V^*\rightarrow \mathbb{K}$ defines the components of a natural transformation from the identity endofunctor on $\mathsf{Vect}_{\mathbb{K}}$ to the double dual functor. The map $V\xrightarrow{\phi}W$ becomes $V\xrightarrow{\phi}W$ by the identity endofunctor and $V^{**}\xrightarrow{\phi^**}W^{**}$ by the double dual functor. What now we need to show is $\mathrm{ev}_{\phi v}=\phi^{**}(\mathrm{ev}_v)$. The first one 
+\end{enumerate}
+\end{exmp}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

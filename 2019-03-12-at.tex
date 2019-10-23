@@ -1,0 +1,55 @@
+\mytitle{Algebraic Topology}
+Here every map is continuous.
+\begin{defn} A \textbf{deformation retraction} of a space $X$ onto a subspace $A$ is a family of maps $f_t:X\rightarrow X, t\in I=[0,1]$, such that $f_0=1_X$, $f_1(X)=A$, and $f_t|_A=1_A$ for all $t\in I$.
+\end{defn}
+\begin{defn} For a map $f:X\rightarrow Y$, the \textbf{mapping cylinder} $M_f$ is the quotient space $(X\times I)\sqcup Y/\sim$, where $(x,1)\sim f(x)$.
+\end{defn}
+\begin{prop} The mapping cylinder $M_f$ with map $f:X\rightarrow Y$ deformation retracts to $Y$.
+\end{prop}
+\begin{proof}
+We need to take a map $f_t:M_f\rightarrow M_f$ satisfying deformation retraction conditions. It is easy to take the map as $f_t|_Y=1_Y$ and $f_t(x,s)=(x,s(1-t)+t)$, and which we need to check is continuity now. Since $M_f$ is a quotient space, each $f_t$ is determined by a map $g_t:(X\times I)\sqcup Y \rightarrow M_f$, which respects the relation $g_t(x,1)= g_t(f(x))$. Thus the map $G(a,t)=g_t(a)$ is continuous on $\left((X\times I)\sqcup Y\right)$. Now define a new relation $\sim'$ on $\left( (X\times I)\sqcup Y\right)\times I$ as $(a,t)\sim' (a',t')$ if $a\sim a'$ and $t=t'$. Since $G$ is continuous, the map $F:\left( (X\times I)\sqcup Y\right)\times I/\sim'\rightarrow M_f$ induced by $G$ is continuous. \textit{Because $I$ is locally compact,} $\left((X\times I)\sqcup Y\right)\times I/\sim' \simeq \left((X\times I)\sqcup Y/\sim\right)\times I$, therefore the map $F$ is continuous.
+\end{proof}
+\begin{defn} A family of maps $f_t:X\rightarrow Y$ is called \textbf{homotopy} if $F(x,t)=f_t(x)$ is continuous on $X\times I$. Two maps $f_0,f_1:X\rightarrow Y$ is called \textbf{homotopic} if there exists homotopy $f_t$ between them. If $f,g$ are homotopic, then we write $f\simeq g$.
+\end{defn}
+\begin{exmp} Deformation retraction of $X$ onto a subspace $A$ is a homotopy from $1_X$ to the \textbf{retraction} of $X$ onto $A$, which is the map $r:X\rightarrow X$ such that $r(X)=A$ and $r|_A=1_A$.
+\end{exmp}\marginnote{Every space $X$ retracts to a one-point set $\{x_0\}$, where $x_0\in X$. However there exists some spaces that does not deformation retracts to one-point subset: for example, $S^1$.}
+\begin{defn} A homotopy $f_t:X\rightarrow Y$ where $f_t|_A$ is the constant function on $t$ is called a \textbf{homotopy relative to $A$}, or a homotopy $\mathrm{rel} A$.
+\end{defn}
+\begin{defn} A map $f:X\rightarrow Y$ is called a \textbf{homotopy equivalence} if there is a map $g:Y\rightarrow X$ such that $f\circ g\simeq 1_Y$ and $g\circ f\simeq 1_X$. Then the spaces $X$ and $Y$ are \textbf{homotopy equivalent} or have the same \textbf{homotopy type}, and write $X\simeq Y$.
+\end{defn}
+\begin{exmp} If a space $X$ deformation retracts onto a subspace $A$ by $f_t:X\rightarrow X$, then if $r:X\rightarrow A$ is the resulting retraction and $i:A\hookrightarrow X$ is the inclusion, then $r\circ i=1_A$ and $i\circ r\simeq 1_X$ by deformation retraction, thus $X$ and $A$ are homotopy equivalent.
+\end{exmp}
+
+\begin{defn} A space $X$ is called a \textbf{cell complex} or \textbf{CW complex} if $X$ is constructed as follow.\marginnote{The \textbf{real projective $n$-space} $\mathbb{R}P^n$ is the space of all lines through the origin in $\mathbb{R}^{n+1}$, which is equivalent to the space $S^n/(v\sim -v)$, the antipodal quotient of the $n$-sphere. This is \textit{also} equivalent with the space $D^n/(v\sim -v)$, the antipodal quotient of the $n$-hemisphere. Notice that the quotiented space here is $\partial D^n\simeq S^{n-1}$, which gives that after quotienting we get $\mathbb{R}P^{n-1}$. Therefore basically $\mathbb{R}P^n$ is obtained from $\mathbb{R}P^{n-1}$ by attaching an $n$-cell.}
+\begin{enumerate}
+\item Starting with a discrete set $X^0$, whose points are called \textbf{0-cells};
+\item Inductively, generate the \textbf{$n$-skeleton} $X^n$ from $X^{n-1}$ by attaching \textbf{$n$-cells} $e_\alpha^n$ via maps $\phi_\alpha :S^{n-1}\rightarrow X^{n-1}$, i.e. $X^n$ is the quotient space of the disjoint union $X^{n-1}\sqcup_{\alpha}D_\alpha^n$ under the identifications $x\sim \phi_\alpha(x)$ for $x\in\partial D_\alpha^n\simeq S^{n-1}$, where $D_\alpha^n$ is an $n$-disk.
+\item One can stop this at finite stage, taking $X=X^n$, or take a limit, setting $X=\cup_n X^n$. In latter case, we give a weak topology: $A\subset X$ is open iff $A\cap X^n$ is open in $X^n$ for each $n$.
+\end{enumerate}\marginnote{CW complex can be defined by not using the inductive definition, which uses the characteristic maps. The hausdorff space $X$ is called the \textbf{CW complex} if there is a set of maps $\mathbb{D}^n\rightarrow X$, $\Phi_n$, which satisfies: For each \textbf{$n$-dimensional cells} $\phi\in \Phi_n$, $\phi|_{\mathrm{int}\mathbb{D}^n}$ is homeomorphic to its image; For each $x\in X$, there exists a unique $(n\in \mathbb{N}, \phi\in\Phi_n)$ such that $x\in \phi(\mathrm{int}\mathbb{D}^n)$; For each $\phi\in \Phi_n$, $\phi(\partial \mathbb{D}^N)$ intersects with finitely many cells with dimension $<n$; $C\subset X$ is closed iff for every $n\in \mathbb{N}$ and $\phi\in \Phi_n$, $\phi^{-1}(C)\subset \mathbb{D}^n$ is closed.}
+
+If $X=X^n$ for some $n$, we call $n$ the \textbf{dimension} of $X$.
+
+Each cell $e_\alpha^n$ in a cell complex $X$ has a \textbf{characteristic map} $\Phi_\alpha:D_\alpha^n\rightarrow X$ which extends the attaching map $\phi_\alpha$ and is a homeomorphism from the interior of $D_\alpha^n$ onto $e_\alpha^n.$
+
+A \textbf{subcomplex} of a cell complex $X$ is a closed subspace $A\subset X$ that is a union of cells of $X$. A pair $(X,A)$ consisting of a cell complex $X$ and its subcomplex $A$ is called a \textbf{CW pair}.
+\end{defn}
+
+\begin{defn} If $X,Y$ are cell complexes, then $X\times Y$ has the structure of a cell complex with cells as the products $e_\alpha^m\times e_\beta^n$, where $e_\alpha^m$ ranges over $X$ and $e_\beta^n$ ranges over $Y$.
+\end{defn}\marginnote{The topology on $X\times Y$ is sometimes finer then the product topology, however if either $X$ or $Y$ has finitely many cells, or if both $X$ and $Y$ has countably many cells, then they has same topology.}
+
+\begin{defn} If $(X,A)$ is a CW pair, then the quotient space $X/A$ has the cells as the cells of $X-A$ with one new 0-cell, and those attaching maps are $S^{n-1}\xrightarrow{\phi_\alpha}X^{n-1}\rightarrow X^{n-1}/A^{n-1}$.
+\end{defn}
+
+\begin{defn} For a space $X$, the space $CX=(X\times I)/(X\times \{0\}$ is called the \textbf{cone}, and the space $SX=(X\times I)/(X\times \{0\}/(X\times \{1\})$ is called the \textbf{suspension}.\marginnote{If $X$ is CW complex, then also $CX$ and $SX$ are.}
+\end{defn}
+
+\begin{defn} For two spaces $X,Y$, the space $X*Y$ defined by $X\times Y\times I/(x,y_1,0)\sim (x,y_2,0)/(x_1,y,1)\sim (x_2,y,1)$. A join of $n+1$-points is a convex polyhedron of dimension $n$, which is called a \textbf{simplex}, and written as $\Delta^{n}$.\marginnote{If $X,Y$ are CW complex, then there is a natural CW complex structure on $X*Y$ with $X,Y$ as subcomplexes, which may have finer topology then the quotient of $X\times Y\times I$ as it was in product space.}
+\end{defn}
+
+\begin{defn} For $x_0\in X$ and $y_0\in Y$, the \textbf{wedge sum} $X\vee Y$ is the space $X\sqcup Y/x_0\sim y_0$. The \textbf{smash product} $X\wedge Y$ is the space $X\times Y/X\times {y_0}\vee Y\times {x_0}$, where wedge is taken as $(x_0,y_0)$.
+\end{defn}
+\begin{exmp} $\mathbb{S}^n\wedge \mathbb{S}^m\simeq \mathbb{S}^{n+m}$.
+\end{exmp}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

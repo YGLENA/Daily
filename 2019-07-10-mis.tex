@@ -1,0 +1,38 @@
+\mytitle{Chern-Simons-Witten Theory}
+\begin{defn} Let $M$ be a manifold and $TM$ is the tangent space of $M$. Then a \textbf{differential $k$-form} on $M$, is a smooth section of $\wedge^k T^*M$.
+\end{defn}
+
+\begin{defn} Let $M$ be a manifold and $\omega$ is a differential 2-form on $M$. Then $\omega$ is
+\begin{enumerate}
+\item \textbf{non-degenerate} if $\omega(X,Y)=0$ for all $Y\in T_p M$ then $X=0$.
+\item \textbf{closed} if $d\omega=0$.
+\end{enumerate}
+\end{defn}
+
+\begin{prop} Let $M$ be a manifold and $\omega$ is a nondegenerate differential 2-form on $M$. Then $M$ is a manifold with even dimension.
+\end{prop}
+\begin{proof} Suppose that the dimension of $M$, $n$, is odd. Then using the matrix representation under local coordinate system, $\omega$ is a skew-symmetric matrix with size $n$. Now $\det(\omega)=\det(-\omega^T)=\det(-\omega)=(-1)^n\det(\omega)=-\det(\omega)$, thus $\det(\omega)=0$, but $\omega$ is nondegenrate, contradiction.
+\end{proof}
+
+\begin{defn} Let $M$ be a $2n$ dimensional manifold and $\omega$ is a closed nondegenerate differential 2-form on $M$. Then $(M,\omega)$ is called a \textbf{symplectic manifold}.
+\end{defn}
+
+\begin{defn}[Classical Mechanics] Let $(M,\omega)$ be a symplectic manifold. Choose $H\in C^\infty (M,\mathbb{R})$. Then a vector field $X_H$ on $M$ satisfying
+\begin{equation}
+dH(\cdot)=\omega(X_H,\cdot)
+\end{equation}
+is called a \textbf{Hamiltonian vector field}.
+\end{defn}
+
+\begin{defn}[Poisson Bracket] Let $(M,\omega)$ be a symplectic manifold. The bilinear skew-symmetric map
+\begin{equation}
+\{\cdot,\cdot\}:C^\infty(M,\mathbb{R})\times C^\infty(M,\mathbb{R})\rightarrow C^\infty(M,\mathbb{R})
+\end{equation}
+defined as
+\begin{equation}
+\{f,g\}=i_{v_f} \circ i_{v_g}(\omega)=\omega(v_f,v_g)
+\end{equation}
+is called a \textbf{poisson bracket}.
+\end{defn}
+\noindent\rule{\textwidth}{1pt}
+\newline

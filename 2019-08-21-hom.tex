@@ -1,0 +1,15 @@
+\mytitle{An introduction to homological algebra}
+\begin{lemma} Let $\mathsf{C}\subset \mathsf{A}$ be a full subcategory of an abelian category $\mathsf{A}$.\marginnote{A functor $F:\mathsf{C}\rightarrow \mathsf{D}$ is \textbf{full} if for each objects $x,y\in \mathsf{C}$, the map $\mathsf{C}(x,y)\rightarrow \mathsf{D}(F(x),F(y))$ is surjective; \textbf{faithful} if for each objects $x,y\in \mathsf{C}$ the map $\mathsf{C}(x,y)\rightarrow \mathsf{D}(F(x),F(y))$ is injective; \textbf{embedding} if it is faithful and the map $F:\mathsf{ob}(\mathsf{C})\rightarrow \mathsf{ob}(\mathsf{D})$ is also injective; \textbf{fully embedding} of $\mathsf{C}$ into $\mathsf{D}$ if it is full and embedding. If $F:\mathsf{C}\rightarrow \mathsf{D}$ is a full embedding, we call $\mathsf{C}$ a \textbf{full subcategory} of $\mathsf{D}$. A functor $F:\mathsf{D}\rightarrow \mathsf{E}$ from an}
+\begin{enumerate}
+\item $\mathsf{C}$ is additive $\Leftrightarrow$ $0\in \mathsf{C}$ and $\mathsf{C}$ is closed under $\oplus$.
+\item $\mathsf{C}$ is abelian and $\mathsf{C}\subset \mathsf{A}$ is exact $\Leftrightarrow$ $\mathsf{C}$ is additive, and $\mathsf{C}$ is closed under $\Ker$ and $\Coker$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item One direction is obvious. Suppose that $0\in\mathsf{C}$ and $\mathsf{C}$ is closed under $\oplus$. Since $\mathsf{C}$ is a full subcategory, the morphism set are same, thus we can give the exactly same abelian group structure to the morphism set. Thus $\mathsf{C}$ is an $\mathsf{Ab}$-category, and so an additive category.
+\item For one direction, since $\mathsf{C}$ is abelian, $\mathsf{C}$ is additive, ans since $\mathsf{C}\subset \mathsf{A}$ is additive, $\mathsf{C}$ is closed under $\Ker$ and $\Coker$. For the other direction, since $\mathsf{C}$ is closed under $\Ker$ and $\Coker$, an exact chain in $\mathsf{C}$ is still an exact chain in $\mathsf{A}$, thus $\mathsf{C}\subset \mathsf{A}$ is exact and $\mathsf{A}$ is an abelian category.\marginnote{Let $\mathsf{A}$ be an abelian group category and $\mathsf{C}$ be a torsion-free abelian group category. Consider $f:\mathbb{Z}\xrightarrow{\times n} \mathbb{Z}$ in $\mathsf{C}$. This map has a cokernel $\mathsf{Z}\rightarrow 0$, which is not a cokernel in $\mathsf{A}$. Indeed, there is no map $0\rightarrow \mathbb{Z}/n$ which makes $\mathbb{Z}\rightarrow 0\rightarrow \mathbb{Z}/n=\mathbb{Z}\rightarrow \mathbb{Z}/n$.}
+\end{enumerate}
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

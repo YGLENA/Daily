@@ -1,0 +1,77 @@
+\mytitle{An introduction to homological algebra}
+\begin{exmp}
+\begin{enumerate}
+\item Inside $R-\mathsf{mod}$ we have an additive subcategory consists of the finitely generated $R$-modules, which is abelian if and only if $R$ is noetherian.\marginnote{This is because $R$ is noetherian if and only if all the ideals are finitely generated.}
+\item Inside $\mathsf{Ab}$, the torsion-free groups form an additive category, the $p$-groups form an abelian category, finite $p$-groups form an abelian category, and $\mathbb{Z}/p-\mathsf{mod}$ of vector spaces over the field $\mathbb{Z}/p$ is a full subcategory of $\mathsf{Ab}$.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} Let $\mathsf{C}$ be any category and $\mathsf{A}$ be an abelian category. The \textbf{functor category} $\mathsf{A}^\mathsf{C}$ is the abelian category whose objects are functors $F:\mathsf{C}\rightarrow \mathsf{A}$, and the maps are natural transformations.
+\end{defn}
+
+\begin{exmp}
+\begin{enumerate}
+\item If $\mathsf{C}$ is the discrete category of integers, then $\mathsf{Ab}^\mathsf{C}$ contains the abelian category of \textbf{graded abelian groups} as a full subcategory.
+\item If $C$ is the poset category of integers, then the abelian category $\mathsf{Ch}(\mathsf{A})$ of cochain complexes is a full subcategory of $\mathsf{A}^\mathsf{C}$.
+\item If $R$ is a ring considered as a one-object category, then $R-\mathsf{mod}$ is the full subcategory of all additive functors in $\mathsf{Ab}^R$.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} Let $X$ be a topological space and $\mathsf{U}$ the poset of open subsets of $X$. A contravariant functor $F:\mathsf{U}\rightarrow \mathsf{A}$ such that $F(\emptyset)=\{0\}$ is called a \textbf{presheaf} on $X$ with values in $\mathsf{A}$, and the presheaves are the objects of the abelian category $\mathsf{A}^{\mathsf{U}^{\textrm{op}}}=\textrm{Presheaves}(X)$.
+\end{defn}
+
+\begin{exmp} Consider $C^0(U)=\{\textrm{continuous functions }f:U\rightarrow\mathbb{R}\}$. If $U\subset V$, then the maps $C^0(V)\rightarrow C^0(U)$ are given by restricting the domain of a function from $V$ to $U$. Thus a functor $C^0$ from $\mathsf{U}$ to the category with continuous functions $C^0(U)$ is a presheaf.
+\end{exmp}
+
+\begin{defn} A \textbf{sheaf} on $X$ with values in $\mathsf{A}$ is a presheaf $F$ satisfying the \textbf{sheaf axiom}: Let $\{U_i\}$ be an open covering of an open subset $U$ of $X$. If $\{f_i\in F(U_i)\}$ are such that each $f_i$ and $f_j$ agree in $F(U_i\cap U_j)$, then there is a unique $f\in F(U)$ that maps to every $f_i$ under $F(U)\rightarrow F(U_i)$. That is, the following sequence is exact.
+\begin{equation}
+0\rightarrow F(U)\rightarrow \prod F(U_i) \xrightarrow{\textrm{diff}} \prod_{i<j}F(U_i\cap U_j)
+\end{equation}
+\end{defn}
+
+\begin{exer} Let $M$ be a smooth manifold. For each open $U\subset M$, let $C^\infty(U)$ be the set of smooth functions from $U$ to $\mathbb{R}$. Show that $C^\infty(U)$ is a sheaf in $M$.
+\end{exer}
+\begin{solution}
+For the collection of maps $\{f_i\in F(U_i)\}$ such that $f_i,f_j$ agree in $F(U_i\cap U_j)$, define $f$ on $U$ as $f(x)=f_i(x)$ if $x\in U_i$. This definition is well defined, since if $x\in U_i\cap U_j$ then $f_i(x)=f_j(x)$. Now since continuity and differentiability on point is determined by its open neighborhood, $f$ is smooth since $f_i$ are smooth. Finally, if $f,g$ are both such maps, then $f(x)-g(x)=0$, thus $f=g$.
+\end{solution}
+
+\begin{exer} Let $A$ be any abelian group. For every open subset $U$ of $X$, let $A(U)$ denote the set of continuous maps from $U$ to the discrete topological space $A$. Show that $A$ is a sheaf on $X$.
+\end{exer}
+
+\begin{solution} Define the map as above, and prove the continuity in same way.
+\end{solution}
+
+\begin{exmp} The category $\textrm{Sheaves}(X)$ is an abelian category, but not an abelian subcategory of $\textrm{Presheaves}(X)$. For any space $X$, let $\mathsf{O}$ be the sheaf such that $\mathsf{O}(U)$ is the group of continuous maps from $U$ into $\mathbb{C}$. Define $\mathsf{O}^*$ with $\mathbb{C}^*$. Then there is a short exact sequence of sheaves:
+\begin{equation}
+0\rightarrow \mathbb{Z}\xrightarrow{2\pi i}\mathsf{O}\xrightarrow{\textrm{exp}}\mathsf{O}^*\rightarrow 0
+\end{equation}
+But this map is not an exact sequence of presheaves if $X=\mathbb{C}^*$, because the map $\mathsf{O}\xrightarrow{\textrm{exp}}\mathsf{O}^*$ is not surjective; notice that there is no global log function, thus there is no preimage of $z:\mathbb{C}^*\rightarrow \mathbb{C}^*$. Indeed, $H^1(\mathbb{C}^*,\mathbb{Z})\simeq \mathbb{Z}$, and the contour integral $\frac{1}{2\pi i}\oint f'(z)/f(z) dz$ gives the image of $f(z)$ in the cokernel.
+\end{exmp}
+
+\begin{defn} Let $F:\mathsf{A}\rightarrow \mathsf{B}$ be an additive functor between abelian categories. $F$ is called \textbf{left(right) exact} if for every short exact sequences $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$ in $\mathsf{A}$, the sequence $0\rightarrow F(A)\rightarrow F(B)\rightarrow F(C)$($F(A)\rightarrow F(B)\rightarrow F(C)\rightarrow 0$) is exact in $\mathsf{B}$. $F$ is called \textbf{exact} if it is both left and right exact. A covariant functor $F$ is called (left, right) exact if the corresponding covariant functor $F':\mathsf{A}^{\textrm{op}}\rightarrow \mathsf{B}$ is (left, right) exact.
+\end{defn}
+
+\begin{exmp} The inclusion of $\textrm{Sheaves}(X)$ into $\textrm{Presheaves}(X)$ is a left exact functor. The \textbf{Sheafification} $\textrm{Presheaves}(X)\rightarrow \textrm{Sheaves}(X)$ is an exact functor. The proof will given later.
+\end{exmp}
+
+\begin{exer} Show that the above definitions are equivalent to the following, which are often given as the definitions. A (covariant) functor $F$ is left(right) exact if exactness of the sequence $0\rightarrow A\rightarrow B\rightarrow C$($A\rightarrow B\rightarrow C\rightarrow0 0$) implies exactness of the sequence $0\rightarrow F(A)\rightarrow F(B)\rightarrow F(C)$($F(A)\rightarrow F(B)\rightarrow F(C)\rightarrow 0$).
+\end{exer}
+\begin{solution} On direction is obvious. For the other direction, first consider a monic $i:A\rightarrow B$. Then $0\rightarrow A\xrightarrow{i} B\rightarrow \Coker(i)\rightarrow 0$ is exact, thus $0\rightarrow F(A)\xrightarrow{F(i)} F(B)\rightarrow F(\Coker(i))$ is exact. Therefore $F(i)$ is monic. Now consider $f:B\rightarrow C$ such that $0\rightarrow A\xrightarrow{i} B\xrightarrow{f} C$ is exact. Then $0\rightarrow A\xrightarrow{i} B\xrightarrow{f} \Ima(f)\rightarrow 0$ is exact, therefore $0\rightarrow F(A)\xrightarrow{F(i)} F(B)\xrightarrow{F(f)} F(\Ima(f))$ is exact. Since $\Ima(f)\rightarrow C$ is monic, $F(\Ima(f))\rightarrow F(C)$ is monic, thus $0\rightarrow F(A)\xrightarrow{F(i)} F(B)\xrightarrow{F(f)} F(C)$ is also exact.
+\end{solution}
+
+\begin{prop} Let $\mathsf{A}$ be an abelian category. Then $\textrm{Hom}_{\mathsf{A}}(M,-)$ is a left exact functor from $\mathsf{A}$ to $\mathsf{Ab}$ for every $M$ in $\mathsf{A}$. Thus, given an exact sequence $0\rightarrow A\xrightarrow{f} B\xrightarrow{g} C\rightarrow 0$ in $\mathsf{A}$, the following sequence of abelian groups is also exact:
+\begin{equation}
+0\rightarrow \Hom(M,A)\xrightarrow{f_*} \Hom(M,B)\xrightarrow{g_*} \Hom(M,C)
+\end{equation}
+\end{prop}
+\begin{proof}
+Suppose that $\alpha\in \Hom(M,A)$. First $g_*\circ f_*(\alpha)=g\circ f\circ \alpha=0$, this is a chain. If $f_*(\alpha)=f\circ \alpha=0$ then $\alpha=0$ since $f$ is monic, thus $f_*$ is monic. Finally, suppose that $\beta\in \Hom(M,B)$ satisfies $g_*(\beta)=g\circ \beta=0$. Then $\beta(M)\subset \Ima(f)$ due to the exactness, thus considering $A\rightarrowtail \Ima(f)\rightarrowtail B\rightarrow C$, we have a map $\alpha:M\rightarrow A$ satisfying $\beta=f\circ \alpha$.
+\end{proof}
+
+\begin{cor} $\Hom_{\mathsf{A}}(-,M)$ is a left exact contravariant functor.
+\end{cor}
+\begin{proof}
+$\Hom_{\mathsf{A}}(A,M)=\Hom_{\mathsf{A}^{\textrm{op}}}(M,A)$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

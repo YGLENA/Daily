@@ -1,0 +1,120 @@
+\mytitle{Algebraic Topology}
+From now, $I=[0,1]$.
+
+\begin{defn} A \textbf{path} in a space $X$ is a continuous map $f:I\rightarrow X$. We call $f(0),f(1)\in X$ the \textbf{endpoints} of $f$. For two paths $f,g:I\rightarrow X$, if $f(0)=g(0)$ and $f(1)=g(1)$, then we call these paths have same endpoints.
+\end{defn}
+
+\begin{defn} A \textbf{homotopy of paths} in $X$ is a homotopy $F:I\times I\rightarrow X$, which is also written as $f_t(s)=F(s,t)$, between paths $f_0$ and $f_1$ such that $f_t(0)=x_0, f_t(1)=x_1$ for $x_0,x_1\in X$. If so, then we call $f_0$ and $f_1$ \textbf{homotopic}, and write $f_0\simeq f_1$.
+\end{defn}
+
+\begin{prop} Every paths $f_0,f_1:I\rightarrow X\subset \mathbb{R}^n$, whose endpoints are same, are homotopic if $X$ is convex.
+\end{prop}
+\begin{proof} Define homotopy $f_t(s)=tf_0(s)+(1-t)f_1(s)$,\marginnote{This homotopy is called \textbf{linear homotopy}.} which is well defined at $t=0,1$ obviously, and also well defined on $t\in (0,1)$ since $X\subset \mathbb{R}^n$ is a convex set. Since $f_0,f_1$ are continuous, $f_t(x)$ is continuous. Also, taking $f_0(0)=f_1(0)=x_0$ and $f_0(1)=f_1(1)=x_1$, we get $f_t(0)=tf_0(0)+(1-t)f_1(0)=tx_0+(1-t)x_0=x_0$, and same for $x_1$.
+\end{proof}
+
+\begin{prop} The relation of homotopy of paths is an equivalence relation.\marginnote{The \textbf{relation} on a set $X$ is a subset $\sim \subset X\times X$. If $(x_0,x_1)\in \sim$, then we write $x_0\sim x_1$.
+
+A relation $\sim$ is an \textbf{equivalence relation} if, for all $x_0, x_1, x_2\in X$, \begin{enumerate}
+\item $x_0\sim x_0$,
+\item $x_0\sim x_1$ if and only if $x_1 \sim x_0$,
+\item $x_0\sim x_1\sim x_2$ then $x_0\sim x_2$.
+\end{enumerate}}
+\end{prop}
+\begin{proof} Let $X$ be a set.
+\begin{enumerate}
+\item For a path $f_0:I\rightarrow X$, define $F:I\times I\rightarrow X$ as $F(s,t)=f_0(s)$. This is continuous and $F(0,t)=f_0(0), F(1,t)=f_0(1)$, thus have fixed endpoints. Finally, $F(s,0)=F(s,1)=f_0(s)$, therefore this is homotopy of paths between $f_0$ and $f_0$. Therefore $f_0\simeq f_0$.
+\item For paths $f_0,f_1:I\rightarrow X$ with same endpoints $x_0,x_1$, if $f_0\simeq f_1$, then we may take $F:I\times I\rightarrow X$ as a homotopy between $f_0,f_1$, i.e. $F(s,0)=f_0(s), F(s,1)=f_1(s)$, and $F(0,t)=x_0,F(1,t)=x_1$. Now take $G:I\times I\rightarrow X$ as $G(s,t)=F(s,1-t)$. Then $G$ is continuous, $G(s,0)=F(s,1)=f_1(s), G(s,1)=F(s,0)=f_0(s)$, and $G(0,t)=F(0,1-t)=x_0, G(1,t)=F(1,1-t)=x_1$. Therefore $f_1\simeq f_0$.
+\item For paths $f_0,f_1,f_2:I\rightarrow X$ with same endpoints $x_0,x_1$, if $f_0\simeq f_1\simeq f_2$, then we may take $F:I\times I\rightarrow X$ and $G:I\times I\rightarrow X$ as a homotopy between $f_0,f_1$ and $f_1,f_2$, respectively. Now take $H:I\times I\rightarrow X$ as
+\begin{equation}
+H(s,t)=\begin{cases}F(s,2t),&t\in[0,\frac{1}{2}]\\
+G(s,2t-1),&t\in [\frac{1}{2},1]
+\end{cases}
+\end{equation}
+Since $F(s,1)=f_1(s)=G_(s,0)$, the map above is well defined and continuous. Since $F,G$ fix endpoints, $H$ fixes endpoints. Finally, since $H(s,0)=f_0(s)$ and $H(s,1)=f_2(s)$, $H$ is homotopy of paths between $f_0$ and $f_2$, thus $f_0\simeq f_2$.
+\end{enumerate}
+\end{proof}
+
+\begin{defn} The equivalence class of a path $f:I\rightarrow X$ under the equivalence relation of homotopy of path is called the \textbf{homotopy class} of $f$ and denoted as $[f]$.
+\end{defn}
+
+\begin{defn} Given two paths $f,g:I\rightarrow X$ with $f(1)=g(0)$, the \textbf{composition}, or \textbf{product path}, is defined as
+\begin{equation}
+f\cdot g(s)=\begin{cases}
+f(2s),&s\in[0,\frac{1}{2}]\\
+g(2s-1),&s\in[\frac{1}{2},1]
+\end{cases}
+\end{equation}
+\end{defn}
+\begin{prop} For two paths $f,g:I\rightarrow X$ with $f(1)=g(0)$, the product path $f\cdot g(s)$ is a path.
+\end{prop}
+\begin{proof} Since $f(1)=g(0)$, by pasting lemma, $f\cdot g:I\rightarrow X$ is continuous.
+\end{proof}
+
+\begin{lemma} For the paths $f_0,f_1,g_0,g_1:I\rightarrow X$, where $f_0,f_1$ has same endpoints $x_0,x_1$ and $g_0,g_1$ has same endpoints $x_1,x_2$, if $f_0\simeq f_1$ and $g_0\simeq g_1$, then $f_0\cdot g_0\simeq f_1\cdot g_1$.
+\end{lemma}
+\begin{proof} For homotopies $F:I\times I\rightarrow X$ of $f_0\simeq f_1$ and $G:I\times I\rightarrow X$ of $g_0\simeq g_1$, define $H:I\times I\rightarrow X$ as
+\begin{equation}
+H(s,t)=\begin{cases} F(2s,t),&s\in [0,\frac{1}{2}]\\
+G(2s-1,t),&s\in [\frac{1}{2},1]
+\end{cases}
+\end{equation}
+This is well defined since $F(1,t)=G(0,t)=x_1$, and by pasting lemma this is continuous. Finally, $H(s,0)=f_0\cdot g_0(s)$ and $H(s,1)=f_1\cdot g_1(s)$.
+\end{proof}
+
+\begin{defn} Take a path $f:I\rightarrow X$. The \textbf{reparametrization} of $f$ is the composition map $f\circ \phi$ where $\phi:I\rightarrow I$ is a continuous map with $\phi(0)=0$ and $\phi(1)=1$.
+\end{defn}
+
+\begin{lemma} For a path $f:I\rightarrow X$ and its reparametrization $g$, $f\simeq g$.
+\end{lemma}
+\begin{proof} Since $g$ is the reparametrization of $f$, we have $\phi:I\rightarrow I$ such that $\phi(0)=0,\phi(1)=1$ and $g=f\circ \phi$. Now take a a map
+\begin{equation}
+F(s,t)=f(t\phi(s)+(1-t)s).
+\end{equation}
+Then $F$ is continuous, $F(s,0)=f(s)$ and $F(s,1)=f(\phi(s))=g(s)$, and $F(0,t)=f(0), F(1,t)=f(1)$. Therefore $F$ is homotopy or paths.
+\end{proof}
+
+\begin{defn} The path $f:I\rightarrow X$ with basepoints $x_0,x_0$, i.e. $f(0)=f(1)$, is called a \textbf{loop}, and $x_0$ is called a \textbf{basepoint} of loop $f$. The set $\pi_1(X,x_0)$ is the set of all homotopy classes $[f]$ of loops $f:I\rightarrow X$ with basepoint $x_0$.
+\end{defn}
+
+\begin{prop} $\pi_1(X,x_0)$ is a group with the product $[f][g]=[f\cdot g]$, called \textbf{fundamental group}.
+\end{prop}
+\begin{proof} \textit{Product is closed.} Take $[f],[g]\in\pi_1(X,x_0)$. Since $f,g$ are loops with basepoint $x_0$, $f\cdot g$ is a loop with basepoint $x_0$ also, thus $[f\cdot g]\in\pi_1(X,x_0)$. Hence the product is closed.
+
+\textit{Associativity.} For any paths $f,g,h:I\rightarrow X$ with $f(1)=g(0)$ and $g(1)=h(0)$, consider $(f\cdot g)\cdot h$ and $f\cdot(g\cdot h)$. Take
+\begin{equation}
+\phi(s)=\begin{cases}
+\frac{s}{2},&s\in [0,\frac{1}{2}]\\
+s-\frac{1}{4}, &s\in [\frac{1}{2},\frac{3}{4}]\\
+2s-1&s\in [\frac{3}{4},1]
+\end{cases}
+\end{equation}
+Then $((f\cdot g)\cdot h)\circ \phi=f\cdot (g\cdot h)$, thus $(f\cdot g)\cdot h$ is reparametrization of $f\cdot(g\cdot h)$. Since the loop and its reparametrization is homotopy equivalent equivalent, we get $(f\cdot g)\cdot h\simeq f\cdot(g\cdot h)$, Thus, restricting $f,g,h$ as loops with basepoint $x_0$, $([f][g])[h]=[f]([g][h])$.
+
+\textit{Identity.} For a path $f:I\rightarrow X$ with $f(1)=x_1$, consider a constant path $c_{x_1}:I\rightarrow X$ such that $c_{x_1}(s)=x_1$. Take
+\begin{equation}
+\phi(s)=\begin{cases}
+2s,&s\in[0,\frac{1}{2}]\\
+1,&s\in[\frac{1}{2},1]
+\end{cases}
+\end{equation}
+Then $f\circ \phi=f\cdot c$, i.e. $f\cdot c$ is a reparametrization of $f$. Samely, for a path $f:I\rightarrow X$ with $f(0)=x_0$, consider a constant path $c_{x_0}:I\rightarrow X$ and take
+\begin{equation}
+\phi(s)=\begin{cases}
+0,&s\in[0,\frac{1}{2}]\\
+2s-1,&s\in[\frac{1}{2},1]
+\end{cases}
+\end{equation}
+Then $f\circ \phi=c\cdot f$, i.e. $c\cdot f$ is a reparametrization of $f$. Thus, restricting $f$ as a loop with basepoint $x_0$, $[f][c_{x_0}]=[c_{x_0}][f]=[f]$.
+
+\textit{Inverse.} For a path $f:I\rightarrow X$, define $\overline{f}:I\rightarrow X$ as $\overline{f}(s)=f(1-s)$. Now take the continuous map $H:I\times I\rightarrow X$ as
+\begin{equation}
+H(s,t)=\begin{cases}
+f(2ts),&s\in [0,\frac{1}{2}]\\
+f(2t(1-s)),&s\in [\frac{1}{2},1]
+\end{cases}
+\end{equation}
+Then we get $H(0,t)=H(1,t)=f(0)$ and $H(s,0)=f(0),H(s,1)=f\cdot \overline{f}(s)$. Therefore restricting $f$ as a loop with basepoint $x_0$ gives $[f][\overline{f}]=[c_{x_0}]$. Just exchanging $f$ and $\overline{f}$ gives $[\overline{f}][f]=[c_{x_0}]$.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

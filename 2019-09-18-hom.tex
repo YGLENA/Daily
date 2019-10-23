@@ -1,0 +1,99 @@
+\mytitle{An introduction to homological algebra}
+\begin{exer} For an abelian group $A$, denote $I(A)$ as the product of copies of the injective group $\mathbb{Q}/\mathbb{Z}$ indexed by the set $\Hom_{\textsf{Ab}}(A,\mathbb{Q}/\mathbb{Z})-0$, where $0$ is the zero map. Then $I(A)$ is injective since it is a product of injectives, and there is a canonical map $e_A:A\rightarrow I(A)$. Show that $e_A$ is an injection, and thus, show that $\mathsf{Ab}$ has enough injectives.
+\end{exer}
+\begin{solution} Take $a\in A$. Notice that $f\in\Hom_{\textsf{Ab}}(A,\mathbb{Q}/\mathbb{Z}$-th component of $e_A(a)$ is $f(a)$. Define $f:a\mathbb{Z}\rightarrow \mathbb{Q}/\mathbb{Z}$ with $f(a)$ as some nonzero value in $\mathbb{Q}/\mathbb{Z}$, for example, $\left[\frac{1}{2}\right]$. Now since we have a map $a\mathbb{Z}\rightarrow A$ and $\mathbb{Q}/\mathbb{Z}$ is injective, we can extend $f$ to a map $f':A\rightarrow \mathbb{Q}/\mathbb{Z}$, which has $f'(a)\neq 0$. Therefore $e_A$ is injective.
+\end{solution}
+
+\begin{exer} Show that an abelian group $A$ is zero if and only if $\Hom_{\mathsf{Ab}}(A,\mathbb{Q}/\mathbb{Z})=0$.
+\end{exer}
+\begin{solution} If $A$ is zero then there is one trivial homomorphism. Suppose that $\Hom_{\mathsf{Ab}}(A,\mathbb{Q}/\mathbb{Z})=0$. We have defined an injection $e_A:A\rightarrow I(A)$ from previous exercise, but in this case $I(A)=0$, thus $A=0$.
+\end{solution}
+
+\begin{lemma} The following are equivalent for an object $I$ in an abelian category $\mathsf{A}$:
+\begin{enumerate}
+\item $I$ is injective in $\mathsf{A}$;
+\item $I$ is projective in $\mathsf{A}$;
+\item The contravariant functor $\Hom_{\mathsf{A}}(-,I)$ is exact.
+\end{enumerate}
+\end{lemma}
+\begin{proof} Since the opposite category of abelian category is abelian, and the dual of injective object is project object, the lemma is shown by duality.
+\end{proof}
+
+\begin{defn}
+Let $M$ be an object of $\mathsf{A}$. A \textbf{right resolution} of $M$ is a cochain complex $I^\bullet$ with $I^i=0$ for $i<0$ and a map $M\rightarrow I^0$ such that the augmented complex
+\begin{equation}
+0\rightarrow M\rightarrow I^0\xrightarrow{d} I^1\xrightarrow{d}\cdots
+\end{equation}
+is exact, which is same as a cochain map $M\rightarrow I^\bullet$, where $M$ is considered as a complex concentrated in degree 0. If each $I^i$ is injective, the right resolution is called an \textbf{injective resolution}.
+\end{defn}
+
+\begin{lemma} If the abelian category $\mathsf{A}$ has enough injectives, then every object in $\mathsf{A}$ has an injective resolution.
+\end{lemma}
+\begin{proof}
+This lemma is the dual version of projective resolution.
+\end{proof}
+
+\begin{thm}[Comparison Theorem.] Let $N\rightarrow I^\bullet$ be an injective resolution of $N$ and $f':M\rightarrow N$ be a map in $\mathsf{A}$. Then for every resolution $M\rightarrow E^\bullet$, there is a cochain map $f:E^\bullet\rightarrow I^\bullet$ lifting $f'$. The map $f$ is unique up to cochain homotopy equivalence.
+\begin{equation}
+\begin{tikzcd}
+0\arrow[r] &M\arrow[r]\arrow{d}{f'} &E^0\arrow[r]\arrow{d}{\exists}&E^1\arrow[r]\arrow{d}{\exists}&\cdots\\
+0\arrow[r]&N\arrow[r]&I^0\arrow[r]&I^1\arrow[r]&\cdots
+\end{tikzcd}
+\end{equation}
+\end{thm}
+\begin{proof}
+This theorem is the dual version of projective comparison theorem.
+\end{proof}
+
+\begin{exer} Show that $I$ is an injective object in the category of chain complexes if and only if $I$ is a split exact complex of injectives. Then show that if $\mathsf{A}$ has enough injectives, so does the category $\mathsf{Ch}(\mathsf{A})$.
+\end{exer}
+\begin{proof}
+Taking the dual of projective chain complexes, we get the first statement. Now since $\mathsf{Ch}(\mathsf{A})^\textrm{op}\simeq \mathsf{Ch}(\mathsf{A}^\textrm{op})$, we get the second statement.
+\end{proof}
+
+\begin{defn} A pair of functors $L:\mathsf{A}\rightarrow \mathsf{B}$ and $R:\mathsf{B}\rightarrow \mathsf{A}$ are \textbf{adjoint functors} if for all $A\in \mathsf{A}$ and $B\in \mathsf{B}$, there is a natural bijection
+\begin{equation}
+\tau=\tau_{AB}:\Hom_{\mathsf{B}}(L(A),B)\rightarrow \Hom_{\mathsf{A}}(A,R(B))
+\end{equation}
+that is, for all $f:A\rightarrow A'\in \mathsf{A}$ and $g:B\rightarrow B'\in \mathsf{B}$, the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\Hom_{\mathsf{B}}(L(A'),B)\arrow{r}{L(f)^*}\arrow{d}{\tau}&\Hom_{\mathsf{B}}(L(A),B)\arrow{r}{g_*}\arrow{d}{\tau}&\Hom_{\mathsf{B}}(L(A),B')\arrow{d}{\tau}\\
+\Hom_{\mathsf{A}}(A',R(B))\arrow{r}{f^*}&\Hom_{\mathsf{A}}(A,R(B))\arrow{r}{R(g)_*}&\Hom_{\mathsf{A}}(A,R(B'))
+\end{tikzcd}
+\end{equation}
+We call $L$ the \textbf{left adjoint functor} and $R$ the \textbf{right adjoint functor}.
+\end{defn}
+
+\begin{lemma} For every right $R$-module $M$, the natural map
+\begin{equation}
+\tau:\Hom_{\mathsf{Ab}}(M,A)\rightarrow \Hom_{\mathsf{mod}-R}(M,\Hom_{\mathsf{Ab}}(R,A))
+\end{equation}
+is an isomorphism, where $\tau(f)(m)$ is the map $r\mapsto f(mr)$. Thus, forgetful functor and $\Hom_{\mathsf{Ab}}(R,-)$ are left and right adjoint functor pair.
+\end{lemma}
+\begin{proof}
+Take $g:M\rightarrow \Hom_{\mathsf{Ab}}(R,A)$. Define $\mu:\Hom_{\mathsf{mod}-R}(M,\Hom_{\mathsf{Ab}}(R,A))\rightarrow \Hom_{\mathsf{Ab}}(M,A)$ as $\mu(g)(m)=g(m)(1)$. Now $(\tau\circ \mu(g))(m)(r)=\mu(g)(mr)=g(mr)(1)=g(m)(1)r=g(m)(r)$ and $(\mu\circ \tau(f))(m)=\tau(f)(m)(1)=f(m)$, thus $\tau$ is an isomorphism.
+\end{proof}
+
+\begin{prop} If an additive functor $R:\mathsf{B}\rightarrow \mathsf{A}$ is right adjoint to an exact functor $L:\mathsf{A}\rightarrow \mathsf{B}$ and $I$ is an injective object of $\mathsf{B}$, then $R(I)$ is an injective object of $\mathsf{A}$. \marginnote{In other words, right adjoint functor of exact functor preserves injectives.} 
+
+Dually, if an additive functor $L:\mathsf{A}\rightarrow \mathsf{B}$ is left adjoint to an exact functor $R:\mathsf{B}\rightarrow \mathsf{A}$ and $P$ is a projective object of $\mathsf{A}$, then $L(P)$ is a projective object of $\mathsf{B}$. \marginnote{In other words, left adjoint functor of exact functor preserves projectives.} 
+\end{prop}
+\begin{proof}
+For an injection $f:A\rightarrow A'$ in $\mathsf{A}$, the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\Hom_{\mathsf{B}}(L(A'),I)\arrow{r}{L(f)^*}\arrow{d}{\simeq} & \Hom_{\mathsf{B}}(L(A),I)\arrow{d}{\simeq}\\
+\Hom_{\mathsf{A}}(A',R(I))\arrow{r}{f^*}& \Hom_{\mathsf{A}}(A,R(I))
+\end{tikzcd}
+\end{equation}
+Since $L$ is exact and $I$ is injective, $L(f^*)$ is onto. Hence $f^*$ is onto, and so $\Hom_{\mathsf{A}}(-,R(I))$ is exact. Therefore $R(I)$ is injective.
+\end{proof}
+
+\begin{cor} If $I$ is an injective abelian group, then $\Hom_{\mathsf{Ab}}(R,I)$ is an injective $R$-module.
+\end{cor}
+\begin{proof}
+This can be proven directly by previous lemma and proposition.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

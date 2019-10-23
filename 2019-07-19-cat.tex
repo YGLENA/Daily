@@ -1,0 +1,41 @@
+\mytitle{Category theory in context}
+\begin{thm}[Yoneda lemma] Consider a locally small category $\mathsf{C}$. For any functor $F:\mathsf{C}\rightarrow \mathsf{Set}$ and any object $c\in\mathsf{C}$, there is a bijection
+\begin{equation}
+\mathsf{Nat}(\mathsf{C}(c,-),F)\simeq F(c)
+\end{equation}
+which associates a natural transformation $\alpha:\mathsf{C}(c,-)\Rightarrow F$ to the element $\alpha_c(1_c)\in F(c)$. This correspondence is natural in both $c$ and $F$.
+\end{thm}
+\begin{proof} Take a function $\Phi:\mathsf{Nat}(\mathsf{C}(c,-),F)\rightarrow F(c)$ which maps a natural transformation $\alpha:\mathsf{C}(c,-)\Rightarrow F$ to $\alpha_c(1_c)$ where $\alpha_c:\mathsf{C}(c,c)\rightarrow F(c)$. Now we want to define an inverse function $\Psi:F(c)\rightarrow \mathsf{Nat}(\mathsf{C}(c,-),F)$ which constructs a natural transformation $\Psi(x_c):\mathsf{C}(c,-)\Rightarrow F$ for $x_c\in F(c)$. Define $\Psi(x_c)_d:\mathsf{C}(c,d)\rightarrow F(d)$  as $\Psi(x_c)_d(f)=F(f)(x_c)$ for $f:c\rightarrow d$. Now to show that $\Psi(x_c)$ is a natural transformation, we need to show that for some morphism $g:d\rightarrow e$ in $\mathsf{C}$, $\Psi(x_c)_e\circ \mathsf{C}(c,g)=F(g)\circ \Psi(x_c)_d$. Take $f:c\rightarrow d$, then $\Psi(x_c)_e\circ \mathsf{C}(c,g)(f)=\Psi(x_c)_e(g\circ f)=F(g\circ f)(x_c)$ and $F(g)\circ \Psi(x_c)_d(f)=F(g)\circ F(f)(x_c)=F(g\circ f)(x_c)$, thus they are same. Now, $\Phi\circ \Psi(x_c)=\Psi(x_c)_c(1_c)=F(1_c)(x_c)=1_c(x_c)=x_c$, $\Psi$ is a right inverse of $\Phi$. Choose a natural transformation $\alpha:\mathsf{C}(c,-)\Rightarrow F$. Then $\Psi\circ \Phi(\alpha)_d(f)=\Psi(\alpha_c (1_c))_d(f)=F(f)(\alpha_c(1_c))$. Now since $\alpha$ is natural, $\alpha_d\circ \mathsf{C}(c,f)=F(f)\circ \alpha_c$, thus $\Psi\circ \Phi(\alpha)_d(f)=\alpha_d\circ \mathsf{C}(c,f)(1_c)=\alpha_d(f)$, thus $\Psi\circ \Phi(\alpha)=\alpha$.
+
+For the naturality of functor, we need to show that the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\mathsf{Nat}(\mathsf{C}(c,-),F)\arrow{r}{\Phi_F} \arrow{d}{\mathsf{Nat}(\mathsf{C}(c,-),\beta)}&F(c)\arrow{d}{\beta_c}\\
+\mathsf{Nat}(\mathsf{C}(c,-),G)\arrow{r}{\Phi_G} & G(c)
+\end{tikzcd}
+\end{equation}
+Choose $\alpha\in\mathsf{Nat}(\mathsf{C}(c,-),F)$. Then the above statement is equivalent to $\beta_c(\Phi_F(\alpha))=\Phi_G(\beta\circ \alpha)$. Now $\beta_c(\alpha_c(1_c))=\beta_c\circ \alpha_c(1_c)=(\beta\circ \alpha)_c(1_c)=\Phi_G(\beta\circ \alpha)$.
+
+For the naturality of object, we need to show that the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\mathsf{Nat}(\mathsf{C}(c,-),F)\arrow{r}{\Phi_c} \arrow{d}{\mathsf{Nat}(\mathsf{C}(f,-),F)}&F(c)\arrow{d}{F(f)}\\
+\mathsf{Nat}(\mathsf{C}(d,-),F)\arrow{r}{\Phi_d} & F(d)
+\end{tikzcd}
+\end{equation}
+Choose $\alpha\in\mathsf{Nat}(\mathsf{C}(c,-),F)$. Then the above statement is equivalent to $F(f)(\Phi_c(\alpha))=\Phi_d(\alpha\circ f)$. Now $F(f)(\Phi_c(\alpha))=F(f)(\alpha_c(1_c))$ and $\Phi_d(\alpha\circ f)=(\alpha\circ f)_d(1_d)=(\alpha_d\circ f)(1_d)=\alpha_d(f)=F(f)(\alpha_c(1_c))$ due to the naturality of $\alpha$.
+\end{proof}
+
+\begin{cor} The functor $y:\mathsf{C}\hookrightarrow \mathsf{Set}^{\mathsf{C}^{\textrm{op}}}$ defined as $y(c)=\mathsf{C}(-,c)$ and $y(f:c\rightarrow d)=f_*:\mathsf{C}(-,c)\rightarrow \mathsf{C}(-,d)$ is a full embedding, and called a \textbf{covariant embedding}. The functor $y:\mathsf{C}^{\textrm{op}}\hookrightarrow \mathsf{Set}^{\mathsf{C}}$ defined as $y(c)=\mathsf{C}(c,-)$ and $y(f:c\rightarrow d)=f^*:\mathsf{C}(d,-)\rightarrow \mathsf{C}(c,-)$ is a full embedding, and called a \textbf{contravariant embedding}.
+\end{cor}
+\begin{proof}
+The injectivity of object is trivial, thus we need to show the functors give the bijections $\mathsf(C)(c,d)\simeq \mathsf{Nat}(\mathsf{C}(-,c),\mathsf{C}(-,d))$ and $\mathsf{C}(c,d)\simeq \mathsf{Nat}(\mathsf{C}(d,-),\mathsf{C}(c,-))$. Now since different morphisms $f,g:c\rightarrow d$ define distinct natural transformations $f_*,g_*:\mathsf{C}(-,c)\Rightarrow \mathsf{C}(-,d)$ and $f^*,g^*:\mathsf{C}(d,-)\Rightarrow \mathsf{C}(c,-)$, thus the injection is shown. For surjection, take a natural transformation $\alpha:\mathsf{C}(d,-)\Rightarrow \mathsf{C}(c,-)$. The Yoneda lemma says that this natural transformation corresponds to morphisms $f:c\rightarrow d$ where $f=\alpha_d(1_d)$. Now the natural transformation $f^*:\mathsf{C}(d,-)\Rightarrow \mathsf{C}(c,-)$ also takes $f^*_d(1_d)=f$, which shows that $f^*=\alpha$ by the bijectivity of Yoneda lemma.
+\end{proof}
+
+\begin{cor}[Cayley's theorem] Any group is isomorphic to a subgroup of a permutation group.
+\end{cor}
+\begin{proof}
+Take a group $G$ and consider its category form $\mathsf{B}G$. The image of the covariant Yoneda embedding $\mathsf{B}G\hookrightarrow \mathsf{Set}^{\mathsf{B}G^{\textrm{op}}}$ is the right $G$-set $G$, acting by right multiplication. Then the Yoneda embedding gives the isomorphism between $G$ and the endomorphism group of the right $G$-set $G$. Take the forgetful functor $\mathsf{Set}^{\mathsf{B}G^{\textrm{op}}}\rightarrow\mathsf{Set}$. This identifies $G$ with the subgroup of the automorphism group $\textrm{Sym}(G)$ of the set $G$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

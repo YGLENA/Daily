@@ -1,0 +1,115 @@
+\mytitle{Category theory in context}
+\begin{lemma} Let $\mathsf{2}$ be a category with two objects $0,1$ and one nontrivial morphism $0\rightarrow 1$. Consider two categories $\mathsf{C},\mathsf{D}$, two functors $F,G:\mathsf{C}\rightarrow \mathsf{D}$, and natural transformations $\alpha:F\Rightarrow G$. This correspond bijectively to functors $H:\mathsf{C}\times \mathsf{2}\rightarrow D$ such that, considering the projection functor $i_0,i_1$, the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\mathsf{C}\arrow{r}{i_0} \arrow{rd}{F} & \mathsf{C}\times\mathsf{2}\arrow{d}{H} & \mathsf{C}\arrow[swap]{l}{i_1} \arrow{ld}{G}\\
+&\mathsf{D}&
+\end{tikzcd}
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a natural transformation $\alpha$, define $H$ as, for $c,c'\in\mathsf{Ob}(\mathsf{C})$ and $f:c\rightarrow c'$, $H(c,0)=F(c), H(c,1)=G(c), H(f,0\rightarrow 0)=F(f), H(f,1\rightarrow 1)=G(f),$ and $H(f,0\rightarrow 1)=G(f)\circ\alpha_c=\alpha_{c'}\circ F(f):F(c)\rightarrow G(c')$, then $H$ is a functor. Conversely, for such functor $H:\mathsf{C}\times \mathsf{2}\rightarrow D$, define a collection of natural transformations $\alpha_c$ as $H(1_c,0\rightarrow 1)$, then since $H$ is a functor, $G(f)\circ \alpha_c=H(f,1\rightarrow 1)\circ H(1_c,0\rightarrow 1)=H(1_{c'},0\rightarrow 1)\circ H(f,0\rightarrow 0)=\alpha_{c'}\circ F(f)$ where $f:c\rightarrow c'$.
+\end{proof}
+
+\begin{defn} An \textbf{equivalence of categories} is the functors $F:\mathsf{C}\rightarrow \mathsf{D}$, $G:\mathsf{D}\rightarrow \mathsf{C}$ with natural isomorphisms $\eta:1_\mathsf{C}\simeq G\circ F$, $\epsilon:F\circ G\simeq 1_\mathsf{D}$. If so, we call categories $\mathsf{C}$ and $\mathsf{D}$ are \textbf{equivalent}, and write $\mathsf{C}\simeq \mathsf{D}$.
+\end{defn}
+
+\begin{prop} The equivalence of categories is indeed a equivalence relation.
+\end{prop}
+\begin{proof} Suppose that $\mathsf{C}\simeq \mathsf{D}\simeq \mathsf{E}$. Then there are functors $F:\mathsf{C}\leftrightarrow \mathsf{D}:G, H:\mathsf{D}\leftrightarrow \mathsf{E}:K$ such that $1_\mathsf{C}\simeq G\circ F, 1_\mathsf{D}\simeq F\circ G, 1_\mathsf{D}\simeq K\circ H, 1_\mathsf{E}\simeq H\circ K$. Now consider $H\circ F:C\leftrightarrow E:G\circ K$. Then $H\circ F\circ G\circ K\simeq H\circ 1_\mathsf{D}\circ K=H\circ K\simeq 1_\mathsf{E}$ and $G\circ K\circ H\circ F\simeq G\circ 1_\mathsf{D} F=G\circ F\simeq 1_\mathsf{C}$, thus $\mathsf{C}\simeq \mathsf{E}$.
+\end{proof}
+
+\begin{exmp}
+Consider a category $\mathsf{Set}^{\partial}$ whose objects are sets and morphisms are \textbf{partial functions}: $f:X\rightarrow Y$ is a function from $X'\subset X$ to $Y$. The composition of two partial functions is defined as the composition of functions.
+
+Now we take the functor $(-)_+:\mathsf{Set}^\partial \rightarrow \mathsf{Set}_*$ which sends $X$ to the pointed set $X_+$, the disjoint union of $X$ and freely-added basepoint: we may take set as $X_+\coloneqq X\cup \{X\}$ and the basepoint as $X$ due to the axiom of regularity.\marginnote{The \textbf{axiom of regularity} is the axiom of ZF(Zermelo-Fraenkel) set theory, which says that the set does not contains itself as its element. This shows that $X$ and $\{X\}$ are disjoint.} The partial function $f:X\rightarrow Y$ becomes the pointed function $f_+:X_+\rightarrow Y_+$ where all the elements outside of the domain of definition of $f$ maps to the basepoint of $Y_+$. Conversely, we take the inverse functor $U:\mathsf{Set}_*\rightarrow \mathsf{Set}^\partial$ discarding the basepoint and following functional inverse.
+
+The construction says that $U(-)_+$ is the identity endofunctor of $\mathsf{Set}^\partial$, but $(U-)_+$ sends $(X,x)\rightarrow (X-\{x\}\cup \{X-\{x\}\},X-\{x\})$, which is isomorphic but not identical, hence the functor is not isomorphic. But the structure of these are very same.
+
+This is the reason why we do not use the condition $GF=1_D,FG=1_C$ for the isomorphism for category. But we have a natural isomorphism $\eta:1_{\mathsf{Set}_*}\simeq (U-)_+$ with $\eta_{(X,x)}:(X,x)\rightarrow (X-\{x\}\cup \{X-\{x\}\},X-\{x\})$, thus the categories $\mathsf{Set}^\partial,\mathsf{Set}_*$ are equivalent.
+\end{exmp}
+
+\begin{defn} A functor $F:\mathsf{C}\rightarrow \mathsf{D}$ is
+\begin{itemize}
+\item \textbf{full} if for each objects $x,y\in \mathsf{C}$, the map $\mathsf{C}(x,y)\rightarrow \mathsf{D}(F(x),F(y))$ is surjective;
+\item \textbf{faithful} if for each objects $x,y\in \mathsf{C}$, the map $\mathsf{C}(x,y)\rightarrow \mathsf{D}(F(x),F(y))$ is injective;
+\item \textbf{essentially surjective on objects} if for every object $d\in \mathsf{D}$ there is an object $c\in\mathsf{C}$ such that $d$ is isomorphic to $F(c)$;
+\item \textbf{embedding} if it is faithful and the map $F:\mathsf{ob}(\mathsf{C})\rightarrow \mathsf{ob}(\mathsf{D})$ is also injective;
+\item \textbf{fully faithful} if it is full and faithful;
+\item \textbf{full embedding} of $\mathsf{C}$ into $\mathsf{D}$ if it is full and embedding, and then $\mathsf{C}$ is a \textbf{full subcategory} of $\mathsf{D}$.
+\end{itemize}
+\end{defn}
+
+\begin{lemma} Consider a morphism $f:a\rightarrow b$ and isomorphisms $a\simeq a',b\simeq b'$. Then there is a unique morphism $f':a'\rightarrow b'$ so that any of, or equivalently all of, the following diagrams commute.
+\begin{equation}
+\begin{tikzcd}
+a \arrow{d}{f} \arrow[r,leftrightarrow,"\simeq"] &a'\arrow{d}{f'}\\
+b \arrow[r,leftrightarrow,"\simeq"]& b'
+\end{tikzcd}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The diagram with arrows $a\leftarrow a', b\rightarrow b'$ defines the function $f':a'\rightarrow b'$ uniquely. Now denote the isomorphisms as $\phi_{aa'}:a\leftrightarrow a':\phi_{a'a}$ and $\phi_{bb'}:b\leftrightarrow b':\phi_{b'b}$. Then the followings are equivalent: $\phi_{bb'}\circ f\circ \phi_{a'a}=f'$, $f\circ \phi_{a'a}=\phi_{b'b}\circ f'$, $f=\phi_{b'b}\circ f'\circ \phi_{aa'}$, $\phi_{bb'}\circ f=f'\circ \phi_{aa'}$. Each equations represents that the commutativity of four diagrams are equivalent.
+\end{proof}
+
+\begin{lemma} Consider the following diagram where the outer rectangle commutes.
+\begin{equation}
+\begin{tikzcd}
+a\arrow{r}{f} \arrow{d}{g} & b\arrow{r}{j} \arrow{d}{h} & c\arrow{d}{l}\\
+a'\arrow{r}{k} & b'\arrow{r}{m} & c'
+\end{tikzcd}
+\end{equation}
+Then above diagram commute if either:
+\begin{enumerate}
+\item the right square commutes and $m$ is a monomorphism; or
+\item the left square commutes and $f$ is an epimorphism.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Notice that two statements are dual, so we need to prove first one only. By the condition, we have $m\circ k\circ g=l\circ j\circ f=m\circ h\circ f$. Since $m$ is a monomorphism, $k\circ g=h\circ f$.
+\end{proof}
+
+\begin{thm}[characterizing equivalences of categories] A functor defining an equivalence of categories is fully faithful and essentially surjective on objects. Assuming the axiom of choice, any fully faithful functor which is essentially surjective on objects defines an equivalence of categories.
+\end{thm}
+\begin{proof}
+Consider $F:\mathsf{C}\leftrightarrow \mathsf{D}:G$ such that $\eta:1_\mathsf{C}\simeq G\circ F$ and $\epsilon:1_\mathsf{D}\simeq F\circ G$. For every object $d\in \mathsf{D}$, since $F(G(d))\simeq d$, $F$ is essentially surjective on objects. Now take two morphisms $f,g:c\rightarrow c'$ in $\mathsf{C}$. If $F(f)=F(g)$, then $G(F(f))=G(F(g))$. Now, due to the natural isomorphism, for every $f:c\rightarrow c'$, $G(F(f))\circ \eta_c=\eta_{c'}\circ f$, thus $\eta_{c'}\circ f=\eta_{c'}\circ g$. Since $\eta_{c'}$ is isomorphism, taking its inverse to the left of above equality gives $f=g$. Therefore $F$, and symmetrically $G$, is faithful.
+\begin{equation}
+\begin{tikzcd}
+c\arrow{r}{\eta_c} \arrow[swap]{d}{f=g} & G(F(c))\arrow{d}{G(F(f))=G(F(g))}\\
+c'\arrow{r}{\eta_{c'}} & G(F(c'))
+\end{tikzcd}
+\end{equation}
+Finally, consider a morphism $k:F(c)\rightarrow F(c')$. Then $G(k):G(F(c))\rightarrow G(F(c'))$. Using lemma above, we have a unique morphism $h:c\rightarrow c'$ satisfying $\eta_{c'}\circ h=G(k)\circ \eta_c$. This commutation relation says that $G(k)=G(F(h))$, thus due to the faithfulness of $G$, $k=F(h)$, thus $F$ is full.
+\begin{equation}
+\begin{tikzcd}
+c\arrow{r}{\eta_c} \arrow[swap]{d}{h} & G(F(c))\arrow{d}{G(k)=G(F(h))}\\
+c'\arrow{r}{\eta_{c'}} & G(F(c'))
+\end{tikzcd}
+\end{equation}
+Now suppose that $F:\mathsf{C}\rightarrow \mathsf{D}$ is a fully faithful functor which is essentially surjective on objects. For each objects $d\in \mathsf{D}$, using the essentially surjectivity and the axiom of choice, take an object $G(d)\in \mathsf{C}$ and an isomorphism $\epsilon_d:F(G(d))\simeq d$. Then by lemma above, for each morphism $l:d\rightarrow d'$ there is a unique morphism $m:F(G(d))\rightarrow F(G(d'))$ satisfying $l\circ \epsilon_d=\epsilon_{d'}\circ m$. Since $F$ is fully faithful, there is a unique morphism $G(d)\rightarrow G(d')$, which defines $G(l)$. This definition makes $\epsilon:F\circ G\Rightarrow 1_\mathsf{D}$ a natural transformation.
+
+To show that this $G$ is actually a functor, notice that since $\epsilon$ is a natural transformation, $1_d\circ \epsilon_d=\epsilon_d\circ F(G(1_d))$. Also, since $F(1_{G(d)})$ is an identity morphism on $F(G(d))$, $1_d\circ \epsilon_d=\epsilon_d\circ F(1_{G(d)})$, thus by above lemma, $F(1_{G(d)})=F(G(1_d))$, and since $F$ is fully faithfull, $1_{G(d)}=G(1_d)$. 
+\begin{equation}
+\begin{tikzcd}
+F(G(d))\arrow{r}{\epsilon_d} \arrow[swap]{d}{F(G(1_d))=F(1_{G(d)})} & d\arrow{d}{1_d}\\
+F(G(d))\arrow{r}{\epsilon_d} & d
+\end{tikzcd}
+\end{equation}
+Similarly, for morphisms $l:d\rightarrow d'$ and $l':d'\rightarrow d''$, both $F(G(l')\circ G(l))$ and $F(G(l'\circ l))$ satisfies the commutation relation, and thus $G(l')\circ G(l)=G(l'\circ l)$.
+\begin{equation}
+\begin{tikzcd}
+F(G(d))\arrow{r}{\epsilon_d} \arrow[swap]{d}{F(G(l')\circ G(l))=F(G(l'\circ l))} & d\arrow{d}{l'\circ l}\\
+F(G(d''))\arrow{r}{\epsilon_d} & d''
+\end{tikzcd}
+\end{equation}
+Finally, define $\eta_c:c\rightarrow F(G(c))$ by using the equation $\epsilon_{F(c)}^{-1}=F(\eta_c):F(c)\rightarrow F(G(F(c)))$ and the fully faithfulness of $F$. Then for any $f:c\rightarrow c'$, consider the following diagram.
+\begin{equation}
+\begin{tikzcd}
+F(c)\arrow{r}{F(\eta_c)}\arrow{d}{F(f)} & F(G(F(c))) \arrow{r}{\epsilon_{F(c)}} \arrow{d}{F(G(F(f)))} & F(c)\arrow{d}{F(f)}\\
+F(c')\arrow{r}{F(\eta_{c'})} & F(G(F(c'))) \arrow{r}{\epsilon_{F(c')}} & F(c')
+\end{tikzcd}
+\end{equation}
+By the definition of $\eta$, the outer rectangle commutes. Also, since $\epsilon$ is a natural transformation, the right square commutes. Since $\epsilon_{F(c')}$ is an isomorphism, the left square commutes, and fully faithfulness of $F$ makes possible to drop the initial $F$ on the commuting diagram. Thus $\eta$ is a natural transformation.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

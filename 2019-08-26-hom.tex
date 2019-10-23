@@ -1,0 +1,108 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn}
+A (co)homological \textbf{$\delta$-functor} between $\mathsf{A}$ and $\mathsf{B}$ is a collection of of additive functors $T_n:\mathsf{A}\rightarrow \mathsf{B}$ ($T^n:\mathsf{A}\rightarrow \mathsf{B}$) for $n\geq 0$, together with morphisms $\delta_n:T_n(C)\rightarrow T_{n-1}(A)$($\delta^n:T^n(C)\rightarrow T^{n+1}(A)$) defined for each short exact sequence $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$ in $\mathsf{A}$, which satisfies:
+\begin{enumerate}
+\item For each short exact sequences $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$, there is a long exact sequence
+\begin{equation}
+\cdots\rightarrow T_{n+1}(C)\xrightarrow{\delta} T_n(A)\rightarrow T_n(B)\rightarrow T_n(C)\xrightarrow{\delta}\cdots
+\end{equation}
+\begin{equation}
+(\cdots\rightarrow T^{n-1}(C)\xrightarrow{\delta} T^n(A)\rightarrow T^n(B)\rightarrow T^n(C)\xrightarrow{\delta}\cdots)
+\end{equation}
+\item For each morphism of short exact sequences from $0\rightarrow A'\rightarrow B'\rightarrow C'\rightarrow 0$ to $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$, the morphisms $\delta$ give a commutative diagram
+\begin{equation}
+\begin{tikzcd}
+T_n(C')\arrow{r}{\delta} \arrow[d] & T_{n-1}(A')\arrow[d]\\
+T_n(C)\arrow{r}{\delta} & T_{n-1}(A)
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\left(\begin{tikzcd}
+T_n(C')\arrow{r}{\delta} \arrow[d] & T_{n-1}(A')\arrow[d]\\
+T_n(C)\arrow{r}{\delta} & T_{n-1}(A)
+\end{tikzcd}\right)
+\end{equation}
+\end{enumerate}
+\end{defn}
+
+\begin{exmp} Homology gives a homological $\delta$-functor $H_8$ from $\mathsf{Ch}_{\geq 0}(\mathsf{A})$ to $\mathsf{A}$; cohomology gives a cohomological $\delta$-functor $H^*$ from $\mathsf{Ch}^{\geq 0}(\mathsf{A})$ to $\mathsf{A}$.
+\end{exmp}
+
+\begin{exer} Let $\mathsf{S}$ be a category of short exact sequences $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$ in $\mathsf{A}$. Show that $\delta_i$ s a natural transformation from the functor sending the sequence to $T_i(C)$ to the functor sending the sequence to $T_{i-1}(A)$.
+\end{exer}
+\begin{solution}
+The final commutating square shows the desired property.
+\end{solution}
+
+\begin{exmp}[$p$-torsion] If $p$ is an integer, the functors $T_0(A)=A/pA$, $T_1(A)={}_p A\coloneqq \{a\in A:pa=0\}$, and $T_n(A)=0$ for all $n\geq 2$, fit together to form a homological $\delta$ functor; taking $T^0=T_1$ and $T^1=T_0$ gives a cohomological $\delta$ functor. To show this, apply the snake lemma to
+\begin{equation}
+\begin{tikzcd}
+0\arrow[r]& A\arrow[r] \arrow{d}{p}& B\arrow[r] \arrow{d}{p} & C\arrow[r] \arrow{d}{p} & 0\\
+0\arrow[r]&A\arrow[r]&B\arrow[r]&C\arrow[r]&0 
+\end{tikzcd}
+\end{equation}
+then we get
+\begin{equation}
+0\rightarrow {}_pA\rightarrow {}_pB\rightarrow {}_pC\xrightarrow{\delta}A/pA\rightarrow B/pB\rightarrow C/pC\rightarrow 0
+\end{equation}
+The same proof shows that if $r\in R$ for a ring $R$, then $T_0(M)=M/rM$ and $T_1(M)={}_rM\coloneqq \{m\in M:rm=0\}$ fit together to form a homological $\delta$ functor from $R-\mathsf{mod}$ to $\mathsf{Ab}$; taking $T^0=T_1$ and $T^1=T_0$ gives a cohomological $\delta$ functor.
+\end{exmp}
+
+\begin{defn} A \textbf{morphism} $S\rightarrow T$ of $\delta$ functors is a system of natural transformations $S_n\rightarrow T_n$ that commute with $\delta$. A homological $\delta$ functor $T$ is \textbf{universal} if, given another $\delta$ functor $S$ and a natural transformation $S_0\rightarrow T_0$, there exists a unique morphism $\{f_n:S_n\rightarrow T_n\}$ of $\delta$-functors that extends $f_0$. The dual statement defines cohomological $\delta$ functor $T$.
+\end{defn}
+
+\begin{exmp} We will show later that homology $H_\bullet:\mathsf{Ch}_{\geq 0}(\mathsf{A})\rightarrow \mathsf{A}$ and cohomology $H_\bullet:\mathsf{Ch}^{\geq 0}(\mathsf{A})\rightarrow \mathsf{A}$ are universal $\delta$ functors.
+\end{exmp}
+
+\begin{exer} If $F:\mathsf{A}\rightarrow \mathsf{B}$ is an exact functor, show that $T_0=F$ and $T_n=0$ for $n\neq 0$ defines both homological and cohomological universal $\delta$ functor.
+\end{exer}
+\begin{solution} Since $F$ is exact functor, $T$ is a $\delta$ functor with $\delta=0$. Thus defining $\alpha_n:S_n\rightarrow T_n=0$ as a zero map makes the diagram commutes; defining $\beta^n:T^n=0\rightarrow S^n$ as a zero map makes the diagram commutes. 
+\end{solution}
+
+\begin{defn} If $F:\mathsf{A}\rightarrow \mathsf{B}$ is an additive functor, we call the functors $T_n$ of (co)homological $\delta$ functor $T$ as the \textbf{left(right) satellite functors} of $F$ if $T_0=F(T^0=F)$.
+\end{defn}
+
+\begin{defn} Let $\mathsf{A}$ be an abelian category. An object $P\in \mathsf{A}$ is \textbf{projective} if it satisfies the following \textbf{universal lifting property}: given an epimorphism $g:B\rightarrow C$ and a morphism $\gamma:P\rightarrow C$, there is a morphism $\beta:P\rightarrow B$ such that $\gamma=g\circ \beta$.
+\begin{equation}
+\begin{tikzcd}
+&P\arrow{ld}{\exists \beta} \arrow{d}{\gamma}&\\
+B\arrow{r}{g}&C\arrow[r]&0
+\end{tikzcd}
+\end{equation}
+\end{defn}
+
+\begin{prop} An $R$-module is projective if and only if it is a direct summand of a free $R$-module.
+\end{prop}
+\begin{proof}
+Let $F(A)$ be a free module based on the module $A$. Then we have a natural surjection $\pi:F(A)\rightarrow A$, thus the sequence
+\begin{equation}
+0\rightarrow\Ker(\pi)\rightarrow F(A)\xrightarrow{\pi} A\rightarrow 0
+\end{equation}
+is exact. Now if $A$ is projecttive, then there is a following lifting.
+\begin{equation}
+\begin{tikzcd}
+&A\arrow{ld}{\exists i} \arrow{d}{1_A}&\\
+F(A)\arrow{r}{\pi}&A\arrow[r]&0
+\end{tikzcd}
+\end{equation}
+This makes the short exact sequence splits, thus $F(A)=A\oplus \Ker(\pi)$. Conversely, if $A$ is a direct summand of a free $R$-module, then by lifting the image of basis using the surjectivity of $g:B\rightarrow C$, we can show that $P$ is projective.
+\end{proof}
+
+\begin{exmp}
+\begin{enumerate}
+\item Consider $R=R_1\times R_2=R_1\times 0\oplus 0\times R_2$. Then $P=R_1\times 0$ is projective, but not free.
+\item Considering $R=M_n(F)$ and $V=F^n$, $V$ can be considered as a left $R$-module, and $R=\underbrace{V\oplus\cdots\oplus V}_{n}$. But for every free modules of $R$ their dimension on $F$ must be $dn^2$ for some cardinal $d$, $V$ is not free over $R$.
+\item The finite abelian group category $\mathsf{A}$ is an abelian category without projective objects, since there is no nontrivial free object due to the finiteness.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} For an abelian category $\mathsf{A}$, we say that $\mathsf{A}$ has \textbf{enough projectives} if for every object $A$ there is an epimorphism $P\rightarrow A$ with projective $P$.
+\end{defn}
+
+\begin{lemma} Let $P$ be an object of abelian category $\mathsf{A}$. $P$ is projective if and only if $\Hom_{\mathsf{A}}(P,-)$ is an exact functor.
+\end{lemma}
+\begin{proof}
+Suppose that $\Hom(P,-)$ is exact. Choose epic $g:B\rightarrow C$ and $\gamma\in \Hom(P,C)$. Since $g_*$ is epic, we can find $\beta\in \Hom (P,B)$ satisfying $g_*(\beta)=g\circ \beta=\gamma$. Conversely, let $P$ be projective. Since $\Hom(P,-)$ is left exact in general, what we need to show is $g_*:\Hom(P,B)\rightarrow \Hom(P,C)$ is epic. But for $\gamma\in \Hom(P,C)$, the universal lifting property shows we have $\beta\in \Hom(P,B)$ such that $\gamma=g_*(\beta)$. Thus $\Hom(P,-)$ is exact.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

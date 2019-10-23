@@ -1,0 +1,126 @@
+\mytitle{Category theory in context}
+\begin{defn} A category $\mathsf{C}$ is \textbf{connected} if for any objects $c,c'\in \mathsf{C}$ there is a finite chain of morphisms $c\rightarrow c_1\rightarrow \cdots\rightarrow c_n\rightarrow c'$.
+\end{defn}
+
+\begin{prop} A connected groupoid is equivalent to the automorphism group of any of its objects as a category.
+\end{prop}
+\begin{proof} Choose an object $g$ in a connected groupoid $\mathsf{G}$, and take a group $G=\mathsf{G}(g,g)$. Consider the inclusion $\mathsf{B}G\hookrightarrow \mathsf{G}$. Then this inclusion functor is fully faithful, and for every $g'\in G$, $g$ is isomorphic to $g'$, thus it is essentially surjective on objects. Therefore, by the theorem above, this functor defines an equivalence of category.
+\end{proof}
+
+\begin{cor} In a path-connected space $X$, any choice of basepoint $x\in X$ gives an isomorphic fundamental group $\pi_1(X,x)$.
+\end{cor}
+\begin{proof}
+Any space $X$ has a fundamental groupoid $\Pi_1(X)$, and fixing a basepoint $x$, the group of automorphisms of the object $x\in\Pi_1(X)$ is a fundamental group $\pi_1(X,x)$. Thus $\pi_1(X,x)\simeq \Pi_1(X)$, and since the equivalence of category is equivalence relation, for any $x,x'\in X$, $\pi_1(X,x)\simeq \pi_1(X,x')$. Since these are one object category, there is a functor which is bijective on functors, and this gives the isomorphism between groups. Therefore, $\pi_1(X,x)\simeq \pi_1(X,x')$ in the sense of group theory also.
+\end{proof}
+
+\begin{defn} A category $\mathsf{C}$ is \textbf{skeletal} if it contains just one objects in each isomorphism classes. The \textbf{skeleton} $\mathsf{skC}$ of a category $\mathsf{C}$ is the unique skeletal category up to isomorphism that is equivalent to $\mathsf{C}$. \marginnote{This category $\mathsf{skC}$ can be constructed from $\mathsf{C}$ by choosing one object in each isomorphism class in $\mathsf{C}$ and defining $\mathsf{skC}$ as a full subcategory of $\mathsf{C}$. This gives an equivalence of categories since the inclusion functor is fully faithful and essentially surjective on objects, but the concept $\mathsf{sk}:\mathsf{CAT}\rightarrow\mathsf{CAT}$ is not a functor.}
+\end{defn}
+
+\begin{exmp} Consider a left $G$-set $X:\mathsf{B}G\rightarrow \mathsf{Set}$. The \textbf{translation groupoid} $\mathsf{T}_G X$ is a category whose objects are the points of $X$ and morphisms are $g:x\rightarrow y$ for $g\in G$ with $g\cdot x=y$. The objects of the skeleton $\mathsf{skT}_G X$ are the \textbf{orbits} of the group action. For $x\in X$, write its orbit $O_x$. Then since $\mathsf{skT}_G X\simeq \mathsf{T}_G X$, $\mathsf{skT}_G X(O_x,O_x)\simeq \mathsf{T}_G X(x,x)=G_x$, where $G_x$ is the \textbf{stabilizer} of $x$, which is the set of group elements $g\in G$ satisfying $g\cdot x=x$. Now, since we may choose other elements from $O_x$, thus all the morphism sets $\mathsf{T}_G X(x,y)=G_x$ if $x,y\in O_x$. Also, the set of all morphisms with domain $x$ is isomorphic to $G$. Therefore, $|G|=|O_x||G_x|$, which is the \textbf{orbit-stabilizer theorem}.
+\end{exmp}
+
+\begin{defn} A category is \textbf{essentially small} if it is equivalent to a small category. A category is \textbf{essentially discrete} if it is equivalent to a discrete category.
+\end{defn}
+
+\begin{lemma} Consider functors $F,G,H:\mathsf{C}\rightarrow \mathsf{D}$ and natural transformations $\alpha:F\Rightarrow G,\beta:G\Rightarrow H$. Then there is a natural transformation $\beta\circ \alpha:F\Rightarrow H$ whose components are $(\beta\circ \alpha)_c=\beta_c\circ \alpha_c$. This is called a \textbf{vertical composition}.
+\end{lemma}
+\begin{proof} For any morphism $f:c\rightarrow c'$ in $\mathsf{C}$, two squares of the following diagram commutes, because $\alpha,\beta$ are natural transformations.
+\begin{equation}
+\begin{tikzcd}
+F(c)\arrow{r}{\alpha_c} \arrow{d}{F(f)}& G(c)\arrow{r}{\beta_c} \arrow{d}{G(f)} & H(c)\arrow{d}{H(f)}\\
+F(c')\arrow{r}{\alpha_{c'}} & G(c')\arrow{r}{\beta_{c'}} & H(c')
+\end{tikzcd}
+\end{equation}
+Thus the outer rectangle commutes, hence the composition $\beta_c\circ \alpha_c$ gives the natural transformation.
+\end{proof}
+
+\begin{cor} For a pairs of categories $\mathsf{C},\mathsf{D}$, there is a \textbf{functor category} $\mathsf{D}^\mathsf{C}$ whose elements are functors and morphisms are natural transformations.
+\begin{equation}
+\begin{tikzcd}
+\mathsf{C}\arrow[r,bend left=70, "F"{name=f}] \arrow[r, "G"{name=g, description}] \arrow[r,swap, bend right=70, "H"{name=h}] & \mathsf{D}\arrow[Rightarrow, from=f, to=g, "\alpha"] \arrow[Rightarrow, from=g, to=h, "\beta"]
+\end{tikzcd}\rightarrow\begin{tikzcd}
+\mathsf{C}\arrow[r,bend left=70, "F"{name=f}] \arrow[r,swap, bend right=70, "H"{name=h}] & \mathsf{D}\arrow[Rightarrow, from=f, to=h, "\beta\circ\alpha"]
+\end{tikzcd}
+\end{equation}
+\end{cor}
+\begin{proof}
+The lemma above shows the composition of natural transformations, and we only need to prove the associativity and existence of identity natural transformation. For associativity, since the natural transformation $\alpha$ is composed by the morphisms $\alpha_c$, which has associativity, the composition of natural transformation also has the morphisms. For identity natural transformation between $F$ and $F$, take $\alpha_c$ as the identity maps $F(c)\rightarrow F(c)$, which gives the natural transformation and whose composition with other natural transformation $\beta:F\Rightarrow G$ and $\gamma:H\Rightarrow F$ gives $\beta\circ \alpha=\beta$ and $\alpha\circ \gamma=\gamma$.
+\end{proof}
+
+\begin{lemma} Consider functors $F,G:\mathsf{C}\rightarrow \mathsf{D}, H,K:\mathsf{D}\rightarrow \mathsf{E}$ and natural transformations $\alpha:F\Rightarrow G, \beta:H\Rightarrow K$. Then there is a natural transformation $\beta*\alpha:H\circ F\Rightarrow K\circ G$, which is defined as $(\beta*\alpha)_c=K(\alpha_c)\circ \beta_{F(c)}=\beta_{G(c)}\circ H(\alpha_c)$. This is called a \textbf{horizontal composition}.
+\begin{equation}
+\begin{tikzcd} \mathsf{C}\arrow[r,bend left=70,"F"{name=f}] \arrow[r,swap, bend right=70, "G"{name=g}]  & \mathsf{D}\arrow[r,bend left=70,"H"{name=h}] \arrow[r,swap, bend right=70, "K"{name=k}]  \arrow[Rightarrow,from=f,to=g,"\alpha"]&\mathsf{E}\arrow[Rightarrow,from=h,to=k,"\beta"]
+\end{tikzcd}\rightarrow
+\begin{tikzcd} \mathsf{C}\arrow[r,bend left=70,"H\circ F"{name=f}] \arrow[r,swap, bend right=70, "K\circ G"{name=g}]  & \mathsf{D} \arrow[Rightarrow,from=f,to=g,"\beta*\alpha"]
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\begin{tikzcd}
+H(F(c))\arrow[r,"\beta_{F(c)}"] \arrow[rd,"(\beta*\alpha)_c" ] \arrow[d,"H(\alpha_c)"] & K(F(c))\arrow[d,"K(\alpha_c)"]\\
+H(G(c))\arrow[r,"\beta_{G(c)}"] & K(G(c))
+\end{tikzcd}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The square in above diagram commutes due to the naturality of $\beta:H\Rightarrow K$ applied on $\alpha_c:F(c)\rightarrow G(c)$. To show $\beta*\alpha$ satisfies the naturality, we need to show that $K(G(f))\circ (\beta*\alpha)_c=(\beta*\alpha)_{c'}\circ H(F(f))$ for any morphism $f:c\rightarrow c'$ in $\mathsf{C}$. Now consider the following diagram.
+\begin{equation}
+\begin{tikzcd}
+H(F(c))\arrow[r,"H(\alpha_c)"] \arrow[d,"H(F(f))"] & H(G(c))\arrow[r,"\beta_{G_c}"] \arrow[d,"H(G(f))"] & K(G(c))\arrow[d,"K(G(f))"]\\
+H(F(c'))\arrow[r,"H(\alpha_{c'})"] & H(G(c'))\arrow[r,"\beta_{G(c')}"] & K(G(c'))
+\end{tikzcd}
+\end{equation}
+The right square commutes by the naturality of $\beta$, and the left square is the commutative diagram of $\alpha$ passed after the functor $H$, which hence commutes again. Therefore the outer rectangle commutes, which shows that $\beta*\alpha$ is a natural transformation.`
+\end{proof}
+
+\begin{lemma}[Middle four interchange] Consider functors $F,G,H:\mathsf{C}\rightarrow \mathsf{D}$, $J,K,L:\mathsf{D}\rightarrow \mathsf{E}$, and natural transformations $\alpha:F\Rightarrow G, \beta:G\Rightarrow H$, $\gamma:J\Rightarrow K, \delta:K\Rightarrow L$. Then $(\delta\circ \gamma)*(\beta\circ \alpha)=(\delta*\beta)\circ (\gamma*\alpha)$.
+\begin{equation}
+\begin{tikzcd}
+\mathsf{C}\arrow[r,bend left=70, "F"{name=f}] \arrow[r, "G"{name=g, description}] \arrow[r,swap, bend right=70, "H"{name=h}] & \mathsf{D}\arrow[Rightarrow, from=f, to=g, "\alpha"] \arrow[Rightarrow, from=g, to=h, "\beta"] \arrow[r,bend left=70, "J"{name=j}] \arrow[r, "K"{name=k, description}] \arrow[r,swap, bend right=70, "L"{name=lfunc}] & \mathsf{E}\arrow[Rightarrow, from=j, to=k, "\gamma"] \arrow[Rightarrow, from=k, to=lfunc, "\delta"]
+\end{tikzcd}\rightarrow \begin{tikzcd} \mathsf{C}\arrow[r,bend left=70,"F"{name=f}] \arrow[r,swap, bend right=70, "H"{name=h}]  & \mathsf{D}\arrow[r,bend left=70,"J"{name=j}] \arrow[r,swap, bend right=70, "L"{name=lfunc}]  \arrow[Rightarrow,from=f,to=h,"\beta\circ \alpha"]&\mathsf{E}\arrow[Rightarrow,from=j,to=lfunc,"\delta\circ\gamma"]
+\end{tikzcd}\rightarrow\begin{tikzcd}
+\mathsf{C}\arrow[rr,bend left=70, "J\circ F"{name=f}] \arrow[rr,swap, bend right=70, "L\circ H"{name=h}] && \mathsf{E}\arrow[Rightarrow, from=f, to=h, "(\delta\circ \gamma)*(\beta\circ \alpha)"{description}]
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\begin{tikzcd}
+\mathsf{C}\arrow[r,bend left=70, "F"{name=f}] \arrow[r, "G"{name=g, description}] \arrow[r,swap, bend right=70, "H"{name=h}] & \mathsf{D}\arrow[Rightarrow, from=f, to=g, "\alpha"] \arrow[Rightarrow, from=g, to=h, "\beta"] \arrow[r,bend left=70, "J"{name=j}] \arrow[r, "K"{name=k, description}] \arrow[r,swap, bend right=70, "L"{name=lfunc}] & \mathsf{E}\arrow[Rightarrow, from=j, to=k, "\gamma"] \arrow[Rightarrow, from=k, to=lfunc, "\delta"]
+\end{tikzcd}\rightarrow \begin{tikzcd}
+\mathsf{C}\arrow[rr,bend left=70, "J\circ F"{name=f}] \arrow[rr, "K\circ G"{name=g, description}] \arrow[rr,swap, bend right=70, "L\circ H"{name=h}] && \mathsf{E}\arrow[Rightarrow, from=f, to=g, "\gamma*\alpha"] \arrow[Rightarrow, from=g, to=h, "\delta*\beta"]
+\end{tikzcd}\rightarrow\begin{tikzcd}
+\mathsf{C}\arrow[rr,bend left=70, "J\circ F"{name=f}] \arrow[rr,swap, bend right=70, "L\circ H"{name=h}] && \mathsf{E}\arrow[Rightarrow, from=f, to=h, "(\delta*\beta)\circ (\gamma*\alpha)"{description}]
+\end{tikzcd}
+\end{equation}
+\end{lemma}
+\begin{proof}
+First, $((\delta\circ \gamma)*(\beta\circ \alpha))_c=L(\beta_c\circ \alpha_c)\circ (\delta\circ \gamma)_{F(c)}=L(\beta_c)\circ L(\alpha_c)\circ \delta_{F(c)}\circ \gamma_{F(c)}$ and $((\delta*\beta)\circ (\gamma*\alpha))_c=L(\beta_c)\circ \delta_{G(c)}\circ K(\alpha_c)\circ\gamma_{F(c)}$. Now $L(\alpha_c)\circ \delta_{F(c)}=\delta_{G(c)}\circ K(\alpha_c)$ because of the naturality of $\alpha$, therefore we get the desired result.
+\begin{equation}
+\begin{tikzcd}
+J(F(c))\arrow[r,"\gamma_{F(c)}"]\arrow[d,"J(\alpha_c)"]\arrow[rd,"(\gamma*\alpha)_c"] & K(F(c))\arrow[d,"K(\alpha_c)"]\arrow[r,"\delta_{F(c)}"]&L(F(c))\arrow[d,"L(\alpha_c)"]\\
+J(G(c))\arrow[r,"\gamma_{G(c)}"]\arrow[d,"J(\beta_c)"] & K(G(c))\arrow[r,"\delta_{G(c)}"]\arrow[d,"K(\beta_c)"]\arrow[rd,"(\delta*\beta)_c"]&L(G(c))\arrow[d,"L(\beta_c)"]\\
+J(H(c))\arrow[r,"\gamma_{H(c)}"]&K(H(c))\arrow[r,"\delta_{H(c)}"]&L(H(c))
+\end{tikzcd}
+\end{equation}
+\end{proof}
+
+\begin{defn} A \textbf{2-category} is a collection of
+\begin{itemize}
+\item objects, for example the categories $\mathsf{C}$,
+\item 1-morphisms between pair of objects, for example the functors $F:\mathsf{C}\rightarrow \mathsf{D}$,
+\item 2-morphisms between parallel pairs of 1-morphisms, for example the natural transformations $\alpha:F\Rightarrow G$ with $F:\mathsf{C}\rightarrow \mathsf{D}$
+\end{itemize}
+which satisfies
+\begin{itemize}
+\item the objects and 1-morphisms form a category;
+\item the 1-morphisms and 2-morphisms form a category under vertical composition;
+\item the 1-morphisms and 2-morphisms form a category under horizontal composition;
+\item the middle four interchange law between vertical and horizontal composition holds.
+\end{itemize}
+\end{defn}
+
+\begin{defn} An object $c\in\mathsf{C}$ is \textbf{initial} if the covariant functor $\mathsf{C}(c,-):\mathsf{C}\rightarrow \mathsf{Set}$ is naturally isomorphic to the constant functor $*:\mathsf{C}\rightarrow \mathsf{Set}$ taking every objects to a singleton set. An object $c\in \mathsf{C}$ is \textbf{terminal} if the contravariant functor $\mathsf{C}(-,c):\mathsf{C}^{\textrm{op}}\rightarrow\mathsf{Set}$ is naturally isomorphic to the constant functor $*:\mathsf{C}^{\textrm{op}}\rightarrow \mathsf{Set}$ taking every objects to a singleton set.
+\end{defn}
+
+\begin{defn} A covariant or contravariant functor $F$ from a locally small category $\mathsf{C}$ to $\mathsf{Set}$ is \textbf{representable} if there is an object $c\in \mathsf{C}$ such that $F$ is naturally isomorphic to $\mathsf{C}(c,-)$ or $\mathsf{C}(-,c)$. A \textbf{representation} of a functor $F$ is a choice of object $c\in\mathsf{C}$ and, natural isomorphism $\mathsf{C}(c,-)\simeq F$ if $F$ is covariant, and $\mathsf{C}(-,c)\simeq F$ if $F$ is contravariant.
+\end{defn}
+\noindent\rule{\textwidth}{1pt}
+\newline

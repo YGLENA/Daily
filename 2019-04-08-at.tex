@@ -1,0 +1,85 @@
+\mytitle{Algebraic Topology}
+\begin{exmp} Since every paths of convex subset $X\subset \mathbb{R}^n$ with same endpoints are path homotopic, $\pi_1(X,x_0)=0$.
+\end{exmp}
+
+\begin{defn} For $x_0,x_1\in X$, suppose that there is a path $h:I\rightarrow X$ whose endpoints are $x_0,x_1$. Then a \textbf{change-of-basepoint map} $\beta_h:\pi_1(X,x_1)\rightarrow \pi_1(X,x_0)$ is defined as\marginnote{This map is well defined because the path product is associative under path homotopy, which is proven in the associativity of $\pi_1(X,x_0)$. Furthermore if $f$ is a loop based on $x_1$, then $(h\cdot f)\cdot \bar{h}$ is a loop based on $x_0$.}
+\begin{equation}
+\beta_h([f])=[h\cdot f\cdot \overline{h}].
+\end{equation}
+\end{defn}
+
+\begin{prop} For $x_0,x_1\in X$ and a path $h:I\rightarrow X$ whose endpoints are $x_0,x_1$, the change-of-basepoint map $\beta_h:\pi_1(X,x_1)\rightarrow \pi_1(X,x_0)$ is isomorphism. 
+\end{prop}
+\begin{proof} $\beta_h$ is homomorphism because $\beta_h([f][g])=\beta_h([f\cdot g])=[h\cdot f\cdot g\cdot \overline{h}]=[h\cdot f\cdot \overline{h}\cdot h\cdot g\cdot \overline{h}]=[h\cdot f\cdot \overline{h}][h\cdot g\cdot \overline{h}]=\beta_h([f])\beta_h([g])$. Also $\beta_h$ is isomorphism with inverse $\beta_{\overline{h}}$ since $\beta_h\circ \beta_{\overline{h}}([f])=[h\cdot \overline{h}\cdot f\cdot h\cdot \overline{h}]=[f]$, and exchanging $h,\overline{h}$ gives $\beta_{\overline{h}}\circ\beta_h([f])=[f]$.
+\end{proof}
+
+\begin{cor} If $X$ is path connected, then $\pi_1(X,x_0)\simeq \pi_1(X)$, for some group $\pi_1(X)$.
+\end{cor}
+\begin{proof} Since $X$ is path connected, for any $x_0,x_1\in X$, there is a path connecting $x_0$ and $x_1$, and thus $\pi_1(X,x_0)\simeq \pi_1(X,x_1)$.
+\end{proof}
+
+\begin{defn} A space $X$ is \textbf{simply connected} if $X$ is path connected and $\pi_1(X)=0$.
+\end{defn}
+
+\begin{prop} A space $X$ is simply connected if and only if there is a unique homotopy class of paths connecting any two points in X. \marginnote{The existence of homotopy class implies the path connectivity of $X$.}
+\end{prop}
+\begin{proof} If $X$ is simply connected, then for any paths $f,g:I\rightarrow X$ with same endpoints $x_0,x_1$, $f\cdot \overline{g}\simeq c_{x_0}$ and $\overline{g}\cdot g\simeq c_{x_1}$. Therefore, $f\simeq f\cdot \overline{g}\cdot g\simeq g$. Conversely, if there is a unique homotopy class of paths connecting any two points in $X$, then taking the paths connecting $x_0$ to itself gives $\pi_1(X,x_0)=0$.
+\end{proof}
+
+\begin{defn} For the spaces $X,Y,A$ and continuous maps $f:A\rightarrow X$ and $p:Y\rightarrow X$, we call a continuous map $\tilde{f}:A\rightarrow Y$ a \textbf{lift} of $f$ if $p\circ \tilde{f}=f$.
+\end{defn}
+
+%\begin{exmp} Not every function has its lift. Consider the \textbf{extended topologist's sine curve}, defined as $S=\{(x,y):y=\sin\left(\frac{\pi}{x}\right),x\in (0,1]\}\cup \left(\{0\}\times [-1,1]\right)\cup P$, where $P$ is the path connecting $(0,0)$ and $(1,0)$ which does not intersects with previous parts except the endpoints, for example, $P=\{(x-1)^2+(y+1)^2=1:x\in [1,2]\}\cup [0,1]\times \{-2\}\cup \{x^2+(y+1)^2=1:x\in [-1,0]\}$. Consider the map $p:\mathbb{R}\rightarrow S^1$ as $p(\theta)=(\cos\theta,\sin\theta)$ and a continuous map $f:S\rightarrow S^1$, which is defined as the composition of two maps, $s\circ q=f$, where $q:S\rightarrow \overline{S}$ is defined as
+%\begin{equation}
+%q(x,y)=\begin{cases}
+%(x,y),&(x,y)\in P\\
+%(x,0),&(x,y)\in S-P
+%\end{cases}
+%\end{equation}
+%and $s:\overline{S}\rightarrow S^1$ is defined by mapping the upper line, rightmost half circle, lower line, and leftmost half circle to first, second, third, fourth quadrant of $S^1$ respectively.
+%
+%Now write $\{0\}\times [-1,1]=L$. WLOG we may assume that $f(L)=1$, by rotating $S^1$ if needed. Now suppose $\tilde{f}:S\rightarrow \mathbb{R}$ is a lift of $f$, i.e. $p\circ \tilde{f}=f$. Since $P-L$ is connected, $\tilde{f}(S-L)$ is connected in $\mathbb{R}$. Also since $p^{-1}\circ f(S-L)=\mathbb{R}-2\pi \mathbb{Z}$, $\tilde{f}(S-L)$ must be included in the interval, which can be chosen as $(0,2\pi)$, WLOG. Since $f$ is surjective, $\tilde{f}(S-L)=(0,2\pi)$. Since $S$ is compact, $[0,2\pi]\subset \tilde{f}(S)$, thus $\{0,2\pi\}\subset \tilde{f}(L)$, contradicting $\tilde{f}(L)$
+%\end{exmp}
+\begin{exmp} Not every function has its lift. Consider the identity map $f:S^1\rightarrow S^1$ and $p:\mathbb{R}\rightarrow S^1$ which is defined as $p(\theta)=(\cos\theta,\sin\theta)$. Then there is no lift $\tilde{f}:S^1\rightarrow \mathbb{R}$ satisfying $p\circ \tilde{f}=f$. Indeed, consider $S^1-x_0$. for $s_0=(1,0)\in S^1$. Since $S^1-s_0$ is connected, $\tilde{f}(S^1-s_0)$ is connected, and since $p^{-1}\circ f(S^1-s_0)=\mathbb{R}-2\pi\mathbb{Z}$, $\tilde{f}(S^1-s_0)$ must be in the interval, which can be taken as $(0,2\pi)$ WLOG. Due to the surjectivity of $f$, $\tilde{f}(S^1-s_0)=(0,2\pi)$ exactly. Now since $S^1$ is compact, $[0,1]\subset \tilde{f}(S^1)$, thus $\{0,1\}\subset \tilde{f}(s_0)$, contradiction.
+\end{exmp}
+
+\begin{defn} For a space $X$, a \textbf{covering space} of $X$ is a space $\tilde{X}$ with a map $p:\tilde{X}\rightarrow X$, called a \textbf{covering map}, such that for each $x\in X$, there is an open neighborhood $U\subset X$ of $x$ such that $p^{-1}(U)$ is a union of disjoint open sets, where each are homeomorphic to $U$ by $p$. We call such $U$ \textbf{evenly covered}.
+\end{defn}
+
+\begin{exmp} The map $p:\mathbb{R}\rightarrow S^1$ defined as $p(\theta)=(\cos\theta,\sin\theta)$ is a covering map. Thus $\mathbb{R}$ is a covering space of $S^1$.
+\end{exmp}
+
+\begin{lemma} For a covering space and map $p:\tilde{X}\rightarrow X$ of $X$, if $U$ is evenly covered open set and $W\subset U$ is also an open set, then $W$ is also evenly covered.
+\end{lemma}
+\begin{proof}
+By the definition of evenly covered open set, we have a collection of open sets $p^{-1}(U)=\cup_{\alpha}U_\alpha$ where $p|_{U_\alpha}$ is homeomorphism. Now we may write $p^{-1}(W)=\cup_{\alpha}\left(U_\alpha\cap p^{-1}(W)\right)$, using de Morgan's law. Writing $U_\alpha\cap p^{-1}(W)=W_\alpha$, we can show that $W_\alpha\cup W_\beta=\emptyset$ if $\alpha\neq \beta$. Now since $p$ is homeomorphism, the restriction of $p$ on $W_\alpha$ is homeomorphism, and $p(W_\alpha)=p(U_\alpha\cap p^{-1}(W))=p(U_\alpha)\cap p(p^{-1}(W))=p(U_\alpha)\cap W=U\cap W=W$.\marginnote{For any map $f:X\rightarrow Y$, if $f$ is surjective and $B\subset Y$, then $f(f^{-1}(B))=B$; if $f$ is injective and $U,V\subset X$, then $f(U\cap V)=f(U)\cap f(V)$.}
+\end{proof}
+\begin{lemma} Take a covering space and map $p:\tilde{X}\rightarrow X$ of $X$. For a map $F:Y\times I\rightarrow X$ and a map $\tilde{F}_0:Y\times\{0\}\rightarrow \tilde{X}$ lifting $F|_{Y\times \{0\}}$, there is a unique map $\tilde{F}:Y\times I\rightarrow \tilde{X}$ lifting $F$ and $\tilde{F}|_{Y\times \{0\}}=\tilde{F}_0$.
+\end{lemma}
+\begin{proof} Take a point $y_0\in Y, t\in I$. Then since $X$ has a covering space, $F(y_0,t)$ has an open neighborhood $U_{t}$ of $F(y_0,t)$ which is evenly covered. Thus, taking the neighborhood $N_t\times (a_t,b_t)\subset F^{-1}(U_t)$ of $(y_0,t)$, we get $F(N_t\times (a_t,b_t))\in U$. Now since $\{N_t\times (a_t,b_t):t\in I\}$ is an open cover of $\{y_0\}\times I$, which is compact set, we may choose a finite subcover, $\{N_i\times (a_i,b_i):i\in \{0,\cdots,m\}\}$, which also gives a finite partition $0=t_0<t_1<\cdots<t_m=1$ such that $\{N\times [t_i,t_{i+1}]:t\in\{0,\cdots,m\}\}$ is an open cover of $\{y_0\}\times I$, and $F(N\times [t_i,t_{i+1}])\subset U_i$, taking $N=\cap_{i=0}^m N_i$.
+
+Now we use induction. First, we already have a lifting $\tilde{F}_0|_N$ of $F|_{N\times \{0\}}$. Now assume that we already have a lifting $\tilde{F}$ on $N\times [0,t_{i}]$. For $F(N\times [t_i,t_{i+1}])\subset U_i$, since $U_i$ is evenly covered there exists $\tilde{U}_i\subset \tilde{X}$ so that $p(\tilde{U}_i)=U_i$ and $\tilde{F}(y_0,t_i)\in \tilde{U}_i$. If $\tilde{F}(N\times \{t_i\})$ is not contained in $\tilde{U}_i$, then we may take smaller open $N'\subset N$ so that $\tilde{F}(N\times \{t_i\})\subset \tilde{U}_i$, which is defined as $N'\times \{t_i\}=N\times \{t_i\}\cap \tilde{F|_{N\times \{t_i\}}}^{-1}(\tilde{U}_i)$. Thus we may think that $\tilde{F}(N\times \{t_i\})\subset \tilde{U}_i$. Now we may define $\tilde{F}$ on $N\times [t_i,t_{i+1}]$ as $p^{-1}|_{U_i}\circ F|_{N\times [t_i,t_{i+1}]}$, which is continuous due to the pasting lemma. Repeating this step finitely many times gives $\tilde{F}:N\times I\rightarrow \tilde{X}$.
+
+For the uniqueness, first we show the uniqueness of the lift if $Y=\{y_0\}$ is a point: suppose that $\tilde{F},\tilde{F}'$ are two lifts of $F:\{y_0\}\times I\rightarrow X$. such that $\tilde{F}(y_0,0)=\tilde{F}'(y_0,0)$. We can do the same procedure above, and so take a finite partition $0=t_0<t_1<\cdots<t_m=1$ so that $F(y_0,[t_i,t_{i+1}])\subset U_i$ for some evenly covered $U_i$. Now again use induction, and consider $\tilde{F}|_{\{y_0\}\times [0,t_i]}=\tilde{F}'|_{\{y_0\}\times [0,t_i]}$. Since $[t_i,t_{i+1}]$ is connected, $\tilde{F}(y_0,[t_i,t_{i+1}]$ is connected, and thus must be connected in one of the disjoint open sets $\tilde{U}_i$ satisfying $p(\tilde{U}_i)$. Since $\tilde{F}(t_i)=\tilde{F}'(t_i)$, $\tilde{F}'([t_i,t_{i+1}])\subset \tilde{U}_i$. Since $p$ is injective on $\tilde{U}_i$ and $p\circ \tilde{F}=p\circ \tilde{F}'=F$, $\tilde{F}=\tilde{F}'$ on $[t_i,t_{i+1}]$, which shows that $\tilde{F}=\tilde{F}'$ by induction.
+
+Finally, if $N\times I$ and $M\times I$ overlaps, then since the lifting on $\{y_0\}\times I$ is unique, the lifting on $N\times I\cap M\times I$ is uniquely determined. Thus, using all the neighbors of $y\in Y$, we get the lifting $\tilde{F}:Y\times I\rightarrow \tilde{X}$. This is continuous since this is continuous on each $N\times I$, and this is unique since it is unique on each $\{y_0\}\times I$.
+\end{proof}
+\begin{lemma} For each path $f:I\rightarrow X$ starting at a point $x_0$ and each $\tilde{x}_0\in p^{-1}(x_0)$, there is a unique lift $\tilde{f}:I\rightarrow \tilde{X}$ starting at $\tilde{x}_0$. Also, for each path homotopy $f_t:I\rightarrow X$ starting at $x_0$ and each $\tilde{x}_0\in p^{-1}(x_0)$, there is a unique lifted path homotopy $\tilde{f}_t:I\rightarrow \tilde{X}$ starting at $\tilde{x}_0$.
+\end{lemma}
+\begin{proof}
+For the first statement, take $Y=\{y_0\}$ for some point $y_0$ and use Lemma above. For the second statement, take $F(s,t)=f_t(s)$, then by the first statement we get a unique lift $\tilde{F}_0:I\times \{0\}\rightarrow \tilde{X}$, and by the Lemma above we get a unique lift $\tilde{F}:I\times I\rightarrow \tilde{X}$. Also, $\tilde{F}|_{\{0\}\times I},\tilde{F}|_{\{1\}\times I}$ are the lifts of constant maps $F|_{\{0\}\times I},F|_{\{1\}\times I}$ respectively, hence we may check that for each case the constant map is a lift, and since the uniqueness of lifting, the constant map is the lift. Thus $\tilde{F}$ is path homotopy.
+\end{proof}
+
+\begin{thm} $\pi_1(S^1)\simeq \mathbb{Z}$, whose generator is the homotopy class of the loop $\omega(s)=(\cos 2\pi s,\sin 2\pi s)$ based on $(1,0)$.
+\end{thm}
+\begin{proof}
+Let $f:I\rightarrow S^1$ is a loop with basepoint $x_0=(1,0)$. Then by the Lemma above for the path, we have a lifting of the path, $\tilde{f}:I\rightarrow \mathbb{R}$, starting at $0$. Since $p^{-1}(x_0)=\mathbb{Z}\subset \mathbb{R}$, this lifted path ends at $n\in \mathbb{Z}$. Now notice that
+\begin{equation}
+[\omega]^n=[\underbrace{\omega\cdot\omega\cdot\cdots\cdot\omega}_{n\textrm{ times}}]=[\omega_n]
+\end{equation}
+where $\omega_n(s)=(\cos 2\pi ns, \sin 2\pi ns)$. Also, the lifting of $\omega_n(s)$ starting at $0$ ends at $n$, by directly checking the path $\tilde{\omega}_n(s)=ns$ is the lifted path. Since $\mathbb{R}$ has a trivial fundamental group, $\tilde{\omega}_n\simeq \tilde{f}$ by some homotopy $H$, and taking $p\circ H$ gives the homotopy between $\omega_n$ and $f$. Therefore $[f]=[\omega_n]$.
+
+To show that the fundamental group of $S^1$ is $\mathbb{Z}$, we need to show that $[\omega_n]=[\omega_m]$ then $n=m$. Choose the homotopy $f_t$ between $f_0=\omega_n$ and $f_1=\omega_m$. By the Lemma above for the homotopy, we have a lifting of the homotopy, $\tilde{f}_t$, whose path starting at $0$, and by the uniqueness of path lifting, $\tilde{f}_0=\tilde{\omega}_n$ and $\tilde{f}_1=\tilde{\omega}_m$. Finally, since $\tilde{f}_t$ is a path homotopy, $\tilde{f}_t(1)$ is constant function, thus $n=\tilde{\omega}_n(1)=\tilde{\omega}_m(1)=m$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

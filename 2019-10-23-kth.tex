@@ -1,0 +1,29 @@
+\mytitle{K-theory}
+\begin{prop} Given a map $f:A\rightarrow B$ and a vector bundle $p:E\rightarrow B$, there is a vector bundle $p':E'\rightarrow A$ with a map $f':E'\rightarrow E$ taking the fiber of $E'$ over each point $a\in A$ isomorphically onto the fiber of $E$ over $f(a)$. Such a vector bundle $E'$ is unique up to isomorphism. The map
+\begin{equation}
+\begin{tikzcd}
+E'\arrow{r}{f'} \arrow{d}{p'}& E \arrow{d}{p}\\
+A\arrow{r}{f}&B
+\end{tikzcd}
+\end{equation}
+\end{prop}
+\begin{proof} Define $E'=\{(a,v)\in A\times E:f(a)=p(v)\}$. Then taking $p'(a,v)=a$ and $f'(a,v)=v$ makes the diagram commutative. Now consider the set $\Gamma_f=\{(a,f(a)):a\in A\}$. Then we may factor $p'$ as the composition $E'\rightarrow \Gamma_f\rightarrow A$, defined as $(a,v)\mapsto (a,p(v))= (a,f(a))\mapsto a$. The first map $E'\rightarrow \Gamma_f$ is the restriction of the vector bundle $1_A\times p:A\times E\rightarrow A\times B$ over the graph $\Gamma_f$, so it is a vector bundle, and the second map is a homeomorphism. Therefore $p':E'\rightarrow A$ is a vector bundle, and $f'$ takes the fiber $E'$ over $a$ isomorphically onto the fiber of $E$ over $f(a)$.
+
+For the uniqueness, choose another vector bundle $p'':E''\rightarrow A$ with $f'':E''\rightarrow E$. Now define a map $E''\rightarrow E'$ as $v''\mapsto (p''(v''),f''(v''))$. This map is well defined since $f\circ p''=p\circ f''$. Also this map takes each fiber of $E'$ to the corresponding fiber of $f^*(E)$ by a vector space isomorphism, thus by previous Lemma it is an isomorphism of vector bundles.
+\end{proof}
+
+\begin{defn} The functor $\textrm{Vect}^n:\mathsf{Top}\rightarrow \mathsf{Set}$ takes a topological set $B$ to a set of real vector bundles over $B$. The functor $\textrm{Vect}^n_\mathbb{C}:\mathsf{Top}\rightarrow \mathsf{Set}$ takes a topological set $B$ to a set of complex vector bundles over $B$. A morphism on $\mathsf{Top}$, $f:A\rightarrow B$, becomes a morphism on $\mathsf{Set}$, $f^*:\textrm{Vect}^n_{(\mathbb{C})}(B)\rightarrow \textrm{Vect}^n_{(\mathbb{C})}(A)$ which is described as above, which is often written as $f^*$. In this case, $f^*(E)$ is called the bundle \textbf{induced} by $f$, or the \textbf{pullback} of $E$ by $f$. 
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item The pullback of trivial bundle is trivial. Indeed, for a trivial bundle $E\rightarrow B$, the linearly independent sections $s_i$ gives the independent sections $a\mapsto (a,s_i(f(a)))$ of $f^*(E)$ over $f^{-1}(B)$.
+\item The restriction of a vector bundle $p:E\rightarrow B$ over a subspace $A\subset B$ can be thought as a pullback with respect to the inclusion map $A\righthookarrow$, since the inclusion $p^{-1}(A)\righthookarrow E$ is an isomorphism on each fiber.
+\item For the constant map $f$ with a single point image $b\in B$, $f^*(E)$ is the trivial bundle $A\times p^{-1}(b)$.
+\item The tangent bundle $TS^n$ is the pullback of the tangent bundle $T\mathbb{R}P^n$ by the quotient map $S^n\rightarrow \mathbb{R}P^n$.
+\item Consider the M{\"o}bius bundle $E\rightarrow S^1$. Now we take the pullback of this bundle by the map $f:S^1\rightarrow S^1$ given by $f(z)=z^2$ in complex plane notation. Noticing the M{\"o}bius bundle is the quotient of a strip $[0,1]\times \mathbb{R}$ identifying two edges $\{0\}\times \mathbb{R}$ and $\{1\}\times \mathbb{R}$ by a reflection of $\mathbb{R}$, which means there is one twist. Therefore the pullback of this bundle by the map $f$ will give the two twists, which is the trivial bundle. Generally, for the map $f_n:S^1\rightarrow S^1$ defined as $z\mapsto z^n$, the pullback of the M{\"o}bius bundle by $f_n$ is the trivial bundle if $n$ is even, and the M{\"o}bius bundle if $n$ is odd.
+\item Consider an $n$-dimensional vector bundle $E\rightarrow B$ and its flag bundle $F(E)$. Then the vectors in the $i$-th line form a line bundle $L_i\rightarrow F(E)$, and their direct sum, $L_1\oplus\cdots\oplus L_n$ is the pullback of $E$ by the projection $F(E)\rightarrow B$, since a point in the pullback consists of an $n$-tubple of lines $l_1\perp \cdots \perp l_n$ in a fiber of $E$ together with a vector $v$ in this fiber, and $v$ can be expressed uniquely as a sum $v=v_1+\cdots+v_n$ with $v_i\in l_i$. Thus we may pull an arbitrary bundle back to a sum of line bundles.
+\end{enumerate}
+\end{exmp}
+\noindent\rule{\textwidth}{1pt}
+\newline

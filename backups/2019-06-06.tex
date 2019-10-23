@@ -1,0 +1,12 @@
+\mytitle{Algebraic Topology}
+\begin{prop} If $X=\cup_\alpha X_\alpha$ where $X_\alpha$ are the path components of $X$, then $H_n(X)\simeq \oplus_\alpha H_n(X_\alpha)$.
+\end{prop}
+\begin{proof} Since an image of singular simplex is always path connected, there is no singular simplex whose image is on two or more $X_\alpha$. Therefore $C_n(X)\simeq \oplus_\alpha C_n(X_\alpha)$. Furthermore, since $\partial_n|_{C_{n}(X_\alpha)}$ takes $C_{n}(X_\alpha)$ to $C_{n-1}(X_\alpha)$, if we write $\partial_n|_{C_{n}(X_\alpha)}$ as $\partial_n^\alpha$, then $\Ker\partial_n\simeq \oplus_\alpha \Ker\partial_n^\alpha$ and $\Ima\partial_n\simeq \oplus_\alpha \Ima\partial_n^\alpha$. Thus $H_n\simeq \Ker\partial_n/\Ima\partial_{n+1}\simeq \oplus_\alpha \Ker\partial_n^\alpha/\oplus_\alpha \Ima\partial_{n+1}^\alpha\simeq \oplus_\alpha(\Ker\partial_n^\alpha/\Ima\partial_{n+1}^\alpha)\simeq \oplus_\alpha H_n(X_\alpha)$.
+\end{proof}
+\begin{prop} If $X$ is nonempty path connected space, then $H_0(X)\simeq \mathbb{Z}$. If there is a bijection between path components of $X$ and a set $A$, then $H_0(X)\simeq \oplus_{\alpha\in A}\mathbb{Z}$.
+\end{prop}
+\begin{proof}
+Since $\partial_0=0$, $H_0(X)\simeq C_0(X)/\Ima\partial_1$. Now define $\epsilon:C_0(X)\rightarrow\mathbb{Z}$ by $\epsilon(\sum_in_i\sigma_i)=\sum_i n_i$. Since $X$ is nonempty, $\epsilon$ is surjective. Now suppose that $X$ is path connected. For a singular 1-simplex $\sigma:\Delta^1\rightarrow X$, we have $\epsilon\circ\partial_1(\sigma)=\epsilon(\sigma|_{[v_1]})-\epsilon(\sigma|_{[v_0]})=1-1=0$, therefore $\Ima\partial_1\subset \Ker\epsilon$. Conversely, suppose that $\epsilon(\sum_in_i\sigma_i)=\sum_in_i=0$. Since $\sigma_i$ are singular 0-simplexes, they are points in $X$. Now take a basepoint $x_0\in X$ and choose a path $\tau_i:I\rightarrow X$ from $x_0$ to $\sigma_i(v_0)$. Also let $\sigma_0$ is a singular 0-complex with image $x_0$. Now $\tau_i:[v_0,v_1]\rightarrow X$ are singular 1-simplexes, and $\partial\tau_i=\sigma_i-\sigma_0$. therefore $\partial(\sum_i n_i\tau_i)=\sum_in_i\sigma_i-\sum_in_i\sigma_0=\sum_in_i\sigma_i$, therefore $\Ker\epsilon\subset\Ima\partial_1$. Thus $\Ker\epsilon\simeq\Ima\partial_1$, and so $\mathbb{Z}\simeq C_0(X)/\Ker\epsilon\simeq C_0(X)/\Ima\partial_1\simeq H_0(X)$. The second statement follows from the previous proposition.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

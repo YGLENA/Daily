@@ -1,0 +1,39 @@
+\mytitle{Algebraic Topology}
+\begin{defn} For a covering space $p:\tilde{X}\rightarrow X$, the covering space isomorphisms $\tilde{X}\rightarrow \tilde{X}$ are called \textbf{deck transformations} or \textbf{covering transformations}.
+\end{defn}
+\begin{prop} For a covering space $p:\tilde{X}\rightarrow X$, the set of deck transformations $G(\tilde{X})$ with function composition as a binary operation is a group.
+\end{prop}
+\begin{proof}
+Since the elements of $G(\tilde{X})$ are functions and binary operation is function composition, the binary operation is associative. Since the identity map is in $G(\tilde{X})$, we have an identity, and since the inverse of covering space isomorphism is also covering space isomorphism, we have inverse for every elements.
+\end{proof}
+\begin{exmp} For the covering space $p:\mathbb{R}\rightarrow S^1$, take a homeomorphism $f:\mathbb{R}\rightarrow \mathbb{R}$. To make $f$ a covering space isomorphism, we have $p\circ f=p$, which means $e^{if(\theta)}=e^{i\theta}$ for all $\theta\in \mathbb{R}$. This implies that $f(\theta)=\theta+2n(\theta)\pi$ where $n(\theta):\mathbb{R}\rightarrow \mathbb{N}$, and to make $f$ homeomorphism $n(\theta)$ is a constant function. Thus $f(\theta)=\theta+2n\pi$, and so we can take an isomorphism $\phi:G(\tilde{X})\rightarrow \mathbb{Z}$ as $\phi(f)=f(0)/2\pi$.
+\end{exmp}
+\begin{prop} Take a covering space $p:\tilde{X}\rightarrow X$ with connected $\tilde{X}$. If two deck transformations $f,g:\tilde{X}\rightarrow \tilde{X}$ agree at one point, then $f=g$.
+\end{prop}
+\begin{proof}
+Since $p=p\circ f$ and $p=p\circ g$, $f$ and $g$ are lift of $p$. Since $f,g$ agree at one point of $\tilde{X}$ and $\tilde{X}$ is connected, $f=g$ by unique lifting property.
+\end{proof}
+\begin{defn} A covering space $p:\tilde{X}\rightarrow X$ is called \textbf{normal} or \textbf{regular} if for each $x\in X$ and each pair of lifts $\tilde{x},\tilde{x}'$ of $x$, there is a deck transformation taking $\tilde{x}$ to $\tilde{x}'$.
+\end{defn}
+\begin{prop} Take a regular covering space $p:\tilde{X}\rightarrow X$. For a set $F=p^{-1}(x)$ for some $x\in X$, define a map $\phi:G(\tilde{X})\times F\rightarrow F$ as $\phi(f,\tilde{x})=f(\tilde{x})$. Then this is a regular group action.\marginnote{\begin{defn}An action of a group $G$ on a set $X$ is \textbf{regular} if for all $x_1,x_2$, there is a unique $g\in G$ such that $g\cdot x_1=x_2$.\end{defn}}\marginnote{This is why we call this covering space regular.}
+\end{prop}
+\begin{proof}
+Since we have a regular covering space, for all $\tilde{x},\tilde{x}'\in p^{-1}(x)$, there is a deck transformation $f$ satisfying $f(\tilde{x})=\tilde{x}'$. If there are two such deck transformations $f,g$, then since they agrees on one point, $f=g$.
+\end{proof}
+\begin{prop} Let $p:(\tilde{X},\tilde{x}_0)\rightarrow (X,x_0)$ be a path connected covering space of the path connected and locally path connected space $X$. Let $H= p_*(\pi_1(\tilde{X},\tilde{x}_0))\leq \pi_1(X,x_0)$. Then,
+\begin{enumerate}
+\item This covering space is normal if and only if $H\normal \pi_1(X,x_0)$.\marginnote{This is why we call this covering space normal.}
+\item $G(\tilde{X})\simeq N(H)/H$ where $N(H)$ is the normalizer of $H$ in $\pi_1(X,x_0)$.\marginnote{\begin{defn} For a subset $S$ of a group $G$, a \textbf{normalizer} of $S$, $N(S)$, in the group $G$ is defined as $N(S)=\{g\in G|gS=Sg\}$.
+\end{defn}}
+\end{enumerate}
+Thus $G(\tilde{X})\simeq \pi_1(X,x_0)/H$ if $\tilde{X}$ is a normal covering, and $G(\tilde{X})\simeq \pi_1(X,x_0)$ if $\tilde{X}$ is a universal cover.
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item From the proof of the covering space classification theorem, changing the basepoint $\tilde{x}_0\in p^{-1}(x_0)$ to $\tilde{x}_1\in p^{-1}(x_0)$ corresponds to conjugating $H$ by $[\gamma]\in \pi_1(X,x_0)$ where $\gamma=p\circ \tilde{\gamma}$ with $\tilde{\gamma}$ is a path from $\tilde{x}_0$ to $\tilde{x}_1$. Thus $[\gamma]\in N(H)$ if and only if $p_*(\pi_1(\tilde{X},\tilde{x}_0))=p_*(\pi_1(\tilde{X},\tilde{x}_1))$. Due to the lifting criterion, this is equivalent to the existence of a deck transformation taking $\tilde{x}_0$ to $\tilde{x}_1$, considering the lifting of maps $p:(\tilde{X},\tilde{x}_0)\rightarrow (X,x_0)$ and $p:(\tilde{X},\tilde{x}_1)\rightarrow (X,x_0)$ by each other. Thus the covering space is normal if and only if for all $\tilde{x}_0,\tilde{x}_1\in p^{-1}(x_0)$ we have a path $\tilde{\gamma}$ connecting $\tilde{x}_0$ and $\tilde{x}_1$ such that $[\gamma]\in N(H)$ where $\gamma=p\circ \tilde{\gamma}$, which is equivalent with $N(H)=\pi_1(X,x_0)$, i. e. $H\leq \pi_1(X,x_0)$.
+
+\item Define $\phi:N(H)\rightarrow G(\tilde{X})$ where $\phi([\gamma])$ is a deck transformation $\tau$ taking $\tilde{x}_0\in p^{-1}(x_0)$ to $\tilde{x}_1\in p^{-1}(x_0)$, where $\gamma$ lifts to $\tilde{\gamma}$ which is a path from $\tilde{x}_0$ to $\tilde{x}_1$. Since the lifting of path homotopic paths have same endpoints, this map is well defined. From above, $[\gamma]\in N(H)$ is equivalent with the fact that there is a deck transformation taking $\tilde{x}_0$ to $\tilde{x}_1$, thus the map is surjective. Finally, take another $[\gamma']$ where $\phi([\gamma'])=\tau'$ is a deck transformation taking $\tilde{x}_0$ to $\tilde{x}'_1$. The lifting of $\gamma'$ starting at $\tilde{x}_1$ can be written as $\tau\circ \tilde{\gamma}'$, since $p\circ \tau=p$, therefore the lifting of $\gamma\cdot\gamma'$ is $\tilde{\gamma}\cdot(\tau\circ \tilde{\gamma}')$, which is a path between $\tilde{x}_0$ and $\tau\circ \tau'(\tilde{x}_0)$, thus $\tau\circ \tau'$ is the deck transformation corresponding to $[\gamma][\gamma']$. Therefore $\phi$ is homomorphism. The kernel of $\phi$ is the classes $[\gamma]$ where $\gamma$ lifts to a loop in $\tilde{X}$, which is $p_*(\pi_1(\tilde{X},\tilde{x}_0))=H$.
+\end{enumerate}
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

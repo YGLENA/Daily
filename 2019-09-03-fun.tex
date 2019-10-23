@@ -1,0 +1,162 @@
+\mytitle{Functional Analysis}
+\begin{defn} Let $F$ be a field.\marginnote{In this text, we will think the real field $F=\mathbb{R}$ or the complex field $F=\mathbb{C}$.} A \textbf{scalar} is a member of the \textbf{scalar field} $F$. A \textbf{vector space over $F$} is a set $X$, whose elements are called \textbf{vectors}, with two binary operations: \textbf{addition}, denoted by $+:X\times X\rightarrow X$ and written as $+(x,y)=x+y:X\times X\rightarrow X$, and \textbf{scalar multiplication}, denoted by $\cdot:F\times X\rightarrow X$ and written as $\cdot(\alpha,x)=\alpha\cdot x=\alpha x$. The addition and scalar multiplication satisfies following algebraic properties:
+\begin{enumerate}
+\item For all $x,y,z\in X$, $x+y=y+x$(commutativity) and $x+(y+z)=x+(y+z)$(associativity).
+\item $X$ contains a unique vector $0$, which is called the \textbf{zero vector} or \textbf{origin} of $X$, such that $x+0=x$ for all $x\in X$.
+\item For all $x\in X$, there is a unique vector $-x\in X$ such that $x+(-x)=0$.\marginnote{These three properties can be said that the pair $(X,+)$ is an abelian group.}
+\item To every pair $(\alpha,x)\in F\times X$, $1x=x$ and $\alpha(\beta x)=(\alpha \beta)x$.\marginnote{The symbol $1$ represents the identity in field $F$.}
+\item For every $\alpha,beta\in F$ and $x,y\in X$, $\alpha(x+y)=\alpha x+\alpha y$ and $(\alpha+\beta) x=\alpha x + \beta x$(distributive laws).
+\end{enumerate}
+If $F=\mathbb{R}$, then $X$ is called a \textbf{real vector space}. If $F=\mathbb{C}$, then $X$ is called a \textbf{complex vector space}.\marginnote{From now, if the field is not mentioned, then the statement applies for both real and complex vector space.}
+\end{defn}
+
+\begin{defn} For a vector space $X$, take $A,B\subset X$, $x\in X$, and $\lambda\in F$. Then we define the following notations.\marginnote{Notice that it may happen that $2A\neq A+A$.}
+\begin{align*}
+x+A&\coloneqq\{x+a:a\in A\}\\
+x-A&\coloneqq\{x-a:a\in A\}\\
+A+B&\coloneqq\{a+b:a\in A,b\in B\}\\
+\lambda A&\coloneqq\{\lambda a:a\in A\}
+\end{align*}
+\end{defn}
+
+\begin{defn} Let $X$ be a vector space. A set $Y\subset X$ is a \textbf{subspace} of $X$ if $Y$ itself is a vector space with respect to the same operations.
+\end{defn}
+
+\begin{prop} Let $X$ be a vector space. Then a set $Y\subset X$ is a subspace of $X$ if and only if $0\in Y$ and $\alpha Y+\beta Y\subset Y$ for all scalars $\alpha,\beta$.
+\end{prop}
+\begin{proof}
+One direction is obvious. For opposite direction, notice that the condition shows that the addition and scalar multiplication are closed on $Y$. All properties except the existence and uniqueness of zero vector follows from the closure and the operations on $X$. The existence is given in the condition, and consider $0'\in Y$ is another zero vector, then $0+0'=0=0'$.
+\end{proof}
+
+\begin{defn} Let $X$ be a vector space. A set $C\subset X$ is \textbf{convex} if
+\begin{equation}
+tC+(1-t)C\subset C,\quad 0\leq t\leq 1
+\end{equation}
+In other words, $C$ should contain $tx+(1-t)y$ for all $x,y\in C$ and $0\leq t\leq 1$.
+\end{defn}
+
+\begin{defn} Let $X$ be a vector space. A set $B\subset X$ is \textbf{balanced} if $\alpha B\subset B$ for all $\alpha \in F$ with $|\alpha|\leq 1$.
+\end{defn}
+
+\begin{exmp} Let $X=\mathbb{C}$ be a vector space over $\mathbb{C}$. Then the balanced sets are $\mathbb{C}$, $\emptyset$, and every open or closed circular disc centered at $0$. If $X=\mathbb{R}^2$ be a vector space over $\mathbb{R}$, then there are more balanced sets, for example, any line segment with midpoint at $(0,0)$.
+\end{exmp}
+
+\begin{defn} Let $X$ be a vector space and $U=\{u_1,\cdots, u_n\}\subset X$. Then $U$ is a \textbf{basis} of $X$ if every $x\in X$ has a unique representation of the form
+\begin{equation}
+x=\alpha_1 u_1+\cdots+\alpha_n u_n,\quad \alpha_i\in F
+\end{equation}
+Then the \textbf{dimension} of $X$ is $\dim X=n$. If $n$ is finite, then $X$ is said to have \textbf{finite dimension}. If $X=\{0\}$, then we say $\dim X=0$.
+\end{defn}
+
+\begin{defn} A \textbf{topological space} $S$ is a set with a collection of subsets $\tau$, whose elements are called \textbf{open sets}, has been specified, which satisfies:
+\begin{enumerate}
+\item $S,\emptyset\in \tau$;
+\item If $T_1,T_2\in \tau$ then $T_1\cap T_2\in \tau$;
+\item If $\{T_\alpha\}\subset \tau$ then $\cup_{\alpha}T_\alpha \in \tau$.
+\end{enumerate}
+Then $\tau$ is called a \textbf{topology on $S$}.
+\end{defn}
+
+\begin{defn} Let $S$ be a topological space with topology $\tau$. A set $E\subset S$ is \textbf{closed} if its complement is open. The \textbf{closure} $\bar{E}$ of a set $E$ is the intersection of all closed sets that contains $E$. The \textbf{interior} $\mathring{E}$ is the union of all open sets that are subsets of $E$. A \textbf{neighborhood} of a point $p\in S$ is any open set that contains $p$. A set $K\subset S$ is \textbf{compact} if for every open cover $U_\alpha$ of $K$, there is a finite subcover $U_{1,\cdots,n}$. 
+\end{defn}
+
+\begin{defn} Let $S$ be a topological space with topology $\tau$. Then $S$ is a \textbf{Hausdorff space}, and $\tau$ is a \textbf{Hausdorff topology}, if for any $x,y\in S$, there are neighborhoods $U_x,U_y$ of $x,y$ respectively, so that $U_x\cap U_y=\emptyset$.
+\end{defn}
+
+\begin{defn} Let $S$ be a topological space with topology $\tau$. Take a subcollection $\tau'\subset \tau$. Then $\tau'$ is a \textbf{base} of $\tau$ if every $U\in \tau$ is a union of members of $\tau'$. A collection $\gamma$ of neighborhoods of a point $p\in S$ is a \textbf{local base} at $p$ if every neighborhood of $p$ contains a member of $\gamma$.
+\end{defn}
+
+\begin{prop} Let $S$ be a topological space. Then the collection of sets $\tau'$ is a base of a topology $\tau=\{\cup_\alpha U_\alpha:\{U_\alpha\}\subset \tau'\}$ if and only if $\tau'$ satisfies the following properties:
+\begin{enumerate}
+\item $\tau'$ covers $S$;
+\item For $B,B'\in \tau'$ and $x\in B,B'$, there is $B''\in \tau'$ such that $x\in B''\subset B\cap B'$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Suppose that $\tau'$ is a base of a topology $\tau$. Then since $\tau$ includes $S$, $\tau'$ covers $S$. Also, for any $B,B'\in \tau'$, $B,B'\in \tau$, thus $B\cap B'\in \tau$. This implies that $B\cap B'$ is also a union of elements of $\tau'$, so if we choose $x\in B\cap B'$, we can choose $B''\in \tau'$ such that $x\in B''\subset B\cap B'$. Conversely, suppose that the two conditions are true, and construct $\tau=\{\cup_\alpha U_\alpha:\{U_\alpha\}\subset \tau'\}$. Since $\tau'$ covers $S$, $\tau$ contains $S$; considering zero union, $\tau'$ contains $\emptyset$. Also the union of $\cup_\alpha U_\alpha$ for all $\alpha\in I$ is $\cup_{\beta\in \cup_{\alpha\in I}}U_\beta$. Finally, consider $\cup_\alpha U_\alpha$ and $\cup_\beta U_\beta$. Then $\cup_\alpha U_\alpha \bigcap \cup_\beta U_\beta=\cup_{\alpha,\beta}(U_\alpha\cap U_\beta)$. Since $U_\alpha,U_\beta\in \tau'$, for all $x\in U_\alpha\cap U_\beta$ we may choose $U_{\alpha,\beta;x_{\alpha\beta}}\in \tau'$ such that $x\in U_{\alpha,\beta;x_{\alpha\beta}}\in U_\alpha\cap U_\beta$. Thus $\cup_\alpha U_\alpha \bigcap \cup_\beta U_\beta=\cup_{\alpha,\beta;x_{\alpha\beta}}U_{\alpha,\beta;x_{\alpha\beta}}$.
+\end{proof}
+
+\begin{prop} If $S$ is a topological set with topology $\tau$, $E\subset S$, and if $\sigma$ is the collection of all intersections $E\cap V$ where $V\in \tau$, then $\sigma$ is a topology on $E$.\marginnote{We call this the topology that $E$ \textbf{inherits} from $S$.}
+\end{prop}
+\begin{proof}
+$\emptyset\cap E=\emptyset, S\cap E=E$, thus $\emptyset,S\in \sigma$. Also, $\cup_\alpha(V\cap U_\alpha)=V\bigcap \cup_\alpha U_\alpha$. Finally, $(V\cap U_1)\cap (V\cap U_2)=V\cap (U_1\cap U_2)$.
+\end{proof}
+
+\begin{defn} A sequence $\{x_n\}$ in a Hausdorff space $X$ \textbf{converges} to a point $x\in X$, or $\lim_{n\rightarrow \infty} x_n=x$, if every neighborhood of $x$ contains all but finitely many of the points $x_n$.
+\end{defn}
+
+\begin{defn} A function $f:X\rightarrow Y$ with topological sets $X,Y$ is \textbf{continuous} if $f^{-1}(V)$ is open in $X$ for all open $V\subset Y$.
+\end{defn}
+
+\begin{defn} A vector space $X$ is called a \textbf{normed space} if for every $x\in X$ there is an associated nonnegative real number $\|x\|$, which is called the \textbf{norm} of $x$, satisfying
+\begin{enumerate}
+\item $\|x+y\|\leq \|x\|+\|y\|$, for all $x,y\in X$;
+\item $\|\alpha x\|=|\alpha| \|x\|$ for all $x\in X$ and $\alpha$ is a scalar;
+\item $\|x\|>0$ if $x\neq 0$.
+\end{enumerate}
+A vector space $X$ is a \textbf{metric space} if there is a function $d:X\times X\rightarrow [0,\infty)$ satisfying
+\begin{enumerate}
+\item $d(x,y)=0$ if and only if $x=y\in X$;
+\item $d(x,y)=d(y,x)$ for all $x,y\in X$;
+\item $d(x,z)\leq d(x,y)+d(y,z)$ for all $x,y,z\in X$.\marginnote{Taking $d(x,y)=\|x-y\|$, we can see that the normed space is a metric space.}
+
+For a metric space $X$, the \textbf{open ball} with \textbf{center} at $x$ and \textbf{radius} $r$ is the set
+\begin{equation}
+B_r(x)\coloneqq \{y:d(x,y)<r\}
+\end{equation}
+If $X$ is a normed space, the sets
+\begin{equation}
+B_1(0)=\{x:\|x\|<1\},\quad \bar{B}_1(0)=\{x:\|x\|\leq 1\}
+\end{equation}
+are called the \textbf{open unit ball} and \textbf{closed unit ball} of $X$, respectively.
+\end{enumerate}
+\end{defn}
+
+\begin{prop} Let $X$ be a metric space with metric $d$. Then the collection of open balls, $\mathscr{B}$, is a base of a topology.\marginnote{If a topology $\tau$ is induced by a metric $d$ as this way, then we say that $d$ and $\tau$ are \textbf{compatible} with each other.}
+\end{prop}
+\begin{proof}
+Since there always is a ball $B_1(x)$, $\mathscr{B}$ covers $X$. Now consider $B_r(x)\cap B_{r'}(x')$, which is nonempty set. Choose $x''\in B_r(x)\cap B_{r'}(x')$ and $r''=\min(r-d(x,x''),r'-d(x',x''))$. Choose $y\in B_{r''}(x'')$. Then $d(x,y)\leq d(x,x'')+d(x'',y)\leq d(x,x'')+r''\leq d(x,x'')+r-d(x,x'')=r$ and $d(x',y)\leq d(x',x'')+d(x'',y)\leq d(x',x'')+r''\leq d(x',x'')+r'-d(x',x'')=r'$, thus $y\in B_r(x)\cap B_{r'}(x')$. This shows that $B_{r''}(x'')\subset B_r(x)\cap B_{r'}(x')$, and so $\mathscr{B}$ is a base. 
+\end{proof}
+
+\begin{defn} A metric $d$ is \textbf{complete} if every Cauchy sequence converges; that is, if for every $\epsilon>0$, there is a positive integer $N$ such that for all natural numbers $n,m>N$, $d(x_n,x_m)<\epsilon$, then $\{x_n\}$ converges.
+
+A normed space $X$ which is complete in the metric defined by its norm is called a \textbf{Banach space}.
+\end{defn}
+
+\begin{defn} Consider a vector space $X$ and its topology $\tau$ such that
+\begin{enumerate}
+\item Every point of $X$ is a closed set;
+\item The vector space operations, addition and scalar multiplication, are continuous with respect to $\tau$.
+\end{enumerate}
+Then $\tau$ is calld a \textbf{vector topology} on $X$, and $X$ is a \textbf{topological vector space}.
+\end{defn}
+
+\begin{defn} Let $X$ be a topological vector space. For each vector $a\in X$ and each scalar $\lambda\neq 0$, the \textbf{translation operator} $T_a:X\rightarrow X$ and the \textbf{multiplication operator} $M_\lambda:X\rightarrow X$ are defined as $T_a(x)=a+x, M_\lambda(x)=\lambda x$.
+\end{defn}
+
+\begin{prop} $T_a$ and $M_\lambda$ are homeomorphisms from $X$ to $X$.\marginnote{This shows that every vector topology $\tau$ is \textbf{translation invariant}, which means, a set $E\subset X$ is open if and only if $T_a(E)$ is open. Thus $\tau$ is completely determined by any local base. If we are talking about the vector space, the \textbf{local base} always mean a local base at zero vector $0$.}
+\end{prop}
+\begin{proof}
+From the vector space axioms, we can see that the operators $T_{-a}$ and $M_{1/\lambda}$ are the inverses of $T_a, M_\lambda$, respectively. Also since addition and scalar multiplications are continuous, all the four functions are continuous.
+\end{proof}
+
+\begin{defn} A metric $d$ on a vector space $X$ is \textbf{invariant} if $d(x+z,y+z)=d(x,y)$ for all $x,y,z \in X$.
+\end{defn}
+
+\begin{defn} Let $X$ be a topological vector space. A subset $E\subset X$ is \textbf{bounded} if to every neighborhood $V$ of $0$ in $X$ corresponds a number $s>0$ such that $E\subset tV$ for all $t>s$.
+\end{defn}
+
+\begin{defn} Let $X$ be a topological vector space with topology $\tau$.
+\begin{enumerate}
+\item $X$ is \textbf{locally convex} if there is a local base whose members are convex.
+\item $X$ is \textbf{locally bounded} if $0$ has a bounded neighborhood.
+\item $X$ is \textbf{locally compact} if $0$ has a neighborhood whose closure is compact.
+\item $X$ is \textbf{metrizable} if $\tau$ is compatible with some metric $d$.
+\item $X$ is an \textbf{$F$-space} if its topology $\tau$ is induced by a complete invariant metric $d$.
+\item $X$ is a \textbf{Fr{\'e}chet space} if $X$ is a locally convex $F$-space.
+\item $X$ is \textbf{normable} if a norm exists on $X$ such that the metric induced by the norm is compatible with $\tau$.
+\item $X$ has the \textbf{Heine-Borel property} if every closed and bounded subset of $X$ is compact.
+\end{enumerate}
+\end{defn}
+\noindent\rule{\textwidth}{1pt}
+\newline

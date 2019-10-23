@@ -1,0 +1,131 @@
+\mytitle{Field-theory approach to quantum many-body systems}
+There is a four-day lecture series from professor Masaki Oshikawa.
+
+The Nobel prize on 2016 was given to J. Kosterlitz, D. Thouless and D. Haldane, due to the discovery of topological phenomenons: Kosterlitz-Thouless transition, Haldane gap, and the TKNN formula, which is the topological quanta respective to quantum Hall effect. In this talk, the relation between Haldane gap and K-T transition is discussed.
+
+In most of the cases, phase transition occurs due to the spontaneous symmetry breaking, or order-disorder transition in the other words. For example we have 2-dimensional Ising model. In high temperature regime the system has $Z_2$ symmetry, but in low temperature the $Z_2$ symmetry.
+
+For XY model we expect the same explanation. However there exists a \textbf{Mermin-Wigner's theorem}, which says that in $d\leq 2$ dimensional system, there is no spontaneous symmetry breaking of continuous symmetries at $T>0$. Since XY symmetry has $U(1)\simeq O(2)$ symmetry, it cannot be broken on finite temperature. However there possibly exists the \textbf{topological phase transition}. J. Kosterlitz and D. Thouless discovered that on low temperature, the correlation $\langle \vec{s}_i\cdot \vec{s}_j\rangle\sim \left(\frac{1}{r}\right)^{\eta}$ at low temperature and $\langle \vec{s}_i\cdot \vec{s}_j\rangle\sim \exp{\left(-\frac{r}{\xi}\right)}$. 
+
+On the XY model, there exist some structures which has nonzero winding number: vortex and antivortex. Due to the nontrivial winding number, it needs a massive energy to generate those structure. Furthermore, if a vortex has winding number 1 and an antivortex has winding number -1, then they emerges and become nothing. In this sense we can say that the vortex and antivortex attracts each other.\marginnote{See \url{https://johncarlosbaez.wordpress.com/2016/10/07/kosterlitz-thouless-transition/} for some animations.}
+
+In low temperature, there is not enough energy to separate a vortex and antivortex pair, so each are paired. In high temperature, however, they moves freely, and there could be more vortices then antivortices (or converse) since we have enough energy fluctuation to create number of (anti)vortex individually.
+
+The calculation of RG flow also shows the result. Drawing the $RG$ flow on the $T$-$\mu$, where $\mu$ is the (anti)vortex fugacity, we also get the critical value $\eta_c=1/4$. Thus we get the non symmetry breaking type phase transition, which is now called the topological phase transition.
+
+Realization of classical XY model was done with the thin film of Helium-4, which has the superfluid-normal fluid transition at certain temperature. Here the phase of wavefunction works as the vectors on XY model.\marginnote{Prof. Oshikawa mentioned that someone thinks the superfluid happens because of long range Bose-Einstein condensation, but this is not true because there is no symmetry breaking of 2-dimensional system on finite temperature.} The correlation function of superfluid follows the power low, and there exists a superfluid density, $\rho_s=\frac{m^2k_B T}{2\pi \eta \hbar^2}$. Since for the low temperature $\eta$ is finite but at high temperature $\eta=0$, we get a universal jump $\frac{\rho_c(T_c-0)}{T_c}=\frac{m^2k_B}{2m\eta_c\hbar^2}$. It looks like a first order transition due to the discontinuous drop of superfluid density, it is actually not a first order transition.
+
+Now we move on to the 1-dimensional quantum Heisenberg antiferromagnet. For $S=1/2$ case, the result is well-known as the \textbf{Bethe ansatz}, which gives the exact solutions using the magnon excitation. Even though these solutions are hard to treat, now we know that there is no long-range order on even $T=0$ case, due to the quantum fluctuation, even though it has gapless excitations.\marginnote{Long-range order implies that there exists a gapless excitation spectrum, due to the \textbf{Goldstone theorem}.} Also the correlation function is written as $\langle \vec{s}_i\cdot \vec{s}_j\rangle\sim \left(\frac{1}{r}\right)^{\eta}$.
+
+Most of the physicists believed that this is true for any spin $S$. However, Haldane "conjectured"\marginnote{Prof. Oshikawa mentioned that this is called a conjecture not because it is not proven but because it is quite unexpected result: at least Prof. Haldane thinks that it is proven, in the sense of condensed matter physics. He also mentioned that mentioning Haldane's conjecture a 'conjecture' in front of Haldane is not a good choice - he does not like the naming of the 'conjecture', because he knew he was right.} that if $S\in\mathbb{Z}+\frac{1}{2}$ then there is a gapless spectrum with $\langle \vec{s}_i\cdot \vec{s}_j\rangle\sim \left(\frac{1}{r}\right)^{\eta}$, but if $S\in\mathbb{Z}$ then there is an excitation gap, called \textbf{Haldane gap}, with $\langle \vec{s}_i\cdot \vec{s}_j\rangle\sim \exp\left(-\frac{r}{\xi}\right)$. Here it is noticable that $S\in \mathbb{Z}+\frac{1}{2}$ case is very similar with low $T$ case on classical 2-dimensional XY model, where $S\in\mathbb{Z}$ case is very similar with high $T$ case.
+
+The common understanding of the Haldane's conjecture is from the  $O(3)$ nonlinear sigma model, which was quite common concept for particle physicists but not for the condensed matter physicists. We write down the action
+\begin{equation}
+\mathcal{A}=\mathcal{A}_0+i\theta\mathcal{Q},
+\end{equation}
+where
+\begin{align*}
+\mathcal{A}_0&=\frac{1}{2g}\int dxd\tau\left(\partial_\mu\vec{n}\right)^2\\
+\mathcal{Q}&=\frac{1}{8\pi}\in dxd\tau \epsilon_{\mu\nu}\vec{n}\left(\partial_\mu\vec{n}\times \partial_\nu\vec{n}\right)\numberthis
+\end{align*}
+Here we call $i\theta \mathcal{Q}$ term a \textbf{topological term}. If we write down the partition function
+\begin{equation}
+\mathcal{Z}_0=\int\mathcal{D}\vec{n}\, e^{-\mathcal{A}_0},
+\end{equation}
+then we get the 2-dimensional classical Heisenberg model. For quantum properties, we need to put the $\mathcal{Q}$ term. Indeed, we will see that $\theta=2\pi S$ is the topological angle for the 1-dimensional quantum antiferromagnetic Heisenberg model with spin $S$, and thus $e^{i\theta \mathcal{Q}}=(-1)^{2S\mathcal{Q}}$. Here we can see that $S\in\mathbb{Z}$ does not have any topological term and always disordered, which is equivalent to 2-dimensional class Heisenberg model. In $S\in\mathbb{Z}+\frac{1}{2}$ case, however, we have the quantum critical point, which means that the gap is closed.
+
+But indeed, the actual origin of the Haldane's conjecture is the Tomonaga-Luttinger theory.
+
+First we see the XXZ chain model with spin half,
+\begin{equation}
+H=\sum_{j}S_j^x S_{j+1}^x + S_j^y S_{j+1}^y +\Delta S_j^z s_{j+1}^z.
+\end{equation}
+Using the Bethe ansatz gives the exact solution for this model. This solution shows that this model is gapped for $\Delta<-1$(anti-ferromagnetic phase, has $\eta=0$ for $\Delta=-1$) and $\Delta>1$(ferromagnetic phase, has $\eta=1$ for $\Delta=1$), and gapless for $-1\leq \Delta\leq 1$(has $\eta=1-\frac{\cos^{-1}(\Delta)}{\pi}$).\marginnote{This model has Tomonaga-Luttinger universality, where the Fermi velocity is $v_F=\frac{\pi \sqrt{1-\Delta^2}}{2\cos^{-1}(\Delta)}$ and the Luttinger parameter is $K=\frac{\pi}{2\cos^{-1}(\Delta)}$.} Since quantum spin is also compact as classical spin, there exists vortices on 1+1 dimension, which makes us possible to observe the BKT transition.
+
+Now, in 1+1 dimensional picture, if there is a single vortex, and if it moves, then one spin changes its motion direction, for example, from clockwise to anticlockwise. This makes the phase difference, which is determined by the system itself, which is called the \textbf{Berry phase}. This makes arguable for Haldane's conjecture. Here we have a concept of the argue. For $S=1/2$ case, the Berry phase is $\pi \mod 2\pi$, hence the sign of $|\psi\rangle$ must be flipped as the vertex moves, for one spin. This does not allows the single vortex. For integer spin case, the Berry phase is $0 \mod 2\pi$, which makes different nature. Indeed, we have phase transition at $\eta=1/4$, and $\Delta=1$ thus belongs to high $T$ phase, and gapless.
+
+In the afternoon session, we have tried to follow up what Haldane did in his paper, which have written about the Haldane's conjecture with Tomonaga-Luttinger liquid theory. Tomonaga-Luttinger liquid(TLL) is the universal description of 1-dimension quantum manybody problems, which is equivalent to the relativistic field theory of free bosons in 1+1D. For example, 1-dimensional Hubbard model of electrons can be changed into TLL, by using the low energy bosonization.
+
+Quantum spin chain, which we are curious in, can be thought as the interacting many boson system by following argument. We have operators $S_j^z, S_j^+, S_j^-$ for each site $j$. Then we may think that $S^{+(-)}$ is the creation(annihilation) operator for $S_j^z$ eigenvalues, $-S, -S+1,\cdots,S$, which can be also thought as the state with $0,1,\cdots,2S$ boson particles on the site. Indeed, by taking $S_j^{+(-)}$ as $\phi(x)^{+(-)}$, the field creation operator, then because $[S_j^+,S_k^+]=[\psi^+(x),\psi^+(y)]=0$, we get the bosonic operators. Notice that indeed the number of particles on each sites has upper bound: $n_j\leq S$.
+
+Now, to make the bosonic 1-dimensional chain with interaction to TLL, we need to take the low energy limit, and do the process which is called \textbf{"bosonisation of bosons"}. We now forget the lattice and take continuous 1-dimensional space, and describe the collective motion of bosons. If there are bosons in the positions $x_j$, then we think the \textbf{labelling field}, $\phi_l(x)$, which is a monotonically increasing function with $\phi_l(x_j)=2\pi j$. Then the density can be written as
+\begin{equation}
+\rho(x)=\sum_j \delta(x-x_j)=\sum_n \left[\partial_x \phi_l(x)\right]\delta(\phi_l(x)-2\pi n)
+\end{equation}
+Now using the Poisson summation formula,
+\begin{equation}
+\sum_{p\in\mathbb{Z}}e^{ip\phi_l}=2\pi\sum_n \delta(\phi_l-2\pi n)
+\end{equation}
+we get
+\begin{equation}
+\rho(x)=\frac{\partial_x \phi_l(x)}{2\pi}\sum_{p\in \mathbb{Z}}e^{ip\phi_l(x)}.
+\end{equation}
+
+Now, notice that we can write
+\begin{equation}
+\phi_l(x)=2\pi \rho_0-2\phi(x),
+\end{equation}
+where $\rho_0$ is the average density in the ground state and $\phi(x)$ is the fluctuation of the density. Then
+\begin{equation}
+\rho(x)=\left[\rho_0-\frac{1}{\pi}\partial_x\phi\right]\sum_{p\in Z}e^{2ip\left[\pi\rho_0 x-\phi(x)\right]}
+\end{equation}
+Averaging the density over length scale $L\gg \rho_0^{-1}$ gives, due to the fast oscillation,
+\begin{equation}
+\bar{\rho}(x)\sim \rho_0-\frac{1}{\pi}\partial_x\phi
+\end{equation}
+But we have some arguments using $p\neq 0$.
+
+Now we write down the annihilation operator of boson, $\psi(x)$. Then we have
+\begin{equation}
+\rho(x)=\psi^\dagger(x)\psi(x)
+\end{equation}
+and therefore we may write
+\begin{equation}
+\psi(x)=e^{i\theta(x)}\sqrt{\rho(x)}.
+\end{equation}
+From the boson commutation relation, $[\psi(x),\psi^\dagger(x')]=\delta(x-x')$, we have
+\begin{equation}
+[\rho(x),e^{-i\theta(x')}]=\delta(x-x')e^{-i\theta(x')}
+\end{equation}
+this gives
+\begin{equation}
+[\rho(x),\theta(x')]=i\delta(x-x')
+\end{equation}
+and using
+\begin{equation}
+\rho(x)=\left[\rho_0-\frac{1}{\pi}\partial_x\phi\right]\sum_{p\in \mathbb{Z}}e^{2ip[\pi\rho_0-\phi(x)]}
+\end{equation}
+we get
+\begin{equation}
+[\partial_x\phi(x),\theta(x')]=-i\pi\delta(x-x')
+\end{equation}
+and so
+\begin{equation}
+[\phi(x),\theta(x')]=-\frac{i\pi}{2}\sgn(x-x')
+\end{equation}
+Thus, in this sense, we can think that $\phi(x)$, the charge-density wave phase, and $\theta(x)$, the quantum mechanical phase of microscopic wave function, are in dual relation.
+
+Considering the Free boson model, we need to write down the Hamiltonian as
+\begin{align*}
+\mathcal{H}_0&=\sum_j\frac{p_j^2}{2m}\\
+&=\frac{1}{2m}\int(\partial_x \psi^\dagger)(\partial_x\psi)dx\\
+&\simeq \frac{\rho_0}{2m}\int (\partial_x\theta)^2 dx+\cdots
+\end{align*}
+Thus Hamiltonian of the system depends on $\theta$ term.
+
+Now we consider the interaction. Assuming the interaction is $\delta$-function like, we get
+\begin{equation}
+\mathcal{H}_I=\frac{u}{2}\int \rho(x)^2 dx
+\end{equation}
+where
+\begin{equation}
+\rho(x)\simeq \rho_0-\frac{1}{\pi}(\partial_x\phi)+\cdots
+\end{equation}
+and thus
+\begin{equation}
+\mathcal{H}=\mathcal{H}_0+\mathcal{H}_I\simeq \int \frac{\rho_0}{2m}(\partial_x\theta)^2+\frac{u}{2\pi^2}(\partial_x\phi)^2+\cdots
+\end{equation}
+considering boundary condition and ignoring constant term.
+
+\noindent\rule{\textwidth}{1pt}
+\newline

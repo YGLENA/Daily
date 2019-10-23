@@ -1,0 +1,137 @@
+\documentclass{tufte-book}
+
+\usepackage{tikz}
+\usepackage{xifthen}
+\usepackage{kotex}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+%\usepackage[backend=bibtex8, style=phys]{biblatex}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{hyphenat}
+
+\usepackage{array}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%\setlength\parindent{0pt}
+%\linespread{1} % Line spacing - Palatino needs more space between lines
+\usepackage{hyperref}
+%\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{coKer}
+\DeclareMathOperator{\normal}{\trianglelefteq}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\spans}{\textrm{span}}
+\newcommand{\tss}{\textsuperscript}
+%\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\addbibresource{biblio.bib}
+\usepackage{amsthm}
+
+\allowdisplaybreaks
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+
+\theoremstyle{definition} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{statement}[1]
+  {\renewcommand{\thistheoremname}{#1}%
+   \begin{genericthm*}}
+  {\end{genericthm*}}
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+{\end{proof}}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newenvironment{loggentry}[2]% date, heading
+{\noindent\textbf{#2}\marginnote{\huge #1}\par}{}
+
+\def\?#1{}
+
+\pgfmathtruncatemacro{\StartYear}{2019}
+\pgfmathtruncatemacro{\EndYear}{2019}
+
+\def\Mytopics{cat/Category Theory}
+
+\newcommand\foo[1]{%
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{mis}=0 %
+     \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+    {TRUE}
+    {FALSE}%
+}
+
+\newcommand{\writetitle}{0}
+\newcommand{\mytitle}[1]
+{   \ifthenelse{\writetitle=1}{#1}{}
+}
+
+\newcommand{\anothertitle}[1]
+{\noindent\textbf{   #1}\par}
+
+\newread\mysource
+
+
+\begin{document}
+\foreach \Topic/\Longtopic in \Mytopics
+{
+\title{\nohyphens\Longtopic}
+\date{}
+\author{Hyunjun Park}
+\sloppy
+\maketitle
+\setcounter{thm}{0}
+\setcounter{page}{1}
+\foreach \Year in {\StartYear,...,\EndYear}
+{   \foreach \Month in {01,02,03,04,05,06,07,08,09,10,11,12}
+    {   \foreach \Day in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}
+        {   \IfFileExists{\Year-\Month-\Day-\Topic}
+                {   \openin\mysource=\Year-\Month-\Day-\Topic.tex
+                    \read\mysource to \firstline
+                    \closein\mysource
+                    \ifnum\pdfstrcmp{\Topic}{mis}=0
+                    	\xdef\writetitle{1}
+                    \fi
+                    \begin{loggentry}{\Year - \Month - \Day}{\firstline}    
+                        \xdef\writetitle{0}
+                        \input{\Year-\Month-\Day-\Topic}
+                    \end{loggentry}
+                } 
+        {   % files does not exist, so nothing to do
+        }
+
+        }  
+    }
+}
+}
+%\printbibliography
+\end{document}

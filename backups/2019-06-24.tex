@@ -1,0 +1,57 @@
+\mytitle{Algebraic Topology}
+\begin{prop} Consider $f:X\rightarrow Y, g:Y\rightarrow Z$. Then $(g\circ f)_*=g_*\circ f_*$, where $f_*:H_\bullet(X)\rightarrow H_\bullet(Y), g_*:H_\bullet(Y)\rightarrow H_\bullet(Z)$ are the induced homomorphisms. Furthermore, $(1_X)_*=1_{H_n(X)}$, where $1_X:X\rightarrow X$ is an identity map.
+\end{prop}
+\begin{proof}
+Take $[\alpha]\in H_n(X)$. Then $g_*(f_*([\alpha]))=g_*([f\circ \alpha])=[g\circ (f\circ \alpha)]$ and $(g\circ f)_*([\alpha])=[(g\circ f)\circ \alpha]$, which are same because of the associativity of function composition. Also, $1_*([\alpha])=[\alpha]$.
+\end{proof}
+
+\begin{defn}
+For the homomorphism between two chain complexes $f,g:C_\bullet\rightarrow D_\bullet$, a map $h:C_n\rightarrow D_{n+1}$ is a \textbf{chain homotopy} if $f-g=\partial\circ h+h\circ \partial$. \marginnote{This diagram does \textit{not} commute.}
+\begin{equation}
+\begin{tikzcd}
+\cdots \arrow{r}{\partial} & C_n \arrow{r}{\partial} \arrow[swap]{d}{f-g} \arrow[swap]{dl}{h}  & C_{n-1} \arrow{r}{\partial} \arrow[swap]{d}{f-g} \arrow[swap]{dl}{h} & \cdots \arrow[swap]{dl}{h} \\
+\cdots \arrow{r}{\partial} & D_n \arrow{r}{\partial} & D_{n-1} \arrow{r}{\partial} & \cdots
+\end{tikzcd}
+\end{equation}
+\end{defn}
+
+\begin{thm} If two maps $f,g:X\rightarrow Y$ are homotopic, then they induce the same homomorphism $f_*=g_*:H_\bullet(X)\rightarrow H_\bullet(Y)$. Furthermore, the chain-homotopic chain maps induce the same homomorphism on homology.
+\end{thm}
+\begin{proof}
+Consider $\Delta^n\times I$ where $\Delta^n\times \{0\}=[v_0,\cdots,v_n]$ and $\Delta^n\times \{1\}=[w_0,\cdots,w_n]$, where $v_i, w_i$ are in the same image under the projection $\Delta^n\times I\rightarrow \Delta^n$. Now consider the $(n+1)$-simplexes, $[v_0,\cdots, v_i,w_i,\cdots, w_n]$, where $i=0,\cdots,n$. Indeed, these simplexes can be obtained by dividing $\Delta^n\times I$ by the $\mathbb{R}^n$-planes containing $[v_0,\cdots,v_i,w_{i+1},\cdots,w_n]$.
+
+Now take a homotopy $F:X\times I\rightarrow Y$ from $f$ to $g$. Take a simplex $\sigma:\Delta^n\rightarrow X$. Then we may take the composition $F\circ (\sigma\times 1_{I}):\Delta^n\times I\rightarrow Y$. Define a \textit{prism operators} $P:C_n(X)\rightarrow C_{n+1}(Y)$ as
+\begin{equation}
+P(\sigma)=\sum_i (-1)^i F\circ (\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,w_n]}
+\end{equation}
+Now notice that
+\begin{align*}
+\partial\circ P(\sigma)=&\sum_{j\leq i}(-1)^{i+j}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_j,\cdots,v_i,w_i,\cdots,w_n]}\\
+&+\sum_{j\geq i}(-1)^{i+j+1}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,\hat{w}_j,\cdots,w_n]}\\
+=&\sum_{j<i}(-1)^{i+j}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_j,\cdots,v_i,w_i,\cdots,w_n]}\\
+&+\sum_{j> i}(-1)^{i+j+1}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,\hat{w}_j,\cdots,w_n]}\\
+&+\sum_{i}F\circ(\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_i,w_i,\cdots,w_n]}\\
+&-\sum_{i}F\circ(\sigma\times 1_I)|_{[v_0,\cdots,v_i,\hat{w}_i,\cdots,w_n]}\\
+=&\sum_{j<i}(-1)^{i+j}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_j,\cdots,v_i,w_i,\cdots,w_n]}\\
+&+\sum_{j> i}(-1)^{i+j+1}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,\hat{w}_j,\cdots,w_n]}\\
+&+F\circ (\sigma\times 1_I)|_{[w_0,\cdots,w_n]}-F\circ(\sigma\times 1_I)|_{[v_0,\cdots,v_n]}\\
+=&\sum_{j<i}(-1)^{i+j}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_j,\cdots,v_i,w_i,\cdots,w_n]}\\
+&+\sum_{j> i}(-1)^{i+j+1}F\circ (\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,\hat{w}_j,\cdots,w_n]}\\
+&+g\circ \sigma-f\circ \sigma
+\end{align*}
+Finally,
+\begin{equation}
+\begin{split}
+P\circ \partial(\sigma)=&\sum_{i<j}(-1)^{i+j}F\circ(\sigma\times 1_I)|_{[v_0,\cdots,v_i,w_i,\cdots,\hat{w}_j,\cdots,w_n]}\\
+&+\sum_{i<j}(-1)^{i+j-1}F\circ(\sigma\times 1_I)|_{[v_0,\cdots,\hat{v}_j,\cdots,v_i,w_i,\cdots,w_n]}
+\end{split}
+\end{equation}
+which gives
+\begin{equation}
+\partial\circ P(\sigma)+P\circ \partial(\sigma)=g\circ \sigma-f\circ \sigma=g_\#(\sigma)-f_\#(\sigma)
+\end{equation}
+and so $\partial\circ P+P\circ \partial=g_\#-f_\#$ and so $P$ is a chain homotopy between chain maps $f_\#$ and $g_\#$. Now take $[\alpha]\in H_n(X)$, then $\partial\alpha=0$, so $g_\#(\alpha)-f_\#(\alpha)=\partial\circ P(\alpha)$, hence $[g_\#(\alpha)-f_\#(\alpha)]=0$, which means $g_*([\alpha])=f_*([\alpha])$.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

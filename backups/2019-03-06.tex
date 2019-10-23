@@ -1,0 +1,53 @@
+\mytitle{Category theory in context}
+We have seen the morphism, which gives the structure of category. Indeed, category itself is the mathematical concept, thus we may think there exists morphism-like structure between two categories.
+\begin{defn} A \textbf{functor} $F:\mathsf{C}\rightarrow \mathsf{D}$ consists of the following data:
+\begin{itemize}
+\item an object $F(c)\in\mathsf{D}$ for each object $c\in \mathsf{C}$;
+\item a morphism $F(f):F(c)\rightarrow F(c')\in \mathsf{D}$ for each morphism $f:c\rightarrow c'\in \mathsf{C}$,
+\end{itemize}
+which satisfies the following \textbf{functoriality axioms}:
+\begin{itemize}
+\item for any composable morphism pair $f,g\in\mathsf{C}$, $F(g)\circ F(f)=F(g\circ f)$;
+\item for each object $c\in\mathsf{C}$, $F(1_c)=1_{F(c)}$.
+\end{itemize}
+\end{defn}
+\begin{exmp} There are so many important functors in mathematics, since the functor gives the relation between two concepts of mathematics. Some of them are given below.
+\begin{enumerate}
+\item Let $\mathsf{C}$ be the category which is one of $\mathsf{Group}, \mathsf{Ring}, \mathsf{Mod}_R, \mathsf{Field}, \mathsf{Meas}, \mathsf{Top},$ or $\mathsf{Poset}$. We have a \textbf{forgetful functor} $F:\mathsf{C}\rightarrow\mathsf{Set}$ which sends each object to base set and each morphism to base function. Since it forgets all the algebraic properties they have and becomes a set, this functor is called forgetful. There are some partially forgetful functors like $\mathsf{Mod}_R\rightarrow \mathsf{Ab}$\marginnote{$\mathsf{Ab}$ is the category of abelian groups.} or $\mathsf{Ring}\rightarrow \mathsf{Ab}$, which forgets some of the algebraic properties but not all.
+\item The fundamental group defines a functor $\pi_1:\mathsf{Top}_*\rightarrow\mathsf{Group}$.\marginnote{$\mathsf{Top}_*$ means a pair of topological space with its one element.} A continuous function $f:(X,x)\rightarrow (Y,y)$ induces a group homomorphism $f_*:\pi_1(X,x)\rightarrow \pi_1(Y,y)$, which can be easily proven that this satisfies functoriality axioms.
+\item For each $n\in \mathbb{Z}$, there are functors $Z_n, B_n, H_n:\mathsf{Ch}_R\rightarrow \mathsf{Mod}_R$\marginnote{$\mathsf{Ch}_R$ is the category of \textbf{chain complex}: a collection $(C_n)_{n\in \mathbb{Z}}$ of $R$-modules equipped with $R$-module homomorphisms $d:C_n\rightarrow C_{n-1}$ with $d^2=0$. The morphism $f_n:C_n\rightarrow C_n'$ satisfies $df_n=f_{n-1}d$ for all $n\in\mathbb{Z}$.} $Z_n$, called \textbf{$n$-cycles}, is defined as $Z_n C_{\bullet}=\ker(d:C_n\rightarrow C_{n-1})$; $B_n$, called \textbf{$n$-boundary}, is defined as $B_n C_{\bullet}=\mathrm{im}(d:C_{n+1}\rightarrow C_n)$, and $H_n$, called \textbf{$n$th homology}, is defined as $H_n C_{\bullet}=Z_n C_{\bullet}/B_n C_{\bullet}$. All these satisfies the functoriality axioms.
+\item We have a functor $F:\mathsf{Set}\rightarrow \mathsf{Group}$ which sends a set $X$ to the \textbf{free group} on $X$. Remember that the free groups can be defined by using the universal property: For a set $X$, we have unique free group $F(X)$ (up to isomorphism) which satisfies that for every group $G$ and function $f:X\rightarrow G$, there is a unique group homomorphism $\varphi:F(X)\rightarrow G$ which satisfies $\varphi \circ i=f$, where $i:X\rightarrow F(X)$ is the inclusion. This kind of definition repetitively appears when we say about free module. Indeed, this definition is the categorical definition of free objects, which will be seen later.
+\end{enumerate}
+\end{exmp}
+
+In the sense that the functor $F$ changes $c\rightarrow c'$ to $F(c)\rightarrow F(c')$, we can call this functor \textbf{covariant}. Also, we can define another kind of functor now.
+\begin{defn} A \textbf{contravariant functor} $F$ from $\mathsf{C}$ to $\mathsf{D}$ is a functor $F:\mathsf{C}^{\mathrm{op}}\rightarrow \mathsf{D}$.
+\end{defn}
+Due to the definition, contravariant functor satisfies:
+\begin{itemize}
+\item $F(c)\in \mathsf{D}$ for each object $c\in\mathsf{C}$;
+\item $F(f):F(c')\rightarrow F(c)\in \mathsf{D}$ for each morphism $f:c\rightarrow c'\in\mathsf{C}$,
+\end{itemize}
+and the functoriality axioms becomes:
+\begin{itemize}
+\item for any composable pair $f,g\in\mathsf{C}$, $F(f)\circ F(g)=F(g\circ f)$;
+\item for each object $c\in\mathsf{C}$, $F(1_c)=1_{F(c)}$.
+\end{itemize}
+\begin{exmp} Of course there are so many important covariant functors.
+\begin{enumerate}
+\item The functor $*:\mathsf{Vect}_{\mathbb{K}}^{\mathrm{op}}\rightarrow \mathsf{Vect}_{\mathbb{K}}$ which carries a vector space $V$ to its \textbf{dual space} $V^*=\textrm{Hom}(V,\mathbb{K})$ is a covariant functor. For the linear map $\phi:V\rightarrow W$, the functor gives the dual map $\phi^*:W^*\rightarrow V^*$, in the sense that for $f:W\rightarrow \mathbb{K}$ and $g:V\rightarrow \mathbb{K}$, $f\circ \phi=g$.
+\item The functor $\mathrm{Spec}:\mathsf{CRing}^{\mathrm{op}}\rightarrow \mathsf{Top}$ which carries a commutative ring $R$ to the set of prime ideals $\mathrm{Spec}(R)$ with Zariski topology is a covariant functor.\marginnote{The \textbf{Zariski topology} is the set of prime ideals $\mathrm{Spec}(R)$ whose closed sets are $V_I=\{P\in \mathrm{Spec}(R):I\subset P\}$ for all ideal $I$.} Consider a ring homomorphism $\phi:R\rightarrow S$ and prime ideal $P\subset S$. The inverse image $\phi^{-1}(P)\subset R$ is the prime ideal of $R$, and therefore the inverse image function $\phi^{-1}:\mathrm{Spec}(S)\rightarrow \mathrm{Spec}(R)$ is well defined; indeed it is easy to show that this is a continuous map.
+\item A \textbf{presheaf} is a functor $F:\mathsf{C}^{\mathrm{op}}\rightarrow \mathsf{Set}$. For example, take topological space $X$ and take a category $\mathcal{O}(X)$, the poset of open subsets of $X$. Since the poset has morphism $V\rightarrow U$ if $V\subset U$, we can see that the presheaf satisfies that if $V\subset U$, then we have a function $\mathrm{res}_{V,U}:F(U)\rightarrow F(V)$.\marginnote{The domain of functor does not needs to be $\mathsf{Set}$: $\mathsf{Ab}$ or $\mathsf{Ring}$ is also possible, but compositing forgetful functor we get same result. For the example of presheaf, we think the functor $F$ so that $F(U)$ is the ring of bounded functions on $U$. If $V\subset U$ then we take the ring homomorphism $\mathrm{res}_{V,U}:F(U)\rightarrow F(V)$ satisfying $\mathrm{res}_{V,U}(f)=f|_{V}$, which shows that $F$ is presheaf. If $F$ satisfies some more conditions, we call $F$ \textit{sheaf}, which will be discussed later.}
+\end{enumerate}
+\end{exmp}
+Now we have a very simple lemma.
+\begin{lemma} Functors preserve isomorphisms.
+\end{lemma}
+\begin{proof} Consider $F:\mathsf{C}\rightarrow \mathsf{D}$ a functor and $f:x\rightarrow y$ an isomorphism in $\mathsf{C}$ with inverse $g:y\rightarrow x$. Then we have
+\begin{equation}
+F(g)F(f)=F(gf)=F(1_x)=1_{F(x)}
+\end{equation}
+and similar for inverse, thus $F(f)$ is isomorphism.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

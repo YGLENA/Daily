@@ -1,0 +1,39 @@
+\mytitle{An introduction to homological algebra}
+\begin{prop} For a two chain complexes $C,D$ and maps $s_n:C_n\rightarrow D_{n+1}$. Define $f_n:C_n\rightarrow D_n$ defined as $f_n=d_{n+1}\circ s_n+s_{n-1}\circ d_n$.
+\begin{equation}
+\begin{tikzcd}
+C_{n+1}\arrow{r}{d} &C_n\arrow{r}{d}\arrow{d}{f}\arrow{ld}{s} & C_{n-1}\arrow{ld}{s}\\
+D_{n+1}\arrow{r}{d} &D_n\arrow{r}{d}& D_{n-1}
+\end{tikzcd}
+\end{equation}
+Then $f$ is a chain map from $C$ to $D$.
+\end{prop}
+\begin{proof} Direct calculation shows $d\circ f=d\circ (d\circ s+s\circ d)=d\circ s\circ d=(d\circ s+s\circ d)\circ d=f\circ d$.
+\end{proof}
+
+\begin{defn} A chain map $f:C\rightarrow D$ is \textbf{null homotopic} if there are maps $s_n:C_n\rightarrow D_{n+1}$ such that $f=d\circ s+s\circ d$. The maps $\{s_n\}$ are called a \textbf{chain construction} of $f$.
+\end{defn}
+
+\begin{exer} Show that $C$ is a split exact chain complex if and only if the identity map on $C$ is null homotopic.
+\end{exer}
+\begin{solution} Suppose that $C$ is a split exact chain complex. Choose $s_n:C_n\rightarrow C_{n+1}$ as the split maps. From previous exercise, we may decompose $C_n$ into $Z_n\oplus B'_n\simeq B_n\oplus B_n'$. The structure of $d$ and $s$ map can be drawn as below.
+\begin{equation}
+\begin{tikzcd}
+C_{n+1}\arrow{d}{d}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n+1}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ld}{0}&B'_{n+1}\arrow{ld}{\simeq}\\
+C_{n}\arrow{d}{d}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ld}{0}&B'_{n}\arrow{ld}{\simeq}\\
+C_{n-1}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n-1}\arrow[white, dash]{r}[black,description]{\bigoplus}&B'_{n-1}\\
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\begin{tikzcd}
+C_{n+1}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n+1}\arrow[white, dash]{r}[black,description]{\bigoplus}&B'_{n+1}\\
+C_{n}\arrow{u}{s}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ur}{\simeq}&B'_{n}\arrow[ull, crossing over,"0"]\\
+C_{n-1}\arrow{u}{s}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n-1}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ur}{\simeq}&B'_{n-1}\arrow[ull, crossing over,"0"]\\
+\end{tikzcd}
+\end{equation}
+Thus $d\circ s$ is the projection on $B_n$ and $s\circ d$ is the projection on $B'_n$. This shows that $d\circ s+s\circ d$ is identity.
+
+Now suppose that the identity map on $C$ is null homotopic, that is, we have the maps $s_n:C_n\rightarrow C_{n+1}$ such that $d\circ s+s\circ d=1$. Then $d=d\circ s\circ d+s\circ d\circ d=d\circ s\circ d$, thus $s_n$ are splitting maps.
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

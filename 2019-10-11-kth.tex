@@ -1,0 +1,39 @@
+\mytitle{K-Theory}
+\begin{defn} An \textbf{inner product} on a vector bundle $p:E\rightarrow B$ is a map $\langle ,\rangle:E\oplus E\rightarrow \mathbb{R}$ which restricts in each fiber to an inner product.\marginnote{The \textbf{inner product} on vector space is a positive definite symmetric bilinear form.}
+\end{defn}
+
+\begin{prop} For a vector bundle $p:E\rightarrow B$, an inner product exists if $B$ is compact Hausdorff, or more generally, paracompact.\marginnote{A space $X$ is \textbf{paracompact} if it is Hausdorff and every open cover of $X$ has a \textbf{subordinate partition of unity}: a collection of maps $\phi_\beta:X\rightarrow I=[0,1]$, each supported in some set of the open cover, and with $\sum_\beta \phi_\beta=1$, only finitely many of the $\phi_\beta$ is nonzero near each point of $X$. Since Hausdorff compact set is normal, using Urysohn's Lemma, we can construct those functions when $X$ is compact Hausdorff.}
+\end{prop}
+\begin{proof}
+To pull back the standard inner product in $\mathbb{R}^n$ to the inner product $\langle,\rangle$ continuously, we need to use the local trivialization $h_\alpha:p^{-1}(U_\alpha)\rightarrow U_\alpha\times \mathbb{R}^n$. Now set $\langle v,w\rangle=\sum_\beta \phi_\beta\circ p(v) \langle v,w\rangle_{\beta}$.
+\end{proof}
+
+\begin{defn} A \textbf{vector subbundle} of a vector bundle $p:E\rightarrow B$ is a subspace $E_0\subset E$ intersecting each fiber of $E$ in a vector subspace, such that the restriction $p|_{E_0}:E_0\rightarrow B$ is a vector bundle. 
+\end{defn}
+
+\begin{prop} If $E\rightarrow B$ is a vector bundle over a paracompact space $B$, and $E_0\subset E$ is a vector subbundle, then there is a vector subbundle $E_0^\perp\subset E$ such that $E_0\oplus E_0^\perp\simeq E$.
+\end{prop}
+\begin{proof}
+Let $E_0^\perp$ is the subspace of $E$ where in each fiber consists of all vectors orthogonal to vectors in $E_0$. Now our claim is that $E_0^\perp\rightarrow B$ is a vector bundle, so that we can take a continuous map $E_0\oplus E_0^\perp \rightarrow E$, taking fibers to fibers by linear isomorphism, as $(v,w)\mapsto (v+w)$.
+To show the local triviality, notice that we may consider $E=B\times \mathbb{R}^n$, the trivial bundle, since the question is local. If we let $E_0$ an $m$-dimensional vector bundle, then it has $m$ independent local sections near each points $b_0\in B$. Now on $p^{-1}(b_0)$, we may take vectors $s_{m+1}(b_0),\cdots,s_n(b_0)$ which makes the set of vectors $\{s_i(b_0)\}$ independent. Take sections $s_{m+1},\cdots,s_n$ as the constant function still makes the set $\{s_1(b),\cdots,s_m(b)\}$ independent for all $b$ near $b_0$, due to the continuity of determinant. Now using the Gram-Schmidt process, orthogonalize the sections to $\{s_i'\}$. This is possible since the inner product is well defined, and all those sections are continuous since the inner product is continuous. Also, first $m$ sections of $\{s_i'\}$ are the basis of $E_0$ in each fiber. Now we define a local trivialization $h:p^{-1}(U)\rightarrow U\times \mathbb{R}^n$ with $h(b,s_i'(b))$ equal to the $i$-th standard basis vector of $\mathbb{R}^n$. Now this $h$ carries $E_0$ to $U\times \mathbb{R}^m$ and $E_0^\perp$ to $U\times \mathbb{R}^{n-m}$, so $h|_{E_0^\perp}$ is a local trivialization of $E_0^\perp$.
+\end{proof}
+
+\begin{cor} For all vector bundles with an inner product, we can always choose isometric local trivializations.
+\end{cor}
+\begin{proof}
+From previous proposition, take $E_0=E$. Then the last statement of the proof gives that the given local trivialization is isometric.
+\end{proof}
+
+\begin{prop} For each vector bundle $p:E\rightarrow B$ where $B$ a compact Hausdorff, there is a vector bundle $E'\rightarrow B$ such that $E\oplus E'$ is the trivial bundle.
+\end{prop}
+\begin{proof}
+For each $x\in B$, there is a neighborhood $U_x$ over which $E$ is trivial. By Urysohn's Lemma, there is a map $\phi_x:B\rightarrow [0,1]$ that is $0$ outside $U_x$ and nonzero at $x$. Letting $x$ vary, the sets $\phi_x^{-1}(0,1]$ form an open cover of $B$, and by compactness we can choose a finite subcover, labeled as $U_i$ and $\phi_i$. Now define $g_i:E\rightarrow \mathbb{R}^n$ by
+\begin{equation}
+g_i(v)=\phi_i(p(v))(\pi_i \circ h_i(v))
+\end{equation}
+where $\pi_i$ is a projection of $U_i\times \mathbb{R}^n$ to $\mathbb{R}^n$ and $h_i$ is a local trivialization $h_i:p^{-1}(U_i)\rightarrow U_i\times \mathbb{R}^n$. Then $g_i$ is a linear injection on each fiber over $\phi_i^{-1}(0,1]$. We define $g:E\rightarrow \mathbb{R}^N$ as the product of maps $g_i:E\rightarrow \mathbb{R}^n$, then $g$ is a linear injection on each fiber.
+
+Now define $f:E\rightarrow B\times \mathbb{R}^N$ as $(p,g)$. Then the image of $f$ is a subbundle of the product $B\times \mathbb{R}^N$, since the projection on $\mathbb{R}^N$ onto the $i$-th $\mathbb{R}^n$ factor gives the second coordinate of a local trivialization over $\phi_i^{-1}(0,1]$. Thus we have $E$ isomorphic to a subbundle of $B\times \mathbb{R}^N$, so by the preceding proposition, there is a complementary subbundle $E'$ with $E\oplus E'$ isomorphic to $B\times \mathbb{R}^N$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

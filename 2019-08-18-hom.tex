@@ -1,0 +1,41 @@
+\mytitle{An introduction to homological algebra}
+\begin{exer} Show that the composite
+\begin{equation}
+H_n(D)\simeq H_n(\textrm{cone}(f))\xrightarrow{-\delta_*}H_n(B[-1])\simeq H_{n-1}(B)
+\end{equation}
+is the connecting homomorphism $\partial$ in the homology long exact sequence for
+\begin{equation}
+0\rightarrow B\rightarrow C\rightarrow D\rightarrow 0
+\end{equation}
+\end{exer}
+\begin{solution} The result is obvious due to the result of previous proposition and lemma.
+\end{solution}
+
+\begin{exer} Show that there is a quasi-isomorphism $B[-1]\rightarrow \textrm{cone}(g)$ dual to $\phi$. Then dualize the previous exercise, by showing that the composite
+\begin{equation}
+H_n(D)\xrightarrow{\partial} H_{n-1}(B)\xrightarrow{\simeq} H_n(\textrm{cone}(g))
+\end{equation}
+is the usual map induced by the inclusion of $D$ in $\textrm{cone}(g)$.
+\end{exer}
+\begin{solution} This is basically the dual version of previous statements.	
+\end{solution}
+
+\begin{exer} Given a map $f:B\rightarrow C$ of complexes, let $v$ denote the inclusion of $C$ into $\textrm{cone}(f)$. Show that there is a chain homotopy equivalence $\textrm{cone}(v)\rightarrow B[-1]$. This equivalence is the algebraic analogue of the topological fact that for any map $f:K\rightarrow L$ of (topological) cell complexes the cone of the inclusion $L\hookrightarrow Cf$ is homotopy equivalent to the suspension of $K$.
+\end{exer}
+\begin{solution} First notice that $\textrm{cone}(v)_n=C_{n-1}\oplus \textrm{cone}(f)_n=C_{n-1}\oplus B_{n-1}\oplus C_n$ with differential operator $d(c_{n-1},b_{n-1},c_n)=(-d(c_{n-1}),d(b_{n-1},c_n)-v(c_{n-1}))=(-d(c_{n-1}),-d(b_{n-1}),d(c_n)-f(b_{n-1})-c_{n-1})$. Now consider $\psi:\textrm{cone}(v)\rightarrow B[-1]$ defined as $\psi(c_{n-1},b_{n-1},c_n)=(-1)^n b_{n-1}$ and $\phi:B[-1]\rightarrow \textrm{cone}(v)$ defined as $\phi(b_{n-1})=((-1)^{n-1} f(b_{n-1}), (-1)^n b_{n-1},0)$. Then $\psi\circ \phi=1$ and $\phi\circ \psi(c_{n-1},b_{n-1},c_n)=\phi((-1)^n b_{n-1})=(-f(b_{n-1}),b_{n-1},0)=(d(c_n),0,c_n)+(-d(c_n)+f(b_{n-1})+c_{n-1},0,0)=d(-c_n,0,0)+s(-d(c_{n-1}),-d(b_{n-1}),d(c_n)-f(b_{n-1})-c_{n-1})=(d\circ s+s\circ d)(c_{n-1},b_{n-1},c_n)$ with $s(c_{n-1},b_{n-1},c_n)=(-c_n,0,0)$.
+\end{solution}
+
+\begin{exer} Let $f:B\rightarrow C$ be a morphism of chain complexes. Show that the natural maps $\Ker(f)[-1]\xrightarrow{\partial} \textrm{cone}(f)\xrightarrow{\beta} \Coker(f)$ give rise to a long exact sequence:
+\begin{equation}
+\cdots\xrightarrow{\partial} H_{n-1}(\Ker(f))\xrightarrow{\alpha} H_n(\textrm{cone}(f))\xrightarrow{\beta} H_n(\Coker(f))\xrightarrow{\partial} H_{n-2}(\Ker(f))\xrightarrow{\alpha}\cdots
+\end{equation}
+\end{exer}
+\begin{solution}
+\end{solution}
+
+\begin{exer} Let $C$ and $C'$ be split complexes, with splitting maps $s,s'$. If $f:C\rightarrow C'$ is a morphism, show that $\sigma(c,c')=(-s(c),s'(c')-s'\circ f\circ s(c))$ defines a splitting of $\textrm{cone}(f)$ if and only if the map $f_*:H_*(C)\rightarrow H_*(C')$ is zero.
+\end{exer}
+\begin{solution}
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

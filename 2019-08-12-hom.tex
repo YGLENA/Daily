@@ -1,0 +1,46 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn} Two chain maps $f,g:C\rightarrow D$ are \textbf{chain homotopic} if $f-g$ is null homotopic, that is, if there are maps $s_n:C_n\rightarrow D_{n+1}$ such that $f-g=d\circ s+s\circ d$. The maps $s_n$ are called a \textbf{chain homotopy} from $f$ to $g$.
+\end{defn}
+
+\begin{defn} For a chain map $f:C\rightarrow D$, $f$ is called a \textbf{chain homotopy equivalence} if there is a chain map $g:D\rightarrow C$ such that $g\circ f$ is chain homotopic to $1_C$ and $f\circ g$ is chain homotopic to $1_D$.\marginnote{The term homotopy comes from the following fact. For a map $f:X\rightarrow Y$ between topological spaces, there is a induced chain map $f_*:S(X)\rightarrow S(Y)$ between the corresponding singular chain complexes. If $f$ is topologically null homotopic, then $f_*$ is null homotopic; if $f$ is a homotopy equivalence, then $f_*$ is a chain homotopy equivalence; if $f$ and another map $g:X\rightarrow Y$ are topologically homotopic, then $f_*$ and $g_*$ are chain homotopic.}
+\end{defn}
+
+\begin{lemma} If a chain map $f:C\rightarrow D$ is null homotopic, then every map $f_*:H_n(C)\rightarrow H_n(D)$ is zero. If $f$ and $g$ are chain homotopic, then they induce the same maps $f_*=g_*:H_n(C)\rightarrow H_n(D)$.
+\end{lemma}
+\begin{proof}
+The first statement shows the second statement directly.
+
+Suppose that $f=s\circ d+d\circ s$ for some $s:C_n\rightarrow D_{n+1}$. Consider an $n$-cycle $c\in C_n$. Then $f(c)=s\circ d(c)+d\circ s(c)=d\circ s(c)$, thus $f(c)$ is the boundary in $D$. Hence $f_*(c)=0$.
+\end{proof}
+
+\begin{exer} Consider the homology $H_n(C)$ of $C$ as a chain complex with zero differentials. Show that if the complex $C$ is split, then there is a chain homotopy equivalence between $C_\bullet$ and $H_\bullet(C)$. Conversely, if $C_\bullet$ and $H_\bullet(C)$ are chain homotopy equivalent, show that C is split.
+\end{exer}
+\begin{solution} Suppose that $C$ is split. Then by previous exercise, we can take the chain map $f:C_\bullet\rightarrow H_\bullet(C)$ as the projection map and $g:H_\bullet(C)\rightarrow C_\bullet$ as the inclusion map: more precisely, $f=1_C-s\circ d-d\circ s$ for splitting map $s$. Then $f\circ g$ is identity map itself. Also, $f\circ g-1_C=s\circ d+d\circ s$, thus $f$ and $g$ are chain homotopy equivalences.
+
+Now suppose that $C_\bullet$ and $H_\bullet(C)$ are chain homotopy equivalent, that is, take $f:C_\bullet\rightarrow H_\bullet(C)$ and $g:H_\bullet(C)\rightarrow C_\bullet$ such that $f\circ g$ and $g\circ f$ are homotopic to identities. since $g$ is a chain map, $d\circ g=0$. Also we may take maps $s_n:C_n\rightarrow C_{n+1}$ such that $1-g\circ f=s\circ d+d\circ s$. Then,
+\begin{equation}
+d\circ s\circ d=d(s\circ d+d\circ s)=d(1-g\circ f)=d-d\circ g\circ f=d
+\end{equation}
+therefore $s$ is a splitting map.
+\end{solution}
+
+\begin{exer} In this exercise we shall show that the chain homotopy classes of maps form a quotient category $\mathsf{K}$ of the category $\mathsf{Ch}$ of all chain complexes. The homology functors $H_n$ on $\mathsf{Ch}$ will factor through the quotient functor $\mathsf{Ch}\rightarrow \mathsf{K}$.
+\begin{enumerate}
+\item Show that chain homotopy equivalences is an equivalence relation on the set of all chain maps from $C$ to $D$. Let $\textrm{Hom}_{\mathsf{K}}(C,D)$ denote the equivalence classes of such maps. Show that $\textrm{Hom}_{\mathsf{K}}(C,D)$ is an abelian group.
+\item Let $f$ and $g$ be chain homotopic maps from $C$ to $D$. If $u:B\rightarrow C$ and $v:D\rightarrow E$ are chain maps, show that $v\circ f\circ u$ and $v\circ g\circ u$ are chain homotopic. Deduce that there is a category $\mathsf{K}$ whose objects are chain complexes and whose morphisms are given in 1.
+\item Let $f_0,f_1,f_0$ and $g_1$ be chain maps from $C$ to $D$ such that $f_i$ is chain homotopic to $g_i$ for $i=1,2$. Show that $f_0+f_1$ is chain homotopic to $g_0+g_1$. Deduce that $\mathsf{K}$ is an additive category, and that $\mathsf{Ch}\rightarrow \mathsf{K}$ is an additive functor.
+\item Is $\mathsf{K}$ an abelian category? Explain.
+\end{enumerate}
+\end{exer}
+\begin{solution}
+\begin{enumerate}
+\item For two chain maps $f,g:C\rightarrow D$, we say $f\sim g$ if $f-g=d\circ s+s\circ d$ for some maps $s_n:C_n\rightarrow D_{n+1}$. To show that $\sim$ is an equivalent relation, notice that $f\sim f$ by zero maps $0_n:C_n\rightarrow D_{n+1}$, and $f\sim g$ by $s_n$ implies $g\sim f$ by $-s_n$. Finally, suppose that $f\sim g$ by $s_n$ and $g\sim h$ by $t_n$. Then $f\sim h$ by $s_n+t_n$, since $f-h=(f-g)+(g-h)=(d\circ s+s\circ d)+(d\circ t+t\circ d)=d\circ(s+t)+(s+t)\circ d$.
+
+Now for the equivalence classes $[f],[g]\in\textrm{Hom}_{\mathsf{K}}(C,D)$, define $[f]+[g]=[f+g]$. This definition is well defined, since if $f\sim f'$ by $s_n$ and $g\sim g'$ by $t_n$ then $f+g\sim f'+g'$ by $s_n+t_n$. Now we can see that this addition is associative, and the zero map $[0]$ is identity and $[-f]=-[f]$. This gives the result.
+\item Suppose that $f$ and $g$ are chain homotopic with $s_n$. Then $f-g=d\circ s+s\circ d$. Now since $v\circ f\circ u-v\circ g\circ u=v\circ (f-g)\circ u=v\circ (d\circ s+s\circ d)\circ u=d\circ (v\circ s\circ u)+(v\circ s\circ u)\circ d$ since $u,v$ are chain maps, $v\circ f\circ u$ and $v\circ g\circ u$ are chain homotopic by $v\circ s\circ u$. Now define $[g]\circ[f]=[g\circ f]$. This definition is well defined, since if $f\sim f':C\rightarrow D$ by $s_n$ and $g\sim g':D\rightarrow E$ by $t$, then $g'\circ f'\sim g\circ f$ since $g'\circ f'-g\circ f=(g'\circ f'-g'\circ f)+(g'\circ f-g\circ f)=g'\circ(d\circ s+s\circ d)+(d\circ t+t\circ d)\circ f=d\circ (g'\circ s+t\circ f)+(g'\circ s+t\circ f)\circ d$. Therefore the identity map $1$ gives $[1]\circ [f]=[f]$ and $([h]\circ [g])\circ [f]=[h\circ g]\circ [f]=[(h\circ g)\circ f]=[h\circ (g\circ f)]=[h]\circ([g\circ f])$. Thus $\mathsf{K}$ is a category.
+\item This is shown in 1., and this shows $\mathsf{K}$ is an $\mathsf{Ab}$-category. Since the objects of $\mathsf{K}$ and $\mathsf{Ch}$ are same, $\mathsf{K}$ is an additive category: the zero objects are zero object, and the product is contained. Also, $[f+g]=[f]+[g]$ implies that $[\bullet]:\mathsf{Ch}\rightarrow \mathsf{K}$ is an additive functor.
+\item No. Consider the chain map $f$ between two chain complexes $\cdots\rightarrow 0\rightarrow \mathbb{Z}/4\rightarrow 0\rightarrow \cdots$ and $\cdots\rightarrow 0\rightarrow \mathbb{Z}/2\rightarrow 0\rightarrow \cdots$ defined by natural map $\mathbb{Z}/4\rightarrow \mathbb{Z}/2$. TBD
+\end{enumerate}
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

@@ -1,0 +1,54 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn} Let $F:\mathsf{A}\rightarrow \mathsf{B}$ be a right exact functor between two abelian categories. If $\mathsf{A}$ has enough projectives, then we define the \textbf{left derived functors} $L_i F$ for $i\geq 0$ of $F$ as, for an object $A\in \mathsf{A}$, choose a projective resolution $P\rightarrow A$ and define\marginnote{ Since $F$ is right exact, $F(P_1)\rightarrow F(P_0)\rightarrow F(A)\rightarrow 0$ is exact, thus $L_0 F(A)\simeq F(A)$.}
+\begin{equation}
+L_i F(A)=H_i(F(P))
+\end{equation}
+\end{defn}
+
+\begin{lemma} The objects $L_i F(A)$ of $\mathsf{B}$ are well defined up to natural isomorphisms. That is, if $Q\rightarrow A$ is another projective resolution, then there is a canonical isomorphism
+\begin{equation}
+L_iF(A)=H_i(F(P))\simeq H_i(F(Q))
+\end{equation}
+In particular, a different choice of the projective resolutions would yield new functors $\hat{L}_i F$, which are naturally isomorphic to the functors $L_i F$.
+\end{lemma}
+\begin{proof}
+Due to the comparison theorem, there is a chain map $f:P\rightarrow Q$ lifting the identity map $1_A$, which gives a map $f_*:H_i F(P)\rightarrow H_i F(Q)$. Due to the uniqueness of the map $f$ up to chain homotopy equivalence, $f_*$ is canonical. Samely, there is a chain map $g:Q\rightarrow P$ lifting $1_A$, and corresponding map $g_*:H_i F(Q)\rightarrow H_i F(P)$. Since $g\circ f$ and $1_P$ are both chain maps $P\rightarrow P$ lifting $1_A$, and due to the uniqueness, we have $g_*\circ f_*=1_{H_i F(P)}$. Samely, $f_*\circ g_*=1_{H_i F(Q)}$. Thus $f_*,g_*$ are isomorphisms.
+\end{proof}
+
+\begin{cor} If $A$ is projective, the $L_i F(A)=0$ for $i\neq 0$.
+\end{cor}
+\begin{proof}
+Consider the projective resolution $\cdots\xrightarrow{1_A} A\xrightarrow{0} A\xrightarrow{1_A} A\rightarrow 0$. This gives $L_i F(A)=0$ for $i\neq 0$.
+\end{proof}
+
+\begin{defn} Let $F:\mathsf{A}\rightarrow \mathsf{B}$ be a right exact functor between abelian categories. Then an object $Q\in \mathsf{A}$ is \textbf{$F$-acyclic} if $L_i F(Q)=0$ for all $i\neq 0$. For an object $A\in \mathsf{A}$, a left resolution $Q\rightarrow A$ for which each $Q_i$ is $F$-acyclic is an \textbf{$F$-acyclic resolution}.
+\end{defn}
+
+\begin{lemma} If $f:A'\rightarrow A$ is any map in $\mathsf{A}$, then there is a natural map $L_i F(f):L_i F(A')\rightarrow L_i F(A)$ for each $i$.
+\end{lemma}
+\begin{proof}
+Let $P'\rightarrow A'$ and $P\rightarrow A$ be the projective resolutions. Then the comparison theorem gives a lift of $f$ to a chain map $\tilde{f}:P'\rightarrow P$, hence a map $L_i F(f)\coloneqq \tilde{f}_*:H_i F(P')\rightarrow H_i F(P)$, which is independent of the choice of $\tilde{f}$.
+\end{proof}
+
+\begin{exer} Show that $L_0 F(f)=F(f)$ under the identification $L_0 F(A)\simeq F(A)$.
+\end{exer}
+\begin{proof}
+$L_0 F(f):L_0 F(A')\rightarrow L_0 F(A)\simeq F(A')\rightarrow F(A)$, since the lifting of $f$ should satisfy the commutativity of the diagram, which takes kernel to kernel.
+\end{proof}
+
+\begin{thm} Each $L_i F:\mathsf{A}\rightarrow \mathsf{B}$ is an additive functor.
+\end{thm}
+\begin{proof}
+First the identity map on $P$ lifts the identity on $A$, thus $L_i F(1_A)$ is the identity map. Now consider the maps $A'\xrightarrow{f} A\xrightarrow{g} A''$ and chain maps $\tilde{f},\tilde{g}$ lifting $f,g$ respectively. Then $\tilde{g}\circ \tilde{f}$ lifts $g\circ f$, thus $g_*\circ f_*=(g\circ f)_*$, and so $L_i F$ is a functor. Finally, if $f_1,f_2:A'\rightarrow A$ are two maps with lifts $\tilde{f}_1,\tilde{f}_2$ respectively, then the sum $\tilde{f}_1+\tilde{f}_2$ lifts $f_1+f_2$, thus $f_{1*}+f_{2*}=(f_1+f_2)_*$, thus $L_i F$ is additive.
+\end{proof}
+
+\begin{exer} If $U:\mathsf{B}\rightarrow \mathsf{C}$ is an exact functor, then show that $U(L_i F)\simeq L_i(U\circ F)$.
+\end{exer}
+\begin{solution} For an object $A$, choose a projective resolution $P$, then
+\begin{equation}
+L_i(U\circ F)(A)=H_i(U\circ F(P)), \quad U(L_i F)(A)=U(H_i(F(P)))
+\end{equation}
+Thus what we need to show is that if there is a chain complex $B$, then there is an isomorphism between $H_i(U(B))$ and $U(H_i(B))$. Now, consider the exact sequence $0\rightarrow B_i(B)\xrightarrow{r} Z_i(B)\xrightarrow{q} H_i(B)\rightarrow 0$. Taking the exact functor $U$ gives an exact sequence $0\rightarrow U(B_i(B))\xrightarrow{U(r)} U(Z_i(B))\xrightarrow{U(q)} U(H_i(B))\rightarrow 0$, thus $U(H_i(B))\simeq U(Z_i(B))/U(B_i(B))$ with $B_i(U(B))\simeq U(B_i(B))$ and $Z_i(U(B))\simeq U(Z_i(B))$. This shows the desired result.
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

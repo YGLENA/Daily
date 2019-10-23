@@ -1,0 +1,80 @@
+\mytitle{Functional Analysis}
+\begin{defn} A \textbf{functional} is a function $f:E\rightarrow \mathbb{R}$, where $E$ is a vector space over $\mathbb{R}$. A functional $f$ is \textbf{linear} if $f(v+w)=f(v)+f(w)$ and $f(\alpha v)=\alpha f(v)$.
+\end{defn}
+
+\begin{defn} A functional $f:E\rightarrow \mathbb{R}$ is a \textbf{Minkowski functional} if 
+\begin{enumerate}
+\item $f(\lambda x)=\lambda f(x)$, for all $x\in E$ and $\lambda>0$;
+\item $f(x+y)\leq f(x)+f(y)$, for all $x,y\in E$
+\end{enumerate}
+\end{defn}
+
+\begin{thm}[Analytic form of Hahn-Banach Theorem] Let $E$ be a vector space over $\mathbb{R}$. Let $p:E\rightarrow \mathbb{R}$ be a Minkowski functional. Let $G\subset E$ be a linear subspace and $g:G\rightarrow \mathbb{R}$ be a linear functional such that
+\begin{equation}
+g(x)\leq p(x),\quad \forall x\in G
+\end{equation}
+Then there is a linear functional $f:E\rightarrow \mathbb{R}$ which extends $g$, that is, $g(x)=f(x)$ for all $x\in G$, and such that
+\begin{equation}
+f(x)\leq p(x),\quad \forall x\in E
+\end{equation}
+\end{thm}
+\begin{proof}
+Consider the set
+\begin{equation}
+P=\left\lbrace h:D(h)\subset E\rightarrow \mathbb{R} \;\middle|\;
+  \begin{tabular}{@{}l@{}}
+    $D(h)$ is a linear subspace of $E$,\\
+    $h$ is linear, $G\subset D(h)$,\\
+    $h$ extends $g$, and $h(x)\leq p(x),\forall x\in D(h)$
+   \end{tabular}
+  \right\rbrace
+\end{equation}
+We define the order relation on $P$ as $h_1\leq h_2$ if and only if $D(h_1)\subset D(h_2)$ and $h_2$ extends $h_1$. Since $g\in P$, $P$ is nonempty. Let $Q=\{h_i\}_{i\in I}$ be a totally ordered subset. Define $D(h)=\cup_{i\in I}D(h_i)$ and $h(x)=h_i(x)$ if $x\in D(h_i)$ for some $i\in I$. Since $Q$ is totally ordered, $h$ is well defined. Also $h\in P$, and $h$ is an upper bound of $Q$. Thus $P$ is inductive, and we can apply Zorn's lemma.\marginnote{\begin{lemma}[Zorn's lemma] Every nonempty ordered inductive set has a maximal element.\end{lemma}} Take a maximal element $f\in P$. If we show that $D(f)=E$, then the theorem is proven.
+
+Suppose not, and choose $x_0\in E-D(f)$. Set $D(h)=D(f)+\mathbb{R}x_0$, and $h(x+tx_0)=f(x)+t\alpha$ for all $x\in D(f)$ and $t\in \mathbb{R}$. Here, we choose $\alpha\in \mathbb{R}$ to make $h\in P$. Then we must ensure that
+\begin{equation}
+f(x)+t\alpha\leq p(x+tx_0),\quad \forall x\in D(f),\forall t\in \mathbb{R}
+\end{equation}
+But since $p$ is Minkowski, we only need to check
+\begin{equation}
+\begin{cases}
+f(x)+\alpha \leq p(x+x_0),\quad \forall x\in D(f)\\
+f(x)-\alpha\leq p(x-x_0),\quad \forall x\in D(f)
+\end{cases}
+\end{equation}
+Thus we may find
+\begin{equation}
+\sup_{y\in D(f)}\{f(y)-p(y-x_0)\}\leq \alpha\leq \inf_{x\in D(f)} \{p(x-x_0)-f(x)\}
+\end{equation}
+But since
+\begin{equation}
+f(x)+f(y)\leq p(x+y)\leq p(x+x_0)+p(y-x_0)
+\end{equation}
+thus
+\begin{equation}
+f(y)-p(y-x_0)\leq p(x+x_0)-f(x), \quad \forall x\in D(f),\forall y\in D(f)
+\end{equation}
+and so we can choose such $\alpha$. Finally $f\leq h$, but since $f$ is maximal and $f\neq h$, this is contradiction.
+\end{proof}
+
+\begin{defn} For a vector space $E$ on $\mathbb{R}$, the \textbf{dual space} $E^*$ is the space of all continuous linear functionals on $E$. If $E$ is a normed vector space, then the (dual) norm on $E^*$ is defined as
+\begin{equation}
+\|f\|_{E^*}=\sup_{\|x\|\leq 1, x\in E}|f(x)|
+\end{equation}
+Given $f\in E^*$ and $x\in E$, we write $\langle f,x\rangle=f(x)$, in the sense that $\langle,\rangle$ is the \textbf{scalar product} for the duality $E^*,E$.\marginnote{It is well known that $E^*$ is Banach space even if $E$ is not, because $\mathbb{R}$ is complete.}
+\end{defn}
+
+\begin{cor} Let $G$ be a linear subspace of $E$. If $g:G\rightarrow \mathbb{R}$ is a continuous linear functional, then there is $f\in E^*$ that extends $g$ and
+\begin{equation}
+\|f\|_{E^*}=\|g\|_{G^*}
+\end{equation}
+\end{cor}
+\begin{proof}
+Use the Hahn-Banach theorem with $p(x)=\|g\|\|x\|$\marginnote{The continuity does not changes the result of Hahn-Banach theorem, as we can see in the proof.}, then we get $f\in E^*$ such that $f(x)\leq \|g\|\|x\|$, thus $\|f\|\leq \|g\|$. However since $f|_G=g$, $\|g\|\leq \|f\|$, thus $\|f\|=\|g\|$.
+\end{proof}
+\begin{cor} For every $x_0\in E$, there is $f_0\in E^*$ such that $\|f_0\|=\|x_0\|$ and $\langle f_0,x_0\rangle=\|x_0\|^2$.
+\end{cor}
+\begin{proof} From the previous Corollary, take $G=\mathbb{R}x_0$ and $g(tx_0)=t\|x_0\|^2$. Then $\|g\|_{G^*}=\|x_0\|$. Now we can take $f_0\in E^*$ such that $\|f_0\|_{E^*}=\|x_0\|$. Also, since $f$ extends $g$, $\langle f_0,x_0\rangle=\langle g,x_0\rangle=\|x_0\|^2$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

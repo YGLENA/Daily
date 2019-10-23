@@ -1,0 +1,105 @@
+\mytitle{K-Theory}
+\begin{defn} An \textbf{$n$-dimensional vector bundle} is a map $p:E\rightarrow B$ with a real vector space structure on $p^{-1}(b)$ for each $b\in B$, such that the following \textbf{local triviality condition} is satisfied: there is an open cover $\{U_\alpha\}$ of $B$ for each of which there exists a homeomorphism $h_\alpha:p^{-1}(U_\alpha)\rightarrow U_\alpha \times \mathbb{R}^n$, whose restriction $h_\alpha|_{p^{-1}(b)}:p^{-1}(b)\rightarrow \{b\}\times \mathbb{R}^n$ is a homeomorphism for all $b\in U_\alpha$. We call $h_\alpha$ a \textbf{local trivialization}, $B$ the \textbf{base space}, $E$ the \textbf{total space}, and $p^{-1}(b)$ the \textbf{fibers}.\marginnote{We often abbreviate terminology by just calling $E$ as the vector bundle.}
+
+If $\mathbb{R}$ is changed to $\mathbb{C}$, then we call $p:E\rightarrow B$ a \textbf{complex vector bundle}.
+\end{defn}
+
+\begin{exmp}
+\begin{enumerate}
+\item The space $E=B\times \mathbb{R}^n$ with $p:E\rightarrow B$ the projection onto the first factor is \textbf{product bundle} or \textbf{trivial bundle}. The local trivialization is $p$ itself.
+\item Let $E$ be the quotient space of $I\times \mathbb{R}$ with identifications $(0,t)\approx (1,-t)$. Then the projection map $p:I\times \mathbb{R}\rightarrow I$ induces a map $p:E\rightarrow S^1$, which is a 1-dimensional vector bundle, in other words, \textbf{line bundle}. We call $E$ the \textbf{M{\"o}bius bundle}. For the local trivializations, choose any open connected proper subset containing $i\in I$.
+\item For the unit sphere $S^n$ in $\mathbb{R}^{n+1}$, consider $E=\{(x,v)\in S^n\times \mathbb{R}^{n+1}:x\perp v\}$. By translation, we can think $v$ as a tangent vector of $S^n$. Then the \textbf{tangent bundle} of the unit sphere is $p:E\rightarrow S^n$ defined as $p(x,v)=x$. For the local trivializations, for $x\in S^n$ let $U_x$ be the open hemisphere containing $x$ and bounded by the hyperplane through the origin orthogonal to $x$. Now define $h_:p^{-1}(U_x)\rightarrow U_x\times p^{-1}(x)\simeq U_x\times \mathbb{R}^n$ as $h_x(y,v)=(y,\pi_x(v))$, where $\pi_x$ is the projection onto the hyperplane $p^{-1}(x)$.
+\item For the unit sphere $S^n$ in $\mathbb{R}^{n+1}$, consider $E=\{(x,v)\in S^n\times \mathbb{R}^{n+1}:v=tx, t\in \mathbb{R}\}$. By translation, we can think $v$ as a normal vector of $S^n$. Then the \textbf{normal bundle} of the unit sphere is a line bundle $p:E\rightarrow S^n$ defined as $p(x,v)=x$. For the local trivializations, for $x\in S^n$ let $U_x$ be the open hemisphere containing $x$ and bounded by the hyperplane through the origin orthogonal to $x$. Now define $h:p^{-1}(U_x)\rightarrow U_x\times p^{-1}(x)\simeq U_x\times \mathbb{R}^n$ as $h_x(y,v)=(y,\pi_x(v))$, where $\pi_x$ is the projection onto the line $p^{-1}(x)$.
+\item For the real projective $n$-space $\mathbb{R}P^n$, as the space of lines in $\mathbb{R}^{n+1}$ through the origin, the \textbf{canonical line bundle} $p:E\rightarrow \mathbb{R}P^n$ is a bundle with $E=\{(l,v)\in \mathbb{R}P^n\times \mathbb{R}^{n+1}:v\in l\}$ and $p(l,v)=l$. Local trivializations can be defined as the projection maps, as above.
+\item Consider the infinite-dimensional projective space $\mathbb{R}P^\infty$, which is the union of finite-dimensional projective spaces $\mathbb{R}P^n$ under the inclusions $\mathbb{R}P^n\subset \mathbb{R}P^{n+1}$ induced from the natural inclusions $\mathbb{R}^{n+1}\subset \mathbb{R}^{n+2}$, and its topology is the weak or direct limit topology: a set in $\mathbb{R}P^{\infty}$ is open if and only if it intersects each $\mathbb{R}P^n$ in an open set. The canonical line bundle over $\mathbb{R}P^\infty$ is the direct limit of the canonical line bundles over $\mathbb{R}P^n$, and local trivializations are the induced maps.
+\item The space $E^\perp=\{(l,v)\in \mathbb{R}P^n\times \mathbb{R}^{n+1}:v\perp l$ with projection $p:E^\perp \rightarrow \mathbb{R}P^n$ defined as $p(l,v)$ is a vector bundle, and local trivializations are obtained by projecton maps.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} For two vector bundles $p_1:E_1\rightarrow B$ and $p_2:E_2\rightarrow B$ over the same base space, the \textbf{isomorphism} between $E_1$ and $E_2$ is a homeomorphism $h:E_1\rightarrow E_2$ taking each $p_1^{-1}(b)$ to the corresponding fiber $p_2^{-1}(b)$ by a linear isomorphism. We write $E_1\simeq E_2$ if they are isomorphic.
+\end{defn}
+
+\begin{exmp}
+\begin{enumerate}
+\item The normal bundle of $S^n$ in $\mathbb{R}^{n+1}$ is isomorphic to the product bundle $S^n\times \mathbb{R}$, by the map $(x,tx)\mapsto (x,t)$.
+\item The tangent bundle of $S^1$ is isomorphic to the trivial bundle $S^1\times \mathbb{R}$, by $(e^{i\theta},ite^{i\theta})\mapsto (e^{i\theta},t)$.
+\item The M{\"o}bius bundle is isomorphic to the canonical line bundle over $\mathbb{R}P^1\simeq S^1$. Indeed, the line on angle $0$ and $\pi$ are identified, with $(0,x)\approx (\pi,-x)$, on the canonical line bundle.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} For a vector bundle $p:E\rightarrow B$, a \textbf{section} is a map $s:B\rightarrow E$ assigning to each $b\in B$ a vector $s(b)\in p^{-1}(b)$, or equivalently, $p\circ s=1_B$. The \textbf{zero section} is a section whose value is zero vector in each fiber. The \textbf{nonvanishing section} is section whose value is nonzero vector in each fiber.
+\end{defn}
+
+\begin{prop} If two bundles are isomorphic, then the complements of the zero sections of the two bundles are isomorphic.
+\end{prop}
+\begin{proof}
+This is obvious since any vector bundle isomorphism takes the zero section to the zero section.
+\end{proof}
+
+\begin{exmp} Consider the M{\"o}bius bundle and product bundle $S^1\times \mathbb{R}$. The complement of the zero section of the M{\"o}bius bundle is connected but the complement of the zero section of the product bundle is disconnected, thus they are not isomorphic.
+\end{exmp}
+
+\begin{exmp} For the tangent bundle of $S^n$, there is a nonvanishing section if and only if $n$ is odd. \marginnote{The proof will be given later.} Thus, if $n$ is nonzero even number, then the tangent bundle and trivial bundle $S^n\times \mathbb{R}^n$ is not isomorphic, because the trivial bundle has a nonvanishing section, and an isomorphism between vector bundles takes nonvanishing sections to nonvanishing sections.
+\end{exmp}
+
+\begin{lemma} A continuous map $h:E_1\rightarrow E_2$ between vector bundles over the same base space $B$ is an isomorphism if it takes each fiber $p_1^{-1}(b)$ to the corresponding fiber $p_2^{-1}(b)$ by a linear isomorphism.
+\end{lemma}
+\begin{proof}
+The only thing we need to check is that $h^{-1}$ is continuous. Since the continuity is a local property, we can reduce the problem on an open set $U\subset B$ over which $E_1$ and $E_2$ are trivial. Restricting on $U\times \mathbb{R}^n$, we can see that $h:U\times \mathbb{R}^n\rightarrow U\times \mathbb{R}^n$ is a continuous map with $h(x,v)=(x,g_x(v))$, where $g_x$ is an element of the group $GL_n(\mathbb{R})$, and $g_x$ depends continuously on $x$: which means the elements of $g_x$ as $n\times n$ matrix are continuous functions. Thus the inverse $g_x^{-1}$ depends continuously on $x$ also, thus $h^{-1}(x,v)=(x,g_x^{-1}(v))$ is continuous.
+\end{proof}
+
+\begin{prop} An $n$-dimensional bundle $p:E\rightarrow B$ is isomorphic to the trivial bundle if and only if it has $n$ sections $s_1,\cdots,s_n$ such that the vectors $s_1(b),\cdots,s_n(b)$ are linearly independent in each fiber $p^{-1}(b)$.
+\end{prop}
+\begin{proof}
+For one direction, choose the basis of $\mathbb{R}^n$ as $\{e_1,\cdots,e_n\}$, then the sections $s_i(b)=(b,e_i)$ gives such sections. Conversely, if one has $n$ linearly independent sections $s_i$, then the map $h:B\times \mathbb{R}^n\rightarrow E$ given by $h(b,t_1,\cdots,t_n)=\sum_i t_i s_i(b)$ is a linear isomorphism in each fiber, and is continuous since it is linear combination of continuous functions. Hence by previous lemma, $h$ is an isomorphism.
+\end{proof}
+
+\begin{exmp} The tangent bundle to $S^1$ is trivial, because it has the section $(x_1,x_2)\mapsto (-x_2,x_1)$ for $(x_1,x_2)\in S^1$.
+\end{exmp}
+
+\begin{exmp}[Quaternions] The quaternion space $\mathbb{H}$ has the elements $z=x_1+ix_2+jx_3+kx_4$ with $x_1,x_2,x_3,x_4\in \mathbb{R}$, and there are multiplication rules $i^2=j^2=k^2=-1, ij=k, jk=i,ki=j,ji=-k,kj=-i,ik=-j$. Identifying $\mathbb{H}$ with $\mathbb{R}^4$, the unit sphere is $S^3$, and there are three sections of its tangent bundle defined as $z\mapsto iz, jz, kz$, which can be represented as $(x_1,x_2,x_3,x_4)\mapsto (-x_2,x_1,-x_4,x_3),(-x_3,x_4,x_1,-x_2), (-x_4,-x_3,x_2,x_1)$ respectively. These three vectors and $(x_1,x_2,x_3,x_4)$ are orhthogonal to each other, thus we have three linearly independent nonvanishing tangent vector fields on $S^3$.
+\end{exmp}
+
+\begin{exmp}[Octonians and Generalization] The above argument holds because the quaternion multiplication satisfies $|zw|=|z||w|$, where $|\cdot |$ is the usual norm of vectors in $\mathbb{R}^4$. Now considering the Cayley octonions, the space $\mathbb{R}^8$ thought as $\mathbb{H}\times \mathbb{H}$ and the multiplication defined as $(z_1,z_2)(w_1,w_2)=(z_1w_1-\bar{w}_2 z_2,z_2\bar{w}_1+w_2z_1)$, and satisfies $|zw|=|z||w|$. This leads to the construction of seven orthogonal tangent vector fields on the unit sphere $S^7$, and so the tangent bundle to $S^7$ is also trivial. Indeed, the only spheres with trivial tangent bundle are $S^1, S^3, S^7$, which will be shown later.
+\end{exmp}
+
+\begin{cor} For a vector bundle $E$, if there is a continuous projection map $E\rightarrow \mathbb{R}^n$ which is a linear isomorphism on each fiber, then $E$ is isomorphic to the trivial bundle.
+\end{cor}
+\begin{proof}
+Taking such a continuous map with the bundle projection $E\rightarrow B$, we get the continuous map $E\rightarrow B\times \mathbb{R}^n$ which takes each fibers to fibers, thus by previous lemma, this is isomorphism.
+\end{proof}
+
+\begin{defn}
+~\begin{enumerate}
+\item For a vector bundle $p:E\rightarrow B$ and a subspace $A\subset B$, the map $p|_{p^{-1}(A)}:p^{-1}(A)\rightarrow A$ is a vector bundle, which is called the \textbf{restriction of $E$ over $A$}.
+\item For vector bundles $p_1:E_1\rightarrow B_1$ and $p_2:E_2\rightarrow B_2$, $p_1\times p_2:E_1\times E_2\rightarrow B_1\times B_2$ is a vector bundle, whose fibers are the products $p_1^{-1}(b_1)\times p_2^{-1}(b_2)$ and the local trivialization is the product of local trivializations. This is called the \textbf{product of vector bundles}.
+\end{enumerate}
+\end{defn}
+
+\begin{defn} For two vector bundles $p_1:E_1\rightarrow B$ and $p_2:E_2\rightarrow B$, the \textbf{direct sum} of $E_1$ and $E_2$ is the vector bundle
+\begin{equation}
+E_1\oplus E_2=\{(v_1,v_2)\in E_1\times E_2:p_1(v_1)=p_2(v_2)\}
+\end{equation}
+with the projection $E_1\oplus E_2\rightarrow B$ sending $(v_1,v_2)$ to the point $p_1(v_1)=p_2(v_2)$.
+
+We can also write $E_1\oplus E_2$ as the restriction of the product $E_1\times E_2$ over the diagonal $B=\{(b,b)\in B\times B\}$.
+\end{defn}
+
+\begin{defn} The bundle $E$ is \textbf{stably trivial} if it becomes trivial after taking the direct sum with a trivial bundle.
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item All trivial bundles are stably trivial.
+\item The direct sum of two trivial bundles is again a trivial bundle.
+\item Consider the direct sum of the tangent and normal bundles to $S^n$ in $\mathbb{R}^{n+1}$. The elements can be written as $(x,v,tx)\in S^n\times \mathbb{R}^{n+1}\times \mathbb{R}^{n+1}$, where $x\perp v$. The map $(x,v,tx)\mapsto (x,v+tx)$ gives an isomorphism of the direct sum bundle with $S^n\times \mathbb{R}^{n+1}$. Thus the tangent bundle to $S^n$ is stably trivial.
+\item For the canonical line bundle $E\rightarrow \mathbb{R}P^n$, the direct sum $E\oplus E^\perp$ is isomorphic to the trivial bundle $\mathbb{R}P^n\times \mathbb{R}^{n+1}$ by the map $(l,v,w)\mapsto (l,v+w)$ for $v\in l$ and $w\perp l$. If $n=1$, then since $E^\perp$ is isomorphic to $E$ itself, by the map that rotates each vector in the plane by 90 degrees. Thus the M{\"o}bius bundle is stably trivial.
+\end{enumerate}
+\end{exmp}
+
+\begin{exmp} Consider $S^n\times \mathbb{R}^{n+1}\simeq TS^n\oplus NS^n$, where $TS^n$ is the tangent bundle and $NS^n$ is the normal bundle. Suppose we factor out by the identifications $(x,v)\approx (-x,-v)$ on both sides. Applied to $TS^n$, this identification yields $T\mathbb{R}P^n$, the tangent bundle to $\mathbb{R}P^n$. Applied to $NS^n$, the identification $(x,v)\approx (-x,-v)$ can be written as $(x,tx)\approx (-x,t(-x))$. This gives the product bundle $\mathbb{R}P^n\times \mathbb{R}$, because the section $x\mapsto (-x,-x)=(x,x)$ is well-defined. Now consider the identification $(x,v)\approx (-x,-v)$ in $S^n\times \mathbb{R}^{n+1}$. Considering the coordinate factors, the quotient is the direct sum of $n+1$ copies of the line bundle $E$ over $\mathbb{R}P^n$, obtained by making the identifications $(x,t)\approx (-x,-t)$ in $S^n\times \mathbb{R}$. Now identifying $S^n\times \mathbb{R}$ with $NS^n$ by the isomorphism $(x,t)\mapsto (x,tx)$, we get $(-x,-t)\mapsto (-x,(-t)(-x))=(-x,tx)$. This quotient gives the canonical line bundle over $\mathbb{R}P^n$, since the first identification gives $\mathbb{R}P^n$ structure, and the second identification is meaningless. Thus, the direct sum of the tangent bundle $T\mathbb{R}P^n$ with a trivial line bundle is isomorphic to the direct sum of $n+1$ copies of the canonical line bundle over $\mathbb{R}P^n$.
+
+Since we already shown that the tangent space of $S^3, S^7$ are trivial, $T\mathbb{R}P^3$ and $T\mathbb{R}P^7$ are trivial, which are isomorphic to 4 and 8 copies of canonical line bundle, respectively.. Later we will show that $k$-copies of the canonical line bundle over $\mathbb{R}P^n$ is stably trivial if and only if $k$ is a multiple of $2^{\phi(n)}$, where $\phi(n)$ is the number of integers $i$ in the range $0<i\leq n$, with $i$ congruent to $0,1,2,4 \mod 8$. For $n=3$, $\phi(3)=2$ thus $2^{\phi(n)}=4$, thus we need $4n$ copies; for $n=7$, $\phi(7)=3$ thus $2^{\phi(n)}=8$, thus we need $8n$ copies. These results fits on the previous argument.
+\end{exmp}
+\noindent\rule{\textwidth}{1pt}
+\newline

@@ -1,0 +1,66 @@
+\mytitle{Algebraic Topology}
+\begin{defn} The \textbf{$n$-simplex}, or \textbf{simplex} if $n$ is well known or not important, is a smallest convex set in a Euclidean space $\mathbb{R}^m$ containing ordered $n+1$ points $v_0,\cdots, v_n$ which do not lie in a hyperplane of dimension less then $n$, and written as $[v_0,\cdots,v_n]$. We call $v_i$ a \textbf{vertices} of the simplex. The \textbf{standard $n$-simplex} is a set $\Delta^n =\{(t_0,\cdots,t_n)\in \mathbb{R}^{n+1}|\sum_i t_i=1, t_i\geq 0, \forall i\}$. For the linear homeomorphism $\phi:\Delta^n\rightarrow [v_0,\cdots,v_n]$ defined as $(t_0,\cdots,t_n)\mapsto \sum_i t_i v_i$, the coefficients $t_i$ are the \textbf{barycentric coordinates} of the point $\sum_i t_i v_i$ in $[v_0,\cdots,v_n]$.\marginnote{Since every simplex is linearly homeomorphic to standard simplex, if the vertices are well known or not important, we simply write the simplex as $\Delta^n$.}
+\end{defn}
+\begin{defn} For an $n$-simplex $[v_0,\cdots,v_n]$, \textbf{faces} of the simplex are the $n-1$ simplices $[v_0,\cdots,\hat{v}_i,\cdots,v_n]$. Here, the vertex under $\hat{}$ symbol is ignored. The union of all the faces of simplex $\Delta^n$ is the \textbf{boundary} of the simplex, which is written as $\partial\Delta^n$. The \textbf{open simplex} is a set $\Delta^n-\partial \Delta^n$, and written as $\mathring{\Delta}^n$. 
+\end{defn}
+\begin{defn} A \textbf{$\Delta$-complex structure} of a space $X$ is a collection of maps $\sigma_\alpha:\Delta^{n_\alpha}\rightarrow X$ where $n_\alpha$ depends on $\alpha$ and often written as just $n$, such that
+\begin{enumerate}
+\item $\sigma_\alpha|_{\mathring{\Delta}^n}$ is injective, and $x\in X$ is in the image of exactly one $\sigma_\alpha|_{\mathring{\Delta}^n}$.
+\item Each restriction of $\sigma_\alpha$ to a face of $\Delta^n$ is one of the maps $\sigma_\beta:\Delta^{n-1}\rightarrow X$, where the face of $\Delta^n$ and $\Delta^{n-1}$ are identified by the linear homeomorphism where the order of vertices are preserved.
+\item $A\subset X$ is open if and only if $\sigma_\alpha^{-1}(A)$ is open in $\Delta^n$ for each $\sigma_\alpha$.\marginnote{This condition bans the triviality, for example, all the maps $\sigma_\alpha:\Delta^n\rightarrow X$ are just a point map.}
+\end{enumerate}
+\end{defn}
+\begin{defn} Consider a $\Delta$-complex $X$. The \textbf{$n$-chain} of $X$ is the free abelian group with basis $\sigma_\alpha:\Delta^n\rightarrow X$ and written as $\Delta_n(X)$. The \textbf{boundary homomorphism} $\partial_n:\Delta_n(X)\rightarrow \Delta_{n-1}(X)$ is defined as
+\begin{equation}
+\partial_n (\sigma_\alpha)=\sum_i (-1)^i\sigma_\alpha |_{[v_0,\cdots,\hat{v}_i,\cdots,v_n]}
+\end{equation}, where the range of $\sigma_\alpha$ is $[v_0,\cdots,v_n]$.
+\end{defn}
+\begin{prop}$\partial_{n-1}\circ \partial_{n}=0$.
+\end{prop}
+\begin{proof}
+\begin{align*}
+\partial_{n-1}\partial_n(\sigma)&=\partial_{n-1}\sum_i (-1)^i\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_n]}\\
+&=\sum_{i<j} (-1)^{i+j}\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,\hat{v}_j,\cdots,v_n]}\\
+&+\sum_{i>j} (-1)^{i+j-1}\sigma|_{[v_0,\cdots,\hat{v}_j,\cdots,\hat{v}_i,\cdots,v_n]}\\
+&=0
+\end{align*}
+\end{proof}
+
+\begin{defn} Consider an abelian groups $C_n$ and homomorphisms $\partial_n$ for $n\in \mathbb{N}\cup \{0\}$ with structure
+\begin{equation}
+\cdots\rightarrow C_{n+1}\xrightarrow{\partial_{n+1}}C_{n}\xrightarrow{\partial_n}C_{n-1}\xrightarrow{\partial_{n-1}}\cdots\xrightarrow{\partial_1} C_0\xrightarrow{\partial_0} 0
+\end{equation}
+with $\partial_{n}\circ \partial_{n+1}=0$ for all $n$. This sequence is called a \textbf{(abelian group) chain complex}\marginnote{The chain complex can be defined on the $R$-modules for ring $R$ and their module homomorphisms, which is a bit general case since abelian groups are $\mathbb{Z}$-modules.} and written as $C_\bullet$ with homomorphisms $\partial_\bullet$. Elements of $\Ker\partial_n$ are called \textbf{cycles} and elements of $\Ima\partial_n$ are called \textbf{boundaries}.
+\end{defn}
+\begin{prop} Take a chain complex $C_\bullet$ with homomorphisms $\partial_\bullet$. Then $\Ima\partial_{n+1}\normal \Ker\partial_n$.
+\end{prop}
+\begin{proof} Since $\partial_{n}\circ \partial_{n+1}=0$, if $x\in \Ima\partial_{n+1}$ then there is $x'\in C_{n+1}$ such that $\partial_{n+1}(x')=x$. Now since $\partial_{n}\circ \partial_{n+1}(x')=0$, $\partial_{n}(x)=0$ and thus $x\in\Ker\partial_{n}$ and $\Ima\partial_{n+1}\leq \Ker\partial_n$. Since $C_n$ are abelian, $\Ima\partial_{n+1}\normal \Ker\partial_n$.
+\end{proof}
+\begin{defn} Take a chain complex $C_\bullet$ with homomorphisms $\partial_\bullet$. Then an abelian group $H_n=\Ker\partial_n/\Ima\partial_{n+1}$ is called a \textbf{$n$th homology group} of the chain complex. Elements of $H_n$ are cosets of $\partial_{n+1}$, which is called \textbf{homology classes}. Two cycles representing the same homology class are said to be \textbf{homologous}.
+\end{defn}
+\begin{defn} Let $X$ be a $\Delta$-complex. The $n$th Homology group of a chain complex $\Delta_\bullet(X)$ with homomorphisms $\partial_\bullet$ is called the \textbf{$n$th simplicial homology group} of $X$, and written as $H_n^\Delta(X)$.
+\end{defn}
+\begin{exmp} Consider a space $S^1$. We can give a $\Delta$-complex structure by one vertex $v$ and one edge $e$. then $\Delta_0(S^1)=\langle v\rangle$, $\Delta_1(S^1)=\langle e\rangle$, and $\partial_1(e)=v-v=0$. Therefore, $H_n^\Delta(S^1)\simeq \mathbb{Z}$ for $n=0,1$, and $H_n^\Delta(S^1)\simeq 0$ for all the others.
+\end{exmp}
+\begin{exmp} Consider a space $T$, a torus. We can give a $\Delta$-complex structure by one vertex $v$, three edges $a,b,c$, and two 2-simplices $U,L$, with $\partial_1=0$, $\partial_2 U=a+b-c=\partial_2 L$. Thus $H_0^\Delta(T)\simeq \mathbb{Z}$ and $H_1^\Delta(T)\simeq \mathbb{Z}\oplus \mathbb{Z}$ since $\{a,b,a+b-c\}$ is a basis of $\Delta_1(T)=\Ker\partial_1$. Finally, $H_2^\Delta(T)=\Ker\partial_2$ is generated by $U-L$, hence $H_2^\Delta(T)\simeq \mathbb{Z}$. For $n\geq 3$, $H_n^\Delta(T)\simeq 0$.
+\end{exmp}
+\begin{exmp} Now consider a space $\mathbb{R}P^2$. We can give a $\Delta$-complex structure by two vertex $v,w$, three edges $a,b,c$, and two 2-simplices $U,L$, with $\Ima \partial_1=\langle w-v\rangle$, $\partial_2 U=-a+b+c$ and $\partial_2 L=a-b+c$. Therefore $H_0^\Delta (\mathbb{R}P^2)\simeq \mathbb{Z}$. Furthermore, since $\partial_2$ is injective, $H_2^\Delta(\mathbb{R}P^2)\simeq 0$. Finally, $\Ker \partial_1\simeq \langle a-b,c\rangle$ and $\Im\partial_2\simeq \langle a-b+c,2c\rangle$. Since $\langle a-b,c\rangle\simeq \langle a-b+c,c\rangle$, $H_1^\Delta(X)\simeq \mathbb{Z}_2$. For $n\geq 3$, $H_n^\Delta(T)\simeq 0$.
+\end{exmp}
+\begin{exmp} Give $S^n$ a $\Delta$-complex structure by taking two $\Delta^n$ and identifying their boundaries. Taking these simplices as $U,L$, then $\Ker\partial_n=\langle U-L\rangle$ and $\Im\partial_{n+1}=0$ since there is no $n+1$ simplex. Therefore $H_n^\Delta(S^n)\simeq \mathbb{Z}$.
+\end{exmp}
+
+\begin{defn} A \textbf{singular $n$-simplex} in a space $X$ is a map $\sigma:\Delta^n\rightarrow X$.
+\end{defn}
+\begin{defn} Let $C_n(X)$ be the free abelian group with basis the set of singular $n$-simplices in $X$. Elements of $C_n(X)$ are called \textbf{singular $n$-chains}. A boundary homomorphism $\partial_n:C_n(X)\rightarrow C_{n-1}(X)$ is defined as
+\begin{equation}
+\partial_n (\sigma)=\sum_i (-1)^i\sigma |_{[v_0,\cdots,\hat{v}_i,\cdots,v_n]}
+\end{equation}, where the range of $\sigma$ is $[v_0,\cdots,v_n]$.\marginnote{This definition is same with the boundary homomorphism of $\Delta$-complex, thus $\partial_{n-1}\circ \partial_n=0$. Often we write the boundary homomorphisms $\partial_n$ as $\partial$, and $\partial_{n-1}\circ\partial_n=0$ as $\partial^2$.}
+\end{defn}
+\begin{defn} Let $X$ be a space and $C_n(X)$ is a set of $n$-chains. The $n$th Homology group of a chain complex $C_\bullet(X)$ with homomorphisms $\partial_\bullet$ is called the \textbf{$n$th singular homology group} of $X$, and written as $H_n(X)$.
+\end{defn}
+\begin{prop} If $X$ and $Y$ are homeomorphic, then $H_n(X)\simeq H_n(Y)$ for all $n$.
+\end{prop}
+\begin{proof} Suppose that $\phi:X\rightarrow Y$ is a homeomorphism. Then there are isomorphisms $\xi_n:C_n(X)\rightarrow C_n(Y)$ defined as $\xi_n(\sigma_X)=\phi\circ \sigma_X$, where $\partial_n^Y\circ \xi_n=\xi_{n-1}\circ \partial_n^X$. Thus $\Ker \partial_n^X\simeq \Ker \partial_n^Y$ and $\Ima \partial_n^X\simeq \Ima\partial_n^Y$, thus $H_n(X)\simeq H_n(Y)$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

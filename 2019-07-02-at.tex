@@ -1,0 +1,54 @@
+\mytitle{Algebraic Topology}
+\begin{cor} The sequence of homology groups
+\begin{align*}
+\cdots\rightarrow H_n(A)\xrightarrow{i_*} H_n(X)\xrightarrow{j_*} H_n(X,A)\xrightarrow{\partial} H_{n-1}(A)&\xrightarrow{i_*}H_{n-1}(X)\rightarrow\cdots\\
+\cdots\rightarrow H_0(X,A)\rightarrow 0\numberthis
+\end{align*}
+is exact. Here, the map $\partial:H_n(X,A)\rightarrow H_{n-1}(A)$ is defined as $\partial([\alpha])=[i^{-1}\circ \partial\circ j^{-1}(\alpha)]$.\marginnote{The meaning of this boundary map $\partial:H_n(X,A)\rightarrow H_{n-1}(A)$ can be considered as $\partial[\alpha]$ is the class of the cycle $\partial\alpha$ for the relative cycle $\alpha\in H_n(X,A)$.}
+\end{cor}
+\begin{proof}
+From the previous proposition, we can substitute $A,B,C$ to $A,X,(X,A)$ in the previous theorem, which gives the desired exact sequence.
+\end{proof}
+
+\begin{cor} Let $A\neq \emptyset$. The sequence of reduced homology groups and homology groups
+\begin{align*}
+\cdots\rightarrow \tilde{H}_n(A)\xrightarrow{i_*} \tilde{H}_n(X)\xrightarrow{j_*} H_n(X,A)\xrightarrow{\partial} \tilde{H}_{n-1}(A)&\xrightarrow{i_*}\tilde{H}_{n-1}(X)\rightarrow\cdots\\
+\cdots\rightarrow H_0(X,A)\rightarrow 0\numberthis
+\end{align*}
+is exact.
+\end{cor}
+\begin{proof} It is enough to fill in the $-1$ dimensional short exact sequence to the short exact sequence of chain complexes, which is $0\rightarrow \mathbb{Z}\xrightarrow{1_{\mathbb{Z}}}\mathbb{Z}\rightarrow 0\rightarrow 0$.
+\end{proof}
+
+\begin{exmp} Since $D^n$ is contractible, $\tilde{H}_i(D^n)=0$ for all $i$, therefore the maps $H_i(D^n,\partial D^n)\xrightarrow{\partial}\tilde{H}_{i-1}(S^{n-1})$ are isomorphisms for all $i>0$ and $H_0(D^n,\partial D^n)\simeq 0$.
+\end{exmp}
+
+\begin{exmp} Since $\tilde{H}_n(x_0)=0$ for all $n$, $H_n(X,x_0)\simeq \tilde{H}_n(X)$ for all $n$.
+\end{exmp}
+
+\begin{defn} For a map $f:(X,A)\rightarrow (Y,B)$, the chain map $f_\#':C_n(X)\rightarrow C_n(Y)$ takes $C_n(A)$ to $C_n(B)$, which gives the quotient map $f_\#:C_n(X,A)\rightarrow C_n(Y,B)$. Since $\partial\circ f_\#'=f_\#'\circ \partial$, $\partial \circ f_\#=f_\#\circ \partial$, which induces the \textbf{induced homomorphism for relative homology} $f_*:H_n(X,A)\rightarrow H_n(Y,B)$. 
+\end{defn}
+
+\begin{prop} If two maps $f,g:(X,A)\rightarrow (Y,B)$ are homotopic through map of pairs $(X,A)\rightarrow (Y,B)$, then $f_*=g_*:H_n(X,A)rightarrow H_n(Y,B)$.
+\end{prop}
+\begin{proof} The proof is exactly same with nonrelative case, except we need to define a relative prism operator $P:C_n(X,A)\rightarrow C_{n+1}(Y,B)$ from the prism operator $P':C_n(X)\rightarrow C_{n+1}(Y)$, which is well defined since $P(C_n(A))\subset C_{n+1}(B)$. Since $g_\#$ and $f_\#$ does not changes by quotienting, $\partial \circ P'+P'\circ \partial=g_\#-f_\#$ induces $\partial \circ P+P\circ \partial=g_\#-f_\#$, thus they are chain homotopic on relative chain groups, and thus the induced homomorphisms are same.
+\end{proof}
+
+\begin{prop} Consider $B\subset A\subset X$, and write it $(X,A,B)$. Then the sequence of homology groups
+\begin{equation}
+\cdots\rightarrow H_n(A,B)\xrightarrow{i_*} H_n(X,B)\xrightarrow{j_*} H_n(X,A)\xrightarrow{\partial} H_{n-1}(A,B)\rightarrow\cdots
+\end{equation}
+is exact.
+\end{prop}
+\begin{proof}
+Take the short exact sequence
+\begin{equation}
+0\rightarrow C_n(A,B)\xrightarrow{i} C_n(X,B)\xrightarrow{j} C_n(X,A)\rightarrow 0
+\end{equation}
+This is possible since $C_n(X,B)/C_n(A,B)\simeq (C_n(X)/C_n(B))/(C_n(A)/C_n(B))\simeq C_n(X)/C_n(A)$ by the third isomorphism theorem.
+\end{proof}
+
+\begin{defn} The \textbf{barycenter} of the simplex $[v_0,\cdots,v_n]$ is the point $b=\sum_i v_i/(n+1)$. The \textbf{barycentric subdivision} of the simplex $[v_0,\cdots,v_n]$ is the decomposition of $[v_0,\cdots,v_n]$ into the $n$-simplexes $[b,w_0,\cdots,w_{n-1}]$ where $[w_0,\cdots,w_{n-1}]$ is an $n-1$ simplex in the barycentric subdivision of a face $[v_0,\cdots,\hat{v}_i,\cdots,v_n]$, whose induction trigger is that the barycentric subdivision of $[v_0]$ is [$v_0]$.
+\end{defn}
+\noindent\rule{\textwidth}{1pt}
+\newline

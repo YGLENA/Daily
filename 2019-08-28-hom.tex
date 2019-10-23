@@ -1,0 +1,48 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn} A chain complex $P$ in abelian category is called a \textbf{chain complex of projectives} if all $P_n$ are projective.
+\end{defn}
+
+\begin{exer} Show that a chain complex $P$ is a projective object in $\mathsf{Ch}$ if and only if it is a split exact complex of projectives. Their brutal truncations $\sigma_{\geq 0}$ form the projective objects in $\mathsf{Ch}_{\geq 0}$.
+\end{exer}
+\begin{solution} Notice that $\textrm{cone}(1_P)$ is split exact, and the following sequence is short exact.
+\begin{equation}
+0\rightarrow P\rightarrow \textrm{cone}(1_P)\rightarrow P[-1]\rightarrow 0
+\end{equation}
+Since $\textrm{cone}(1_P)$ is exact, $P$ is exact. 
+\end{solution}
+
+\begin{exer} Show that if an abelian category $\mathsf{A}$ has enough projectives, then so does the category $\mathsf{Ch}(\mathsf{A})$ of chain complexes over $\mathsf{A}$.
+\end{exer}
+\begin{solution} 
+\end{solution}
+
+\begin{defn} Let $M$ be an object of abelian category $\mathsf{A}$. A \textbf{left resolution} of $M$ is a complex $P_\bullet$ with $P_i=0$ for $i<0$ with a map $\epsilon:P_0\rightarrow M$ so that the augmented complex
+\begin{equation}
+\cdots\rightarrow P_2\rightarrow P_1\rightarrow P_0\xrightarrow{\epsilon} M\rightarrow 0
+\end{equation}
+is exact. If each $P_i$ is projective, we call it a \textbf{projective resolution}.
+\end{defn}
+
+\begin{lemma} Every $R$-module $M$ has a projective resolution. Generally, if an abelian category $\mathsf{A}$ has enough projectives, then every object $M$ in $\mathsf{A}$ has a projective resolution.\marginnote{Since we may find the surjective map $F(A)\rightarrow A$ and $F(A)$ is free object, which is itself the summand of a free object, $F(A)$ is projective, thus $R-\textsf{mod}$ has enough projectives.}
+\end{lemma}
+\begin{proof}
+Consider a surjection $\epsilon_0:P_0\rightarrow M$ with projective $P_0$. Define $M_0=\Ker \epsilon_0$. Now inductively, for a module $M_{n-1}$, choose $\epsilon_n:P_n\rightarrow M_{n-1}$ and take $M_n=\Ker \epsilon_n$.
+\begin{equation}
+\begin{tikzcd}
+0\arrow[rd]& &0& & & &0\\
+ &M_1\arrow[ru]\arrow[rd]& & & &M\arrow[ru]&\\
+P_2\arrow[ru]\arrow{rr}{d_2}& &P_1\arrow[rd]\arrow{rr}{d_1}& &P_0\arrow{ru}{\epsilon_0}& &\\
+ & & &M_0 \arrow[ru]\arrow[rd]& & &\\
+ & &0\arrow[ru]& & 0& &
+\end{tikzcd}
+\end{equation}
+Define $d_n$ as the composition of maps $P_n\rightarrow M_n\rightarrow P_{n-1}$. Now since $d_n(P_n)\simeq M_{n-1}$ and $\Ker(d_{n-1})=\Ker(P_{n-1}\rightarrow M_0)=\Ima(M_{n-1}\rightarrow P_1)\simeq M_{n-1}$, we get the sequence is exact, hence the sequence is a projective resolution of $M$.
+\end{proof}
+
+\begin{exer} Show that if $P_\bullet$ is a complex of projectives with $P_i=0$ for $i<0$, then a map $\epsilon:P_0\rightarrow M$ giving a resolution for $M$ is the same thing as a quasi-isomorphism $\epsilon:P_\bullet\rightarrow M$, where $M$ is considered as a complex concentrated in degree zero.
+\end{exer}
+\begin{solution}
+Since $M$ has zero homology groups except $H_0(M)=M$, $P_i$ is exact for $n>0$ and $P_0/\Ima(d_1)\simeq M$. Now since $\epsilon$ must induce the isomorphism to $M$, $\epsilon$ must be surjective, and considering $0\rightarrow \Ker(\epsilon)\rightarrow P_0\rightarrow M\rightarrow 0$ and $0\rightarrow \Ima(d_1)\rightarrow P_0\rightarrow M\rightarrow 0$, which are both exact and there is a chain map between them, by 5-lemma $\Ker(\epsilon)\simeq \Ima(d_1)$.
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

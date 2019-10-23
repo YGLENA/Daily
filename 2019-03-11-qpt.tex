@@ -1,0 +1,116 @@
+\mytitle{Quantum Phase Transitions}
+Here we are treating the following hamiltonian:
+\begin{equation}
+H_I=\underbrace{-Jg\sum_i \hat{\sigma}_i^x}_{H_0} \underbrace{-J\sum_{\langle ij\rangle} \hat{\sigma}_i^z \hat{\sigma}_j^z}_{H_1}.
+\end{equation}
+For the case $g\gg 1$, the fist term dominates, hence we found the ground state as
+\begin{equation}
+|0\rangle =\prod_{i}|\rightarrow\rangle_i,
+\end{equation}
+where
+\begin{align*}
+|\rightarrow\rangle_i=\frac{|\uparrow\rangle_i+|\downarrow\rangle_i}{\sqrt{2}}, \quad |\leftarrow\rangle_i=\frac{|\uparrow\rangle_i-|\downarrow\rangle_i}{\sqrt{2}}\numberthis
+\end{align*}
+and for the case $g\ll 1$, the second term dominates, hence we found the ground state as
+\begin{align*}
+|\uparrow\rangle=\prod_i|\uparrow\rangle_i,\quad |\downarrow \rangle=\prod_i|\downarrow\rangle_i.
+\end{align*}
+First we will treat the $g\gg 1$ case, using the perturbation calculation.  On the system of $M$ sites with periodic boundary condition, we get
+\begin{align*}
+E_0^{(0)}&=-MJg\\
+E_0^{(1)}&=-J\sum_{\langle ij\rangle }\langle 0|\hat{\sigma}_i^z\hat{\sigma}_j^z|0\rangle=0\\
+|\psi_0^{(1)}\rangle&=J\sum_{\langle ij\rangle}\sum_{m\neq n}\frac{1}{E_m^{(0)}-E_0^{(0)}}|\psi_m^{(0)}\rangle\langle \psi_m^{(0)}|\hat{\sigma}_i^z\hat{\sigma}_j^z|0\rangle\\
+&=\frac{1}{4g}\sum_{\langle ij\rangle}|i,j\rangle\\
+E_0^{(2)}&=-J\sum_{\langle ij\rangle}\langle 0|\hat{\sigma}_i^z\hat{\sigma}_j^z|\psi_0^{(1)}\rangle\\
+&=-\frac{J}{4g}\sum_{\langle ij\rangle}\sum_{\langle i'j'\rangle}\langle 0|\hat{\sigma}_i^z\hat{\sigma}_j^z|i',j'\rangle\\
+&=-\frac{MJ}{4g}\numberthis
+\end{align*}
+Here,
+\begin{equation}
+|i,j\rangle=|\leftarrow\rangle_i |\leftarrow\rangle_j\prod_{n\neq i,j}|\rightarrow\rangle_n.
+\end{equation}
+Therefore,
+\begin{equation}
+E_0=-MJg\left(1+\frac{J}{4g^{2}}+\mathcal{O}\left(\frac{1}{g^{3}}\right)\right).
+\end{equation}
+
+But what about the excited states? For the lowest excited states,
+\begin{equation}
+|i\rangle =|\leftarrow \rangle_i\prod_{n\neq i}|\rightarrow\rangle_i,
+\end{equation}
+there are $M$ of them, degenerated with energy $E_0+2Jg$, if $g=\infty$. We call this \textit{single(one)-particle state}. Similarly, for the second lowest excited states,
+\begin{equation}
+|i,j\rangle=|\leftarrow\rangle_i |\leftarrow\rangle_j\prod_{n\neq i,j}|\rightarrow\rangle_n,
+\end{equation}
+there are $M(M-1)/2$ of them, degenerated with energy $E_0+4Jg$, if $g=\infty$. We call this \textit{two-particle state}. In general there are $M!/(M-p)!p!$ many of $p$-particle states with energy $E_0+2pJg$.
+
+Now for one-particle state, one-dimensional ring case, We need to calculate the degenerated perturbation theory, which means, we need to diagonalize the matrix
+\begin{equation}
+\langle i|H_1|j\rangle=-J\sum_{\langle nm\rangle}\langle i|\hat{\sigma}_n^z\hat{\sigma}_m^z|j\rangle.
+\end{equation}
+But only
+\begin{equation}
+\langle i|H_1|i+1\rangle=-J
+\end{equation}
+and all the other terms are zero. This is actually 1-dimensional tight-binding model, which can be diagonalized by taking the basis as
+\begin{equation}
+|k\rangle=\frac{1}{\sqrt{M}}\sum_{j}e^{ikx_j}|j\rangle.
+\end{equation}
+which satisfies
+\begin{equation}
+\langle k |H_1|k\rangle =-2J\cos (ka) 
+\end{equation}
+where $a$ is the lattice constant.
+Now we can calculate the energy perturbation term.
+\begin{align*}
+E_1^{(0)}&=-MJg+2Jg\\
+E_1^{(1)}&=\langle k|H_1|k\rangle = -2J\cos(ka)\\
+E_1^{(2)}&=-\sum_{m\neq 1}\frac{|\langle \psi_m^{(0)}|H_1|k\rangle|^2}{E_m^{(0)}-E_1^{(0)}}\\
+&=-\frac{J^2}{4Jg}\sum_{l<m<n}\left|\sum_{\langle ij\rangle}\langle l,m,n|\hat{\sigma}_i\hat{\sigma}_{j}|k\rangle\right|^2\\
+&=-\frac{J}{4g}\left(\sum_{\substack{l,m=l+1,\\n=l+2}}\left|\langle l+2|k\rangle+\langle l|k\rangle\right|^2+\sum_{\substack{l,m=l+1,\\n\neq l+2, n\neq l-3}}|\langle n|k\rangle|^2\right)\\
+&=-\frac{J}{4g}\left(4\cos^2(ka)+(M-4)\right)\\
+&=-\frac{J}{4g}\left(M-4\sin^2(ka)\right)\\
+&=-\frac{J}{4g}\left(M-2\left(1-\cos(2ka)\right)\right)
+\end{align*}
+Therefore we get
+\begin{equation}
+E_1=Jg\left(-M+2-\frac{2}{g}\cos(ka)+\frac{1}{2g^2}(1-\cos(2ka))-\frac{M}{4g^2}+\mathcal{O}\left(\frac{1}{g^3}\right)\right)
+\end{equation}
+
+The \textit{quasiparticle residue}, $\mathcal{A}$, is the overlap between the actual one-particle state at momentum $k=0$, and that obtained by creating a particle in the ground state by the particle creation operator:
+\begin{equation}
+\mathcal{A}\coloneqq \left|\langle k=0|\hat{\sigma}^z(k)|0\rangle\right|.
+\end{equation}
+Here we set
+\begin{equation}
+\hat{\sigma}^z(k)=\frac{1}{\sqrt{M}}\sum_j e^{ikx_j}\hat{\sigma}_j^z.
+\end{equation}
+
+What is quasiparticle residue? In the book \textit{Quantum Phase Transition} by Subir Sachdev, the quasiparticle residue is the residue (as the function of $\omega$) of the response function $\chi(k,\omega)$. This function can be directly observed by ARPES. Physically, we can think this concept as the concept of "effective mass": the interaction modifies the fermion into the quasiparticle, which changes its physical properties, and thus also the quasiparticle residue.
+
+ Notice that
+\begin{equation}
+|0\rangle=|0^{(0)}\rangle + \frac{1}{4g}\sum_{\langle ij\rangle}|i,j\rangle+\mathcal{O}\left(\frac{1}{g^2}\right)
+\end{equation}
+Here $|0^{(0)}\rangle$ is the original ground state where all the spins pointing right. Now,
+\begin{align*}
+\hat{\sigma}^z(k)|0^{(0)}\rangle&=\frac{1}{\sqrt{M}}\sum_j e^{ikx_j}\hat{\sigma}_j^z|0^{(0)}\rangle = \frac{1}{\sqrt{M}}\sum_j e^{ikx_j}|j\rangle\\
+\hat{\sigma}^z(k)|i,j\rangle&=\frac{1}{\sqrt{M}}\sum_{n}e^{ikx_n}\hat{\sigma}_n^z|i,j\rangle\numberthis
+\end{align*}
+But notice that the three-particle state has $g^{-1}$ order, and thus the three-particle state does not contributes to $g^{-1}$ order term. Therefore we only need to think about the one-particle state:
+\begin{equation}
+\hat{\sigma}^z(k)|i,j\rangle=\frac{1}{\sqrt{M}}\left(e^{ikx_i}|j\rangle+e^{ikx_j}|i\rangle\right)
+\end{equation}
+Now,
+\begin{align*}
+\langle k|\hat{\sigma}^z(k)|0\rangle&=1+\frac{1}{4gM}\sum_{\langle ij\rangle, n}e^{-ikx_n}\langle n|\left(e^{ikx_i}|j\rangle+e^{ikx_j}|i\rangle\right)+\mathcal{O}\left(\frac{1}{g^2}\right)\\
+&=1+\frac{1}{4gM}\sum_{\langle ij\rangle}\left(e^{ika}+e^{-ika}\right)+\mathcal{O}\left(\frac{1}{g^2}\right)\\
+&=1+\frac{\cos(ka)}{2g}+\mathcal{O}\left(\frac{1}{g^2}\right)
+\end{align*}
+Tending $k\rightarrow 0$ gives 
+\begin{equation}
+\mathcal{A}=1+\frac{1}{2g}+\mathcal{O}\left(\frac{1}{g^2}\right)
+\end{equation}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

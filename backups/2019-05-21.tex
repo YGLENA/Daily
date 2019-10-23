@@ -1,0 +1,12 @@
+\mytitle{Algebraic Topology}
+\begin{prop} Let $X$ be a path connected, locally path connected, and semilocally simply connected space. Then for every subgroup $H\leq \pi_1(X,x_0)$, there is a covering space $p:X_H\rightarrow X$ such that $p_*(\pi_1(X_H,\tilde{x}_0))=H$ for some basepoint $\tilde{x}_0\in X_H$.
+\end{prop}
+\begin{proof}
+For points $[\gamma],[\gamma']\in \tilde{X}$ where $\tilde{X}$ is a simply connected covering space of $X$, define $[\gamma]\sim [\gamma']$ if $\gamma(1)=\gamma'(1)$ and $[\gamma\cdot \bar{\gamma'}]\in H$. Since $[\gamma\cdot \bar{\gamma}]=e$, $[\gamma]\sim [\gamma]$; since $[\gamma\cdot \bar{\gamma'}]^{-1}=[\gamma'\cdot \bar{\gamma}]$ and $H$ is a group, $[\gamma]\sim [\gamma']\leftrightarrow[\gamma']\sim [\gamma]$; if $[\gamma\cdot \bar{\gamma'}],[\gamma'\cdot \bar{\gamma''}]\in H$, then $[\gamma\cdot \bar{\gamma'}][\gamma'\cdot \bar{\gamma''}]=[\gamma\cdot \bar{\gamma''}]\in H$ since $H$ is a subgroup. Therefore $\sim$ is an equivalence relation.
+
+Now let $X_H=\tilde{X}/\sim$. Then, for any $[\gamma],[\gamma']\in \tilde{X}$, if any two points of $U_{[\gamma]}$ and $U_{[\gamma']}$ are identified in $X_H$, then $[\gamma\cdot \eta]\sim [\gamma'\cdot \eta]$ for some $\eta$, and then $[\gamma]\sim [\gamma']$, thus $U_{[\gamma]}=U_{[\gamma']}$. Thus the projection $X_H\rightarrow X$ induced by $[\gamma]\mapsto \gamma(1)$ is a covering map.
+
+Finally choose $\tilde{x}_0\in X_H$ which is the equivalence class of constant path $[c_{x_0}]$. Take a loop $\gamma$ based on $x_0$. Then its lift to $\tilde{X}$ starting at $[c_{x_0}]$ ends at $[\gamma]$, thus the image of the lift under $p_*:\pi_1(X_H,\tilde{x}_0)\rightarrow \pi_1(X,x_0)$ is a loop if and only if $[\gamma]\sim [c_{x_0}]$, or equivalently, $\gamma\in H$. Therefore $p_*(\pi_1(X_H,\tilde{x}_0))=H$, and since $p_*$ is injective, $\pi_1(X_H,\tilde{x}_0)\simeq H$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

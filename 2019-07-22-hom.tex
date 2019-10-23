@@ -1,0 +1,190 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn} A \textbf{chain complex} $C_\bullet=C$ of $R$-modules is a family $\{C_n\}_{n\in \mathbb{Z}}$ of $R$-modules with $R$-module maps $d=d_n:C_n\rightarrow C_{n-1}$ such that each composite $d\circ d:C_n\rightarrow C_{n-2}$ is zero. The maps $d_n=d$ are called the \textbf{differentials} of $C$. The kernel $\Ker d_n$ is the module of \textbf{$n$-cycles} of $C$, and denoted $Z_n=Z_n(C)$. The image $\Ima d_{n+1}$ is the module of \textbf{$n$-boundaries} of $C$, and denoted $B_n=B_n(C)$. Since $d\circ d=0$, $0\subset B_n\subset Z_n\subset C_n$ for all $n$. The quotient $H_n(C)=Z_n/B_n$ is called the \textbf{$n$-th homology module} of $C$. We call a chain complex is \textbf{exact} if $\Ker d_n=\Ima d_{n+1}$ for all $n\in \mathbb{Z}$.
+\end{defn}
+
+\begin{exer} Set $C_n=\mathbb{Z}/8$ for $n\geq 0$ and $C_n=0$ for $n<0$; for $n>0$ let $d_n$ send $x(\mod 8)$ to $4x(\mod 8)$. Show that $C_\bullet$ is a chain complex of $\mathbb{Z}/8$-modules and compute its homology modules.
+\end{exer}
+\begin{solution} Since $d\circ d(x)=16x(\mod 8)=0(\mod 8)$ for all $x\in\mathbb{Z}/8$, $C_\bullet$ is a chain complex. For $n<0$, since $d=0$, $H_n(C)=0$. For $n>0$, since the kernel is $\{0,2,4,8\}$ and the image is $\{0,4\}$, $H_n(C)=\mathbb{Z}/2$. For $n=0$, since the kernel is $\mathbb{Z}/8$ and the image is $\{0,4\}$, $H_n(C)=\mathbb{Z}/4$. Thus we get
+\begin{equation}
+H_n(C)=\begin{cases}\mathbb{Z}/2,&n>0\\
+\mathbb{Z}/4,&n=0\\
+0,&n<0
+\end{cases}
+\end{equation}
+\end{solution}
+
+\begin{defn} The category $\mathsf{Ch}(\mathsf{mod}-R)$ is a category whose objects are chain complexes, and morphism $u:C_\bullet\rightarrow D_\bullet$ is the \textbf{chain complex map}, which is a family of $R$-module homomorphisms $u_n:C_n\rightarrow D_n$, which satisfies $u_{n-1}\circ d_n=d_n\circ u_n$. That is, such that the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+\cdots\arrow[r,"d"] & C_{n+1}\arrow[r,"d"]\arrow[d,"u"] & C_{n}\arrow[r,"d"]\arrow[d,"u"] & C_{n-1}\arrow[r,"d"]\arrow[d,"u"] & \cdots\\
+\cdots\arrow[r,"d"] & D_{n+1}\arrow[r,"d"] & D_{n}\arrow[r,"d"] & D_{n-1}\arrow[r,"d"] & \cdots
+\end{tikzcd}
+\end{equation}
+\end{defn}
+
+\begin{exer} Show that a morphism $u:C_\bullet \rightarrow D_\bullet$ of chain complexes sends boundaries to boundaries and cycles to cycles, hence maps $H_n(C_\bullet)\rightarrow H_n(D_\bullet)$. Prove that each $H_n$ is a functor from $\mathsf{Ch}(\mathsf{mod}_R)$ to $\mathsf{mod}_R$.
+\end{exer}
+\begin{solution}
+For boundaries $d(C_n)$, $u\circ d(C_n)=d\circ u(C_n)\subset d(D_n)$, thus $u\circ d(C_n)$ are boundaries of $D_n$. For cycles $Z$, $d(Z)=0$, and $d(u(Z))=u(d(Z))=0$, thus $u(Z)$ are boundaries of $D_n$. Thus $u:C_\bullet\rightarrow D_\bullet $ can be quotiented and gives $u:H_n(C_\bullet)\rightarrow H_n(D_\bullet)$, which is $R$-module map. To show $H_n$ is a functor, we need to show that it takes identity morphism to identity morphism, and preserves the composition. The identity morphism $1_{C_\bullet}$ defines identity $R$-module map $H_n(C_\bullet)\rightarrow H_n(C_\bullet)$ by definition, and for two morphisms $u:C_\bullet\rightarrow D_\bullet$ and $v:D_\bullet\rightarrow E_\bullet$, $v\circ u$ are quotiented and gives $v\circ u:H_n(C_\bullet)\xrightarrow{u} H_n(D_\bullet)\xrightarrow{v} H_n(E_\bullet)$.
+\end{solution}
+
+\begin{exer}[Split exact sequences of vector spaces] Choose vector spaces $\{B_n,H_n\}_{n\in \mathbb{Z}}$ over a field, and set $C_n=B_n\oplus H_n\oplus B_{n-1}$. Show that the projection-inclusions $C_n\rightarrow B_{n-1}=C_{n-1}$ make $\{C_n\}$ into a chain complex, and that every chain complex of vector spaces is isomorphic to a complex of this form.
+\end{exer}
+\begin{solution} Take $(b_n,h_n,b_{n-1})\in B_n\oplus H_n\oplus B_{n-1}$. Then $d\circ d(b_n,h_n,b_{n-1})=d(b_{n-1},0,0)=(0,0,0)$, thus $C_\bullet$ is a chain complex. Now consider a chain complex $V_\bullet$ of vector spaces. Take $B_n,H_n$ as the boundaries and homology modules of $V_\bullet$. Now if we show that $V_n=B_n\oplus H_n\oplus B_{n-1}'$, then the statement is proven. Notice that $H_n=Z_n/B_n$ thus $Z_n=H_n\oplus B_n$. Now due to the first isomorphism theorem, $V_n/Z_n=B_{n-1}$. Therefore $V_n=Z_n\oplus B_{n-1}=B_n\oplus H_n\oplus B_{n-1}$.
+\end{solution}
+
+\begin{exer} Show that $\{\textrm{Hom}_R(A,C_n)$ forms a chain complex of abelian groups for every $R$-module $A$ and every $R$-module chain complex $C$. Taking $A=Z_n$, show that if $H_n(\textrm{Hom}_R(Z_n,C))=0$, then $H_n(C)=0$. Is the converse true?
+\end{exer}
+\begin{solution} Define $d:\textrm{Hom}_R(A,C_n)\rightarrow \textrm{Hom}_R(A,C_{n-1})$ as $d(f:A\rightarrow C_n)=d\circ f$, which is a group homomorphism because $d(f+g)(c)=d\circ(f+g)(c)=d(f(c)+g(c))=d(f(c))+d(g(c))=d(f)(c)+d(g)(c)$. Then $d\circ d(f)=(d\circ d)\circ f=0$, thus this is a chain complex.
+
+For second question, choose the inclusion $i_n:Z_n\hookrightarrow C_n$. Then we can see that $d_n\circ i_n=0$, thus there is $u:Z_n\rightarrow C_{n+1}$ such that $i_n=d_{n+1}\circ u$. Then $Z_n=i_n(C_n)=d_{n+1}\circ u(C_n)\subset d_{n+1}(C_{n+1})=B_n$, thus $H_n(C)=0$.
+
+Now consider the chain complex $C$ as $0\rightarrow 2\mathbb{Z}\rightarrow \mathbb{Z}\rightarrow \mathbb{Z}/2\rightarrow 0$ with $Z_n=\mathbb{Z}/2$. Notice that $H_n=0$. Now $\Hom_R(Z_n,2\mathbb{Z})=\Hom_R(Z_n,\mathbb{Z})=0$ and $\Hom_R(Z_n,\mathbb{Z}/2)=\mathbb{Z}/2$, thus we get the chain complex $0\rightarrow 0\rightarrow 0\rightarrow \mathbb{Z}/2\rightarrow 0$, and so $H_n(\Hom_R(Z_n,C))=\mathbb{Z}/2\neq 0$, so the converse is not true.
+\end{solution}
+
+\begin{defn} A morphism $C_\bullet\rightarrow D_\bullet$ of chain complexes is called a \textbf{quasi-isomorphism} if the maps $H_n(C)\rightarrow H_n(D)$ are all isomorphisms.
+\end{defn}
+
+\begin{exer} Show that the following are equivalent for every $C_\bullet$:
+\begin{enumerate}
+\item $C_\bullet$ is exact.
+\item $C_\bullet$ is \textbf{acyclic}, that is, $H_n(C)=0$ for all $n$.
+\item The map $0\rightarrow C_\bullet$ is a quasi-isomorphism.
+\end{enumerate}
+\end{exer}
+\begin{solution}
+$(1\rightarrow 2)$ Since $C_\bullet$ is exact, $\Ker d_{n}=\Ima d_{n+1}$, thus $H_n(C)=0$.
+
+$(2\rightarrow 3)$ Since $H_n(C)=0$, all the maps $0\rightarrow H_n(C)$ are isomorphisms.
+
+$(3\rightarrow 1)$ Since the maps $0\rightarrow H_n(C)$ are isomorphisms, $H_n(C)=0$, thus $\Ker d_n=\Ima d_{n+1}$.
+\end{solution}
+
+\begin{defn} \marginnote{All these definitions can be obtained by reindexing the chain complex $C_n$ by $C^{n}=C_{-n}$.}A \textbf{cochain complex} $C^\bullet$ of $R$-modules is a family $\{C^n\}$ of $R$-modules with maps $d=d^n:C^n\rightarrow C^{n+1}$ such that $d\circ d=0$. The kernel $\Ker d_n$ is the module of \textbf{$n$-cocycles} of $C$, and denoted $Z^n=Z^n(C)$. The image $\Ima d_{n-1}$ is the module of \textbf{$n$-coboundaries} of $C$, and denoted $B^n=B_{n}(C)$. Since $d\circ d=0$, $0\subset B^n\subset Z^n\subset C^n$ for all $n$. The quotient $H^n(C)=Z^n/B^n$ is called the \textbf{$n$-th cohomology module} of $C$. The morphism $u:C^\bullet\rightarrow D^\bullet$ is a family of $R$-module homomorphisms $u^n:C^n\rightarrow D^n$ which satisfies $u^{n+1}\circ d^n=d^n\circ u^n$. A morphism $C^\bullet\rightarrow D^\bullet$ of chain complexes is called a \textbf{quasi-isomorphism} if the maps $H^n(C)\rightarrow H^n(D)$ are all isomorphisms.
+\end{defn}
+
+\begin{defn} A chain complex $C$ is \textbf{bounded} if all but finitely many $C_n$ are zero. If $C_n=0$ unless $a\leq n\leq b$, then we say the complex has \textbf{amplitude} in $[a,b]$. A complex $C_\bullet$ is \textbf{bounded above(below)} if there is a bound $b(a)$ such that $C_n=0$ for all $n>b(n<a)$. The bounded, bounded above, bounded below chain complexes form full subcategories of $\mathsf{Ch}=\mathsf{Ch}(R-\mathsf{mod})$ that are denoted $\mathsf{Ch}_b,\mathsf{Ch}_-,\mathsf{Ch}_+$. If a chain complex is bounded below with bound $0$, then we call it \textbf{non-negative complex}, and its category is denoted as $\mathsf{Ch}_{\geq 0}$. All these definitions works with cochain complex, where all the subscripts are changed into superscripts.
+\end{defn}
+
+\begin{exer}[Homology of a graph] Let $\Gamma$ be a finite loopless graph with $V$ vertices $(v_1,\cdots v_V)$ and $E$ edges $(e_1,\cdots e_E)$. If we orient the edges, we can form the \textbf{incidence matrix} of the graph. This is a $V\times E$ matrix whose $(ij)$ entry is $+1$ if the edge $e_j$ starts at $v_i$, $-1$ if the edge $e_j$ ends at $v_j$, and $0$ otherwise. Let $C_0$ be the free $R$-module on the vertices, $C_1$ the free $R$-module on the edges, $C_n=0$ if $n\neq 0,1$, and $d:C_1\rightarrow C_0$ be the incidence matrix. If $\Gamma$ is connected, show that $H_0(C)$ and $H_1(C)$ are free $R$-modules of dimensions 1 and $E-V+1$, which is the number of \textbf{circuits} of the graph, respectively.
+\end{exer}
+\begin{solution} What we need to find is $\Ima d$ and $\Ker d$. For $\Ima d$, choose the basis $\{v_0,v_1-v_0,\cdots,v_V-v_0\}$. Then considering the paths connecting $v_i$ and $v_0$, and take the edges of the paths. This edges gives $v_i-v_0$ when passing through $d$, thus the only unachievable basis is $v_0$, thus $H_0(C)$ is the free $R$-module with dimension 1. For $\Ker d$, notice that the rank of $\Gamma$ is $V-1$ by above, and by the rank-nullity theorem, $\Ker d$ is the free $R$-module with dimension $E-(V-1)=E-V+1$.
+\end{solution}
+
+\begin{exmp}[Simplicial homology] Let $K$ be a geometric simplicial complex, and let $K_k$, where $0\leq k\leq n$, are the set of $k$-dimensional simplices of $K$. Each $k$-simplex has $k+1$ faces, which are ordered if the set $K_0$ of vertices is ordered, so we obtain $k+1$ set maps $\partial_i:K_k\rightarrow K_{k-1}$. The \textbf{simplicial chain complex} of $K$ with coefficients in $R$ is the chain complex $C_\bullet$ formed as follows. The set $C_k$ is a free $R$ module on the set $K_k$ if $0\leq k\leq n$, and $C_n=0$ otherwise. Define $\partial_i:C_k\rightarrow C_{k-1}$ using the set map $\partial_i:K_k\rightarrow K_{k-1}$, and then their alternating sum $d=\sum(-1)^i\partial_i$ is the map $C_k\rightarrow C_{k-1}$ in the chain complex $C$. Showing $d\circ d=0$ is equivalent to the fact that each $(k-2)$-dimensional simplex in a fixed $k$-simplex $\sigma$ of $K$ lies on exactly two faces of $\sigma$. The homology obtained from the chain complex $C_\bullet$ is called the \textbf{simplicial homology} of $K$ with coefficients on $R$.
+\end{exmp}
+
+\begin{exer}[Tetrahedron] The tetrahedron $T$ is a surface with 4 vertices, 6 edges, and 4 2-dimensional faces. Thus its homology is the homology of a chain complex $0\rightarrow R^4\rightarrow R^6\rightarrow R^4\rightarrow 0$. Write down the matrices in this complex and verify computationally that $H_2(T)\simeq H_0(T)\simeq R$ and $H_1(T)=0$.
+\end{exer}
+\begin{proof}
+First and last map are trivial. For the second map $R^4\rightarrow R^6$, denoting 4 faces as $A,B,C,D$, and 6 edges as $a,b,c,d,e,f$, then we can write
+\begin{equation}
+A\mapsto a-b+d, B\mapsto b-c+e, C\mapsto c-a+f, D\mapsto -(d+e+f)
+\end{equation}
+For the third map $R^6\rightarrow R^4$, denoting 4 vertices as $v,w,x,y$, then we can write
+\begin{equation}
+a\mapsto v-w, b\mapsto v-x, c\mapsto v-y, d\mapsto w-x, e\mapsto x-y, f\mapsto y-w
+\end{equation}
+Consider $0\rightarrow R^4\rightarrow R^6$. The image is $0$, and the kernel is $R$-module with basis $A+B+C+D$, thus we get $H_2(T)=R$.
+
+Consider $R^4\rightarrow R^6\rightarrow R^4$. The image is $R$-module with basis $\{a-b+d,b-c+e,c-a+f\}$, and the kernel is $R$-module with basis $\{a-b+d, b-c+e, c-a+f\}$, thus we get $H_1(T)=0$.
+
+Consider $R^6\rightarrow R^4\rightarrow 0$. The image is $R$-module with basis $\{v-w,v-x,v-y\}$, and the kernel is $v,w,x,y$, thus we get $H_1(T)=R$.
+\end{proof}
+
+\begin{exmp}[Singular homology] Let $X$ be a topological space and $S_k=S_k(X)$ be the free $R$-module on the set of continuous maps from the $k$-simplex $\Delta_k$ to $X$ if $k\geq 0$ and $S_k=0$ if $k<0$. Restricting $\Delta_k\rightarrow X$ to $\Delta_{k-1}\rightarrow X$ gives an $R$-module homomorphism $\partial_i:S_k\rightarrow S_{k-1}$, and the alternating sum $d=\sum(-1)^i\partial_i:S_k\rightarrow S_{k-1}$ gives a chain complex $S_\bullet$. The reason why $d\circ d=0$ is similar with simplicial homology case. The homology obtained from the chain complex $S_\bullet$ is called the \textbf{singular homology} of $X$ with coefficients in $R$, and written $H_n(X;R)$. If $X$ is a geometric simplicial complex, then the inclusion $C_\bullet(X)\rightarrow S_\bullet(X)$ is a quasi-isomorphism, and so the simplicial and singular homology modules of $X$ are isomorphic. For more details, see Algebraic Topology by Allen Hatcher.
+\end{exmp}
+
+\begin{defn} A cataegory $\mathsf{A}$ is called an \textbf{$\mathsf{Ab}$-category} if $\mathsf{A}(a,b)$ is given the structure of abelian group in such a way that composition distributes over addition. That is, if $f:a\rightarrow b, g,g':b\rightarrow c, h:c\rightarrow d$ are morphisms of $\mathsf{A}$, then $h\circ (g+g')\circ f=h\circ g\circ f+h\circ g'\circ f$.
+
+Consider two $\mathsf{Ab}$-categories $\mathsf{A},\mathsf{B}$. A functor $F:\mathsf{B}\rightarrow \mathsf{A}$ is an \textbf{additive functor} if $F:\mathsf{B}(b,b')\rightarrow \mathsf{A}(F(b),F(b'))$ is a group homomorphism.
+
+Consider an $\mathsf{Ab}$-category $\mathsf{A}$. Then $\mathsf{A}$ is an \textbf{additive category} if $\mathsf{A}$ has an object which is both initial and terminal, which is called a \textbf{zero object}, and a product $a\times b$ for objects $a,b$ of $\mathsf{A}$.\marginnote{In additive category, the finite products are same with the finite coproducts.}
+\end{defn}
+
+\begin{exmp} The category $\mathsf{Ch}$ is an $\mathsf{Ab}$-category, since we can add chain maps $\{f_n\},\{g_n\}:C_\bullet\rightarrow D_\bullet$ degreewise, that is, their sum is a family of maps $\{f_n+g_n\}$. The zero object of $\mathsf{Ch}$ is the complex $0$ of zero modules and maps. For a family $\{A_\alpha\}$ of complexes of $R$-modules, the product $\prod A_\alpha$ and coproduct $\oplus A_\alpha$ exist in $\mathsf{Ch}$, and defined degreewise, that is, the differentials are the maps
+\begin{equation}
+\prod d_\alpha=\prod A_{\alpha,n}\rightarrow \prod A_{\alpha,n-1},\quad \oplus d_\alpha:\oplus A_{\alpha,n}\rightarrow \oplus A_{\alpha,n-1}
+\end{equation}
+This shows that $\mathsf{Ch}$ is an additive category.
+\end{exmp}
+
+\begin{exer} Show that direct sum and direct product commute with homology, that is, $\oplus H_n(A_\alpha)\simeq H_n(\oplus A_\alpha)$ and $\prod H_n(A_\alpha)\simeq H_n(\prod A_\alpha)$ for all $n$.
+\end{exer}
+\begin{proof}
+Before showing this, we need to show a small lemma: in category $R-\mathsf{mod}$, the product of epimorphisms is epimorphic. Notice that the product of morphisms is morphism in $R-\mathsf{mod}$, and the product of surjective functions is surjective, this is true. Now, since the direct sum and direct product are in dual relation, we only need to prove it on the direct product. Now consider the following diagram.
+\begin{equation}
+\begin{tikzcd}
+B\arrow[r,"h",dotted] \arrow[rr,"f",bend left=30]\arrow[rd,"f_\alpha"]& \Ker(d) \arrow[r,"i", hook] \arrow[d,"\pi_\alpha|_{\Ker(d)}"]& \prod A_{\alpha,n} \arrow[r,"d"] \arrow[d,"\pi_\alpha"]& \prod A_{\alpha,n-1}\arrow[d,"\pi_\alpha"]\\
+&\Ker(d_\alpha) \arrow[r,"i_\alpha", hook]& A_{\alpha,n} \arrow[r,"d_\alpha"] & A_{\alpha,n-1}
+\end{tikzcd}
+\end{equation}
+Here $B$ is an $R$-module. Now due to the definition of the product, the functions $i_\alpha\circ f_\alpha$ and projections $\pi_\alpha$ defines a unique function $f:B\rightarrow \prod A_{\alpha,n}$. Now notice that $\pi_\alpha\circ d\circ f=d_\alpha\circ \pi_\alpha\circ f=d_\alpha\circ i_\alpha\circ f_\alpha=0$, thus again by the definition of the product, $d\circ f=0$. Due to the universal property of the kernel, there is a unique $h:B\rightarrow \Ker(d)$ which makes the diagram above commutes. Therefore we showed that $\Ker(d)=\prod \Ker(d_\alpha)$.
+
+Now from the short exact sequences
+\begin{equation}
+0\rightarrow \Ker(d_\alpha)\rightarrow A_{\alpha,n+1}\rightarrow \Ima(d_\alpha)\rightarrow 0
+\end{equation}
+we can build a sequence
+\begin{equation}
+0\rightarrow \prod\Ker(d_\alpha)\rightarrow \prod A_{\alpha,n+1}\rightarrow \prod\Ima(d_\alpha)\rightarrow 0
+\end{equation}
+which is left exact due to the above argument. Now since in $R$-module the product of epimorphisms are epimorphic, the above sequence is right exact, hence exact, and
+\begin{equation}
+\prod \Ima(d_\alpha)\simeq \prod A_{\alpha,n+1}/\prod \Ker(d_\alpha)\simeq \prod A_{\alpha,n+1}/\Ker(d)\simeq \Ima(d)
+\end{equation}
+Now take the product of following sequence
+\begin{equation}
+0\rightarrow \Ker(d)\rightarrow \Ima(d)\rightarrow H_n(A_{\alpha,n})\rightarrow 0
+\end{equation}
+which gives the desired result.
+\end{proof}
+
+\begin{defn} Let $\mathsf{C}$ is a category and $f:b\rightarrow c$ is a morphism in $\mathsf{C}$. Then $f$ is a \textbf{constant morphism} or \textbf{left zero morphism} if for any object $a$ in $\mathsf{C}$ and any morphisms $g,h:a\rightarrow b$, $f\circ g=f\circ h$. Dually, $f$ is a \textbf{coconstant morphism} or \textbf{right zero morphism} if for any object $d$ in $\mathsf{C}$ and any morphisms $g,h:c\rightarrow d$, $g\circ f=h\circ f$. If $f:b\rightarrow c$ is both a constant and coconstant morphism, we call it \textbf{zero morphism}. We often write zero morphism from $b$ to $c$ as $0_{bc}$, and if its domain and codomain are obvious, $0$. A \textbf{category with zero morphisms} is a category $\mathsf{C}$ such that for all object pairs $a,b\in \mathsf{C}$ there is a morphisms $0_{ab}$ such that for all objects $a,b,c\in \mathsf{C}$ and morphisms $f:b\rightarrow c, g:x\rightarrow$, the following diagram commutes.
+\begin{equation}
+\begin{tikzcd}
+a\arrow[r,"0_{ab}"] \arrow[d,"g"] \arrow[rd,"0_{ac}"] & b\arrow[d,"f"]\\
+b\arrow[r,"0_{bc}"]&c
+\end{tikzcd}
+\end{equation}
+Then the morphisms $0_{ab}$ are zero morphisms.
+\end{defn}
+
+\begin{exmp}
+Let a category $\mathsf{C}$ has a zero object $0$. Then for all objects $b,c\in \mathsf{C}$, there are unique morphisms $f:b\rightarrow 0, g:0\rightarrow c$. Now define $0_{bc}=g\circ f$. Then this is a zero morphism from $b$ to $c$, due to the definition of the zero object. 
+\end{exmp}
+
+\begin{exmp} Let $\mathsf{C}$ be an $\mathsf{Ab}$-category. Then every morphism set $\mathsf{C}(x,y)$ is an abelian group, thus have a zero element. Denote it $0_{xy}$. Now choose the morphisms $f:y\rightarrow z, g:x\rightarrow y$. Then since $f\circ 0_{xy}+f\circ 0_{xy}=f\circ(0_{xy}+0_{xy})=f\circ 0_{xy}$, thus $f\circ 0_{xy}=0_{xz}$, and same for $0_{yz}\circ g$. Therefore $0_{xy}$ are zero morphisms and make $\mathsf{C}$ a category with zero morphisms.
+\end{exmp}
+
+\begin{defn} In an additive category $\mathsf{C}$, a \textbf{kernel} of a morphism $f:b\rightarrow c$ is a map $i:a\rightarrow b$ such that $f\circ i=0$ and, for any $i':a'\rightarrow b$ such that $f\circ i'=0$, there is a unique morphism $u:a'\rightarrow a$ such that $i\circ u=i'$.
+\begin{equation}
+\begin{tikzcd}
+&b\arrow{rd}{f}&\\
+&a\arrow{u}{i} \arrow{r}{0}&c\\
+a'\arrow{ruu}{i'}\arrow{rru}{0} \arrow[ru, "u", dotted]&&
+\end{tikzcd}
+\end{equation}
+A \textbf{cokernel} is a dual of a kernel.
+\end{defn}
+
+\begin{prop} Take an additive category $\mathsf{C}=R-\mathsf{mod}$ and its morphism $f:x\rightarrow y$. Show that the followings are equivalent.
+\begin{enumerate}
+\item $f$ is monic, that is, for any morphisms $h,k:w\rightarrow x$, $f\circ h=f\circ k$ implies $h=k$.
+\item For every map $j:w\rightarrow x$, $f\circ j=0$ implies $j=0$.
+\item $f$ is a kernel of some morphism $g:y\rightarrow z$.
+\end{enumerate}
+Dually, the followings are equivalent.
+\begin{enumerate}
+\item $f$ is epic, that is, for any morphisms $h,k:y\rightarrow z$, $h\circ f=k\circ f$ implies $h=k$.
+\item For every map $j:y\rightarrow z$, $j\circ f=0$ implies $j=0$.
+\item $f$ is a cokernel of some morphism $g:w\rightarrow x$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let $f$ be monic. Due to the definition of zero morphism, $f\circ 0=0$, thus $f\circ h=f\circ 0$, thus $h=0$. Conversely, suppose that for every map $j:w\rightarrow x$, $f\circ j=0$ implies $j=0$. Choose $f\circ h=f\circ k$ for some $h,k:w\rightarrow x$. Then $f\circ h-f\circ k=f\circ (h-k)=0$, thus $h-k=0$ and $h=k$.
+
+Now notice that $f$ is a kernel of $g:y\rightarrow z\in \mathsf{C}=R-\mathsf{mod}$ if and only if $f$ is the injective morphism $f:\Ker(g)\hookrightarrow y$. Furthermore, $f$ is monic if and only if $f$ is injective, thus if $f$ is a kernel then $f$ is monic, and if $f$ is a monic function then $f$ is a kernel of the function $g$ which sends $\Ima(f)$ to $0$ and $y-\Ima(f)$ to $y-\Ima(f)$ as identity function.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

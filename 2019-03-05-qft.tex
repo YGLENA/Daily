@@ -1,0 +1,83 @@
+\mytitle{Quantum Field Theory}
+The ones we discussed on the Quantum Field Theory lecture which was on 2/27 and 3/4(on 2/25 we just had orientation) was about the perturbation theory. If the Hamiltonian has interaction term, then it frequently becomes very hard to calculate. For example, we consider the free Lagrangian
+\begin{equation}
+\mathcal{L}_{\mathrm{free}}=\frac{1}{2}\left(\partial_\mu \phi\right)^2-\frac{1}{2}m_0^2 \phi^2
+\end{equation}
+which could be thought as the infinite number of harmonic oscillators, hence exactly solvable. Now put $\phi^4$ interaction term:
+\begin{equation}
+\mathcal{L}=\frac{1}{2}\left(\partial_\mu \phi\right)^2-\frac{1}{2}m_0^2 \phi^2-\frac{\lambda_0}{4!}\phi^4
+\end{equation}
+gives the Hamiltonian
+\begin{equation}
+\mathcal{H}=\underbrace{\frac{1}{2}\pi^2+\frac{1}{2}\left(\vec{\nabla}\phi\right)^2+\frac{1}{2}m_0^2\phi^2}_{H_0}+\underbrace{\frac{\lambda_0}{4!}\phi^4}_{H_I}.
+\end{equation}
+As we have done in quantum mechanics, we will assume $\lambda_0$ very small and take a series expansion to get the result(and use only finite terms if needed).
+
+If we have a free Hamiltonian, then the two solutions $\phi_1$ and $\phi_2$ does not interacts: if they are solutions then $\phi_1+\phi_2$ is also the solution. This shows that even though these solutions 'collides', those solution does not change their form. The existence of interaction term breaks this law, which is more realistic picture which might happen in experiment.
+
+When we think the collision experiment, it is good to think the asymptotic states: at time $\pm \infty$. Suppose that $|\psi\rangle_{\mathrm{in/out}}$ and $\phi\rangle_{\mathrm{in/out}}$ are the same state at asymptotic limit $t=\mp\infty$: i.e.
+\begin{equation}
+e^{-iH(t-t_0)}|\psi\rangle_{\mathrm{in/out}}\xleftrightarrow{t=\mp \infty} e^{-iH_0(t-t_0)}|\phi\rangle_{\mathrm{in/out}}
+\end{equation}
+for some reference time $t_0$. Then we can write as
+\begin{equation}
+|\psi\rangle_{\mathrm{in/out}}=\lim_{t\rightarrow \mp\infty}e^{iH(t-t_0)}e^{-iH_0 (t-t_0)}|\phi\rangle_{\mathrm{in/out}}
+\end{equation}
+Defining $\Omega(t)=e^{iH(t-t_0)}e^{-iH_0 (t-t_0)}$ gives
+\begin{equation}
+|\psi\rangle_{\mathrm{in/out}}=\Omega(\mp\infty)|\phi\rangle_{\mathrm{in/out}}
+\end{equation}\marginnote{Here for concreteness, it is important to assume that $\Omega(\mp\infty)$ exists. This kind of assumption could be nontrivial(and obviously there are enormous counterexamples) in mathematical sense, but we accept this fact in physical sense.}
+Now $\Omega(\mp \infty)$ does not depends on $t_0$, therefore
+\begin{equation}
+0=\frac{\partial}{\partial t_0}\Omega(\mp \infty)=-iH\Omega(\mp \infty)+i\Omega(\mp \infty)H_0
+\end{equation}
+This implies
+\begin{equation}
+H\Omega(\mp\infty)=\Omega(\mp \infty)H_0
+\end{equation}
+Now,
+\begin{equation}
+H|\psi\rangle_{\mathrm{in/out}}=H\Omega(\mp\infty)|\phi\rangle_{\mathrm{in/out}}=\Omega(\mp\infty)H_0|\phi\rangle_{\mathrm{in/out}}
+\end{equation}
+If $|\phi\rangle_{\mathrm{in/out}}$ is the eigenstate of $H_0$ with eigenvalue $E$, then we get
+\begin{equation}
+H|\psi\rangle_{\mathrm{in/out}}=E|\psi\rangle_{\mathrm{in/out}}
+\end{equation}
+We might think this result as following sense. Since the energy spectrum of QFT is continuous unlike in QM, we can find the eigenstates of interacting and noninteracting system, which has equal energy. The operator $\Omega(\mp\infty)$ is the transformation operator between those states.
+
+Now we want to solve the equation
+\begin{equation}
+(H_0+V)|\psi\rangle =E|\psi\rangle
+\end{equation}
+where $E$ satisfies
+\begin{equation}
+H_0|\phi\rangle=E|\phi\rangle
+\end{equation}
+Direct addition gives
+\begin{equation}
+(E-H_0)|\psi\rangle = (E-H_0)|\phi\rangle +V|\psi\rangle
+\end{equation}
+and dividing both side by $E-H_0$ gives the solution. But since $E-H_0$ has singular point, this is impossible. To avoid this, we put the infinitesimal imaginary constant $i\epsilon$: then,
+\begin{equation}
+|\psi\rangle = |\phi\rangle +\frac{1}{E-H_0+i\epsilon}V|\psi\rangle
+\end{equation}
+Here $\epsilon>0$. This gives the correct boundary condition: detector detects only "after" given a fire. This is called \textbf{Lippmann-Schwinger Equation}.
+
+Define a transfer matrix $T$ as
+\begin{equation}
+T|\phi\rangle = V|\psi\rangle
+\end{equation}
+then
+\begin{align*}
+&T|\phi\rangle =V|\psi\rangle = V|\phi\rangle+V\frac{1}{E-H_0+i\epsilon}V|\psi\rangle\\
+&=V|\phi\rangle + V\frac{1}{E-H_0+i\epsilon}V|\phi\rangle + V\frac{1}{E-H_0+i\epsilon}V\frac{1}{E-H_0+i\epsilon}V|\psi\rangle\\
+&=\cdots\numberthis
+\end{align*}
+so
+\begin{equation}
+T=V+V\frac{1}{E-H_0+i\epsilon}V+V\frac{1}{E-H_0+i\epsilon}V\frac{1}{E-H_0+i\epsilon}V+\cdots
+\end{equation}
+Transfer matrix basically checks the probability of the scattering for the non-interacting eigenstate basis. Therefore, the expansion of $T$ by $V$ and green's function $\frac{1}{E-H_0+i\epsilon}$ implies that the transfer occurs as an interaction, or an interaction then propagation then an interaction, or interaction, propagation, interaction, propagation, then interaction, and so on.
+
+\noindent\rule{\textwidth}{1pt}
+\newline

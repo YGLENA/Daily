@@ -1,0 +1,87 @@
+\mytitle{Category theory in context}
+Dual is also quite general concept in the algebra, for examples, vector and dual vectors, or homology and cohomology.
+\begin{defn} For category $\mathsf{C}$, the \textbf{opposite category} $\mathsf{C}^{\mathrm{op}}$ has the same objects in $\mathsf{C}$, and for each morphism $f:x\rightarrow y$ in $\mathsf{C}$ we take $f^{\mathrm{op}}:y\rightarrow x$ as a morphism in $\mathsf{C}^{\mathrm{op}}$. The identity becomes $1_x^{\mathrm{op}}$, and the composition of morphisms becomes $g^{\mathrm{op}}\circ f^{\mathrm{op}}=(f\circ g)^{\mathrm{op}}$.
+\end{defn}
+Representing the objects as dots and morphisms as arrows, we can think that the opposite category is just changing the arrows in different way. Thinking so, it is more acceptable that the opposite category is actually a category. This is quite important: here we get the \textbf{dual theorem}, which says that every theorem which has the statements like "for all categories" is true in its dual form.
+\begin{lemma} The following are equivalent:\marginnote{Most of categories we will treat from now are locally small categories. However, lots of them can be proven in general categories also, using similar statement: for example, we may change the word bijection to isomorphism in the sense of general category.}
+\begin{enumerate}
+\item $f:x\rightarrow y$ is an isomorphism in $\mathsf{C}$.
+\item For all objects $c\in \mathsf{C}$, post-composition with $f$ defines a bijection $f_*:\mathsf{C}(c,x)\rightarrow \mathsf{C}(c,y)$.
+\item For all objects $c\in \mathsf{C}$, pre-composition with $f$ defines a bijection $f^*:\mathsf{C}(y,c)\rightarrow \mathsf{C}(x,c)$.\marginnote{\textbf{Post-composition} means that for morphism $g:c\rightarrow x$, $f_*(g)=f\circ g:c\rightarrow y$. \textbf{Pre-composition} means that for morphism $g:y\rightarrow c$, $f^*(g)=g\circ f:x\rightarrow c$.}
+\end{enumerate}
+\end{lemma}
+\begin{proof} Noticeable point is that the second statement is exact dual of third statement, and vice versa. Therefore, it is sufficient to prove that $1\Leftrightarrow 2$, and then $1\Leftrightarrow 3$ is proven automatically by dual theorem.
+For $1\Rightarrow 2$, take $g$ be the isomorphic inverse of $f$, and $g_*$ be the post-composition with $g$. Then, for all $h\in \mathsf{C}(c,x)$,
+\begin{equation}
+g_* f_*(h)=g_*(fh)=gfh=(gf)h=1_x h=h
+\end{equation}
+thus $g_* f_*=1_{\mathsf{C}(c,x)}$. Also, for all $h\in \mathsf{C}(c,y)$,
+\begin{equation}
+f_* g_*(h)=f_*(gh)=fgh=(fg)h=1_y h=h
+\end{equation}
+thus $f_* g_*=1_{\mathsf{C}(c,y)}$ and so $f_*$ is bijection.
+
+Conversely, for $2\Rightarrow 1$, since $f_*$ is bijection, there must exists $g\in \mathsf{C}(y,x)$ such that $f_*(g)=fg=1_y$. Also, the function $gf\in \mathsf{C}(x,x)$ satisfies $f_*(gf)=fgf=1_yf=f\in \mathsf{C}(x,y)$, and since $f_*(1_x)=f 1_x=f$ and $f_*$ is bijection, $1_x=gf$. Therefore $f$ is an isomorphism.
+\end{proof}
+
+From isomorphism, we recall that there is a concept named monomorphism and epimorphism: the algebraic term of injection and surjection. These concepts are also defined in category theory of course, and indeed, the definitions are in the dual relation.
+\begin{defn} A morphism $f:x\rightarrow y$ in a category $\mathsf{C}$ is\marginnote{In general, we use $\rightarrowtail$ for monomorphisms and $\twoheadrightarrow$ for epimorphisms.}
+\begin{enumerate}
+\item a \textbf{monomorphism} or \textbf{monic} if for any parallel morphisms $h,k:w\rightarrow x$, $fh=fk$ implies that $h=k$, or for locally small category, $f_*:\mathsf{C}(c,x)\rightarrow \mathsf{C}(c,y)$ is injective;
+\item \marginnote{For the category $\mathsf{Set}$, if $f:X\rightarrow Y$ is monomorphism, then for any $x\in X$, define $1_x:\bullet\rightarrow X$ where $1_x(\bullet)=x$: then $f1_x=f1_{x'}$ means $f(x)=f(x')$, and $1_x=1_{x'}$ means $x=x'$, which coincides with the definition of injectivity. Also for epimorphism, if $f:X\mapsto Y$ is epimorphism, suppose that $y\in Y-f(X)$. Now for two point set $\{0,1\}$, define a map $h,k:Y\rightarrow \{0,1\}$ as $h(Y)=0$ and $k(Y-\{y\})=0,k(y)=1$. Then $hf=kf$ since $y\notin f(X)$, but $h\neq k$, contradiction.}an \textbf{epimorphism} or \textbf{epic} if for any parallel morphisms $h,k:y\rightarrow z$, $hf=kf$ implies that $h=k$, or for locally small category, $f^*:\mathsf{C}(y,c)\rightarrow \mathsf{C}(x,c)$ is injective.
+\end{enumerate}
+\end{defn}
+
+Even though isomorphism must be both monic and epic, a morphism which is monic and epic does not need to be the isomorphism. For $\mathsf{Ring}$, the inclusion mapping $i:\mathbb{Z}\hookrightarrow \mathbb{Q}$ is the example: it is monic and epic, but there is no nontrivial morphism from $\mathbb{Q}$ to $\mathbb{Z}$. This can be shown as following: for some $\mathbb{Z}$-ring $R$ and parallel morphisms $h,k:R\rightarrow \mathbb{Z}$, obviously $ih=ik$ implies $h=k$ since $i$ is inclusion. Also for parallel morphisms $h,k:\mathbb{Q}\rightarrow R$, suppose that $hi=ki$ but $h\neq k$. Then there is $q\in \mathbb{Q}$ such that $h(q)\neq k(q)$. Since $hi=ki$, $q\notin \mathbb{Z}$. Thus there is prime $p$ and integer $r$ such that $q=r/p$. Now $h(q)\neq k(q)$ implies $p\cdot h(q)\neq p\cdot k(q)$, but since the morphisms are ring homomorphisms, we get $h(r)\neq k(r)$, which is contradiction. Therefore $h=k$. Now suppose that there is a nontrivial ring homomorphism $f$ from $\mathbb{Q}$ to $\mathbb{Z}$. Then we have $f(q)=n\neq 0$ for some $q=r/p\in \mathbb{Q}$ and $n\in \mathbb{Z}$. Then $2n\cdot f(r/2pn)=n$, but there is no integer $k$ which satisfies $2nk=n$ for $n\neq 0$.
+
+There exists a morphisms which becomes identity in one directional composition, but not in the other direction. The easy examples are the section of fiber bundle with base projection map, or the inclusion map of subset with retraction. Indeed these concepts gives the name of those kind of categorical morphisms.
+\begin{defn} Suppose that for $s:x\rightarrow y$ and $r:y\rightarrow x$ are morphisms such that $rs=1_x$. Then we call $s$ a \textbf{section}, \textbf{split monomorphism}, or \textbf{right inverse} of $r$, and $r$ a \textbf{retraction}, \textbf{split epimorphism}, or \textbf{left inverse} of $s$. We call $x$ a \textbf{retract} of $y$.\marginnote{Notice that section is always monomorphism and retraction is always epimorphism, which is easily proven using definition and associativity.}
+\end{defn}
+
+\begin{lemma}
+~\begin{enumerate}
+\item If $f:x \rightarrowtail y$ and $g:y \rightarrowtail z$ are monic, then $gf:x\rightarrowtail z$ is monic.
+\item If $f:x\rightarrow y$ and $g:y\rightarrow z$ gives monic composition $gf:x\rightarrowtail z$, then $f$ is monic.
+\end{enumerate}
+Dually,
+\begin{enumerate}[label=\arabic*']
+\item If $f:x\twoheadrightarrow y$ and $g:y\twoheadrightarrow z$ are epic, then $gf:x\twoheadrightarrow z$ is epic.
+\item If $f:x\rightarrow y$ and $g:y\rightarrow z$ gives epic composition $gf:x\twoheadrightarrow z$, then $g$ is epic.
+\end{enumerate}
+\end{lemma}\marginnote{These results shows that monomorphisms or epimorphisms define a subcategory of given category.}
+\begin{proof}
+First we will show first two statements, and then we will show the other statements are dual of above.
+
+For 1., take parallel morphisms $h,k:w\rightarrow x$. Since $g$ is monic, $g(fh)=g(fk)$ implies $fh=fk$, and since $f$ is monic, $fh=fk$ implies $h=k$. Therefore $gfh=gfk$ implies $h=k$ and so $gf$ is monic.
+
+For 2., take parallel morphisms $h,k:w\rightarrow x$. Then $fh=fk$ implies $gfh=gfk$, which implies $h=k$ since $gf$ is monic. Therefore $f$ is monic.
+
+For 1', noticing the dual of monic is epic, the dual statement of 1. becomes: If $f:y\twoheadrightarrow x$ and $g:z\twoheadrightarrow y$ are epic, then $fg:z\twoheadrightarrow x$ is epic. Changing notation $f\leftrightarrow g$ and $x\leftrightarrow z$ gives 1'.
+
+For 2', the dual statement of 2. becomes: If $f:y\rightarrow x$ and $g:z\rightarrow y$ gives epic composition $fg:z\twoheadrightarrow x$, then $f$ is monic. Changing notation $f\leftrightarrow g$ and $x\leftrightarrow z$ gives 2'.
+\end{proof}
+
+\begin{exer} Show that $\mathsf{C}/c\simeq (c/(\mathsf{C}^{\mathrm{op}}))^{\mathrm{op}}$.
+\end{exer}
+\begin{solution} The category $c/(\mathsf{C}^{\mathrm{op}})$ has objects as morphisms $f:x\rightarrow c$ and in which a morphism from $f:x\rightarrow c$ to $g:y\rightarrow c$ is a map $h:y\rightarrow x$ between the domains so that $g=fh$. Taking the opposite category in whole changes the morphism direction in the sense that now $h$ is a morphism from $g$ to $f$. Changing notation $f\leftrightarrow g$ and $x\leftrightarrow y$ gives: $(c/(\mathsf{C}^{\mathrm{op}}))^{\mathrm{op}}$ has objects as morphisms $f:x\rightarrow c$ and in which a morphism from $f:x\rightarrow c$ to $g:y\rightarrow c$ is a map $h:x\rightarrow y$ between the domains so that $f=gh$. This statement is exactly the definition of category $\mathsf{C}/c$.
+\end{solution}
+
+\begin{exer}
+~\begin{enumerate}
+\item Show that a morphism $f:x\rightarrow y$ is a split epimorphism in a category $\mathsf{C}$ if and only if for all $c\in \mathsf{C}$, the post-composition function $f_*:\mathsf{C}(c,x)\rightarrow \mathsf{C}(c,y)$ is surjective.
+\item By duality, show that a morphism $f:x\rightarrow y$ is a split monomorphism in a category $\mathsf{C}$ if and only if for all $c\in \mathsf{C}$, the pre-composition function $f^*:\mathsf{C}(y,c)\rightarrow \mathsf{C}(x,c)$ is surjective.
+\end{enumerate}
+\end{exer}
+\begin{solution}
+~\begin{enumerate}
+\item Suppose that $f$ is a split epimorphism. Then there exists a morphism $g:y\rightarrow x$ such that $fg=1_y$. Now, for $k\in \mathsf{C}(c,y)$, $f(gk)=(fg)k=1_y k=k$, therefore $f_*$ is surjective. Conversely, suppose that $f_*$ is surjective for all $c\in\mathsf{C}$. Then by taking $c$ as $y$, we get $g:y\rightarrow x$ such that $fg=1_y$, which shows $f$ is a split epimorphism.
+\item Taking the dual of the statement above, we get: a morphism $f:y\rightarrow x$ is a split monomorphism in a category $\mathsf{C}$ if and only if for all $c\in \mathsf{C}$, the pre-composition function $f^*:\mathsf{C}(x,c)\rightarrow \mathsf{C}(y,c)$ is surjective. (Note that the surjectivity does not changes its arrow direction, because this is not the morphism in $\mathsf{C}$ but the function of sets of morphisms.) Changing $x\leftrightarrow y$ gives the desired result.
+\end{enumerate}
+\end{solution}
+
+\begin{exer} Prove that a morphism that is both a monomorphism and a split epimorphism is necessarily an isomorphism. Therefore, by duality, a morphism that is both an epimorphism and a split monomorphism is necessarily an isomorphism.
+\end{exer}
+\begin{solution} Suppose that $f:x\rightarrow y$ is monomorphism and a split epimorphism. Then we have $g:y\rightarrow x$ such that $fg=1_y$, and for any parallel morphisms $h,k:w\rightarrow x$, $fh=fk$ implies $h=k$. Now, since $fgf=1_y f = f = f 1_x$, $gf=1_x$. Therefore $f$ is isomorphism and $g$ is its inverse isomorphism.
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

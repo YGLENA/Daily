@@ -1,0 +1,46 @@
+\mytitle{An introduction to homological algebra}
+\begin{thm} Let $F:\mathsf{A}\rightarrow \mathsf{B}$ be a right exact functor between two abelian categories. The derived functors $L_* F$ form a homological $\delta$-functor.
+\end{thm}
+\begin{proof}
+For a short exact sequence $0\rightarrow A'\rightarrow A\rightarrow A''\rightarrow 0$, choose projective resolutions $P'\rightarrow A'$ and $P''\rightarrow A''$. Then by the horseshoe lemma, there is a projective resolution $P\rightarrow A$ which fits into a short exact sequence $0\rightarrow P'\rightarrow P\rightarrow P''\rightarrow 0$. Since $P_n''$ are projective, each $0\rightarrow P'_n\rightarrow P_n\rightarrow P''_n\rightarrow 0$ is split exact. Now since $F$ is additive, it preserves the addition and zero map, thus $0\rightarrow F(P'_n)\rightarrow F(P_n)\rightarrow F(P''_n)\rightarrow 0$ is split exact. This shows that $0\rightarrow F(P')\rightarrow F(P)\rightarrow F(P'')\rightarrow 0$ is a short exact sequence of chain complexes. From this, we can take the corresponding long exact homology sequence, which gives
+\begin{equation}
+\cdots\xrightarrow{\partial}L_i F(A')\rightarrow L_i F(A)\rightarrow L_i F(A'')\xrightarrow{\partial} L_{i-1}F(A')\rightarrow\cdots
+\end{equation}
+To show the naturality of $\partial$, consider a commutative diagram.
+\begin{equation}
+\begin{tikzcd}
+0\arrow{r} & A'\arrow{r}\arrow{d}{f'} & A\arrow{r}\arrow{d}{f} & A''\arrow{r} \arrow{d}{f''}& 0\\
+0\arrow{r} & B'\arrow{r}{i_B} & B\arrow{r}{\pi_B} & B''\arrow{r}& 0
+\end{tikzcd}
+\end{equation}
+Take projective resolutions of the corners as $\epsilon':P'\rightarrow A', \epsilon'':P''\rightarrow A'', \eta':Q'\rightarrow B', \eta'':Q''\rightarrow B''$. By the horseshoe lemma, we get the corresponding projective resolutions $\epsilon:P\rightarrow A, \eta:Q\rightarrow B$. Also by the comparison theorem, we have chain maps $F':P'\rightarrow Q'$ and $F'':P''\rightarrow Q''$ lifting the maps $f',f''$ respectively. Our aim is to show that there is a chain map $F:P\rightarrow Q$ lifting $f$, and giving a following commutative diagram.
+\begin{equation}
+\begin{tikzcd}
+0\arrow{r} & P'\arrow{r}\arrow{d}{F'}&P\arrow{r}\arrow{d}{F}&P''\arrow{r}\arrow{d}{F''}&0\\
+0\arrow{r}&Q'\arrow{r}&Q\arrow{r}&Q''\arrow{r}&0
+\end{tikzcd}
+\end{equation}
+Since $H_*$ is a homological $\delta$-functor, this gives the naturality of $\partial$. If we define the maps $\gamma_n:P''_n\rightarrow Q'_n$ such that $F_n$ are defined as
+\begin{equation}
+F_n(p',p'')=(F'(p')+\gamma(p''),F''(p''))
+\end{equation}
+then, if $F$ is a chain map over $f$, this gives the commutative diagram. Now to make $F$ a lifting of $f$, the map $\eta\circ F_0-f\circ \epsilon:P_0=P'_0\oplus P''_0\rightarrow B$ must be vanish. This implies
+\begin{equation}
+i_B\circ \eta'\circ \gamma_0=f\circ \lambda_P-\lambda_Q F_0'':P''_0\rightarrow B
+\end{equation}
+where $\lambda_P,\lambda_Q$ are the restrictions of $\epsilon$ and $\eta$ to $P''_0$ and $Q''_0$, respectively. Now since
+\begin{equation}
+\pi_B(f\circ\lambda-\lambda \circ F_0'')=f''\circ\pi_A\circ\lambda-\pi_B\circ\lambda\circ F_0''=f''\circ \epsilon''-\eta''\circ F''_0=0
+\end{equation}
+thus there is $\beta:P''_0\rightarrow B'$ so that $i_B \circ \beta=f\circ \lambda-\lambda\circ F''_0$. Now using projectivity, define $\gamma_0$ to be any lift of $\beta$ to $Q'_0$, satisfying $\beta=\eta'\circ \gamma_0$. To make $F$ a chain map, we have
+\begin{equation}
+(d\circ F-F\circ d)(p',p'')=((d'\circ F'-F'\circ d')(p')+(d'\circ\gamma-\gamma\circ d''+\lambda\circ F''-F'\circ \lambda)(p''),(d''\circ F''-F''\circ d'')(p''))=0
+\end{equation}
+This means the map $d'\circ \gamma_n:P_n''\rightarrow Q'_{n-1}$ must equal
+\begin{equation}
+g_n=\gamma_{n-1}\circ d''-\lambda_n F'_n+F_{n-1}''\circ \lambda_n
+\end{equation}
+Now use induction. Suppose $\gamma_i$ defined for $i<n$, so that $g_n$ exists. Then $d'\circ g_n=0$ due to the inductive definition. Since $Q'$ is exact, the map $g_n$ factors through a map $\beta:P_n''\rightarrow d(Q_n')$, and we take $\gamma_n$ any lift of $\beta$ to $Q'_n$. This constructs the desired chain map $F$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

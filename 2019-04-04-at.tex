@@ -1,0 +1,15 @@
+\mytitle{Algebraic topology}
+\begin{cor} If $(X,A)$ satisfies the homotopy extension property and the inclusion $A\hookrightarrow X$ is a homotopy equivalence, then $A$ is a deformation retract of $X$.
+\end{cor}
+\begin{proof}
+By the proposition above, inclusion $i:A\hookrightarrow X$ is a homotopy equivalence $\textrm{ rel } A$, whose homotopy is deformation retraction.
+\end{proof}
+
+\begin{cor} A map $f:X\rightarrow Y$ is a homotopy equivalence if and only if $X$ is a deformation retract of the mapping cylinder $M_f$. Hence, two spaces $X$ and $Y$ are homotopy equivalent if and only if there is a third space containing both $X$ and $Y$ as deformation retracts.
+\end{cor}
+\begin{proof}
+Notice that we have inclusions $i:X\hookrightarrow M_f$, $j:Y\hookrightarrow M_f$, and a canonical retraction $r:M_f\rightarrow Y$ satisfying $r\circ j=1_Y$ and $j\circ r\simeq 1_{M_f}$. Then $f=r\circ i$ and $i\simeq j\circ f$ by the definition of $M_f$. Now, if $i$ is homotopy equivalence, then since $r$ is homotopy equivalence, $f$ is homotopy equivalence; if $f$ is homotopy equivalence, then since $j$ is homotopy equivalence, $i$ is homotopy equivalence. Since $X$ has a mapping cylinder neighborhood, $X\times[0,1]$, in $M_f$, $(M_f,X)$ satisfies homotopy extension property, and so by the corollary above, if $i$ is homotopy equivalence then $X$ is a deformation retract of $M_f$. Conversely, if $X$ is a deformation retract of $M_f$, then the inclusion $i:X\hookrightarrow M_f$ is homotopy equivalence, thus $f$ is homotopy equivalence.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

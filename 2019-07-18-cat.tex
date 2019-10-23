@@ -1,0 +1,15 @@
+\mytitle{Category theory in context}
+\begin{defn} A \textbf{universal property} of an object $X$ in category $\mathsf{C}$ is a description of the covariant functor $\mathsf{C}(X,-)$ or of the contravariant functor $\mathsf{C}(-,X)$.
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item Consider the forgetful functor $U:\mathsf{Group}\rightarrow \mathsf{Set}$. This functor is represented by the group $\mathbb{Z}$. Indeed, there is a natural isomorphism $\mathsf{Group}(\mathbb{Z},-)\simeq U$ which takes the homomorphism $\phi\in \mathsf{Group}(\mathbb{Z},G)$ to an element $g\in U(G)$ where $g=\phi(1)$ bijectively. We thus say $\mathbb{Z}$ is the free group on a single generator.
+\item For any unital ring $R$, consider the forgetful functor $U:\mathsf{Mod}_R\rightarrow\mathsf{Set}$. This functor is represented by the $R$-module $R$. The construction of a natural isomorphism $\mathsf{Mod}_R(R,-)\simeq U$ is very similar with above. We thus say $R$ is the free $R$-module on a single generator.
+\item Consider the forgetful functor $U:\mathsf{Ring}\rightarrow \mathsf{Set}$. This functor is represented by the ring $\mathbb{Z}[x]$. We thus say $\mathbb{Z}[x]$ is the free unital ring on a single generator.
+\item Consider a functor $U(-)^n:\mathsf{Group}\rightarrow \mathsf{Set}$ which sends a group $G$ to the set of $n$-tuples of elements of $G$. This functor is represented by the free group $F_n$ on $n$ generators.
+\item Consider a functor $U(-)^n:\mathsf{Ab}\rightarrow \mathsf{Set}$ which sends an abelian group $G$ to the set of $n$-tuples of elements of $G$. This functor is represented by the free abelian group $\oplus_n\mathbb{Z}$ on $n$ generators.
+\end{enumerate}
+\end{exmp}
+\noindent\rule{\textwidth}{1pt}
+\newline

@@ -1,0 +1,134 @@
+\mytitle{An introduction to homological algebra}
+\begin{exer}[Mapping cone] Let $f:B\rightarrow C$ be a morphism of chain complexes. Form a double chain complex $D$ out of $f$ by thinking of $f$ as a chain complex in $\mathsf{Ch}$ and using the sign trick, putting $B[-1]$ in the row $q=1$ and $C$ in the row $q=0$. Thinking of $C$ and $B[-1]$ as double complexes in the obvious way, show that there is a short exact sequence of double complexes
+\begin{equation}
+0\rightarrow C\rightarrow D\xrightarrow{\delta} B[-1]\rightarrow 0
+\end{equation}
+\end{exer}
+\begin{solution}
+We can take $D$ as the following double chain complex.
+\begin{equation}
+\begin{tikzcd}
+&0\arrow[d]&0\arrow[d]&0\arrow[d]&\\
+\cdots\arrow{r}{-d_B}&B_{n-1}\arrow{r}{-d_{B}}\arrow{d}{f}&B_{n}\arrow{r}{-d_{B}}\arrow{d}{f}&B_{n+1}\arrow{r}{-d_B}\arrow{d}{f}&\cdots\\
+\cdots\arrow{r}{d_C}&C_{n-1}\arrow{r}{d_C}\arrow{d}&C_{n}\arrow{r}{d_C}\arrow{d}&C_{n+1}\arrow{r}{d_C}\arrow{d}&\cdots\\
+&0&0&0&
+\end{tikzcd}
+\end{equation}
+The image of $C\rightarrow D$ is $C$ in $D$, which is also the kernel of $\delta$, thus the sequence is exact.
+\end{solution}
+
+\begin{thm} Let $0\rightarrow A_\bullet\xrightarrow{f} B_\bullet\xrightarrow{g} C_\bullet\rightarrow 0$ be a short exact sequence of chain complexes. Then there are natural maps $\partial:H_n(C)\rightarrow H_{n-1}(A)$, called \textbf{connecting homomorphisms}, such that
+\begin{equation}
+\cdots\xrightarrow{g}H_{n+1}(C)\xrightarrow{\partial}H_n(A)\xrightarrow{f}H_n(B)\xrightarrow{g}H_n(C)\xrightarrow{\partial}\cdots
+\end{equation}
+is exact. Similarly, if $0\rightarrow A^\bullet\xrightarrow{f} B^\bullet\xrightarrow{g} C^\bullet\rightarrow 0$ is a short exact sequence of chain complexes, then there are natural maps $\partial:H^n(C)\rightarrow H^{n+1}(A)$ such that
+\begin{equation}
+\cdots\xrightarrow{g}H^{n-1}(C)\xrightarrow{\partial}H^n(A)\xrightarrow{f}H^n(B)\xrightarrow{g}H^n(C)\xrightarrow{\partial}\cdots
+\end{equation}
+is exact.
+\end{thm}
+\begin{proof} We will come back to the proof of this theorem after we show some small but important lemmas.
+\end{proof}
+
+\begin{exer} Let $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$ be a short exact sequences of complexes. Show that if two of the three complexes $A,B,C$ are exact, then so is the third.
+\end{exer}
+\begin{solution} Let $B,C$ are exact. From the previous theorem, we have a long exact sequence $0\rightarrow 0\rightarrow H^n(A)\rightarrow 0\rightarrow \cdots$. Thus $H^n(A)=0$ for all $n$, and so $A$ is exact. The proof is same for the $B,C$ case.
+\end{solution}
+
+\begin{exer} Suppose given a commutative diagram
+\begin{equation}
+\begin{tikzcd}
+&0\arrow{d}&0\arrow{d}&0\arrow{d}&\\
+0\arrow{r}&A'\arrow{r}\arrow{d}&B'\arrow{r}\arrow{d}&C'\arrow{r}\arrow{d}&0\\
+0\arrow{r}&A\arrow{r}\arrow{d}&B\arrow{r}\arrow{d}&C\arrow{r}\arrow{d}&0\\
+0\arrow{r}&A''\arrow{r}\arrow{d}&B''\arrow{r}\arrow{d}&C''\arrow{r}\arrow{d}&0\\
+&0&0&0&
+\end{tikzcd}
+\end{equation}
+in an abelian category, such that every column is exact. Show the following:
+\begin{enumerate}
+\item If the bottom two rows are exact, so is the top row.
+\item If the top two rows are exact, so is the bottom row.
+\item If the top and bottom rows are exact, and the composite $A\rightarrow C$ is zero, the middle row is also exact.
+\end{enumerate}
+\end{exer}
+\begin{solution}
+From the previous exercise, what we only need to prove is that the rows above diagram is actually chain complexes.
+\begin{enumerate}
+\item Since the above rectangle commutes and $A\rightarrow C$ is zero, $A'\rightarrow C'\rightarrow C$ is zero. Since $C'\rightarrow C$ is monic, $A'\rightarrow C'$ is zero.
+\item Since the below rectangle commutes and $A\rightarrow C$ is zero, $A\rightarrow A''\rightarrow C''$ is zero. Since $A\rightarrow A''$ is epic, $A''\rightarrow C''$ is zero.
+\item The additional condition itself shows the middle row is a chain complex.
+\end{enumerate}
+\end{solution}
+
+\begin{lemma}[Snake lemma] Consider a commutative diagram of $R$-modules of the form
+\begin{equation}
+\begin{tikzcd}
+&A'\arrow{r} \arrow{d}{f} & B'\arrow{r}{p} \arrow{d}{g} & C'\arrow{r} \arrow{d}{h} & 0\\
+0\arrow{r} &A\arrow{r}{i} &B\arrow{r} &C
+\end{tikzcd}
+\end{equation}
+If the rows are exact, there is an exact sequence
+\begin{equation}
+\Ker(f)\rightarrow\Ker(g)\rightarrow\Ker(h)\xrightarrow{\partial}\Coker(f)\rightarrow \Coker(g)\rightarrow\Coker(h)
+\end{equation}
+where $\partial$ is defined by the formula $\partial(c')=i^{-1}\circ g\circ p^{-1}(c')$ when $c'\in \Ker(h)$. Moreover, if $A'\rightarrow B'$ is monic, then so is $\Ker(f)\rightarrow \Ker(g)$, and if $B\rightarrow C$ is onto, then so is $\Coker(g)\rightarrow \Coker(h)$.\marginnote{There are bunch of notes for this lemma. First, the term 'snake' comes from the shape the line of exact sequence when we add the kernels above the diagram and cokernels below the diagram. Second, this lemma holds in an arbitrary abelian category. This is the corollary of the Freyd-Mitchell embedding theorem which gives an exact fully faithful embedding of small abelian category into $R-\mathsf{mod}$ for some ring $R$. For general abelian category, just choose a subcategory which contains all the objects and morphisms which are needed in the snake lemma. This defines $\partial$ in a subcategory, hence in the original category. Third, which is quite silly one, a proof of the snake lemma is given at the beginning of movie \textit{It's My Turn} (Rastar-Martin Elfand Studios, 1980).}
+\end{lemma}
+\begin{proof}
+First we need to show that $\partial$ is well defined. Since $p$ is surjective, $p^{-1}(c')$ is a nonempty set of elements in $B'$. Since $h(c')=0$, $g(p^{-1}(c'))$ is in the kernel of $B\rightarrow C$, thus in the image of $A\rightarrow B$. Since $i$ is injective, we can take $i^{-1}(g(p^{-1}(c'))$. Now picking $b,b'\in B'$ such that $p(b)=p(b')=c$, we have $p(b-b')=0$, thus there is $a\in A'$ such that $A'\rightarrow B'$ maps $a$ to $b-b'$. Due to the commutativity, $f(a)=i^{-1}\circ g(b-b')$, which is zero in $\Coker(A)$. Thus $\partial$ is well defined.
+
+Now we need to show that the sequence is exact on $\Ker(h)$ and $\Coker(f)$, since others are trivial by the exactness of rows. Notice that $c\in \Ker(\partial)$, then $i^{-1}(g(p^{-1}(c)))=0$ implies $g(p^{-1}(c))=0$. Choose $b\in p^{-1}(c)$, then $g(b)=0$ thus $b\in \ker(g)$, and $p(b)=c$. Therefore $c\in \Ima(\Ker(g)\rightarrow \Ker(h))$. Conversely choose $c\in \Ima(\Ker(g)\rightarrow \Ker(h))$, and take $b\in\Ker(g)$ such that $p(b)=c$. Then $i^{-1}(g(p^{-1}(c)))=i^{-1}(g(b))=i^{-1}(0)=0$. Now take $a\in \Ima(\partial)$, and take $c\in \Ker(h)$ such that $\partial(c)=a$. Then $i^{-1}(g(p^{-1}(c)))=a$ implies $g(p^{-1}(c))=i(a)=0$ in $\Coker(g)$. Finally, take $a\in \Ker(\Coker(f)\rightarrow \Coker(g))$, then there is $b\in B'$ such that $i(a)=g(b)$, thus $a=i^{-1}(g(b))=i^{-1}(g(p^{-1}(p(b))))$, thus $a\in \Ima(\partial)$.
+
+Suppose that $A'\rightarrow B'$ is monic, that is, if $a\mapsto 0$ then $a=0$. Thus for all $a\in \Ker(f)$, $a\mapsto 0$ implies $a=0\in \Ker(f)$, thus $\Ker(f)\rightarrow \Ker(g)$ is monic.
+
+Suppose that $B\rightarrow C$ is epic, that is, for all $c\in C$ there is $b\in B$ which maps to $c$. Now choose $[c']\in \Coker(h)$. Taking the representation $c'\in C$ of $[c']$, we have $b'\in B$ which maps to $c'$. Then $[b']$ maps to $[c']$.
+\end{proof}
+
+\begin{exer}[5-lemma] In any commutative diagram
+\begin{equation}
+\begin{tikzcd}
+A'\arrow{r}{g'}\arrow{d}{f_a}&B'\arrow{r}{h'}\arrow{d}{f_b}&C'\arrow{r}{i'}\arrow{d}{f_c}&D'\arrow{r}{j'}\arrow{d}{f_d}&E'\arrow{d}{f_e}\\
+A\arrow{r}{g}&B\arrow{r}{h}&C\arrow{r}{i}&D\arrow{r}{j}&E
+\end{tikzcd}
+\end{equation}
+with exact rows in any abelian category, show that if $f_a,f_b,f_d$, and $f_e$ are isomorphisms, then $f_c$ is also an isomorphism. More precisely, show that if $f_b$ and $f_d$ are monic and $f_a$ is epic, then $f_c$ is monic. Dually, show that if $f_b$ and $f_d$ are epic and $f_e$ is monic, then $f_c$ is epic.
+\end{exer}
+\begin{solution}
+By the Freyd-Mitchell embedding theorem, it is enough to show this theorem in $R-\textrm{mod}$ category. By duality, we only need to prove the second statement. Take $c\in C'$ such that $f_c(c)=0$. Then by commutativity, $f_d(i'(c))=0$. Since $f_d$ is monic, $i'(c)=0$, thus $c\in \Ker(i')$. Since the rows are exact, $c\in \Ima(h')$, that is, we have $b\in B'$ such that $h'(b)=c$. By commutativity again, $h(f_b(b))=0$, thus $f_b(b)\in \Ker(h)$. Again since the rows are exact, $f_b(b)\in \Ima(g)$, that is, we have $a'\in A$ such that $g(a')=f_b(b)$. Since $f_a$ is surjective, there is $a\in A'$ such that $g(f_a(a))=f_b(g'(a))=f_b(b)$, and since $f_b$ is monic, $g'(a)=b$. Since $c=h'(b)=h'(g'(a))=0$, we get $f_c$ is monic.
+\end{solution}
+
+\begin{proof}[Proof of long exact sequence with connecting homomorphisms] From the following diagram
+\begin{equation}
+\begin{tikzcd}
+0\arrow{r} &A_n\arrow{r} \arrow{d}{d}&B_n\arrow{r} \arrow{d}{d}&C_n\arrow{r} \arrow{d}{d}&0\\
+0\arrow{r} &A_{n-1}\arrow{r}&B_{n-1}\arrow{r}&C_{n-1}\arrow{r}&0\\
+\end{tikzcd}
+\end{equation}
+The snake lemma implies the following rows are exact.
+\begin{equation}
+\begin{tikzcd}
+ &A_n/d(A_{n+1})\arrow{r} \arrow{d}{d}&B_n/d(B_{n+1})\arrow{r} \arrow{d}{d}&C_n/d(C_{n+1})\arrow{r} \arrow{d}{d}&0\\
+0\arrow{r} &Z_{n-1}(A)\arrow{r}&Z_{n-1}(B)\arrow{r}&Z_{n-1}(C)&\\
+\end{tikzcd}
+\end{equation}
+Notice that the kernel of $d:A_n/d(A_{n+1})\rightarrow Z_{n-1}(A)$ is $Z_n/B_n=H_n(A)$, and the cokernel is $Z_{n-1}/B_{n-1}=H_{n-1}(A)$. Therefore snake lemma implies the sequence
+\begin{equation}
+\cdots\xrightarrow{g}H^{n-1}(C)\xrightarrow{\partial}H^n(A)\xrightarrow{f}H^n(B)\xrightarrow{g}H^n(C)\xrightarrow{\partial}\cdots
+\end{equation}
+is exact.
+\end{proof}
+
+\begin{prop} The construction of long exact sequence from short exact sequence defined as above is a functor from the category with short exact sequences to long exact sequence. That is, for every short exact sequence there is a long exact sequence, and for every map of short exact sequences there is a corresponding map of long exact sequences.
+\begin{equation}
+\begin{tikzcd}
+\cdots\arrow{r}{\partial} & H_n(A)\arrow{r}\arrow{d} &H_n(B)\arrow{r}\arrow{d} & H_n(C)\arrow{r}{\partial}\arrow{d}&H_{n-1}(A)\arrow{r}\arrow{d}&\cdots\\
+\cdots\arrow{r}{\partial} & H_n(A')\arrow{r} &H_n(B')\arrow{r} & H_n(C')\arrow{r}{\partial}&H_{n-1}(A')\arrow{r}&\cdots
+\end{tikzcd}
+\end{equation}
+\end{prop}
+\begin{proof}
+To prove this, we only need to show that the diagram above commutes. Since $H_n$ is a functor, the left two squares commute. Due to the Freyd-Mitchell embedding theorem, we only need to work on $R-\textsf{mod}$ category. Take $z\in H_n(C)$ which is represented by $c\in C_n$. Then the image of $z$, $z'\in H_n(C')$, is represented by the image of $c$. Also if $b\in B_n$ maps to $c$, then its image $b'\in '_n$ maps to $c'$. Now we observe that the element $d(b)\in B_{n-1}$ belongs to the submodule $Z_{n-1}(A)$ and represents $\partial(z)\in H_{n-1}(A)$, which can be found in the construction of $\partial$. Thus $\partial(z')$ is represented by the image of $d(b)$, which is the image of a representative of $\partial(z)$, thus $\partial(z')$ is the image of $\partial(z)$.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

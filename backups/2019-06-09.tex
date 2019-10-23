@@ -1,0 +1,45 @@
+\mytitle{Algebraic Topology}
+\begin{prop} If $X$ is a point set, then $H_n(X)=0$ for $n>0$ and $H_0(X)\simeq \mathbb{Z}$.
+\end{prop}
+\begin{proof} For each $n$, there is a unique singular $n$-simplex $\sigma_n$, and $\partial(\sigma_n)=\sum_{i=0}^{n}(-1)^i\sigma_{n-1}$, which is $0$ for odd $n$ and $\sigma_{n-1}$ for even $n$ with $n\neq 0$. Thus the chain complex becomes
+\begin{equation}
+\cdots\rightarrow \mathbb{Z}\xrightarrow{\simeq}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{\simeq}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\rightarrow 0
+\end{equation}
+For $\mathbb{Z}\xrightarrow{\simeq} \mathbb{Z}\xrightarrow{0} \mathbb{Z}$, both kernel and image is $\mathbb{Z}$. For $\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{\simeq}\mathbb{Z}$, both kernel and image is $0$. therefore $H_n(X)\simeq 0$ for all $n>0$. For $n=0$, due to the previous proposition, $H_0(X)\simeq \mathbb{Z}$.
+\end{proof}
+
+\begin{defn} For a nonempty space $X$ and its singular chain complex
+\begin{equation}
+\cdots \rightarrow C_2(X)\xrightarrow{\partial_2} C_1(X)\xrightarrow{\partial_1} C_0(X)\rightarrow 0
+\end{equation}
+the \textbf{reduced homology groups} $\tilde{H}_n(X)$ is the homology groups of a chain complex
+\begin{equation}
+\cdots \rightarrow C_2(X)\xrightarrow{\partial_2} C_1(X)\xrightarrow{\partial_1} C_0(X)\xrightarrow{\epsilon}\mathbb{Z}\rightarrow 0
+\end{equation}
+where $\epsilon(\sum_i n_i\sigma_i)=\sum_i n_i$.
+\end{defn}
+
+\begin{prop} The chain complex of reduced homology groups is actually a chain complex, and for a nonempty space $X$, $H_n(X)\simeq \tilde{H}_n(X)$ for $n>0$ and $H_0\simeq \tilde{H}_0(X)\oplus \mathbb{Z}$.
+\end{prop}
+\begin{proof}
+Since $\epsilon(\partial_1([v_0,v_1]))=\epsilon(v_0-v_1)=1-1=0$, and $\epsilon$ is surjective, it is a chain complex. Now notice that $H_0(X)\simeq C_0/\Ima \partial_1$. Since $\epsilon(\Ima \partial_1)=0$, we may define an induced map $\tilde{\epsilon}:H_0(X)\rightarrow \mathbb{Z}$. Since $X$ is nonempty, we may choose $n[v_0]$ as an element of $H_0(X)$ then $\tilde{\epsilon}(n[v_0])=n$ for any $n\in \mathbb{Z}$, thus $\tilde{\epsilon}$ is surjective. Also $\Ker\tilde{\epsilon}$ is the elements of $H_0(X)$ which can be represented as $\sum_i n_i[v]_i$ with $\sum_i n_i=0$. But these are the elements of $\tilde{H}_0(X)\simeq \Ker\epsilon/\Ima\partial_1$, hence $H_0(X)\simeq \tilde{H}_0(X)\oplus \mathbb{Z}$. For $n>0$, since the kernel and image structure are all same, $H_n(X)\simeq \tilde{H}_n(X)$.
+\end{proof}
+
+\begin{defn} For two chain complexes $C_\bullet,D_\bullet$, the \textbf{homomorphism between chain complexes} $f:C_\bullet\rightarrow D_\bullet$ is a collection of homomorphisms $f_n:C_n\rightarrow D_n$. If the index $n$ is well known or not important, we write $f$ rather then $f_n$. If a homomorphism between chain complexes $f:C_\bullet\rightarrow D_\bullet$ satisfies $f\circ \partial_C=\partial_D\circ f$, then $f$ is called a \textbf{chain map}. Since the index $C,D$ is obvious when the function is given, we often drop them.
+\end{defn}
+\begin{defn} For a map $f:X\rightarrow Y$ between two space, an \textbf{induced homomorphism} $f_\#:C_\bullet(X)\rightarrow C_\bullet(Y)$ is defined as, for each singular $n$-simplex $\sigma:\Delta^n\rightarrow X$ let $f_\#(\sigma)=f\circ \sigma:\Delta^n\rightarrow Y$, then extending $f_\#$ linearly: $f_\#(\sum_i n_i\sigma_i)=\sum_i n_i f_\#(\sigma_i)$.
+\end{defn}
+
+\begin{prop} For a map $f:X\rightarrow Y$, the induced homomorphism $f_\#:C_\bullet(X)\rightarrow C_\bullet(Y)$ is a chain map.
+\end{prop}
+\begin{proof}
+For $n$-simplex $\sigma$, $f_\#\circ \partial(\sigma)=f_\#(\sum_i (-1)^i \sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_n]})=\sum_i (-1)^i f\circ \sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_n]}=\partial f_\#(\sigma)$.
+\end{proof}
+
+\begin{prop} A chain map between chain complexes induces homomorphisms between the homology groups of the two complexes.
+\end{prop}
+\begin{proof}
+Let $f:X\rightarrow Y$ and $\alpha\in C_\bullet(X)$. Define $f_*:H_n(X)\rightarrow H_n(Y)$ as $f_*([\alpha])=[f_\#(\alpha)]$. For $[\alpha]\in H_n(X)$, $\partial \alpha=0$, and $\partial(f_\#(\alpha))=f_\#\circ \partial(\alpha)=0$, thus the codomain of map is indeed $H_n(Y)$. If $[\alpha]=[\beta]$ then $\alpha-\beta=\partial \gamma$, thus $f_\#(\alpha)-f_\#(\beta)=f_\#(\alpha-\beta)=f_\#\circ \partial(\gamma)=\partial(f_\#(\gamma))$, therefore $[f_\#(\alpha)]=[f_\#(\beta)]$ and so $f_*$ is well defined. Since $f_\#$ is defined linearly, $f_*([\alpha]+[\beta])=f_*([\alpha+\beta])=[f_\#(\alpha+\beta)]=[f_\#(\alpha)]+[f_\#(\beta)]=f_*([\alpha])+f_*([\beta])$, and so $f_\#$ is a homomorphism.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

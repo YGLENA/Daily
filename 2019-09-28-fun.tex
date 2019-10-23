@@ -1,0 +1,227 @@
+\mytitle{Functional Analysis}
+\begin{cor} For every $x\in E$, we have
+\begin{equation}
+\|x\|=\sup_{f\in E^*,\|f\|\leq 1}|\langle f,x\rangle|=\max_{f\in E^*,\|f\|\leq 1}|\langle f,x\rangle|
+\end{equation}
+\end{cor}
+\begin{proof}
+$x=0$ case is trivial. If $x\neq 0$, then $f\in E^*$ satisfying $\|f\|\leq 1$ means $\sup_{\|x\|\leq 1,x\in E}|f(x)|\leq 1$, thus $|f(x/\|x\|)|\leq 1$ and so $|f(x)|\leq \|x\|$. Thus we have shown $\sup_{\|x\|\leq 1,x\in E}|\langle f,x\rangle|\leq \|x\|$. For converse, from previous corollary, choose $f_0\in E^*$ such that $\|f_0\|=\|x\|$ and $\langle f_0,x\rangle=\|x\|^2$. Now take $f_1=f_0/\|x\|$, which gives $\langle f_1,x\rangle = \|x\|$ and $\| f_1\|=1$. Therefore $\max_{f\in E^*, \|f\|}|\langle f,x\rangle|\geq \|x\|$, showing the desired result.
+\end{proof}
+
+\begin{defn} Let $E$ be a normed vector space. An \textbf{affine hyperplane} is a subset $H\subset E$ of the form
+\begin{equation}
+H=\{x\in E:f(x)=\alpha\}
+\end{equation}
+where $f$ is a linear functional which does not vanish identically, and $\alpha\in \mathbb{R}$. We write $H=[f=\alpha]$, and say $f=\alpha$ the \textbf{equation} of $H$.
+\end{defn}
+
+\begin{prop} The hyperplane $H=[f=\alpha]$ is closed if and only if $f$ is continuous.
+\end{prop}
+\begin{proof}
+If $f$ is continuous then since $\alpha$ is closed, $H=f^{-1}(\alpha)$ is closed. Now suppose that $H$ is closed. Then $E\setminus H$ is open, and since $f$ does not vanishes identically, $E\setminus H$ is nonempty. Thus we may choose $x_0\in E\setminus H$. Suppose that $f(x_0)<\alpha$. We may choose an open ball $B(x_0,r)=\{x\in E:\|x-x_0\|<r\}\subset E\setminus H$. Suppose that there is $x_1\in B(x_0,r)$ such that $f(x_1)>\alpha$. Considering the line segment connecting $x_0$ and $x_1$, $x(t)=(1-t)x_0+tx_1, t\in [0,1]$, since this segment is contained in $B(x_0,r)$, $f(x(t))\neq \alpha$ for all $t\in [0,1]$. But taking $t=\frac{f(x_1)-\alpha}{f(x_1)-f(x_0)}$, we get $f(x(t))=\alpha$, contradiction. Thus $f(B(x_0,r))<\alpha$, thus $f(x_0+rz)<\alpha$ for all $z\in B(0,1)$. This shows that $\|f\|\leq \frac{1}{r}(\alpha-f(x_0))$, and so $f$ is bounded, thus $f$ is continuous. 
+\end{proof}
+
+\begin{defn} For a normal vector space $E$, let $A,B\subset E$. We say the hyperplane $H=[f=\alpha]$ \textbf{separates} $A$ and $B$ if
+\begin{equation}
+f(x)\leq \alpha,\quad \forall x\in A\quad \textrm{and}\quad f(x)\geq \alpha,\quad \forall x\in B
+\end{equation}
+We say $H$ \textbf{strictly separates} $A$ and $B$ if there is some $\epsilon>0$ such that
+\begin{equation}
+f(x)\leq \alpha-\epsilon,\quad \forall x\in A\quad \textrm{and}\quad f(x)\geq \alpha+\epsilon,\quad \forall x\in B
+\end{equation}
+\end{defn}
+
+\begin{lemma} Let $C\subset E$ be an open convex set with $0\in C$. For every $x\in E$, let\marginnote{This $p$ is called the \textbf{gauge of $C$} or the \textbf{Minkowski functional of $C$}.}
+\begin{equation}
+p(x)=\inf\{\alpha>0:\alpha^{-1} x \in C\}
+\end{equation}
+Then $p$ is a Minkowski functional, and:
+\begin{enumerate}
+\item there is a constant $M$ such that $0\leq p(x)\leq M\|x\|$ for all $x\in E$;
+\item $C=\{x\in E:p(x)<1\}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+First, $p(\lambda x)=\inf\{\alpha>0:\alpha^{-1}\lambda x\in C\}= \lambda\inf\{\alpha>0:\alpha^{-1}x\in C\}=\lambda p(x)$. Now since $C$ is open, we may take $r>0$ such that $B(0,r)\subset C$. Then since $rx/\|x\|\in C$, $p(x)\leq \frac{1}{r}\|x\|$.
+
+Now choose $x\in C$. Since $C$ is open, we can choose $\epsilon>0$ such that $(1+\epsilon)x\in C$. Thus $p(x)\leq \frac{1}{1+x}\leq 1$. Conversely, let $p(x)<1$. Then there is $\alpha\in (0,1)$ such that $\alpha^{-1} x\in C$, and thus $x=\alpha \alpha^{-1} x+(1-\alpha) 0\in C$, since $C$ is convex. 
+
+Finally, let $x,y\in E$ and $\epsilon>0$. The previous results gives $\frac{p(x)}{p(x)+\epsilon}\in C$, thus $\frac{tx}{p(x)+\epsilon}+\frac{(1-t)y}{p(y)+\epsilon}\in C$ for all $t\in [0,1]$. Choosing $t=\frac{p(x)+\epsilon}{p(x)+p(y)+2\epsilon}$ gives $\frac{x+y}{p(x)+p(y)+2\epsilon}\in C$. Thus $p(x+y)<p(x)+p(y)+2\epsilon$, and since $\epsilon$ is arbitrary, $p(x+y)\leq p(x)+p(y)$.
+\end{proof}
+
+\begin{lemma} Let $C\subset E$ be a nonempty open convex set, and let $x_0\in E\setminus C$. Then there is $f\in E^*$ such that $f(x)<f(x_0)$ for all $x\in C$. In particular, the hyperplane $[f(x)=f(x_0)]$ separates $x_0$ and $C$. 
+\end{lemma}
+\begin{proof}
+By translation, we may assume $0\in C$. By previous lemma, we may introduce the gauge $p$ of $C$. Consider the map $g:\mathbb{R}x_0\rightarrow \mathbb{R}$ as $g(tx_0)=t$. If $t\leq 0$ then $g(tx_0)\leq 0\leq p(tx_0)$, and if $t>0$ then since $t^{-1} tx_0\notin C$, $g(t x_0)=t\leq p(t x_0)$. Thus, by Hahn-Banach Theorem, there is a linear functional $f$ on $E$ which extends $g$ and $f(x)\leq p(x)$ for all $x\in E$. Since $p$ is bounded, $f$ is bounded, and thus $f$ is continuous, and $f(x_0)=1$. Finally since $p(x)<1$ for all $x\in C$, $f(x)<1=f(x_0)$ for all $x\in C$.
+\end{proof}
+
+\begin{thm}[First geometric form of Hahn-Banach Theorem] Let $A,B\subset E$ be two nonempty convex subsets such that $A\cap B=\emptyset$. If one of them is open, then there is a closed hyperplane that separates $A$ and $B$.
+\end{thm}
+\begin{proof}
+Consider $C=A-B$. For any $a-b, a'-b'\in C$, since $ta+(1-t)a'$ and $tb+(1-t)b'$ are in $A$ and $B$, respectively, for all $t\in [0,1]$, $t(a-b)+(1-t)(a'-b')\in C$ for all $t\in [0,1]$. Hence $C$ is convex. Since $C=\cup_{y\in B}(A-y)$, $C$ is open, and $0\notin C$ because $A\cap B=\emptyset$. Now by previous lemma, there is $f\in E^*$ such that $f(z)<0$ for all $z\in C$, that is, $f(a)<f(b)$ for all $a\in A, b\in B$. Now we fix $\alpha$ satisfying
+\begin{equation}
+\sup_{x\in A} f(x)\leq \alpha\leq \inf_{y\in B} f(y)
+\end{equation}
+Then the hyperplane $[f=\alpha]$ separates $A$ and $B$.
+\end{proof}
+
+\begin{thm}[Second geometric form of Hahn-Banach Theorem] Let $A,B\subset E$ be two nonempty convex subsets such that $A\cap B=\emptyset$. If $A$ is closed and $B$ is compact, then there is a closed hyperplane that strictly separates $A$ and $B$.
+\end{thm}
+\begin{proof}
+Consider $C=A-B$. As shown in above theorem, $C$ is convex. Consider the neighborhoods $U_b$ of each points in $B$. Since $B$ is compact, there is a finite open cover of $B$. Now since
+\begin{equation}
+C=A-B=\cup (A-U_b)=\cup(A\cap U_b^c)
+\end{equation}
+which is finite union of closed sets, $C$ is closed. Finally $0\notin C$. Hence there is $r>0$ such that $B(0,r)\cap C=\emptyset$. By the previous theorem, there is a closed hyperplane that separates $B(0,r)$ and $C$, that is, there is $f\in E^*$ which does not vanish identically, such that $f(a-b)\leq f(rz)$ for all $a\in A, b\in B$, and $z\in B(0,1)$. Thus $f(a-b)\leq -r\|f\|$. Letting $\epsilon=\frac{1}{2}r\|f\|>0$, we get
+\begin{equation}
+f(x)+\epsilon\leq f(y)-\epsilon
+\end{equation}
+Now choosing $\alpha$ such that
+\begin{equation}
+\sup_{x\in A} f(x)+\epsilon \leq \alpha \leq \inf_{y\in B}f(y)-\epsilon
+\end{equation}
+we can see that the hyperplane $[f=\alpha]$ strictly separates $A$ and $B$.
+\end{proof}
+
+\begin{cor} Let $F\subset E$ be a linear space such that $\bar{F}\neq E$. Then there is some $f\in E^*$ which does not vanish identically, such that $\langle f,x\rangle=0$, for all $x\in F$.\marginnote{This, using the contrapositive statement, gives the fact that the linear subspace $F$ of $E$ is dense if every continuous linear functional on $E$ that vanishes on $F$ must vanish everywhere on $E$.}
+\end{cor}
+\begin{proof}
+Let $x_0\in E\setminus \bar{F}$. Using previous theorem with $A=\bar{F}$ and $B=\{x_0\}$, we have a closed hyperplane $[f=\alpha]$ strictly separating $\bar{F}$ and $\{x_0\}$, that is:
+\begin{equation}
+\langle f,x\rangle<\alpha<\langle f,x_0\rangle,\quad \forall x\in F
+\end{equation}
+Since $\lambda\langle f,x\rangle<\alpha$ for every $\lambda\in \mathbb{R}$, $\langle f,x\rangle=0$ for all $x\in F$.
+\end{proof}
+
+\begin{defn} Let $E$ be a normed vetor space, and $E^*$ be the dual space. The \textbf{bidual} $E^**$ is the dual of $E^*$ with the norm
+\begin{equation}
+\|\xi\|_{E^**}=\sup_{f\in E^*,\|f\|\leq 1}|\langle \xi,f\rangle|
+\end{equation}
+\end{defn}
+
+\begin{prop} There is a canonical injection $J:E\rightarrow E^**$, which maps $x$ to the map $Jx:f\mapsto \langle f,x\rangle$.
+\end{prop}
+\begin{proof}
+First notice that $\langle Jx,f\rangle_{E^**,E^*}=\langle f,x\rangle_{E^*,E}$ for all $x\in E, f\in E^*$. By the linearity of $f$, $J$ is linear. Also $J$ is an isometry, that is, $\|Jx\|_{E^**}=\|x\|_E$, because
+\begin{equation}
+\|Jx\|=\sup_{f\in E^*,\|f\|\leq 1}|\langle Jx,f\rangle|=\sup{f\in E^*,\|f\|\leq 1}|\langle f,x\rangle|=\|x\|
+\end{equation}
+\end{proof}
+
+\begin{defn} If $M\subset E$ is a linear subspace, we define
+\begin{equation}
+M^\perp =\{f\in E^*:\langle f,x\rangle=0,\quad \forall x\in M\}
+\end{equation}
+If $N\subset E^*$ is a linear subspace, we define
+\begin{equation}
+N^\perp = \{x\in E:\langle f,x\rangle=0,\quad \forall f\in N\}
+\end{equation}
+We say $M^\perp$ and $N^\perp$ is the space orthogonal to $M$ and $N$, respectively.
+\end{defn}
+
+\begin{prop} Let $M\subset E$ be a linear subspace. Then $(M^\perp)^\perp=bar{M}$. Let $N\subset E^*$ be a linear subspace. Then $(N^\perp)^\perp \supset \bar{N}$.
+\end{prop}
+\begin{proof}
+Obviously $M\subset (M^\perp)^\perp$, and since $(M^\perp)^\perp$ is closed, $\bar{M}\subset (M^\perp)^\perp$. Same can be done in $(N^\perp)^\perp$. Suppose that we have $x_0\in (M^\perp)^\perp\setminus \bar{M}$. By the second geometric form of Hahn-Banach Theorem, there is a closed hyperplane strictly separating $\{x_0\}$ and $\bar{M}$. Thus, there is $f\in E^*$ and $\alpha\in \mathbb{R}$ such that
+\begin{equation}
+\langle f,x\rangle <\alpha<\langle f,x_0\rangle,\quad \forall x\in M
+\end{equation}
+Since $M$ is linear space, $\lambda \langle f,x\rangle<\alpha$, thus $\langle f,x\rangle=0$ for all $x\in M$. Also $\langle f,x_0\rangle>0$. Therefore $f\in M^\perp$, and consequently $\langle f,x_0\rangle=0$. This gives contradiction.
+\end{proof}
+
+\begin{defn} Let $E$ be a set. The \textbf{epigraph} of the function $\phi:E\rightarrow (-\inf,\inf]$ is the set
+\begin{equation}
+\textrm{epi}\phi=\{[x,\lambda]\in E\times \mathbb{R}:\phi(x)\leq \lambda	\}
+\end{equation}
+\end{defn}
+
+\begin{defn} Let $E$ be a set. A function $\phi:E\rightarrow (-\infty,\infty]$ is \textbf{lower semicontinuous} if for every $\lambda\in \mathbb{R}$ the set
+\begin{equation}
+[\phi\leq \lambda]=\{x\in E:\phi(x)\leq \lambda\}
+\end{equation}
+is closed.
+\end{defn}
+
+\begin{prop}[Without proofs] Let $E$ be a set.
+\begin{enumerate}
+\item $\phi$ is lower semicontinuous if and only if $\textrm{epi}\phi$ is closed in $E\times \mathbb{R}$.
+\item $\phi$ is lower semicontinuous if and only if for every $\epsilon>0$ there is some neighborhood $V$ of $x$ such that
+\begin{equation}
+\phi(y)\geq \phi(x)-\epsilon,\quad \forall y\in V
+\end{equation}
+In particular, if $\phi$ is lower semicontinuous, then for every sequence $x_n\rightarrow x$ in $E$, we have
+\begin{equation}
+\liminf_{n\rightarrow \infty}\phi(x_n)\geq \phi(x)
+\end{equation}
+and converse holds if $E$ is a metric space.
+\item If $\phi_1,\phi_2$ are lower semicontinuous, then $\phi_1+\phi_2$ is also.
+\item If $(\phi_i)_{i\in I}$ is a family of lower semicontinuous functions, then their \textbf{superior envelope}, which is defined as
+\begin{equation}
+\phi(x)=\sup_{i\in I}\phi_i(x)
+\end{equation}
+is lower semicontinuous.
+\item If $E$ is compact and $\phi$ is locally semicontinuous, then $\inf_E\phi$ exists.
+\end{enumerate}
+\end{prop}
+
+\begin{defn} Let $E$ be a vector space. A function $\phi:E\rightarrow (-\infty,\infty]$ is \textbf{convex} if
+\begin{equation}
+\phi(tx+(1-t)y)\leq t\phi(x)+(1-t)\phi(y),\quad \forall x,y\in E,\quad \forall t\in (0,1).
+\end{equation} 
+\end{defn}
+
+\begin{prop}[Without proofs]
+\begin{enumerate}
+\item $\phi$ is a convex function if and only if $\textrm{epi}\phi$ is a convex set in $E\times \mathbb{R}$.
+\item If $\phi$ is a convex function then for every $\lambda\in \mathbb{R}$, the set $[\phi\leq \lambda]$ is convex.
+\item If $\phi_1,\phi_2$ are convex, then $\phi_1+\phi_2$ is also.
+\item If $(\phi_i)_{i\in I}$ is a family of convex functions, then the superior envelope is convex.
+\end{enumerate}
+\end{prop}
+
+\begin{defn} Let $E$ be normed vector space and $\phi:E\rightarrow (-\infty,\infty]$ with $\phi\not\equiv \infty$. The \textbf{conjugate function} or \textbf{Legendre transformaion} of $\phi$, $\phi^*:E^*\rightarrow (-\infty,\infty]$ is defined as
+\begin{equation}
+\phi^*(f)=\sup_{x\in E}\{\langle f,x\rangle-\phi(x)\},\quad \forall f\in E^*
+\end{equation}
+\end{defn}
+
+\begin{prop} The conjugate function of $\phi$, $\phi^*$, is a convex function.
+\end{prop}
+\begin{proof}
+Fix $x\in E$. Then the function $f\mapsto \langle f,x\rangle-\phi(x)$ is continuous. Also, $tf+(1-t)g\mapsto \langle tf+(1-t)g,x\rangle-\phi(x)=t(\langle f,x\rangle-\phi(x))+(1-t)(\langle g,x\rangle-\phi(x))$. This the functions are convex and lower semicontinuous, and thus the superior envelope is also convex and lower semicontinuous.
+\end{proof}
+
+\begin{defn} The \textbf{domain} of $\phi:E\rightarrow(-\infty,\infty]$ is the set
+\begin{equation}
+D(\phi)=\{x\in E:\phi(x)<\infty\}
+\end{equation}
+\end{defn}
+
+\begin{prop} Assume that $\phi:E\rightarrow (-\infty,\infty]$ is convex lower semicontinuous function with $\phi\not\equiv \infty$. Then $\phi^*\not\equiv\infty$, and thus $\phi$ is bounded below by an affine continuous function.
+\end{prop}
+\begin{proof}
+Let $x_0\in D(\phi)$ and $\lambda_0<\phi(x_0)$. Using the second geometric form of Hahn-Banach Theorem in the space $E\times \mathbb{R}$ with $A=\textrm{epi}\phi$ and $B=\{[x_0,\lambda_0]\}$, there is a closed hyperplane $H=[\Phi=\alpha]$ in $E\times \mathbb{R}$ that strictly separates $A$ and $B$. Now since $x\in E\mapsto \Phi([x,0])$ is a continuous linear functional on $E$, thus $\Phi([x,0])=\langle f,x\rangle$ for some $f\in E^*$. Letting $k=\Phi([0,1])$, we can write
+\begin{equation}
+\Phi([x,\lambda])=\langle f,x\rangle+k\lambda,\quad \forall[x,\lambda]\in E\times \mathbb{R}
+\end{equation}
+Writing $\Phi>\alpha$ on $A$ and $\Phi<\alpha$ on $B$, we get
+\begin{equation}
+\langle f,x\rangle+k\lambda>\alpha,\quad \forall[x,\lambda]\in \textrm{epi}\phi
+\end{equation}
+and $\langle f,x_0\rangle+k\lambda_0<\alpha$. This implies
+\begin{equation}
+\langle f,x\rangle+k\phi(x)>\alpha,\quad \forall x\in D(\phi)
+\end{equation}
+and thus
+\begin{equation}
+\langle f,x_0\rangle+k\phi(x_0)>\alpha>\langle f,x_0\rangle+k\lambda_0
+\end{equation}
+thus $k>0$. Now then
+\begin{equation}
+\left\langle -\frac{1}{k} f,x\right\rangle-\phi(x)<-\frac{\alpha}{k},\quad \forall x\in D(\phi)
+\end{equation}
+and thus $\phi^*(-\frac{1}{k}f)<\infty$.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

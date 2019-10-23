@@ -1,0 +1,96 @@
+\mytitle{An introduction to homological algebra}
+\begin{thm}[Comparison Theorem] Let $P_\bullet\xrightarrow{\epsilon} M$ be a projective resolution of $M$ and $f':M\rightarrow N$ in abelian category $\mathsf{A}$. Then for every resolution $Q_\bullet\rightarrow{\eta} N$ of $N$, there is a chain map $f:P_\bullet\rightarrow Q_\bullet$ lifting $f'$ in the sense that $\eta\circ f_0=f'\circ \epsilon$. The chain map is unique up to chain homotopy equialence.
+\begin{equation}
+\begin{tikzcd}
+\cdots\arrow[r]& P_1\arrow[r]\arrow{d}{\exists} &P_0\arrow{r}{\epsilon} \arrow{d}{\exists} &M\arrow[r] \arrow{d}{f'} &0\\
+\cdots\arrow[r]& Q_1\arrow[r] & Q_0\arrow{r}{\eta} & N\arrow[r] &0
+\end{tikzcd}
+\end{equation}
+\end{thm}
+\begin{proof}
+Denoting $f'=f_{-1}$, we will use induction. We can cut the chain into two chains as following.
+\begin{equation}
+\begin{tikzcd}
+\cdots\arrow{r}{d} & P_{n+1}\arrow{r}{d}\arrow{d}{\exists f_{n+1}}&Z_n(P)\arrow[r]\arrow{d}{f'_n}&0\\
+\cdots\arrow{r}{d} & Q_{n+1}\arrow{r}{d}&Z_n(Q)\arrow[r]&0
+\end{tikzcd}
+\begin{tikzcd}
+0\arrow[r] & Z_n(P)\arrow{r}{d}\arrow{d}{f'_n}&P_n\arrow{r}{d}\arrow{d}{f_n}&\cdots\\
+0\arrow[r]&Z_n(Q)\arrow{r}{d}&Q_n\arrow{r}{d}&\cdots
+\end{tikzcd}
+\end{equation}
+Here all the rows are exact. Since $P_{n+1}$ is projective, we can lift $f'_n\circ d=f_n\circ d$ to $f_{n+1}$ satisfying $f_n\circ d=d\circ f_{n+1}$. Now consider another lift $g:P_\bullet\rightarrow Q_\bullet$ and let $h=f-g$. To construct $s_n:P_n\rightarrow Q_{n+1}$, for $n<0$ define $s_n=0$; for $n=0$, since $\eta\circ h_0=\epsilon(f'-f')=0$, $h_0$ sends $P_0$ to $Z_0(Q)=d(Q_1)$, thus we may lift $h_0$ to $s_0:P_0\rightarrow Q_1$ such that $h_0=d\circ s_0=d\circ s_0+s_{-1}\circ d$. Now for given $h_{n-1}$ satisfying $h_{n-1}=d\circ s_{n-1}+s_{n-2}\circ d$, then $d(h_n-s_{n-1}\circ d)=d\circ h-h\circ d+s\circ d\circ d=0$. Thus $h_n-s_{n-1}\circ d$ takes $P_n$ to $Z_n(Q)$, so we can lift it to $s_n:P_n\rightarrow Q_{n+1}$ such that $d\circ s_n=h_n-s_{n-1}\circ d$. 
+\end{proof}
+
+\begin{lemma}[Horseshoe Lemma] Suppose we have a diagram
+\begin{equation}
+\begin{tikzcd}
+&&&0\arrow[d]&\\
+\cdots\arrow[r] &P_1'\arrow[r]& P_0'\arrow{r}{\epsilon'}& A'\arrow[r] \arrow{d}{i_A}&0\\
+&&&A\arrow{d}{\pi_A}&\\
+\cdots\arrow[r] &P_1''\arrow[r]& P_0''\arrow{r}{\epsilon''}& A''\arrow[r] \arrow[d]&0\\
+&&&0&
+\end{tikzcd}
+\end{equation}
+where the column is exact and the rows are projective resolutions. Set $P_n=P_n'\oplus P_n''$. Then the $P_n$ assemble to form a projective resolution $P$ of $A$, and the column lifts to an exact sequence of complexes $0\rightarrow P'\xrightarrow{i} P\xrightarrow{\pi} P''\rightarrow 0$, where $i_n:P'_n\rightarrow P_n$ and $\pi_n:P_n\rightarrow P''_n$ are the natural inclusion and projection, respectively.
+\end{lemma}
+\begin{proof}
+Lift $\epsilon''$ to a map $P_0''\rightarrow A$, then the direct sum of the lifted map and $i_A\circ \epsilon:P'_0\rightarrow A$ gives a map $\epsilon:P_0\rightarrow A$. Now we have the following commuting diagram.
+\begin{equation}
+\begin{tikzcd}
+&0\arrow[d]&0\arrow[d]&0\arrow[d]&\\
+0\arrow[r]&\Ker(\epsilon')\arrow[r]\arrow[d]&P_0'\arrow{r}{\epsilon'}\arrow[d]&A'\arrow[r]\arrow[d]&0\\
+0\arrow[r]&\Ker(\epsilon)\arrow[r]\arrow[d]&P_0\arrow{r}{\epsilon}\arrow[d]&A\arrow[r]\arrow[d]&0\\
+0\arrow[r]&\Ker(\epsilon'')\arrow[r]\arrow[d]&P_0''\arrow{r}{\epsilon''}\arrow[d]&A''\arrow[r]\arrow[d]&0\\
+&0&0&0&
+\end{tikzcd}
+\end{equation}
+Since the right two columns are short exact sequences, the snake lemma shows that the left column is exact and $\Coker(\epsilon)=0$. Thus $P_0$ maps onto $A$. Now this process finishes the initial step and gives the following diagram, which can be filled up by induction.
+\begin{equation}
+\begin{tikzcd}
+&&0\arrow[d]&\\
+\cdots\arrow[r] &P_1'\arrow[r]&  \Ker(\epsilon')\arrow[r] \arrow[d]&0\\
+&&\Ker(\epsilon)\arrow[d]&\\
+\cdots\arrow[r] &P_1''\arrow[r]&  \Ker(\epsilon'')\arrow[r] \arrow[d]&0\\
+&&0&
+\end{tikzcd}
+\end{equation}
+\end{proof}
+
+\begin{exer} Show that there are maps $\lambda_n:P_n''\rightarrow P_{n-1}'$ so that $d(p',p'')=(d'(p')+\lambda(p''),d''(p''))$.
+\end{exer}
+\begin{solution} Suppose that $d(p',p'')=(f_1(p')+f_2(p''),g_1(p')+g_2(p''))$. To commute with $d'$, we have $(d'(p'),0)=d'(p',0)=(f_1(p'),g_1(p')$, thus $g_1=0$ and $f_1=d$. To commute with $d''$, we have $g_1(p')+g_2(p'')=g_2(p'')=d''(p'')$, thus $g_2=0$. Therefore we get $d(p',p'')=(d(p')+f_2(p''),d(p''))$.
+\end{solution}
+
+\begin{defn} Let $\mathsf{A}$ be an abelian category. An object $I\in A$ is \textbf{injective} if it satisfies the following \textbf{universal lifting property}: given a monomorphism $f:A\rightarrow B$ and a map $\alpha:A\rightarrow I$, there is a morphism $\beta:B\rightarrow I$ such that $\alpha=\beta\circ f$.
+\begin{equation}
+\begin{tikzcd}
+0\arrow[r] & A\arrow{r}{f}\arrow{d}{\alpha} & B\arrow{ld}{\exists \beta}\\
+&I&
+\end{tikzcd}
+\end{equation}
+We say that $\mathsf{A}$ has \textbf{enough injectives} if for every object $A\in \mathsf{A}$ there is a monomorphism $A\rightarrow I$ with injective $I$.
+\end{defn}
+
+\begin{thm}[Baer's Criterion] A right $R$-module $E$ is injective if and only if for every right ideal $J$ of $R$, every map $J\rightarrow E$ can be extended to a map $R\rightarrow E$.
+\end{thm}
+\begin{proof}
+One direction is obvious. Consider an $R$-module $B$, its submodule $A$, and a map $\alpha:A\rightarrow E$. Let $\mathcal{E}$ be the poset of all extensions $\alpha':A'\rightarrow E$ of $\alpha$ to an intermediate submodule $A\subset A'\subset B$. We give the partial order $\alpha'\leq \alpha''$ if $\alpha''$ extends $\alpha'$. Then the Zorn's lemma shows that there is a maximal extension $\alpha':A'\rightarrow E$ in $\mathcal{E}$. Now suppose that $b\in B-A'$. The set $J=\{r\in R:br\in A'\}$ is a right ideal of $R$, and by assumption the map $J\xrightarrow{b} A'\xrightarrow{\alpha'} E$ extends to a map $f:R\rightarrow E$. Let $A''$ be the submodule $A'+bR$ of $B$, and define $\alpha'':A''\rightarrow E$ by $\alpha(a+br)=\alpha'(a)+f(r)$ for all $a\in A',r\in R$. Since $\alpha'(br)=f(r)$ for $br\in A'\cap bR$, and since $\alpha''$ extends $\alpha'$, this contradicts the maximality of $\alpha'$. Thus there is no such $b$, and so $A'=B$.
+\end{proof}
+
+\begin{exer} Let $R=\mathbb{Z}/m$. Use Baer's criterion to show that $R$ is an injective $R$-module. Then show that $\mathbb{Z}/d$ is not an injective $R$-module when $d\mid m$ and some prime $p$ divides both $d$ and $m/d$. (The hypothesis ensures that $\mathbb{Z}/m\neq \mathbb{Z}/d\oplus \mathbb{Z}/e$.)
+\end{exer}
+\begin{solution}
+The solution can be given by the following corollary, since $R=\mathbb{Z}/m$ is a principal ideal domain and $\mathbb{Z}/d$ is not divisible: if so, then for all $r\in \mathbb{Z}/m$ and $a\in \mathbb{Z}/d$, there is $b\in \mathbb{Z}/d$ such that $a=br \mod d$, that is, $a=br+dn$. This implies $\gcd(r,d)$ divides $a$. Take $a=1$ and $r=m/d$ gives $p$ divides $1$, which is contradiction.
+\end{solution}
+
+\begin{cor} Suppose that $R$ is a principal ideal domain. An $R$-module is injective if and only if it is divisible, that is, for every $r\neq 0\in R$ and every $a\in A$, $a=br$ for some $b\in A$.
+\end{cor}
+\begin{proof}
+By Baer's criterion, $A$ is injective if and only if for every right ideal $J$ of $R$, every map $J\rightarrow A$ can be extended to a map $R\rightarrow A$. Since $R$ is a principal ideal domain, all $J$ can be represented by $(r)$. Each maps can be uniquely determined by the pair $(r,a)$, where $r\in R$ and $a\in A$. Thus, if $A$ is divisible, then there is $b\in A$ such that $a=br$, thus we can define $R\rightarrow A$ as $r\mapsto br$. Conversely, if $A$ is injective, then there is an extension of the map $f$ determined by $(r,a)$, and taking $f(1)=b$ gives $a=br$.
+\end{proof}
+
+\begin{exmp} The divisible abelian groups $\mathbb{Q}$ and $\mathbb{Z}_{p^\infty}=\mathbb{Z}\left[\frac{1}{p}\right]/\mathbb{Z}$ are injective.\marginnote{$\mathbb{Z}\left[\frac{1}{p}\right]$ is the group of rational numbers of the form $a/p^n,n\in \mathbb{N}$.} Indeed, every injective abelian group is a direct sum of these. In particular, the injective abelian group $\mathsf{Q}/\mathsf{Z}$ is isomorphic to $\oplus_p \mathbb{Z}_{p^\infty}$.
+\end{exmp}
+\noindent\rule{\textwidth}{1pt}
+\newline

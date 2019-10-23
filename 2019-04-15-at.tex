@@ -1,0 +1,45 @@
+\mytitle{Algebraic Topology}
+\begin{defn} Let $x_0\in X$ and $y_0\in Y$. If $\phi_t:X\rightarrow Y$ is a homotopy with $\phi_t(x_0)=y_0$ for all $t$, then we call $\phi$ a \textbf{basepoint-preserving homotopy}. If two maps $f,g:(X,x_0)\rightarrow (Y,y_0)$ are basepoint-preserving homotopic, then we write $f\simeq_0 g$. If two spaces with basepoints $(X,x_0), (Y,y_0)$ has maps $\phi:(X,x_0)\rightarrow (Y,y_0)$ and $\psi:(Y,y_0)\rightarrow (X,x_0)$ such that $\phi\circ \psi\simeq_0 1_{Y}$ and $\psi\circ \phi\simeq_0 1_X$, then we write $(X,x_0)\simeq (Y,y_0)$.
+\end{defn}
+\begin{prop} If $\phi_t:(X,x_0)\rightarrow (Y,y_0)$ is a basepoint-preserving homotopy, then $\phi_{0*}=\phi_{1*}$.
+\end{prop}
+\begin{proof}
+Since $\phi$ is a basepoint-preserving homotopy, for a loop $f$ in $X$ with basepoint $x_0$, $\phi_t\circ f$ is a loop homotopy between $\phi_0\circ f$ and $\phi_1\circ f$. Therefore, $\phi_{0*}([f])=[\phi_0\circ f]=[\phi_1\circ f]=\phi_{1*}([f])$.
+\end{proof}
+\begin{cor} If $(X,x_0)\simeq (Y,y_0)$, then $\pi_1(X,x_0)\simeq \pi_1(Y,y_0)$.
+\end{cor}
+\begin{proof}
+Since $(X,x_0)\simeq (Y,y_0)$, we have $\phi:(X,x_0)\rightarrow (Y,y_0)$ and $\psi:(Y,y_0)\rightarrow (X,x_0)$ such that $\phi\circ \psi\simeq_0 1_{Y}$ and $\psi\circ \phi\simeq_0 1_X$. By the proposition above, we get $\phi_*\psi_*=1_{\pi_1(Y,y_0)}$ and $\psi_*\phi_*=1_{\pi_1(X,x_0)}$.
+\end{proof}
+
+\begin{lemma} If $\phi_t:X\rightarrow Y$ is a homotopy and $h$ is the path $\phi_t(x_0)$ for some $x_0\in X$, then the three maps, induced homomorphisms $\phi_{0*}:\pi_1(X,x_0)\rightarrow \pi_1(Y,\phi_0(x_0)),\phi_{1*}:\pi_1(X,x_0)\rightarrow \pi_1(Y,\phi_1(x_0))$ and change-of-basepoint map $\beta_h:\pi_1(Y,\phi_1(X_0))\rightarrow \pi_1(Y,\phi_0(x_0))$, we have $\phi_{0*}=\beta_h \phi_{1*}$.
+\end{lemma}
+\begin{proof}
+Let $h_t(s)=h(ts)$. Notice that $h_0(s)=h(0)$ and $h_1(s)=h(s)$. If $f$ is a loop in $X$ with basepoint $x_0$, then the map $h_t\cdot(\phi_t \circ f)\cdot \bar{h}_t$ is a loop homotopy with basepoint $\phi_0(x_0)$. Taking $t=0,1$ gives $\phi_0\circ f$ and $h\cdot(\phi_1\circ f)\cdot \bar{h}$, and since $\beta_h(\phi_{1*}([f]))=\beta_h([\phi_1\circ f])=[h\cdot (\phi_1\circ f)\cdot \bar{h}]=[\phi_0\circ f]=\phi_{0*}([f])$, we get the desired result.
+\end{proof}
+
+\begin{prop} If $\phi:X\rightarrow Y$ is a homotopy equivalence, then the induced homomorphism $\phi_*:\pi_1(X,x_0)\rightarrow \pi_1(Y,\phi(x_0))$ is an isomorphism for all $x_0\in X$.
+\end{prop}
+\begin{proof}
+Take a homotopy inverse $\psi:Y\rightarrow X$. Now consider
+\begin{equation}
+\pi_1(X,x_0)\xrightarrow[\phi_*]{}\pi_1(Y,\phi(x_0))\xrightarrow[\psi_*]{}\pi_1(X,\psi\circ\phi(x_0))\xrightarrow[\phi_*]{}\pi_1(Y,\phi\circ\psi\circ\phi(x_0))
+\end{equation}
+Since $\psi\circ\phi\simeq 1_X$, $\psi_*\circ \phi_*=\beta_h$ for some path $h$, by the lemma. Since $\beta_h$ is isomorphism, $\phi_*$ is injective and $\psi_*$ is surjective. Using same arguement to $\phi_*\circ \psi_*$ gives $\psi_*$ is injective and $\phi_*$ is surjective, and thus they are isomorphisms.
+\end{proof}
+
+\begin{defn} Take a collection of groups $G_{\alpha}$. The \textbf{word} is a finite or empty sequence of nonidentity elements $g_i\in G_{\alpha_i}$, which is written as $g_1g_2\cdots g_m$. If so, then we call $m$ a \textbf{length} of word. If $m=0$ then we write it $e$. For a word $g=g_1 g_2\cdots g_m$, if $g_{i}\in G_{\alpha_i}$, $g_{i+1}\in G_{\alpha_{i+1}}$ then $\alpha_{i}\neq \alpha_{i+1}$ for all $i$, we call $g$ a \textbf{reduced word}. For a word $g=g_1g_2\cdots g_m$, if $g_i,g_{i+1}\in G$, then replacing $g_ig_{i+1}$ in the sequence by the multiplicated result, and if it is identity then removing it, is the \textbf{reducing procedure}. Repeating reducing procedure, we get a reduced word $[g_1\cdots g_m]$ of $g_1\cdots g_m$.  The set of reduced word is written as $*_\alpha G_\alpha$, called the \textbf{free product of groups}.
+\end{defn}
+
+\begin{prop} Consider a collection of groups $G_{\alpha}$ and their free product $*_\alpha G_\alpha$. For $g=g_1\cdots g_m,h=h_1\cdots h_n\in *_\alpha G_\alpha$, define their product as the word which is obtained by repeating reducing procedures to $g_1\cdots g_mh_1\cdots h_n$ until we get reduced word. Then the set $*_\alpha G_\alpha$ with the multiplication is a group.
+\end{prop}
+\begin{proof} This product is closed since $G_{\alpha}$ are groups.
+
+\textit{Identity.} If we attach empty word to the left or right of some reduced word $g$, then we still get a reduced word $g$. Hence $eg=ge$.
+
+\textit{Inverse.} Consider a reduced word $g=g_1\cdots g_m$. Consider $g^{-1}=g_m^{-1}\cdots g_1^{-1}$. Then $gg^{-1}=g_1\cdots g_mg_m^{-1}\cdots g_1^{-1}=g_1\cdots g_{m-1}g_{m-1}^{-1}\cdots g_1^{-1}=\cdots=g_1g_1^{-1}=e$. Samely, $g^{-1}g=e$.
+
+\textit{Associativity.} For each $g\in G_{\alpha}$ define $L_g:*_\alpha G_\alpha\rightarrow *_\alpha G_\alpha$ as $L_g(g_1g_2\cdots g_m)=[gg_1g_2\cdots g_m]$. Now consider $L_g\circ L_{g'}(g_1\cdots g_m)=[g(g'g_1\cdots g_m)]$. The reducing procedure happens only when $g,g'\in G_{\alpha}$ or $g',g_1,\cdots,g_k\in G_{\alpha}$, or both. Those elements will be reduced into one element, and due to the associativity of $G_\alpha$, this result is same with $[(gg')g_1\cdots g_m]$. Therefore $L_g\circ L_{g'}=L_{gg'}$. Furthermore, $L_e\circ L_g=L_g\circ L_e=L_g$ and $L_g\circ L_{g^{-1}}=L_{g^{-1}}\circ L_g=L_e$. Using this data, the map $L:*_\alpha G_\alpha \rightarrow \textrm{Hom}(*_\alpha G_\alpha)$ defined as $L(g_1\cdots g_m)=L_{g_1\cdots g_m}$ is well defined. Since $L_g\in \textrm{Hom}(*_\alpha G_\alpha)$, $L_g$ has associative structure, thus $*_\alpha G_\alpha$ also.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

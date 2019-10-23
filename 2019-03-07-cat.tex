@@ -1,0 +1,60 @@
+\mytitle{Category theory in context}
+\begin{exmp} Remember that the group $G$ defines a one-object category $\mathsf{B}G$ whose morphisms are identified with the elements of $g$. For a category $\mathsf{C}$, think a functor $X:\mathsf{B}G\rightarrow \mathsf{C}$, which sends single object $\bullet\in\mathsf{B}G$ to $X\in\mathsf{C}$, and a morphism $g$ to $g_*:X\rightarrow X$. Then the endomorphisms(indeed automorphisms, because functors preserve isomorphisms) $g_*$ satisfies $g_* h_*=(gh)_*$ for all $g,h\in\mathsf{B}G$ and $e_*=1_X$ for identity $e\in\mathsf{B}G$. This functor $X$ is called a \textbf{left action}, or just \textbf{action}, of the group $G$ on the object $X\in\mathsf{C}$.\marginnote{If $X$ is a covariant functor $X:\mathsf{B}G^{\mathrm{op}}\rightarrow \mathsf{C}$, then we call $X$ a \textbf{right action}. If so, then the endomorphism $g^*:X\rightarrow X$ has a composition $g^*h^*=(hg)^*$.  If we do not need to specify, then we call $X$ an \textbf{action}.} If $\mathsf{C}=\mathsf{Set}$ then $X$ is called a \textbf{$G$-set}, if $\mathsf{C}=\mathsf{Vect}_{\mathbb{k}}$ then a \textbf{$G$-representation}, and if $\mathsf{C}=\mathsf{Top}$ then a \textbf{$G$-space}.
+\end{exmp}
+
+\begin{exmp} Consider a category $\mathsf{C}$ with two objects $\bullet,\circ$ and has one nontrivial morphism $\bullet\rightarrow \circ$. This is monomorphic and epimorphic. However, take a functor $F:\mathsf{C}\rightarrow \mathsf{Mod}_{\mathbb{Z}}$ where $F(\bullet)=F(\circ)=\mathbb{Z}$ and $F(\rightarrow):\mathbb{Z}\rightarrow \mathbb{Z}$ is a trivial map $n\mapsto 0$. This is neither monomorphic nor epimorphic.
+\end{exmp}
+
+\begin{prop} The split monomorphisms and split epimorphisms are preserved by functors.
+\end{prop}
+\begin{proof}
+The proof is very same with the proof for isomorphisms.
+\end{proof}
+
+\begin{defn} If $\mathsf{C}$ is locally small, then for any object $c\in \mathsf{C}$, we call a pair of covariant and contravariant functors represented by $c$ as \textbf{functors represented by $c$} and define as following:
+\begin{itemize}
+\item for covariant functor, $\mathsf{C}(c,-):\mathsf{C}\rightarrow \mathsf{Set}$, $x\mapsto \mathsf{C}(c,x)$, and $f:x\rightarrow y$ maps to $f_*:\mathsf{C}(c,x)\rightarrow \mathsf{C}(c,y)$ by post-composition;
+\item for contravariant functor, $\mathsf{C}(-,c):\mathsf{C}\rightarrow \mathsf{Set}$, $x\mapsto \mathsf{C}(x,c)$, and $f:x\rightarrow y$ maps to $f^*:\mathsf{C}(y,c)\rightarrow \mathsf{C}(x,c)$ by pre-composition.
+\end{itemize}
+\end{defn}
+
+\begin{defn} For any categories $\mathsf{C}\times \mathsf{D}$, there is a category $\mathsf{C}\times \mathsf{D}$, which is called the \textbf{product category}, defined as following:
+\begin{itemize}
+\item the objects are ordered pairs $(c,d)$ for objects $c\in \mathsf{C},d\in \mathsf{D}$;
+\item the morphisms are ordered pairs $(f,g):(c,d)\rightarrow (c',d')$ where $f:c\rightarrow c'\in \mathsf{C}, g:d\rightarrow d'\in\mathsf{D}$,
+\item the identities and compositions are defined componentwise.
+\end{itemize}
+\end{defn}
+\begin{defn} If $\mathsf{C}$ is locally small, then there is a \textbf{two-sided functor} $\mathsf{C}(-,-):\mathsf{C}^{\mathrm{op}}\times \mathsf{C}\rightarrow \mathsf{Set}$, which is defined as following:
+\begin{itemize}
+\item a pair of objects $x,y$ maps to $\mathsf{C}(x,y)$;
+\item a pair of morphisms $f:w\rightarrow x, h:y\rightarrow z$ maps to the function $(f^*,h_*):C(x,y)\rightarrow C(w,z)$ defined as $g\mapsto hgf$.
+\end{itemize}
+\end{defn}
+
+\begin{defn}The category $\mathsf{Cat}$ is the category which has small categories as its objects and functors as its morphisms. For two small categories, the collection of functors between them is actually a set, thus this is locally small category, but since $\mathsf{Set}$ or all the other concrete categories are the proper subcategory of $\mathsf{Cat}$, this is not a small category, and thus we do not have the Russell's paradox. Notice that none of the concrete categories are the \textit{object} of $\mathsf{Cat}$.
+
+Samely, the category $\mathsf{CAT}$ is the category which has locally small categories as its objects and functors as is morphisms. Since $\mathsf{Set}$ is not small, $\mathsf{CAT}$ is not locally small, thus we also need not to worry about Russell's paradox. We have an inclusion functor $\mathsf{Cat}\hookrightarrow \mathsf{CAT}$.
+\end{defn}
+
+\begin{defn}
+The functors $F:\mathsf{C}\rightarrow \mathsf{D}$ and $G:\mathsf{D}\rightarrow \mathsf{C}$ satisfying $F\circ G=1_{\mathsf{D}}$ and $G\circ F=1_{\mathsf{C}}$ are the \textbf{isomorphisms of categories}, and then the categories $\mathsf{C},\mathsf{D}$ are \textbf{isomorphic categories}.
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item The functor $\mathrm{op}:\mathsf{CAT}\rightarrow \mathsf{CAT}$ is a non-trivial automorphism of the category.
+\item For any group $G$, the functor $-1:\mathsf{B}G\rightarrow \mathsf{B}G^{\mathrm{op}}$ defined by $g\rightarrow g^{-1}$ is isomorphic. This shows that every right action and left action are equivalent. This is true for groupoid also.
+\item Not every category is isomorphic with its opposite category. Consider $\mathbb{N}$ as a partially ordered set category. Then $\mathbb{N}$ has minimal operator, but $\mathbb{N}^{\mathrm{op}}$ does not, which shows that they are not isomorphic.
+\item One final, nontrivial, and important isomorphism between two categories is given below. Let $E/F$ be a finite Galois extension and $G\coloneqq \mathrm{Aut}(E/F)$ the Galois group.\marginnote{A field extension $E/F$ is a \textbf{finite Galois extension} if $F$ is a finite-index subfield of $E$ and the size of the group of automorphisms of $E$ fixing $F$, $\mathrm{Aut}(E/F)$ is same with the index $[E:F]$.} 
+
+Now consider the \textbf{orbit category} $\mathcal{O}_G$ for group $G$, whose objects are cosets $G/H$ for subgroup $H\leq G$. The morphisms $f:G/H\rightarrow G/K$ are defined as the \textbf{$G$-equivariant maps}, which means the functions that commute with the left $G$-action: $g'f(gH)=f(g'gH)$. We may show that all the $G$-equivariant maps can be represented as $gH\mapsto g\gamma K$, for $\gamma \in G$ with $\gamma^{-1}H\gamma\subset K$.
+
+Also consider the category $\mathsf{Field}_F^E$ whose objects are intermediate fields $F\subset K\subset E$, and the morphisms $K\rightarrow L$ is a field homomorphism that fixes the elements on $F$ pointwise. Notice that the group of automorphisms of the object $E\in \mathsf{Field}_F^E$ is the Galois group $G=\mathrm{Aut}(E/F)$.
+
+Finally we define a functor $\Phi:\mathcal{O}_G^{\mathrm{op}}\rightarrow \mathsf{Field}_F^E$ which sends $G/H$ to the subfield of $E$ whose elements are fixed by $H$ under the action of Galois group, and if $G/H\rightarrow G/K$ is induced by $\gamma$ then the field homomorphism $x\mapsto \gamma x$ sends an element $x\in E$ which is fixed by $K$ to an element $\gamma x\in E$ which is fixed by $H$. The \textbf{Fundamental theorem of Galois theory} says that $\Phi$ is bijection; indeed, $\Phi$ is isomorphism between $\mathcal{O}_G^{\mathrm{op}}$ and $\mathsf{Field}_F^E$.
+\end{enumerate}
+\end{exmp}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

@@ -1,0 +1,97 @@
+\mytitle{Category Theory in Context}
+\begin{defn} A \textbf{category} $\mathsf{C}$ is a collection of
+\begin{itemize}
+\item a collection of \textbf{objects}, $\mathsf{ob}(\mathsf{C})$, containing $X,Y,Z,\cdots$\marginnote{Notice that we did not used here the word 'set'. Bertrand Russell showed that there is no sets of all sets(Russell's paradox). Therefore, by using the word set, we cannot treat the category of sets, groups, or lots of concepts we want. Therefore we used the word 'collection': the definition of this word depends on the context, even sometimes this word is informal.}
+\item a collection of \textbf{morphisms}, $\mathsf{mor}(\mathsf{C})$, containing $f,g,h,\cdots$
+\end{itemize}
+which satisfies:
+\begin{itemize}
+\item for morphism $f$, there is a \textbf{domain} $X$ and \textbf{codomain} $Y$ in objects, and we write $f:X\rightarrow Y$;
+\item for any two morphisms $f,g$ where the codomain of $f$ is equal to the domain of $g$, the \textbf{composite morphism} $g\circ f:X\rightarrow Z$ exists;\marginnote{Sometimes we write $gf$ rather then $g\circ f$, if there is no ambiguity.}
+\item for each object $X$, there is a \textbf{identity morphism} $1_X$ such that for any $f:X\rightarrow Y$, $1_Y f=f 1_X=f$;
+\item for three morphisms $f,g,h$ where $h\circ g$ and $g\circ f$ are well defined, $h\circ(g\circ f)=(h\circ g)\circ f$, and written as $h\circ g\circ f$.
+\end{itemize}
+\end{defn}
+
+\marginnote{Due to the existence of the identity morphisms, it is possible to reconstruct the data of objects by using the data of morphisms. Indeed, in the set theory we have focused on the elements of set, but in the category theory we focus on the morphisms. This concept becomes clearer when we think the group as one object category where the elements of groups are morphisms, which will be discussed later, which is indeed the Cayley's theorem. Despite of this fact, it is quite common to name the category following after the objects, not the morphisms.}
+
+\begin{exmp}
+~\begin{enumerate}
+\item $\mathsf{Set}$ is the category which has sets as objects and functions as morphisms.
+\item $\mathsf{Group}$ is the category which has groups as objects and homomorphisms as morphisms. $\mathsf{Ab}$, $\mathsf{Ring}$, $\mathsf{Mod}_R$, and $\mathsf{Field}$ are also defined in the same sense for abelian groups, rings, $R$-modules, and fields.
+\item $\mathsf{Meas}$ is the category which has measurable spaces as objects and measurable functions as morphisms.
+\item $\mathsf{Top}$ is the category which has topological spaces as objects and continuous functions as morphisms. $\mathsf{Man}$ is also defined in the same sense for smooth manifolds.
+\item $\mathsf{Poset}$ is the category which has partially ordered sets as objects and order-preserving functions as morphisms.\marginnote{\textbf{Partially ordered set} is the set $P$ with binary operation $\leq$ satisfying: for all $x,y,z\in P$, $x\leq x$, $x\leq y\leq x$ then $x=y$, and $x\leq y\leq z$ then $x\leq z$. \textbf{Order-preserving function} $f:P\rightarrow Q$ for partially ordered set $P,Q$ is the map satisfying $x\leq y$ implies $f(x)\leq f(y)$. This definition shows that $\mathsf{Poset}$ is the category.}
+\end{enumerate}
+\end{exmp}
+
+\marginnote{The objects of the categories above are all set-like: if we forget the special structures, we get the category $\mathsf{Set}$. These kind of categories are called \textit{concrete categories}, which will be defined exactly later.}
+
+\begin{exmp}
+~\begin{enumerate}
+\item A group $G$ defines a category $\mathsf{B}G$ with one object, where the morphisms are the group elements.
+\item A poset $P$ itself is a category with its elements as objects and $x\leq y$ implies there is a unique morphism $f:x\rightarrow y$.
+\item A set $S$ itself is a category with its elements as objects and all morphisms are identity morphisms. A category which has only identity morphisms is called \textbf{discrete category}.
+\end{enumerate}
+\end{exmp}
+
+\marginnote{Category theory uses larger concept then set, \textbf{class}. The exact construction of the class needs the extension of Zermelo-Fraenkel axioms, which is not the topic of this paper.}
+\begin{defn} A category is \textbf{small} if it has only a set's worth of morphisms.
+\end{defn}
+\marginnote{For small category, the identity morphisms are the subset of the set of morphisms, thus it has a set's worth of objects.}
+
+\begin{defn} A category is \textbf{locally small} if between any pair of objects there is only a set's worth of morphisms.
+\end{defn}
+\marginnote{For locally small category, the set of morphisms with domain $X$ and codomain $Y$ is often written as $\mathrm{Hom}(X,Y)$, or $\mathsf{C}(X,Y)$ to emphasize which category we are working in.}
+\begin{defn} The morphism $f:X\rightarrow Y$ is called \textbf{isomorphism} if there is $g:Y\rightarrow X$ such that $fg=1_Y$ and $gf=1_X$. If there is an isomorphism between $X$ and $Y$, then we call $X$ and $Y$ are \textbf{isomorphic}, and write $X\simeq Y$. If a morphism has same domain and codomain, then we call it \textbf{endomorphism}; if an endomorphism is isomorphism, then we call it \textbf{automorphism}.
+\end{defn}
+
+\begin{exmp}
+The isomorphisms of $\mathsf{Set}$ are bijections; the isomorphisms of $\mathsf{Group},\mathsf{Ring},\mathsf{Mod}_R,\mathsf{Field}$ are isomorphisms(which sound quite trivial); the isomorphisms of $\mathsf{Top}$ are homeomorphisms; the isomorphisms of partially ordered set-generated category $\mathsf{P}$ is the identity.
+\end{exmp}
+
+\begin{lemma} A morphism can have at most one inverse isomorphism.
+\end{lemma}
+\begin{proof} Let $f:X\rightarrow Y$ has two inverse isomorphisms $g,h$. Then $gfh=g(fh)=g1_Y=g$ and $gfh=(gf)h=1_X h=h$, thus $g=h$.
+\end{proof}
+
+\begin{defn} A \textbf{groupoid} is a category where every morphism is isomorphism.
+\end{defn}\marginnote{In abstract algebra, groupoid is defined as a set $G$ with inverse $g^{-1}$ and partial function $*:G\times G\rightarrow G$, satisfying 1. if $g*h,h*k$ are defined then $(g*h)*k$ and $g*(h*k)$ are defined and equal, and conversely if $(g*h)*k$ and $g*(h*k)$ are defined then they are equal and $g*h,h*k$ are defined, 2. $g^{-1}*g$ and $g*g^{-1}$ are always defined, 3. $g*h$ is defined then $g*h*h^{-1}=h$ and $g^{-1}*g*h=h$. This definition and category theoretic definition are same in the range of set.}
+
+\begin{exmp}
+~\begin{enumerate}
+\item A \textbf{group} is a groupoid with one object.\marginnote{We already have the algebraic definition of group. However, in category theory, this becomes the definition of group.}
+\item For any space $X$, the \textbf{fundamental groupoid} $\Pi_1(X)$ is a category whose objects are the points of $X$ and the morphism between two points are the endpoint-preserving homotopy classes of paths.
+\item For the group $G$ acting on the set $X$, the \textbf{action groupoid} is the category where the objects are the elements of $X$ and the morphisms from $x$ to $y$ is the group element $g$ satisfying $y=gx$.
+\end{enumerate}
+\end{exmp}
+
+\begin{defn} For category $\mathsf{C}$, a category $\mathsf{D}$ is called a \textbf{subcategory} if $\mathsf{ob}(\mathsf{D})$ and $\mathsf{mor}(\mathsf{D})$ is the subcollection of $\mathsf{ob}(\mathsf{C})$ and $\mathsf{mor}(\mathsf{C})$ respectively.\marginnote{Of course the morphisms of $\mathsf{D}$ must have domain and codomain in $\mathsf{ob}(\mathsf{D})$.}
+\end{defn}
+
+\begin{lemma} Any category $\mathsf{C}$ contains a \textbf{maximal groupoid}, the subcategory containing all of the objects and only those morphisms that are isomorphisms.
+\end{lemma}
+\begin{proof} what we need to show is that the composition of two isomorphisms is isomorphism. For isomorphisms $f:X\rightarrow Y$, $g:Y\rightarrow Z$, there is $f^{-1}:Y\rightarrow X$ and $g^{-1}:Z\rightarrow Y$ such that $f^{-1}f=1_X, ff^{-1}=1_Y, g^{-1}g=1_Y$ and $gg^{-1}=1_Z$. Now notice that $gff^{-1}g^{-1}=g(ff^{-1})g^{-1}=gg^{-1}=1_Z$ and $f^{-1}g^{-1}gf=f^{-1}(g^{-1}g)f=f^{-1}f=1_X$, hence $gf$ is isomorphism.
+\end{proof}
+
+\begin{prop} Consider a morphism $f:x\rightarrow y$. If there exists a pair of morphisms $g,h:y\rightarrow x$ so that $gf=1_x$ and $fh=1_y$, then $g=h$ and $f$ is an isomorphism.
+\end{prop}
+\begin{proof}
+$gfh=(gf)h=1_x h=h$ and $g(fh)=g1_y=g$ thus $g=h$ and so $f$ is an isomorphism.
+\end{proof}
+
+\begin{prop} For any category $\mathsf{C}$ and any object $c\in \mathsf{C}$,
+\begin{enumerate}
+\item There is a category $c/\mathsf{C}$ whose objects are morphisms $f:c\rightarrow x$ with domain $c$ and in which a morphism from $f:c\rightarrow x$ to $g:c\rightarrow y$ is a map $h:x\rightarrow y$ between the codomains so that $g=hf$.
+\item There is a category $\mathsf{C}/c$ whose objects are morphisms $f:x\rightarrow c$ with codomain $c$ and in which a morphism from $f:x\rightarrow c$ to $g:y\rightarrow c$ is a map $h:x\rightarrow y$ between the domains so that $f=gh$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+~\begin{enumerate}
+\item What we need to prove is the composition rule: the morphism from $f$ to $g$, $F$, and the morphism from $g$ to $h$, $G$, satisfies $g=Ff$ and $h=Gg$. Then $h=G(Ff)=(GF)f$, which says that $GF$ is exactly the morphism from $f$ to $h$.
+\item This is very similar with above, except the arrow direction is opposite. The morphism from $f$ to $g$, $F$, and the morphism from $g$ to $h$, $G$, satisfies $f=gF$ and $g=hG$. Then $f=(hG)F=h(GF)$, which says that $GF$ is exactly the morphism from $f$ to $h$.
+\end{enumerate}
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

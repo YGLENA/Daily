@@ -1,0 +1,93 @@
+\mytitle{Algebraic Topology}
+\begin{defn}
+The sequence of homomorphisms
+\begin{equation}
+\cdots\rightarrow A_{n+1}\xrightarrow{\alpha_{n+1}}A_n\xrightarrow{\alpha_{n}} A_{n-1}\rightarrow \cdots
+\end{equation}
+of groups $A_{n}$ is \textbf{exact} if $\Ker \alpha_n=\Ima \alpha_{n+1}$.\marginnote{Exact sequence is thus a chain complex, obviously.}
+\end{defn}
+
+\begin{prop} Let $A,B,C$ are groups and $\alpha,\beta$ are homomorphisms.
+\begin{enumerate}
+\item $0\rightarrow A\xrightarrow{\alpha}B$ is exact if and only if $\Ker \alpha=0$, i.e., $\alpha$ is injective.
+\item $A\xrightarrow{\alpha} B\rightarrow 0$ is exact if and only if $\Ima\alpha=B$, i.e., $\alpha$ is surjective.
+\item $0\rightarrow A\xrightarrow{\alpha} B\rightarrow 0$ is exact if and only if $\alpha$ is bijective.
+\item $0\rightarrow A\xrightarrow{\alpha} B\xrightarrow{\beta} C\rightarrow 0$ is exact if and only if $\alpha$ is injective, $\beta$ is surjective, and $\Ker\beta\simeq \Ima\alpha$. Then $C\simeq B/A$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item Since the image of $0\rightarrow A$ is $0$, the sequence is exact if and only if $\Ker\alpha=0$.
+\item Since the kernel of $B\rightarrow 0$ is $B$, the sequence is exact if and only if $\Ima\alpha=0$.
+\item By above two, the sequence is exact if and only if $\alpha$ is bijective.
+\item Let the sequence is exact. By above two, $\alpha$ is injective and $\beta$ is surjective, and $\Ker\beta\simeq \Ima\alpha$ by definition. Conversely, injective $\alpha$, surjective $\beta$, and $\Ker\beta\simeq \Ima\alpha$ are the definition of the exact sequence. Finally, by the first homomorphisms theorem, $C\simeq B/\Ker\beta B/\Ima\alpha$, and since $\alpha$ is injective $\Ima\alpha\simeq A$, thus $C\simeq B/A$.
+\end{enumerate}
+\end{proof}
+
+\begin{defn} An exact sequence $0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$ is called a \textbf{short exact sequence}.
+\end{defn}
+
+\begin{defn} Let $X$ be a space and $A\subset X$. Define $C_n(X,A)$ as $C_n(X)/C_n(A)$. Define a boundary map $\partial:C_n(X,A)\rightarrow C_{n-1}(X,A)$ from the boundary map $\partial':C_n(X)\rightarrow C_{n-1}(X)$. This gives the chain complex
+\begin{equation}
+\cdots\rightarrow C_n(X,A)\xrightarrow{\partial} C_{n-1}(X,A)\rightarrow \cdots
+\end{equation}
+and its homology group $H_n(X,A)$, which is called a \textbf{relative homology groups}.
+\end{defn}
+
+\begin{prop} The sequence $0\rightarrow C_n(A)\xrightarrow{i} C_n(X)\xrightarrow{q} C_n(X,A)$ is a short exact sequence.
+\end{prop}
+\begin{proof}
+Since $i$ is inclusion and $q$ is quotient, $i$ is injective and $q$ is surjective. Now $\Ker q\simeq C_n(A)\simeq \Ima i$, because $q$ is the quotient homomorphism taking $C_n(A)$ to $0$.
+\end{proof}
+
+\begin{prop} The following diagram commutes.\marginnote{\begin{defn}
+This kind of diagram is called the \textbf{short exact sequence of chain complexes}.
+\end{defn}}
+\begin{equation}
+\begin{tikzcd}
+&0\arrow{d}&0\arrow{d}&0\arrow{d}&\\
+\cdots\arrow{r}{\partial}&C_{n+1}(A)\arrow{r}{\partial}\arrow[swap]{d}{i}&C_{n}(A)\arrow{r}{\partial}\arrow[swap]{d}{i}&C_{n-1}(A)\arrow{r}{\partial}\arrow[swap]{d}{i}&\cdots\\
+\cdots\arrow{r}{\partial}&C_{n+1}(X)\arrow{r}{\partial}\arrow[swap]{d}{q}&C_{n}(X)\arrow{r}{\partial}\arrow[swap]{d}{q}&C_{n-1}(X)\arrow{r}{\partial}\arrow[swap]{d}{q}&\cdots\\
+\cdots\arrow{r}{\partial}&C_{n+1}(X,A)\arrow{r}{\partial}\arrow[swap]{d}&C_{n}(X,A)\arrow{r}{\partial}\arrow[swap]{d}&C_{n-1}(X,A)\arrow{r}{\partial}\arrow[swap]{d}&\cdots\\
+&0&0&0&
+\end{tikzcd}
+\end{equation}
+\end{prop}
+\begin{proof}
+Since $i$ and $q$ are the induced homomorphism of inclusion and quotient map, $i$ and $q$ are chain map, thus $i\circ \partial=\partial\circ i$ and $q\circ \partial=\partial\circ q$.
+\end{proof}
+
+\begin{thm} consider the following short exact sequence of chain complexes.
+\begin{equation}
+\begin{tikzcd}
+&0\arrow{d}&0\arrow{d}&0\arrow{d}&\\
+\cdots\arrow{r}{\partial}&A_{n+1}\arrow{r}{\partial}\arrow[swap]{d}{i}&A_n\arrow{r}{\partial}\arrow[swap]{d}{i}&A_{n-1}\arrow{r}{\partial}\arrow[swap]{d}{i}&\cdots\\
+\cdots\arrow{r}{\partial}&B_{n+1}\arrow{r}{\partial}\arrow[swap]{d}{j}&B_{n}\arrow{r}{\partial}\arrow[swap]{d}{j}&B_{n-1}\arrow{r}{\partial}\arrow[swap]{d}{j}&\cdots\\
+\cdots\arrow{r}{\partial}&C_{n+1}\arrow{r}{\partial}\arrow[swap]{d}&C_{n}\arrow{r}{\partial}\arrow[swap]{d}&C_{n-1}\arrow{r}{\partial}\arrow[swap]{d}&\cdots\\
+&0&0&0&
+\end{tikzcd}
+\end{equation}
+then the sequence of homology groups
+\begin{equation}
+\cdots\rightarrow H_n(A)\xrightarrow{i_*} H_n(B)\xrightarrow {j_*} H_n(C)\xrightarrow{\partial} H_{n-1}(A)\xrightarrow{i_*}H_{n-1}(B)\rightarrow\cdots
+\end{equation}
+is exact. Here, the map $\partial : H_n(C)\rightarrow H_{n-1}(A)$ is defined as $\partial(c)=i^{-1}\circ \partial \circ j^{-1}(c)$.
+\end{thm}
+\begin{proof}
+First we need to show that the map $\partial:H_n(C)\rightarrow H_{n-1}(A)$ is well defined homomorphism. Take $[c]\in H_n(C)$, then $\partial c=0$. Since $j$ is injective, there is $b\in B_n$ such that $c=j(b)$. Also since $j\circ \partial(b)=\partial\circ j(b)=\partial c=0$, $\partial b\in B_{n-1}$ is in the kernel of $j$, thus there is $a\in A_{n-1}$ such that $\partial b=i(a)$ since $\Ker j=\Ima i$. Now, since $i$ is injective, $a$ is uniquely determined by $\partial b$. If we have another $b'$ satisfying above, then $j(b)=j(b')$ thus $b'-b\in \Ker j=\Ima i$. Thus $b'-b=i(a')$ for some $a'\in A_{n-1}$. Now notice that $i(a+\partial a')=i(a)+\partial i(a')=\partial(b+i(a'))$, thus we get $a+\partial a'$ is obtained from $b+i(a')=b$. Now $[a]=[a+\partial a']$ thus we get the same result. Finally, we may choose a different representation $c+\partial c'$. Since $c'=j(b')$ for some $b'\in B_{n+1}$, $c+\partial c'=c+\partial j(b')=c+j(\partial b')=j(b+\partial b')$, thus taking $c+\partial c'$ gives $b+\partial b'$, whose boundary is $\partial b$ and gives the same result.
+
+If $\partial [c_1]=[a_1]$ and $\partial [c_2]=[a_2]$, then we have intermediate $b_1,b_2\in B_n$ for each. Then $j(b_1+b_2)=j(b_1)+j(b_2)=c_1+c_2$ and $i(a_1+a_2)=i(a_1)+i(a_2)=\partial b_1+\partial b_2=\partial(b_1+b_2)$, therefore $\partial([c_1]+[c_2])=[a_1]+[a_2]$. Thus $\partial$ is homomorphism.
+
+Now we need to show that the sequence is exact.
+\begin{enumerate}
+\item $\Ima i_*\leq \Ker j_*$. Since $j\circ i=0, j_*\circ i_*=0$.
+\item $\Ima j_*\leq \Ker \partial$. Notice that $\partial\circ j_*$ takes $[b]$ to $[i^{-1}\circ \partial\circ j^{-1}\circ j(b)]=[i^{-1}\circ \partial (b)]$, and since $\partial b=0$, $\partial \circ j_*=0$.
+\item $\Ima \partial \leq \Ker i_*$. Notice that $i_*\circ \partial$ takes $[c]$ to $[i\circ i^{-1}\circ \partial\circ j^{-1}(c)]=[\partial\circ j^{-1}(c)]=0$, thus $i_*\circ \partial=0$.
+\item $\Ker j_*\leq \Ima i_*$. The element of $\Ker j_*$ is a cycle $b\in B_n$ with $j(b)=\partial c'$ for some $c'\in C_{n+1}$. Since $j$ is surjective, $c'=j(b')$ for some $b'\in B_{n+1}$. Now, since $\partial\circ j(b')=\partial c'=j(b)$, $j(b-\partial b')=0$, thus $b-\partial b'=i(a)$ for some $a\in A_n$. Since $i(\partial a)=\partial\circ i(a)=\partial (b-\partial b')=\partial b=0$ and $i$ is injective, $a$ is a cycle, thus a representation of $H_n(A)$. Therefore $i_*[a]=[b-\partial b']=[b']$.
+\item $\Ker \partial \leq \Ima j_*$. The element of $\Ker \partial$ can be represented as $c\in H_n(C)$. Then there is $a\in A_{n-1}$ corresponding to $c$ by the definition of $\partial:H_n(C)\rightarrow H_{n-1}(A)$ such that $a=\partial a'$ for $a'\in A_n$. Now the corresponding $b\in B_n$ satisfies $\partial(b-i(a'))=\partial b-i(\partial a')=\partial b-i(a)=0$, thus $b-i(a')$ is a cycle, and $j(b-i(a'))=j(b)-j\circ i(a')=j(b)=c$, thus $j_*[b-i(a')]=[c]$.
+\item $\Ker i_*\leq \Ima \partial$. For a cycle $a\in A_{n-1}$ such that $i(a)=\partial b$ for some $b\in B_n$, since $\partial\circ j(b)=j(\partial b)=j\circ i(a)=0$ thus $j(b)$ is a cycle, and $\partial[j(b)]=[i^{-1}\circ \partial\circ j^{-1}\circ j(b)]=[i^{-1}\circ \partial b]=[i^{-1}\circ i(a)]=[a]$.
+\end{enumerate}
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

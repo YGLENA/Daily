@@ -1,0 +1,36 @@
+\mytitle{Algebraic topology}
+\begin{prop} If the pair $(X,A)$ satisfies the homotopy extension property and $A$ is contractible, then the quotient map $q:X\rightarrow X/A$ is a homotopy equivalence.
+\end{prop}
+\begin{proof} Since $A$ is contractible, there is a map $g_t:A\rightarrow A$ which says $g_0=1_{A}$ and $g_1(A)=a\in A$. Since $(X,A)$ satisfies the homotopy extension property, we have $f_t:X\rightarrow X$ which is the extension of $g_t$ and $f_0=1_X$. Since $f_t(A)\subset A$, $q\circ f_t:X\rightarrow X/A$ can be factorized into $\bar{f}_t:X/A\rightarrow X/A$, which satisfies $q\circ f_t=\bar{f}_t\circ q$. Also, the map $f_1:X\rightarrow X$ can be factorized into $g:X/A\rightarrow X$ satisfying $f\circ q=f_1$, because $f_1(A)=a\in A$. Finally, since
+\begin{equation}
+q\circ g(\bar{x})=q\circ g\circ q(x)=q\circ f_1(x)=\bar{f}_1\circ q(x)=\bar{f}_1(\bar{x}),
+\end{equation}
+we have $q\circ g=\bar{f}_1$. Since $g\circ q=f_1\simeq f_0=1_X$ and $q\circ g=\bar{f}_1\simeq \bar{f}_0=1_{X/A}$, we get $g$ and $q$ are inverse homotopy equivalences.
+\end{proof}
+
+\begin{cor} If $(X,A)$ is a CW pair of a CW complex $X$ and a contractible subcomplex $A$, then the quotient map $X\rightarrow X/A$ is a homotopy equivalence.
+\end{cor}
+
+\begin{exmp} $S^2/S^0\simeq S^1\vee S^2$. Indeed, consider a space $X$, which has a sphere $S^2$ attached with arc $A$ on two different points, and denote the arc connecting those two points as $B$. Then $X$ can be thought as CW complex and $A,B$ can be thought as its subcomplex. Also, $X/A\simeq S^2/S^0$ and $X/B\simeq S^1\vee S^2$, which gives desired result.
+\end{exmp}
+
+\begin{defn} For a CW complex $X$ and a 0-cell $x_0\in X$, $SX/(\{x_0\}\times I)$ is called \textbf{reduced suspension} and written as $\Sigma X$.
+\end{defn}
+
+\begin{prop} For CW complexes $X,Y$, $\Sigma(X\vee Y)=\Sigma X \vee \Sigma Y$.
+\end{prop}
+\begin{proof}
+\begin{align*}
+\Sigma(X\vee Y)&=\left[\left((X\sqcup Y)/(x_0\sim y_0)\right)\times I\right]/S_1/S_2/(x_0\times I)\\
+&=\left[\left((X\sqcup Y)/(x_0\sim y_0)\right)\times I\right]/(x_0\times I)/S_1/S_2\\
+&=\left((X\times I)\sqcup (Y\times I))/(x_0\times I\sim y_0\times I)\right)/(x_0\times I)/S_1/S_2\\
+&=\left((X\times I)/(x_0\times I)\sqcup (Y\times I)/(y_0\times I))/(x_0\sim y_0)\right)/S_1/S_2\\
+&=\left((X\times I)/(x_0\times I)/S_{1x}/S_{2x}\sqcup (Y\times I)/(y_0\times I)/S_{1y}/S_{2y})\right)\\
+&/(x_0\sim y_0)\\
+&=(\Sigma X \sqcup \Sigma Y)/(x_0\sim y_0)\\
+&=\Sigma X\vee \Sigma Y
+\end{align*}
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

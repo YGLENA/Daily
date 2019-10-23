@@ -1,0 +1,168 @@
+\mytitle{Algebraic Topology}
+\begin{thm}[Fundamental theorem of algebra.] Every nonconstant polynomials with coefficient in $\mathbb{C}$ has a root in $\mathbb{C}$.
+\end{thm}
+\begin{proof}
+Take the polynomial $p(x)=\sum_{i=0}^n a_iz^i$ where $a_i\in \mathbb{C}$ and $a_n\neq 0$. Dividing $p(x)$ by $a_n$, we may assume that $a_n=1$. Now suppose that $p(z)$ has no roots in $\mathbb{C}$. Define a set of functions $f_r:I\rightarrow S^1\subset \mathbb{C}$ for $r\in \mathbb{R}_{\geq 0}$ as
+\begin{equation}
+f_r(s)=\frac{p(r e^{2\pi i s})/p(r)}{|p(r e^{2\pi i s})/p(r)|}
+\end{equation}
+which is also a homotopy of loops based at 1, since $f_r(0)=f_r(1)=1$.\marginnote{Indeed the exact loop homotopy must be given as $f_{rt}(s)$ which connects $f_0$ and $f_{r}$.} Since $f_0(s)=1$, we conclude that $[f_r]\in \pi_1(S^1)$ for all $r\in\mathbb{R}_{\geq 0}$. Now, fix $r>\max(|a_0|+\cdots+|a_{n-1}|,1)$. Then for $|z|=r$,
+\begin{align*}
+|z^n|&>(|a_0|+\cdots |a_{n-1}|)|z^{n-1}|\\
+&>|a_0|+\cdots+|a_{n-1}z^{n-1}|\\
+&>|a_{n-1}z^{n-1}+\cdots+a_0|\numberthis
+\end{align*}
+Thus the polynomial
+\begin{equation}
+p_t(z)=z^n+t(a_{n-1}z^{n-1}+\cdots+a_0)
+\end{equation}
+has no roots for $|z|=r$ when $t\in[0,1]$. Also defining
+\begin{equation}
+f_{r;t}(s)=\frac{p_t(re^{2\pi i s})/p_t(r)}{|p_t(r e^{2\pi i s})/p_t(r)|}
+\end{equation}
+gives the path homotopy from $f_{r;0}(s)=e^{2\pi i n s}=\omega_n(s)$ to $f_{r;1}(s)=f_r(s)$: notice that $f_{r;t}(0)=f_{r;t}(1)=1$ again. Since $[\omega_n]=[f_r]=0$, $n=0$, and thus the only polynomials without roots in $\mathbb{C}$ are constants. 
+\end{proof}
+
+\begin{thm}[2-dimensional Brouwer fixed point theorem.] Every continuous map $h:D^2\rightarrow D^2$ has a fixed point, that is, a point $x\in D^2$ such that $h(x)=x$.
+\end{thm}
+\begin{proof}
+Suppose not. Then we may define a map $r:D^2\rightarrow S^1$ as
+\begin{equation}
+r(x)=h(x)t+(1-t)x,\quad t\geq 0, \quad |h(x)t+(1-t)x|=1.
+\end{equation}
+This is just a restriction of continuous function, hence continuous. Furthermore, if $x\in S^1$ then $r(x)=x$. Therefore $r$ is a retraction of $D^2$ onto $S^1$.
+
+Now let $f_0$ is a loop in $S^1$. Because $D^2$ is convex, there is a path homotopy, $f_t$, of $f_0$ to a constant loop on the basepoint of $f_0$. Then the composition $rf_t$ is a homotopy in $S^1$ from $rf_0=f_0$ to the constant loop at $x_0$, hence $\pi_1(S^1)=0$, contradiction.
+\end{proof}
+
+\begin{thm}[2-dimensional Borsuk-Ulam theorem.]\marginnote{This theorem holds for any dimension, which will be proven later.} For every continuous map $f:S^2\rightarrow \mathbb{R}^2$, there is a pair of antipodal points $x,-x$ in $S^2$ with $f(x)=f(-x)$.\marginnote{This is best: consider the stereographic projection of $S^2$ on $\mathbb{R}^2$.}
+\end{thm}
+\begin{proof}
+Suppose not. Then there is a map $g:S^2\rightarrow S^1$ defined as
+\begin{equation}
+g(x)=\frac{f(x)-f(-x)}{|f(x)-f(-x)|}.
+\end{equation}
+Now consider a loop $\eta(s):I\rightarrow S^2$ as
+\begin{equation}
+\eta(s)=(\cos(2\pi s),\sin(2\pi s), 0).
+\end{equation}
+Consider a loop $h:I\rightarrow S^1$ as $h=g\circ \eta$. Since $g(-x)=-g(x)$ and $\eta(s)=-\eta(s+\frac{1}{2})$ for $s\in [0,\frac{1}{2}]$, we get $h(s+\frac{1}{2})=-h(s)$ for all $s\in [0,\frac{1}{2}]$.
+
+Now we can lift the loop $h$ into a path $\tilde{h}:I\rightarrow \mathbb{R}$. Since $h(s+\frac{1}{2})=-h(s)$, considering the covering map, we can see that 
+\begin{equation}
+\tilde{h}\left(s+\frac{1}{2}\right)=\tilde{h}(s)+\frac{2n(s)+1}{2}
+\end{equation}
+for $n(s)\in \mathbb{Z}$ for each $s\in [0,\frac{1}{2}]$. But since we get
+\begin{equation}
+n(s)=\left(\tilde{h}\left(s+\frac{1}{2}\right)-\tilde{h}(s)\right)-\frac{1}{2},
+\end{equation}
+which is continuous function, $n(s)$ is a constant function, $n(s)=n$. Thus
+\begin{equation}
+\tilde{h}(1)=\tilde{h}\left(\frac{1}{2}\right)+\frac{2n(s)+1}{2}=\tilde{h}(0)(2n+1).
+\end{equation}
+This implies that $[h]=[\omega_{2n+1}]$, and thus $h$ is not nullhomotopic. Finally, considering the bijection between $S^2-\{N\}$ and $\mathbb{R}^2$, which is given by the stereographic projection, we can see that $\eta$ is loop homotopic with constant loop in $S^2$, by path homotopy $\eta_t$, which can be composed with $g$ and give a loop homotopy $g\circ \eta_t$ between constant loop and $g\circ \eta=h$, contradiction.
+\end{proof}
+
+\begin{cor}\marginnote{This is best: consider the projection of the four faces of the tetrahedron onto the inscribing sphere.} When $S^2$ is expressed as the union of three closed sets $A_1, A_2, A_3$, then at least one of them contain a pair of antipodal points $\{x,-x\}$.\marginnote{This can be extended in $n$ dimensional case: $S^n$ cannot be covered by $n+1$ closed sets where all of them does not contain a pair of antipodal points, but can by $n+2$ closed sets. The proof uses $n$-dimensional Borsuk-Ulam theorem and the counterexample uses $n$-dimensional tetrahedron.}
+\end{cor}
+\begin{proof}
+For each $A_i$, let $d_i:S^2\rightarrow \mathbb{R}$ defined as
+\begin{equation}
+d_i(x)=\inf_{y\in A_i}|x-y|.
+\end{equation}
+Since this is distance function, it is continuous, thus we may use the Borsuk-Ulam theorem to the map $f:S^2\rightarrow \mathbb{R}^2$ defined as
+\begin{equation}
+f(x)=(d_1(x),d_2(x)),
+\end{equation}
+getting $x_0\in S^2$ such that $d_1(x_0)=d_1(-x_0)$ and $d_2(x_0)=d_2(-x_0)$. If one of them are zero, then $x_0,-x_0$ both are included in $A_1$ or $A_2$, since they are closed sets. If not, then $x_0,-1x_0$ both are included in $A_3$.
+\end{proof}
+
+\begin{prop} Suppose that $X,Y$ are path-connected. Then $\pi_1(X\times Y)\simeq \pi_1(X)\times \pi_1(Y)$.
+\end{prop}
+\begin{proof}
+We know that $f:Z\rightarrow X\times Y$ is continuous if and only if the maps $g:Z\rightarrow X, h:Z\rightarrow Y$ defined by $f(z)=(g(z),h(z))$ are both continuous, due to the product topology. Now define a map
+\begin{equation}
+\phi:\pi_1(X\times Y,(x_0,y_0))\rightarrow \pi_1(X,x_0)\times \pi_1(Y,y_0)
+\end{equation}
+defined as $\phi([f])=([g],[h])$, if $f=(g,h)$. This is well defined: suppose that $[f]=[f']$ and $f=(g,h), f'=(g',h')$. Then we have a loop homotopy $f_t:I\times I\rightarrow X\times Y$ with $f_0=f,f_1=f'$, and we can write $f_t=(g_t,h_t)$, where $g_t, h_t$ are continuous and $g_0=g,g_1=g',h_0=h,h_1=h'$. This is bijection: For any $([g],[h])$ we have $f=(g,h)$ such that $\phi([f])=([g],[h])$, and for any $\phi([f])=\phi([f'])$, we may   take $\phi([f])=([g],[h])$ with $f=(g,h)$ and $\phi([f'])=([g'],[h'])$ with $f'=(g',h')$, then we can find a loop homotopy $g_t,h_t$ where $g_0=g,g_1=g',h_0=h,h_1=h'$, because $[g]=[g']$ and $[h]=[h']$. Now define $f_t=(g_t,h_t)$, which gives a loop homotopy with $f_0=f, f_1=f'$, and so $[f]=[f']$. This is finally homomorphism: $\phi([f][f'])=\phi([f\cdot f'])=\phi([(g\cdot g',h\cdot h')])=([g\cdot g'],[h\cdot h'])=([g][g'],[h][h'])=([g],[h])([g'],[h'])$.
+\end{proof}
+
+\begin{exmp} A torus $T\simeq S^1\times S^1$ has $\pi_1(T)=\pi_1(S^1)^2=\mathbb{Z}^2$. A $n$-torus, $T^n=\underbrace{S^1\times \cdots\times S^1}_{n \textrm{ times}}$, has $\pi_1(T^n)=\mathbb{Z}^n$.
+\end{exmp}
+
+\begin{defn} Suppose $\phi:X\rightarrow Y$ is a continuous map with $\phi(x_0)=y_0$ for some $x_0\in X, y_0\in Y$. The map $\phi_*:\phi_1(X,x_0)\rightarrow \phi_1(Y,y_0)$ defined as $\phi_*[f]=[\phi\circ f]$ is called a \textbf{induced homomorphism}.
+\end{defn}
+
+\begin{prop} For a continuous map $\phi:X\rightarrow Y$ with $\phi(x_0)=y_0$ for some $x_0\in X, y_0\in Y$, the induced homomorphism $\phi_*$ is indeed well defined and homomorphism.
+\end{prop}
+\begin{proof}
+Suppose that $[f]=[f']\in \pi_1(X,x_0)$. Then we have a loop homotopy $f_t$ such that $f_0=f,f_1=f'$. Now taking $\phi\circ f_t$ gives a loop homotopy between $\phi\circ f_0=\phi\circ f$ and $\phi\circ f_1=\phi\circ f'$, which gives $[\phi\circ f]=[\phi\circ f']$. Also, $\phi([f][f'])=\phi([f\cdot f'])=[\phi\circ(f\cdot f')]=[(\phi\circ f)\cdot (\phi\circ f')]=\phi([f])\phi([f'])$.
+\end{proof}
+
+\begin{prop}\marginnote{These properties shows that $\pi_1$ is a \textit{functor}, which is a categorical concept, and will be defined exactly later.} For a maps $\psi:(X,x_0)\rightarrow (Y,y_0)$ and $\phi:(Y,y_0)\rightarrow (Z,z_0)$, $(\phi\circ \psi)_*=\phi_*\circ \psi_*$. Also, $1_{X*}=1_{\pi_1(X,x_0)}$.
+\end{prop}
+\begin{proof}
+Since $(\phi\circ\psi)\circ f=\phi\circ(\psi\circ f)$, $(\phi\circ \psi)_*([f])=[\phi\circ(\psi\circ f)]=\phi_*[\psi\circ f]=\phi_*\circ\psi([f])$. Also, $1_{X*}([f])=[1_X\circ f]=[f]$.
+\end{proof}
+
+\begin{cor} If $\phi:(X,x_0)\rightarrow (Y,y_0)$ is a homeomorphism with inverse $\psi:(Y,y_0)\rightarrow (X,x_0)$, then $\phi_*$ is an isomorphism with inverse $\psi_*$.
+\end{cor}
+\begin{proof}
+$\psi_*\circ \phi_*=(\psi\circ\phi)_*=1_{X*}$ and $\phi_*\circ \psi_*=(\phi\circ \psi)_*=1_{Y*}$.
+\end{proof}
+
+\begin{lemma} If a space $X$ is a union of a collection of path connected open sets $A_\alpha$ each containing $x_0\in X$ and all $A_\alpha\cap A_\beta$ is path connected, then every loop in $X$ at $x_0$ is path homotopic to a product of loops each of wich is contained in a single $A_\alpha$.
+\end{lemma}
+\begin{proof}
+Consider a loop $f:I\rightarrow X$ with basepoint $x_0$. For each point $f(s)$, we have an open neighborhood $U_s$ which is contained in some $A_{\alpha_s}$. Taking $f^{-1}(U_s\cap f(I))$ gives an open neighborhood $V_s\subset I$ satisfying $f(V_s)\subset A_{\alpha_s}$ makes possible to take the open interval $I_s\subset V_s$ containing $s$ where $f(\textrm{cl}(I))\subset A_{\alpha_s}$. Since $I$ is compact, we can take only finite number of $s\in I$ so that the collection of $I_s$ cover $I$. Taking the endpoints of these intervals gives a partition $0=s_0<s_1<\cdots<s_m=1$ such that each subinterval $[s_{i-1},s_i]$ satisfies $f([s_{i-1},s_i])\subset A_{\alpha_i}$. Define paths $f_i:I\rightarrow X$ as
+\begin{equation}
+f_i(s)=f((1-s)s_{i-1}+ss_{i}).
+\end{equation}
+Then, by taking appropriate reparametrization, $f$ is path homotopic to $f_1\cdot\cdots\cdot f_m$. Since $A_{\alpha_i}\cap A_{\alpha_{i+1}}$ is connected and contains $x_0$, we may choose a path $g_i$ in $A_i\cap A_{i+1}$ from $x_0$ to $f(s_i)\in A_i\cap A_{i+1}$. Then we may construct a loop
+\begin{equation}
+(f_1\cdot \bar{g}_1)\cdot (g_1\cdot f_2\cdot \bar{g}_2)\cdot \cdots \cdot (g_{m-1}\cdot f_m)
+\end{equation}
+which is path homotopic to $f$. Furthermore, $f_1\cdot \bar{g}_1$ is a loop contained in $A_{\alpha_1}$, $g_{m-1}\cdot f_m$ is a loop contained in $A_{\alpha_m}$, and $g_i\cdot f_{i+1}\cdot \bar{g}_{i+1}$ is a loop contained in $A_{\alpha_{i+1}}$, showing the statement.
+\end{proof}
+
+\begin{prop} $\pi_1(S^n)=0$ if $n\geq 2$.
+\end{prop}
+\begin{proof}
+Take a point $x_0\in S^n$, and consider two open sets $A_1=S^n-\{x_0\}$ and $A_2=S^n-\{-x_0\}$. Notice that $A_1,A_2$ are homeomorphic to $\mathbb{R}^n$ and $A_1\cap A_2$ is homeomorphic to $S^{n-1}\times \mathbb{R}$, hence path connected. Choose $x\in A_1\cap A_2$. By the Lemma above, every loop in $S^n$ based on $x$ is homotopic to a product of loops in $A_1$ or $A_2$. Since $\pi_1(A_1)\simeq \pi_1(\mathbb{R}^n)\simeq \pi_1(A_2)=0$, all those loops are nullhomotopic, hence every loop in $S^n$ is nullhomotopic.
+\end{proof}
+
+\begin{cor} $\mathbb{R}^2$ is not homeomorphic to $\mathbb{R}^n$ for $n\neq 2$.\marginnote{This is true for any $\mathbb{R}^n$ and $\mathbb{R}^m$ with $n\neq m$, which can be shown using higher homotopy groups or homology groups.}
+\end{cor}
+\begin{proof}
+Let $f:\mathbb{R}^2\rightarrow \mathbb{R}^n$ is a homeomorphism. If $n=1$, then $\mathbb{R}^2-\{0\}$ is path connected but $\mathbb{R}-\{f(0)\}$ is not, thus there is no such homeomorphism. If $n>2$, then since $\mathbb{R}^n-\{f(0)\}\simeq S^{n-1}\times \mathbb{R}$ by, for example, taking $f(0)$ WLOG and giving homeomorphism $\phi:\mathbb{R}^n-\{0\}\rightarrow S^{n-2}\times \mathbb{R}$ as
+\begin{equation}
+\phi(x)=(\frac{x}{|x|},|x|),
+\end{equation}
+$\pi_1(\mathbb{R}^n-\{x\})\simeq \pi_1(S^{n-1})\times \pi_1(\mathbb{R})$, which is trivial if $n>2$ but $\mathbb{Z}$ if $n=2$, contradiction.
+\end{proof}
+
+\begin{prop}  $X$ retracts onto a subspace $A$, then the homomorphism $i_*:\pi_1(A,x_0)\rightarrow \pi_1(X,x_0)$ induced by the inclusion $i:A\hookrightarrow X$ is injective. If $A$ is a deformation retract of $X$, then $i_*$ is an isomorphism.
+\end{prop}
+\begin{proof}
+If $r:X\rightarrow A$ is a retraction, then $r\circ i=1_A$, thus $r_i\circ i_*=1_{\pi_1(A,x_0)}$, which implies $i_*$ is injective. If $r_t:X\rightarrow X$ is a deformation retraction of $X$ onto $A$ so that $r_0=1_X$, $r_t|_A=1_A$, and $r_1(X)\subset A$, then for any loop $f:I\rightarrow X$ based on $x_0$, the composition $r_t\circ f$ is a loop homotopy between $f$ and $r_1\circ f$, a loop in $A$, which shows that
+\begin{equation}
+i_*([r_1\circ f])=[i\circ r_1\circ f]=[r_1\circ f]=[f]
+\end{equation}
+thus $i_*$ is surjective.
+\end{proof}
+
+\begin{exmp} $S^1$ is not a retract of $D^2$.\marginnote{This is proved in the proof of Brower fixed point theorem in different way.}
+\end{exmp}
+\begin{proof}
+If $D^2$ retracts onto $S^1$, then we must have a injective homomorphism $\phi:\pi_1(S^1)\rightarrow \pi_1(D^2)$, but since this must be an injective homomorphism $\phi:\mathbb{Z}\rightarrow 0$, which is impossible, there is no such retraction.
+\end{proof}
+
+\begin{defn} A \textbf{homomorphism retraction} is a homomorphism $\rho:G\rightarrow H\leq G$ satisfying $\rho|_H=1_H$.\marginnote{If $H\trianglelefteq G$, then $G=H\times \ker(\rho)$. If $H\ntrianglelefteq G$, then $G$ is the semi-direct product of $H$ and $\ker(\rho)$. For detailed information see \textit{Abstract Algebra, third edition, D. Dummit and R. Foote, Wiley}, section 5.5.}
+\end{defn}
+\begin{prop} For the retraction $r:X\rightarrow A$, $r_*$ is a homomorphism retraction.
+\end{prop}
+\begin{proof}
+If $f$ is a loop in $A$, then $r\circ f=f$, thus $r_*([f])=[f]$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

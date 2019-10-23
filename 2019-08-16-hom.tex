@@ -1,0 +1,128 @@
+\mytitle{An introduction to homological algebra}
+\begin{defn} Let $f:B\rightarrow C$ be a chain map. The \textbf{mapping cone} of $f$ is a chain complex $\textrm{cone}(f)$ whose degree $n$ part is $B_{n-1}\oplus C_n$ and the differential is $d(b,c)=(-d(b),d(c)-f(b))$.
+\end{defn}
+
+\begin{exer} Let $\textrm{cone}(C)$ denote the mapping cone of the identity map $1_C$ of $C$. Show that $\textrm{cone}(C)$ is split exact, with $s(b,c)=(-c,0)$ defining the splitting map.
+\end{exer}
+\begin{solution} Notice that $d\circ s\circ d(b,c)=d\circ s(-d(b),d(c)-b)=d(-d(c)+b,0)=(-d(-d(c)+b),d(c)-b)=(-d(b),d(c)-b)=d(b,c)$.
+\end{solution}
+
+\begin{exer} Let $f:C\rightarrow D$ be a chain map. Show that $f$ is null homotopic if and only if $f$ extends to a map $(-s,f):\textrm{cone}(C)\rightarrow D$.
+\end{exer}
+\begin{solution} Suppose that $f$ is null homotopic, that is, $f=s\circ d+d\circ s$ for some $s_n:C_n\rightarrow D_{n+1}$. Then $d\circ (-s,f)(b,c)=d(f(c)-s(b))=d\circ s\circ d(c)+d\circ d\circ s(c)-d\circ s(b)=d\circ s\circ d(c)-d\circ s(b)$ and $(-s,f)\circ d(b,c)=(-s,f)(-d(b),d(c)-b)=s\circ d(b)+f\circ d(c)-f(b)=-d\circ s(b)+d\circ s\circ d(c)$, thus $(-s,f)$ is a chain map. Conversely, if $(-s,f)$ is a chain map for some $s$, then we have $d\circ f(c)-d\circ s(b)=s\circ d(b)+f\circ d(c)-f(b)$, which implies $s\circ d+d\circ s=f$, thus $f$ is null homotopic.
+\end{solution}
+
+\begin{lemma} For a chain map $f:B\rightarrow C$, the short exact sequence
+\begin{equation}
+0\rightarrow C\rightarrow \textrm{cone}(f)\xrightarrow{\delta} B[-1]\rightarrow 0
+\end{equation}
+gives the homology long exact sequence
+\begin{equation}
+\cdots\rightarrow H_{n+1}(\textrm{cone}(f))\xrightarrow{\delta_*} H_n(B)\xrightarrow{\partial} H_n(C)\rightarrow H_n(\textrm{cone}(f))\xrightarrow{\delta_*}\cdots
+\end{equation}
+Then $\partial=f_*$.
+\end{lemma}
+\begin{proof}
+For a cycle $b\in B_n$, The element $(-b,0)$ of $\textrm{cone}(f)$ lifts $f$ via $\delta$, and taking differential gives $d(-b,0)=(d(b),f(b))=(0,f(b))$. Thus $\partial[b]=[f(b)]$, which is $f_*([b])$.
+\end{proof}
+
+\begin{cor} A chain map $f:B\rightarrow C$ is a quasi-isomorphism if and only if the mapping cone complex $\textbf{cone}(f)$ is exact.
+\end{cor}
+\begin{proof}
+If $f$ is a quasi-isomorphism then $\partial$ is isomorphism, thus $H_n(C)\rightarrow H_n(\textrm{cone}(f))$ and $\delta_*$ are zero maps. Thus $H_n(\textrm{cone}(f))=0$ and so $\textrm{cone}(f)$ is exact. Conversely, if $\textrm{cone}(f)$ is exact then $H_n(\textrm{cone}(f))=0$, thus $H_n(B)\xrightarrow{\partial=f_*} H_n(C)$ is an isomorphism.
+\end{proof}
+
+\begin{defn} Let $K$ be a simplicial complex. The \textbf{topological cone} $CK$ of $K$ is obtained by adding a new vertex $s$ to $K$ and making the cone of the simplicies to get a new $n+1$ simplex for every old $n$-simplex of $K$. Notice that the simplicial chain complex $C_\bullet(s)$ of the one point space $\{s\}$ is $R$ in degree $0$ and zero elsewhere. Then $C_\bullet(s)$ is a subcomplex of the simplicial chain complex $C_\bullet(CK)$ of the topological cone $CK$, and the quotient $C_\bullet(CK)/C_\bullet(s)$ is the chain complex $\textrm{cone}(C_\bullet K)$ of the identity map of $C_\bullet(K)$. The fact that $\textrm{cone}(C_\bullet K)$ is null homotopic reflects the fact that the topological cone $CK$ is contractible.
+
+Samely, if $f:K\rightarrow L$ is a simplicial map, the \textbf{topological mapping cone} $Cf$ of $f$ is obtained by glueing $CK$ and $L$ together, identifying the subcomplex $K$ of $CK$ with its image in $L$. If $f$ is an inclusion of simplicial complexes, $Cf$ is a simplicial complex. The quotient chain complex $C_\bullet(Cf)/C_\bullet(s)$ is the mapping cone $\textrm{cone}(f_*)$ of the chain map $f_*:C_\bullet(K)\rightarrow C_\bullet(L)$.
+\end{defn}
+
+\begin{defn} For a chain complex map $f:B\rightarrow C$, the \textbf{mapping cylinder} of $f$ is a chain complex $\textrm{cyl}(f)$ whose degree $n$ part is $B_n\oplus B_{n-1}\oplus C_n$ and the differential is $d(b,b',c)=(d(b)+b',-d(b'),d(c)-f(b'))$.
+\end{defn}
+
+\begin{exer} Let $\textrm{cyl}(C)$ denote the mapping cylinder of the identity map $1_C$ of $C$. Show that two chain maps $f,g:C\rightarrow D$ are chain homotopic if and only if they extend to a map $(f,s,g):\textrm{cyl}(C)\rightarrow D$.
+\end{exer}
+\begin{solution} Suppose that $f$ and $g$ are chain homotopic, that is, $f-g=s\circ d+d\circ s$. Then $(f,s,g)\circ d(a,b,c)=(f,s,g)(d(a)+b,-d(b),d(c)-b)=f\circ d(a)+f(b)-s\circ d(b)+g\circ d(c)-g(b)=d\circ f(a)+d\circ s(b)+d\circ g(c)=d\circ (f,s,g)(a,b,c)$. Conversely, if $(f,s,g)\circ d(a,b,c)=d\circ(f,s,g)(a,b,c)$ then $f\circ d(a)+f(b)-s\circ d(b)+g\circ d(c)-g(b)=d\circ f(a)+d\circ s(b)+d\circ g(c)$ implies $(f-g)(b)=(s\circ d+d\circ s)(b)$, thus $f-g=s\circ d+d\circ s$.
+\end{solution}
+
+\begin{exer} If $f:B\rightarrow C$, $g:C\rightarrow D$, and $e:B\rightarrow D$ are chain maps, show that $e$ and $g\circ f$ are chain homotopic if and only if there is a chain map $\gamma=(e,s,g):\textrm{cyl}(f)\rightarrow D$. Note that $e$ and $g$ factor through $\gamma$.
+\end{exer}
+\begin{solution} Suppose that $e$ and $g\circ f$ are chain homotopic, that is, $e-g\circ f=s\circ d+d\circ s$. Then $(e,s,g)\circ d(a,b,c)=(e,s,g)(d(a)+b,-d(b),d(c)-f(b))=e\circ d(a)+e(b)-s\circ d(b)+g\circ d(c)-g\circ f(b)=d\circ e(a)+d\circ s(b)+d\circ g(c)=d\circ (e,s,g)(a,b,c)$. Conversely, if $(e,s,g)\circ d(a,b,c)=d\circ (e,s,g)(a,b,c)$ then $e\circ d(a)+e(b)-s\circ d(b)+g\circ d(c)-g\circ f(b)=d\circ e(a)+d\circ s(b)+d\circ g(c)$ implies $(e-g\circ f)(b)=(s\circ d+d\circ s)(b)$, thus $e-g\circ f=s\circ d+d\circ s$.
+\end{solution}
+
+\begin{lemma} The subcomplex of elements $(0,0,c)$ is isomorphic to $C$, and the corresponding inclusion $\alpha:C\rightarrow \textrm{cyl}(f)$ is a quasi-isomorphism.
+\end{lemma}
+\begin{proof}
+Notice that $\textrm{cyl}(f)/\alpha(C)=\textrm{cone}(-1_B)$, which is split exact. Now from the short exact sequence
+\begin{equation}
+0\rightarrow C\xrightarrow{\alpha} \textrm{cyl}(f)\rightarrow \textrm{cone}(-1_B)\rightarrow 0
+\end{equation} 
+we have a long exact sequence
+\begin{equation}
+\cdots\rightarrow H_{n+1}(\textrm{cyl}(f))\rightarrow H_{n+1}(\textrm{cone}(-1_B))\rightarrow H_n(C)\rightarrow H_n(\textrm{cyl}(f))\rightarrow\cdots
+\end{equation}
+Now since $\textrm{cone}(-1_B)$ is exact, $H_n(C)\rightarrow H_n(\textrm{cyl}(f))$ is an isomorphism.
+\end{proof}
+
+\begin{exer} Show that $\beta(b,b',c)=f(b)+c$ defines a chain map from $\textrm{cyl}(f)$ to $C$ such that $\beta\circ \alpha=1_C$. Then show that the formula $s(b,b',c)=(0,b,0)$ defines a chain homotopy from the identity of $\textrm{cyl}(f)$ to $\alpha\circ \beta$. Conclude that $\alpha$ is in fact a chain homotopy equivalence between $C$ and $\textrm{cyl}(f)$.
+\end{exer}
+\begin{solution} First $d\circ \beta(b,b',c)=d(f(b)+c)=d\circ f(b)+d(c)$ and $\beta\circ d(b,b',c)=\beta(d(b)+b',-d(b'),d(c)-f(b'))=f\circ d(b)+f(b')+d(c)-f(b')=f\circ d(b)+d(c)$, thus $\beta$ is a chain map. Now $\beta\circ \alpha(c)=\beta(0,0,c)=c$ thus $\beta\circ \alpha=1_C$. Finally, $(s\circ d+d\circ s)(b,b',c)=s(d(b)+b',-d(b'),d(c)-f(b'))+d(0,b,0)=(0,d(b)+b',0)+(b,-d(b),-f(b))=(b,b',-f(b))=(b,b',c)-(0,0,f(b)+c)$, and since $\alpha\circ \beta(b,b',c)=\alpha(f(b)+c)=(0,0,f(b)+c)$, $1-\alpha\circ \beta=s\circ d+d\circ s$. Therefore $\alpha$ is a chain homotopy equivalence between $C$ and $\textrm{cyl}(f)$.
+\end{solution}
+
+\begin{defn} Let $X$ be a cellular complex and $I=[0,1]$. The space $I\times X$ is the \textbf{topological cylinder} of $X$, which is also a cell complex. If $C_\bullet(X)$ is the cellular chain complex of $X$, then the cellular chain complex $C_\bullet(I\times X)$ of $I\times X$ can be identified with the mapping cylinder chain complex of the identity map on $C_\bullet(X)$, $\textrm{cyl}(1_{C_\bullet(X)})$.
+
+Samely, if $f:X\rightarrow Y$ is a cellular map, then the \textbf{topological mapping cylinder} $\textrm{cyl}(f)$ is obtained by glueing $I\times X$ and $Y$ together, identifying $0\times X$ with the image of $X$ under $f$, which is also a cell complex. Then the cellular chain complex $C_\bullet(\textrm{cyl}(f))$ can be identified with the mapping cylinder of the chain map $C_\bullet(X)\rightarrow C_\bullet(Y)$.
+\end{defn}
+
+\begin{lemma} The subcomplex of elements $(b,0,0)$ in $\textrm{cyl}(f)$ is isomorphic to $B$, and $\textrm{cyl}(f)/B$ is the mapping cone of $f$. The composite $B\rightarrow \textrm{cyl}(f)\xrightarrow{\beta} C$ is the map $f$, where $\beta(b,b',c)=f(b)+c$ is the chain homotopy equivalence. Thus the map $f_*:H(B)\rightarrow H(C)$ factors through $H(B)\rightarrow H(\textrm{cyl}(f))$. Thus we may construct a commutative diagram of chain complexes with exact rows as following:
+\begin{equation}
+\begin{tikzcd}
+&&C&&&\\
+0\arrow[r]&B\arrow{ru}{f}\arrow[r]&\textrm{cyl}(f)\arrow{u}{\beta}\arrow[r]&\textrm{cone}(f)\arrow[r]\arrow[d,equal]&0&\\
+&0\arrow[r]&C\arrow{u}{\alpha}\arrow{r}&\textrm{cone}(f)\arrow{r}{\delta}&B[-1]\arrow{r}&0
+\end{tikzcd}
+\end{equation}
+and the homology long exact sequences can be drawn as following:
+\begin{equation}
+\begin{tikzcd}
+\cdots\arrow{r}{-\partial}&H_n(B)\arrow[r]\arrow[d,equal]\arrow{rd}{f}&H_n(\textrm{cyl}(f))\arrow[d,equal]\arrow[r]&H_n(\textrm{cone}(f))\arrow{r}{-\partial}\arrow[d,equal]&H_{n-1}(B)\arrow[r]\arrow[d,equal]&\cdots\\
+\cdots\arrow[r]&H_{n+1}(B[-1])\arrow{r}{\partial}&H_n(C)\arrow[r]&H_n(\textrm{cone}(f))\arrow{r}{\delta}&H_{n}(B[-1])\arrow{r}{\partial}&\cdots
+\end{tikzcd}
+\end{equation}
+This diagram commutes.
+\end{lemma}
+\begin{proof}
+It suffices to show that the right square commutes. Let $(b,c)$ be an $n$-cycle in $\textrm{cone}(f)$, thus $d(b,c)=(-d(b),d(c)-f(b))=0$ implies $d(b)=0$ and $f(b)=d(c)$. Lifting $(b,c)$ to $(0,b,c)$ in $\textrm{cyl}(f)$ and taking differential gives $d(0,b,c)=(b,-d(b),d(c)-f(b)=(b,0,0)$. thus $\partial$ maps the class of $(b,c)$ to the class of $b=-\delta(b,c)$ in $H_{n-1}(B)$. Thus the right square commutes.
+\end{proof}
+
+\begin{prop} For any short exact sequence of complexes
+\begin{equation}
+0\rightarrow B\xrightarrow{f} C\xrightarrow{g} D\rightarrow 0
+\end{equation}
+the following natural isomorphism of long exact sequences holds.
+\begin{equation}
+\begin{tikzcd}
+\cdots \arrow{r}{\partial} &H_n(B)\arrow[d,equal] \arrow[r]&H_n(\textrm{cyl}(f))\arrow{d}{\simeq} \arrow{r} &H_n(\textrm{cone}(f))\arrow{d}{\simeq} \arrow{r}{\partial} &H_{n-1}(B)\arrow[d,equal]\arrow{r}&\cdots\\
+\cdots \arrow{r}{\partial} &H_n(B) \arrow[r]&H_n(C) \arrow{r} &H_n(D) \arrow{r}{\partial} &H_{n-1}(B)\arrow{r}&\cdots
+\end{tikzcd}
+\end{equation}
+\end{prop}
+\begin{proof}
+Consider a chain map $\phi:\textrm{cone}(f)\rightarrow D$ defined by $\phi(b,c)=g(c)$. Then the following diagram commutes with exact rows:
+\begin{equation}
+\begin{tikzcd}
+&0\arrow[r]&C\arrow[r]\arrow{d}{\alpha}&\textrm{cone}(f)\arrow{r}{\delta}\arrow[d,equal]&B[-1]\arrow[r]&0\\
+0\arrow[r]&B\arrow[r]\arrow[d,equal]&\textrm{cyl}(f)\arrow[r]\arrow{d}{\beta}&\textrm{cone}(f)\arrow[r]\arrow{d}{\phi}&0&\\
+0\arrow[r]&B\arrow{r}{f}&C\arrow{r}{g}&D\arrow[r]&0&
+\end{tikzcd}
+\end{equation}
+Now since $\beta$ is a quasi-isomorphism, by 5-lemma and the functority of long exact sequence, $\phi$ is a quasi-isomorphism. Thus the naturality of $\partial$ gives the diagram above commutes.
+\end{proof}
+
+\begin{exer} Considering $B$ and $C$ as modules considered as chain complexes concentrated in degree zero, $\mathrm{cone}(f)$ is the complex $0\rightarrow B\xrightarrow{-f} C\rightarrow 0$. Show that $\phi$ defined in above proposition is a chain homotopy equivalence if and only if $f:B\hookrightarrow C$ is a split injection.
+\end{exer}
+\begin{proof}
+Since $B$ and $C$ are modules, $D$ is also a module. Thus, $\phi$ is a chain homotopy equivalence if and only if there is a map $\alpha:D\rightarrow C$ such that there is $r:C\rightarrow B$ with $\alpha\circ \phi=1-f\circ r$ and $\phi\circ \alpha=1$. Now since $\phi\circ f=0$, $f-f\circ r\circ f=\alpha\circ \phi\circ f=0$, thus $f=f\circ r\circ f$ and thus $f$ is a split injection. Conversely, if $f=f\circ r\circ f$ for some $r$, then since $f$ is injective $1=r\circ f$. Now define $\alpha=(1-f\circ r)\circ \phi^{-1}$. Notice that $\phi$ is surjective. Now if $a,b\in \phi^{-1}(c)$, then $\phi(a)-\phi(b)=\phi(a-b)=0$, thus $a-b\in \Ker\phi=\Ima f$. Thus there is $e$ such that $f(e)=a-b$, and $(1-f\circ r)(a-b)=(a-b)-f\circ r\circ f(e)=(a-b)-f(e)=0$, thus this map is well defined. Finally, since $\phi\circ f=0$, $\phi\circ \alpha=\phi\circ \phi^{-1}=1$.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

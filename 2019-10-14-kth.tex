@@ -1,0 +1,28 @@
+\mytitle{K-Theory}
+\begin{defn} For two vector bundles $p_1:E_1\rightarrow B$ and $p_2:E_2\rightarrow B$, the \textbf{tensor product} of $E_1$ and $E_2$ is a vector bundle $E_1\otimes E_2\rightarrow B$ defined as following:
+\begin{enumerate}
+\item Setwisely, $E_1\otimes E_2$ is the disjoint union of the vector spaces $p_1^{-1}(x)\otimes p_2^{-1}(x)$ for $x\in B$;
+\item For the topology, choose $h_i:p_i^{-1}(U)\rightarrow U\times \mathbb{R}^{n_i}$ be the trivializations for each open set $U\subset B$ over which $E_1, E_2$ are trivial. Then the topology on the set $p_1^{-1}(U)\otimes p_2^{-1}(U)$ is the topology which makes the fiberwise tensor product map $h_1\otimes h_2:p_1^{-1}(U)\otimes p_2^{-1}(U)\rightarrow U\times(\mathbb{R}^{n_1}\otimes \mathbb{R}^{n_2})$ be a homeomorphism.
+\item For the local trivialization, the maps $h_1\otimes h_2$ and the open sets $U$ given as above are desired local trivializations.
+\end{enumerate}
+\end{defn}
+
+\begin{prop} The topology defined as above is well-defined, which is, it does not depends on the choice of $h_i$'s and $U$'s.
+\end{prop}
+\begin{proof}
+For the local trivialization $h_i$ on $U$, any other choices are obtained by composing with isomorphisms of $U\times \mathbb{R}^{n_i}$ of the form $(x,v)\mapsto (x,g_i(x)(v))$, where $g_i:U\rightarrow GL_{n_i}(\mathbb{R})$ are continuous maps. Then $h_1\otimes h_2$ changes by composing wit analogous isomorphisms of $U\times (\mathbb{R}^{n_1}\otimes \mathbb{R}^{n_2})$, where the second coordinates $g_1\otimes g_2$ are continuous maps $U\rightarrow GL_{n_1 n_2})(\mathbb{R})$. Indeed this map is continuous because each entries of the matrices $g_1(x)\otimes g_2(x)$ are the products of the entries of $g_1(x)$ and $g_2(x)$. Now when we replace $U$ by an open subset $V$, the topology on $p_1^{-1}(V)\otimes p_2^{-1}(V)$ induced by $U$ is same with the topology induced by $V$, since local trivializations over $U$ restrict to local trivializations over $V$.
+\end{proof}
+
+\begin{exmp} Using above argument, we can consider another construction of vector space. Consider a vector bundle $p:E\rightarrow B$ and an open cover $\{U_\alpha\}$ of $B$ with local trivializations $h_\alpha:p^{-1}(U_\alpha)\rightarrow U_\alpha\times \mathbb{R}^n$. Then we can reconstruct $E$ as the quotient space of the disjoint union $\sqcup_\alpha(U_\alpha\times \mathbb{R}^n)$, identifying $(x,v)\in U_\alpha\times \mathbb{R}^n$ with $h_\beta \circ h_\alpha^{-1}(x,v)\in U_\beta\times \mathbb{R}^n$ whenever $x\in U_\alpha\cap U_\beta$. Then the functions $h_\beta\circ h_\alpha^{-1}$ can be viewed as maps $g_{\beta\alpha}:U_\alpha\cap U_\beta\rightarrow GL_n(\mathbb{R})$, satisfying the \textbf{cocycle condition}, $g_{\gamma\beta}\circ g_{\beta\alpha}=g_{\gamma\alpha}$ on $U_\alpha\cap U_\beta\cap U_\gamma$. Thus any collection of \textbf{gluing functions} $g_{\beta\alpha}$ satisfying the cocycle condition can be used to construct a vector bundle $E\rightarrow B$.
+
+With this constructions, we can obtain the tensor product of two vector bundles $E_i\rightarrow B$ with gluing functions $g_{\beta\alpha}^i:U_\alpha\cap U_\beta\rightarrow GL_{n_i}(\mathbb{R})$ can be constructed with gluing functions $g^1_{\beta\alpha}\otimes g_{\beta\alpha}^2$, assigning each $x\in U_\alpha\cap U_\beta$ the tensor product $g_{\beta\alpha}^1(x)\otimes g_{\beta\alpha}^2(x)$.
+\end{exmp}
+
+\begin{prop} The tensor product operation for vector bundles over a fixed base space is commutative, associative, and has an identity element: the trivial line bundle. Furthermore, it is also distributive with respect to direct sum.
+\end{prop}
+\begin{proof}
+The proof fully depends on the fact that the properties in the proposition are all true in $\mathbb{R}^n$ space.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

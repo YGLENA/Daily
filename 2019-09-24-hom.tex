@@ -1,0 +1,11 @@
+\mytitle{An introduction to homological algebra}
+\begin{exmp} Let $I$ be a small category and $\mathsf{A}$ be an abelian category. If the product of any set of objects exists in $\mathsf{A}$, which is, if $\mathsf{A}$ is complete, and $\mathsf{A}$ has enough injectives, then the functor category $\mathsf{A}^I$ has enough injectives. Indeed, for each $k\in I$, the coordinate functor $\mathsf{A}^I\rightarrow \mathsf{A}$ mapping $A\mapsto A(k)$ is an exact functor. Now for an object $A\in \mathsf{A}$, define the functor $k_*A:I\rightarrow \mathsf{A}$ as $k_*A(i)=\prod_{\Hom_I(i,k)}A$. Now if $\eta:i\rightarrow j$ is a map in $I$, then the map $k_*A(i)\rightarrow k_*A(j)$ is determined by the index map $\eta^*:\Hom(j,k)\rightarrow \Hom(i,k)$, that is, $\phi\in \Hom(i,k)$-th component becomes $\eta^*(\phi)=\phi\circ \eta$-th component. Now for a morphism $f:A\rightarrow B$, there is a corresponding morphism $k_*f:k_*A\rightarrow k_*B$ which is defined slotwise. This shows that $k_*:\mathsf{A}\rightarrow \mathsf{A}^I$ is an additive functor. The following exercise then shows that $\mathsf{A}^I$ has enough injectives.
+\end{exmp}
+
+\begin{exer} From the previous example, show that $k_*$ is right adjoint to the $k$-th coordinate functor, so that $k_*$ preserves injectives. Now for each $F\in \mathsf{A}^I$, embed $F(k)$ in an injective object $A_k\in \mathsf{A}$, and so let $F\rightarrow k_* A_k$ be the corresponding adjoint map. Show that $E=\prod_{k\in I}k_* A_k$ exists in $\mathsf{A}^I$, that $E$ is an injective object, and that $F\rightarrow E$ is an injection.
+\end{exer}
+\begin{solution}
+Choose $A\in \mathsf{A}$ and $F\in \mathsf{A}^I$. Then we have to show the isomorphism between $\Hom(F,k_*(A))$ and $\Hom(F(k),A)$. Let $f\in \Hom(F,k_*(A))$, then [LATER]
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline

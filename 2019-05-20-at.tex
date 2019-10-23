@@ -1,0 +1,35 @@
+\mytitle{Algebraic Topology}
+\begin{defn} A space $X$ is \textbf{semilocally simply connected} if for every $x\in X$ there is an open neighborhood $x\in U$ such that the inclusion-induced map $\pi_1(U,x)\rightarrow \pi_1(X,x)$ is trivial map.
+\end{defn}
+
+\begin{prop} If $X$ has a simply connected covering space, then $X$ is semilocally simply connected.
+\end{prop}
+\begin{proof} Suppose that $p:\tilde{X}\rightarrow X$ is a covering map with simply connected covering space $\tilde{X}$. Then every point $x\in X$ has an open neighborhood $U$ which have a lift $\tilde{U}\subset \tilde{X}$ which is homeomorphic to $U$ by $p$. Take a loop $f:I\rightarrow U\subset X$. This can be lifted to a loop $\tilde{f}:I\rightarrow \tilde{U}\subset \tilde{X}$. Now, since $i_{\tilde{U}*}([\tilde{f}])=0$ where $i_{\tilde{U}*}:\pi_1(\tilde{U})\rightarrow \pi_1(\tilde{X})$ is induced homomorphism of inclusion $i_{\tilde{U}}:\tilde{U}\hookrightarrow \tilde{X}$, $p_*(i_{\tilde{U}*}([\tilde{f}])=[p\circ i_{\tilde{U}}\tilde{f}]=[i_{U}f]=i_{U*}([f])=0$, where $i_{\tilde{U}*}:\pi_1({U})\rightarrow \pi_1({X})$ is induced homomorphism of inclusion $i_{{U}}:{U}\hookrightarrow \tilde{X}$. Therefore $X$ is semilocally simply connected.
+\end{proof}
+
+\begin{exmp} The shrinking wedge of circles space is not semilocally simply connected, since every open neighborhood of $(0,0)$ contains infinitely many circles, whose loop can be nontrivial in whole space.
+\end{exmp}
+
+\begin{prop} If $X$ is path connected, locally path connected, and semilocally simply connected, then $X$ has a simply connected covering space.
+\end{prop}
+\begin{proof} Take a basepoint $x_0\in X$. Define $\tilde{X}$ as a set of homotopy classes of $\gamma$, where $\gamma$ is a path in $X$ starting at $x_0$. Define $p:\tilde{X}\rightarrow X$ as $p([\gamma])=\gamma(1)$, which is well defined, and since $X$ is path connected $p$ is surjective.
+
+Now we define $\mathcal{U}$ as a collection of the path connected open sets $U\subset X$. Since $X$ is semilocally simply connected, every points $x\in X$ contains such an open set. Also, every path connected open subset $V$ of $U$ satisfies $V\in \mathcal{U}$ if $U\in\mathcal{U}$, because the map $\pi_1(V)\rightarrow \pi_1(U)\rightarrow \pi_1(X)$ is trivial. Therefore for any $U,U'\in \mathcal{U}$, $U\cap U'$ has a path connected open set $V$ since $X$ is locally path connected, which is contained in $\mathcal{U}$. Finally, for every open neighborhood $x\in U$, there is a path connected open set $V$ satisfying $x\in V\in U$ since $X$ is locally path connected. Thus $\mathcal{U}$ is the basis of $X$.
+
+Now for $U\in \mathcal{U}$ and a path $\gamma$ in $X$ from $x_0$ to a point in $U$, let $U_{[\gamma]}$ be a set of $[\gamma\cdot \eta]$ where $\eta$ is a path in $U$ with $\gamma(1)=\eta(0)$. Notice that $p|_{U_{[\gamma]}}$ is surjective since $U$ is path connected, and injective since $\pi_1(U)\rightarrow \pi_1(X)$ is trivial. Furthermore, if $[\gamma']\in U_{[\gamma]}$ then $\gamma'=\gamma\cdot \eta$ for some path $\eta$ in $U$, and then the elements of $U_{[\gamma]'}$ can be written as the form $[(\gamma\cdot \eta)\cdot \mu]=[\gamma\cdot(\eta\cdot \mu)]$, hence lie in $U_{[\gamma]}$. Similarly, the elements of $U_{[\gamma]}$ can be written as $[\gamma\cdot \mu]=[\gamma\cdot \eta\cdot \bar{\eta}\cdot \mu]=[\gamma'\cdot \bar{\eta}\cdot \mu]$, thus lie in $U_{[\gamma']}$, hence $U_{[\gamma]}=U_{[\gamma']}$.
+
+Therefore, for two $U_{[\gamma]},V_{[\gamma']}$ and $[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$, we have $U_{[\gamma]}=U_{[\gamma'']}$ and $V_{[\gamma']}=V_{[\gamma'']}$. Thus choose $W\in \mathcal{U}$ such that $W\subset U\cap V$ and contains $\gamma''(1)$, then $[\gamma'']\in W_{[\gamma'']}\subset U_{[\gamma]}\cap V_{[\gamma']}$. Thus the collection of $U_{[\gamma]}$ can be thought as a basis. We give a topology of $\tilde{X}$ by using this basis.
+
+Now take the map $p|_{U_{[\gamma]}}$. For $V\in \mathcal{U}$ contained in $U$ and $[\gamma']\in U_{[\gamma]}$ with $\gamma'(0),\gamma'(1)\in V$, $p(V_{[\gamma']})=V$ and $p^{-1}(V)\cap U_{[\gamma]}=V_{[\gamma']}\cap U_{[\gamma']}=V_{[\gamma']}$ since $V_{[\gamma']}\subset U_{[\gamma]}$. Therefore $p|_{U_{[\gamma]}}$ is homeomorphism. The inverse image part shows that $p$ is also continuous. Furthermore, $p^{-1}(U)$ is the union of $U_{[\gamma]}$ for varying $[\gamma]$, which are disjoint because $[\gamma'']\in U_{[\gamma]}\cap U_{[\gamma']}$ implies $U_{[\gamma]}=U_{[\gamma'']}=U_{[\gamma']}$.
+
+Finally we need to show that $\tilde{X}$ is simply connected. For a point $[\gamma]\in \tilde{X}$, define $\gamma_t:I\rightarrow X$ as
+\begin{equation}
+\gamma_t(s)=\begin{cases}
+\gamma(s),& s\in [0,t]\\
+\gamma(t),&s\in [t,1]
+\end{cases}
+\end{equation}
+Then the function $t\mapsto [\gamma_t]$ is a path in $\tilde{X}$ lifting $\gamma$ starting at $[c_{\gamma(0)}]$ and ending at $[\gamma]$, where $c_{\gamma(0)}$ is the constant path at $\gamma(0)$. Therefore $\tilde{X}$ is path connected. Now since $p_*$ is injective, it is enough to show that $p_*(\pi_1(\tilde{X},[c_{\gamma(0)}]))=0$. Now the elements of $p_*(\pi_1(\tilde{X},[c_{\gamma(0)}]))$ can be represented by the loops $\gamma$ based on $\gamma(0)$ and lift to loops in $\tilde{X}$ based on $[c_{\gamma(0)}]$. Since $\gamma$ lifts to $[\gamma_t]$, and this must be a loop, $[\gamma_1]=[\gamma]=[\gamma_0]=[c_{\gamma(0)}]$. Therefore $[\gamma]$ is trivial and $\pi_1(\tilde{X})$ is trivial.
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

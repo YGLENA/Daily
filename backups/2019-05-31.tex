@@ -1,0 +1,35 @@
+\mytitle{Algebraic Topology}
+\begin{defn} For an action of a group $G$ on a space $X$, the \textbf{orbits} are the sets $G\cdot x=\{g\cdot x|g\in G\}$ for all $x\in X$. The \textbf{orbit space} $X/G$ is a quotient space $X/[x\sim g\cdot x,\forall g\in G]$, i.e. the space where all the points are orbits.
+\end{defn}
+
+\begin{defn} For an action of a group $G$ on a space $X$, if each $x\in X$ has an open neighborhood $U$ such that all the images $g(U)$ for $g\in G$ are disjoint for different $g$, then we call this a \textbf{covering space action}.
+\end{defn}
+
+\begin{prop} For a covering space $p:\tilde{X}\rightarrow X$, the action of deck transformation group $G(\tilde{X})$ acting on $\tilde{X}$ is a covering space action.
+\end{prop}
+\begin{proof}
+Since $\tilde{X}$ is a covering space, we can choose an open neighbor $U$ of $x\in X$ such that we can choose $\tilde{U}\subset \tilde{X}$ homeomorphic to $U$ by the restriction of $p$. If $g_1\cdot \tilde{U}\cap g_2\cdot \tilde{U}\neq \emptyset$ for some $g_1,g_2\in G(\tilde{X})$, then $g_1(\tilde{x}_1)=g_2(\tilde{x}_2)$ for some $\tilde{x}_1,\tilde{x}_2\in \tilde{U}$. Thus $p(\tilde{x}_1)=p(\tilde{x}_2)$, but since $p|_{\tilde{U}}$ is a homeomorphism, $\tilde{x}_1=\tilde{x}_2$, and $g_1$ and $g_2$ are deck transformations which agree at one point, thus $g_1=g_2$.
+\end{proof}
+
+\begin{prop} If an action of a group $G$ on a space $X$ is a covering space action, then
+\begin{enumerate}
+\item The quotient map $p:X\rightarrow X/G$ with $p(x)=G\cdot x$ is a normal covering space.
+\item $G$ is a group of deck transformations of the covering space $p:X\rightarrow X/G$ if $X$ is path connected.
+\item $G\simeq \pi_1(X/G)/p_*(\pi_1(X))$ if $X$ is path connected and locally path connected.
+\end{enumerate}
+\end{prop}\marginnote{\begin{defn}A topological property $\mathcal{P}$ is \textbf{cohereditary} if for the space $X$ with property $\mathcal{P}$ its quotient space has the property $\mathcal{P}$.\end{defn}}
+\marginnote{\begin{prop} Path connectivity is cohereditary.\end{prop}\begin{proof}
+Let $X$ be a path connected space. Take a quotient map $p:X\rightarrow Q$ and $q_1,q_2\in Q$. Then we may choose a point $x_1,x_2\in X$ such that $p(x_1)=q_1$ and $p(x_2)=q_2$. Since $X$ is path connected, there is a path $\gamma:I\rightarrow X$ with $\gamma(0)=x_1$ and $\gamma(1)=x_2$. Now $p\circ \gamma:I\rightarrow Q$ is continuous since $p$ and $\gamma$ are continuous, and $p\circ\gamma(0)=q_1$ and $p\circ\gamma(1)=q_2$, thus $p\circ \gamma$ is a path connecting $q_1,q_2$.
+\end{proof}}
+\marginnote{\begin{prop} Locally path connectivity is cohereditary.\end{prop}\begin{proof}
+Let $X$ be a locally path connected space. Take a quotient map $p:X\rightarrow Q$ and $q\in Q$ with its open neighborhood $U$. Then there is $x\in X$ such that $p(x)=q$ and $p^{-1}(U)$ is its open neighborhood. Since $X$ is locally path connected, we can take a path connected open neighborhood $V$ of $x$ such that $x\in V\in p^{-1}(U)$. Now since $p$ is open map, $p(V)$ is an open neighborhood of $q$, and since path connectivity is cohereditary, $p(V)$ is path connected.
+\end{proof}}
+\begin{proof}
+\begin{enumerate}
+\item Take an open neighborhood $U$ of $x\in X$ which is given in the definition of covering space action. Then all the disjoint homeomorphic sets $g\cdot U$ satisfies $p(g\cdot U)=U$. Take $g=e$, hence $g\cdot U=U$. Then $p|_U:U\rightarrow p(U)$ is continuous and surjective. Suppose that $x_0,x_1\in U$ satisfies $p(x_0)=p(x_1)$. Then $G\cdot x_0=G\cdot x_1$, which means $x_0=g\cdot x_1$ for some $g\in G$. But since $g\cdot U$ is disjoint with $U$, $g=e$, hence $x_0=x_1$. Therefore $p$ is injective. Also, define a map $f_g:X\rightarrow X$ as $f_g(x)=g\cdot x$. Since the action is an action on a space, $f_g$ is homeomorphism, and since $p\circ f_g=p$, each elements $g\in G$ represents different covering isomorphisms. Finally, for any $[x_0]\in X/G$ and its liftings $g_1\cdot x_0$ and $g_2\cdot x_0$, $f_{g_2g_1^{-1}}(g_1\cdot x_0)=g_2\cdot x_0$, thus $p$ is normal.
+\item Choose $f$ as a deck transformation of the covering space $p:X\rightarrow X/G$. For $x\in X$, there is $g\in G$ such that $g\cdot x=f(x)$. Now since if two deck transformations agree at one point then they are same, $f=f_g$.
+\item Since $X$ is path connected and locally path connected, $X/G$ is also path connected and locally path connected. Due to the proposition above, $G\simeq N(p_*(\pi_1(X)))/p_*(\pi_1(X))$. Since $p$ is normal, $N(p_*(\pi_1(X)))\simeq \pi_1(X/G)$. Therefore $G\simeq \pi_1(X/G)/p_*(\pi_1(X))$.
+\end{enumerate}
+\end{proof}
+\noindent\rule{\textwidth}{1pt}
+\newline

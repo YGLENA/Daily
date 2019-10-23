@@ -1,0 +1,18 @@
+\mytitle{K-Theory of $C^*$-algebras in solid state physics}
+\marginnote{This is the part of the digitalized version of the Bellissard's article written on 1986.} A real sample used in experimental solid state physics is made of a finite assembly of atoms bound together by electrostatic interactions. However, even though finite and relatively small(few millimeters in size, sometimes smaller in crystallography), any sample contains so many atoms that it is better described via the use of the infinite volume limit. On the other hand, it appears homogeneous at large scale while at atomic scale the disorder breaks any translation invariance.
+
+When studying electronic properties of such a crystal, it is commonly admitted that a one electron approximation is usually quite good. Collective properties of the electrons gas are described through the model of a perfect Fermi gas. The disorder appears simply as external forces coming from the random positions of the atoms or impurities. In this set up, the Schr{\"o}dinger operator for an electron, acting on the space $L^2(\mathbb{R}^D)$($D$ being the dimension of the crystal), is given by an effective Hamiltonian of the form:
+\begin{equation}
+H=-\frac{\hbar^2}{2m}\nabla^2+\sum_i V_i(x-x_i)
+\end{equation}
+where $V_i$ is the potential created by the $i$-th atom or impurity and $x_i$ denotes its position.
+
+The disorder may have several sources. One is given by the randomness of the position of the atoms. This randomness may come from the occurrence of many defects due to the way the sample has been prepared. It may as well come from structural reasons, namely the thermodynamical equilibrium favors the occurence of some disorder: this is the case for amorphous materials(glasses) or quasi-crystals. Another source of disorder is also given by the impurities which modify the atomic potential at random positions.
+
+In any case, to describe such a system in full generality, one usually introduces a probability space $(\Omega, \Sigma, \mu)$, the points of which labelling the Hamiltonian and describing in an implicit way the configuration of the material. In other words $H$ becomes a function of $\omega\in \Omega$. For obvious mathematical reasons, one demands that $H$ be a measurable function of $\omega$l at least in the strong resolvent sense(we recall that Borel sets are same for the norm and the strong topology in the algebra of bounded operator in a separable Hilbert space). To describe the macroscopic homogeneity of the material we just remark that translating the electron in the sample is equivalent to translating the atoms backward and since the sample looks almost the same at any place, this is just changing the configuration $\omega$ in $\Omega$. Therefore, there must be an action $\omega\rightarrow T_x\omega$ of the translation group $\mathbb{R}^D$ on $\Omega$ such that, if $U(x)$ is the unitary operator representing the translation by $x$ in the Hilbert space $L^2(\mathbb{R}^D)$ then
+\begin{equation}
+U(x)H_\omega U(x)^\dagger = H_{T_x\omega}
+\end{equation}
+This action will be at least measurable and will satisfy the group property $T_{x}T_y=T_{x+y}$. As we shall see in the end of this section, we may assume $\Omega$ to be actually a compact space and the $\mathbb{R}^D$ action to be given by a group of homeomorphisms. The probability measure will serve later on in dealing with "self averaging" quantities.
+\noindent\rule{\textwidth}{1pt}
+\newline

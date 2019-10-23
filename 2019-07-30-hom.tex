@@ -1,0 +1,144 @@
+\mytitle{An introduction to homological algebra}
+\begin{exer} Consider the boundaries-cycles exact sequence $0\rightarrow Z\rightarrow C\rightarrow B[-1]\rightarrow 0$ associated to a chain complex $C$. Show that the corresponding long exact sequence of homology breaks up into short exact sequences.
+\end{exer}
+\begin{solution} Notice that $d(B)=0$ since $d\circ d=0$. Therefore we get the long exact sequence
+\begin{equation}
+\cdots\rightarrow 0\rightarrow H_n(Z)\rightarrow H_n(C)\rightarrow 0\rightarrow H_{n-1}(Z)\rightarrow\cdots
+\end{equation}
+This shows that $H_n(Z)\simeq H_n(C)$. Indeed, since $\Ima(d)=B_n$ and $\Ker(d)=Z_n$ in $Z$, $H_n(Z)=Z_n/B_n=H_n(C)$.
+\end{solution}
+
+\begin{exer} Let $f$ be a morphism of chain complexes. Show that if $\Ker(f)$ and $\Coker(f)$ are acyclic, then $f$ is a quasi-isomorphism. Is the converse true?
+\end{exer}
+\begin{solution} Take $f:B\rightarrow C$. Notice that the sequences
+\begin{equation}
+0\rightarrow \Ker(f)\rightarrow B\rightarrow \Ima(f)\rightarrow 0
+\end{equation}
+and
+\begin{equation}
+0\rightarrow \Ima(f)\rightarrow C\rightarrow \Coker(f)\rightarrow 0
+\end{equation}
+are exact. Since $\Ker(f)$ and $\Coker(f)$ are acyclic, the long exact sequence shows that
+\begin{equation}
+H_n(B)\simeq H_n(\Ima(f))\simeq H_n(C)
+\end{equation}
+and thus $f$ is a quasi-isomorphism.
+
+Conversely, consider the following morphism.
+\begin{equation}
+\begin{tikzcd}
+0\arrow{r} & \mathbb{Z}\arrow{r} \arrow{d}{0} & \mathbb{Z}\arrow{r} \arrow{d}{1}& 0\arrow{r} \arrow{d}{0}& 0\\
+0\arrow{r} &0\arrow{r} & \mathbb{Z}\arrow{r}& \mathbb{Z}\arrow{r} & 0
+\end{tikzcd}
+\end{equation}
+Both sequences are exact, and hence $f$ is a quasi-isomorphism. But both kernel $0\rightarrow \mathbb{Z}\rightarrow 0\rightarrow 0\rightarrow 0$ and cokernel $0\rightarrow 0\rightarrow 0\rightarrow \mathbb{Z}\rightarrow 0$ are not acyclic.
+\end{solution}
+
+\begin{exer} Let $0\rightarrow A\xrightarrow{f} B\xrightarrow{g} C\rightarrow 0$ be a short exact sequence of double complexes of modules. Show that there is a short exact sequence of total complexes, and conclude that if $\textrm{Tot}(C)$ is acyclic, then $\textrm{Tot}(A)\rightarrow \textrm{Tot}(B)$ is a quasi-isomorphism.
+\end{exer}
+\begin{solution} The last statement can be proven by using the long exact sequence. Now to make the short exact sequence
+\begin{equation}
+0\rightarrow \textrm{Tot}(A)\rightarrow \textrm{Tot}(B)\rightarrow \textrm{Tot}(C)\rightarrow 0
+\end{equation}
+define the maps as
+\begin{equation}
+\prod_{p+q=n}A_{p,q}\rightarrow \prod_{p'+q'=n}B_{p',q'},\quad (\cdots,a_{p,q},\cdots)\mapsto (\cdots,f_{p,q}(a_{p,q}),\cdots)
+\end{equation}
+This is a chain map since $f,g$ are map between double complexes, and short exact because $f,g$ gives short exact sequence.
+\end{solution}
+
+\begin{defn} A complex $C$ is called \textbf{split} if there are maps $s_n:C_n\rightarrow C_{n+1}$ such that $d=d\circ s\circ d$. The maps $s_n$ are called the \textbf{splitting maps}. If in addition $C$ an exact sequence, then we say $C$ is \textbf{split exact}.
+\end{defn}
+
+\begin{exmp} Let $R=\mathbb{Z}$ or $\mathbb{Z}/4$, and let $C$ be a complex
+\begin{equation}
+\cdots\xrightarrow{\times 2}R\xrightarrow{\times 2}R\xrightarrow{\times 2}\cdots
+\end{equation}
+This complex is exact but not split exact.
+\end{exmp}
+
+\begin{exer}
+~\begin{enumerate}
+\item Show that acyclic bounded below chain complexes of free $R$-modules are always split exact.
+\item Show that an acyclic chain complex of finitely generated free abelian groups is always split exact, even when it is not bounded below. 
+\end{enumerate}
+\end{exer}
+\begin{solution}
+~\begin{enumerate}
+\item First we want to show that if $C$ is a free module, then every exact sequence
+\begin{equation}
+0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0
+\end{equation}
+has a split $s:C\rightarrow B$. Since $C$ is free, there is a basis $E$ of $C$, and since $B\rightarrow C$ is surjective, for every $e_\alpha\in E\subset C$ there is $b_\alpha\in B$ such that $b_\alpha\mapsto e_\alpha$. Now define $s:C\rightarrow B$ as $s(e_\alpha)=b_\alpha$. Now consider $d\circ s\circ d(b)$ for some $b\in B$. Since $d(b)\in C$, we may write $d(b)=\sum_i r_i e_i$. Now $d\circ s(d(b))=d(\sum_i r_i s(e_i))=\sum_i r_i d(b_\alpha)=\sum_i r_i d(b_\alpha)$.\marginnote{Indeed this sequence is split exact, since $B=A\oplus C$ thus we may take a map $B\rightarrow A$ by taking $A$ to $A$ with identity, $C$ to $0$, and define homomorphically for others. To show this, take $b\in B$ which maps to $c\in C$. Now take $b-s(c)$. Since $d(b-s(c))=d(b)-d(s(c))=c-c=0$, $b-s(c)\in A$, thus $B=A+C$. Furthermore, suppose that $b\in B$ is in both $A,C$. Then $b$ maps to 0, but since $s(b)=0$, $b=0$. This statement is related to the fact that the free modules are projective.}
+Now denote the chain as
+\begin{equation}
+\cdots\xrightarrow{d_2} C_1\xrightarrow{d_1} C_0
+\end{equation}
+Now we have a following exact sequence which is split exact.
+\begin{equation}
+0\rightarrow \Ker(d_1)\hookrightarrow C_1\xrightarrow{d_1}C_0\rightarrow 0
+\end{equation}
+Thus we may choose $s_0:C_0\rightarrow C_1$ such that $d_1\circ s_0\circ d_1=d_1$. Also the following chain is exact.
+\begin{equation}
+\cdots \xrightarrow{d_3} C_2\xrightarrow{d_2} \Ima(d_2)\xrightarrow 0
+\end{equation}
+Now use induction steps to achieve $s_n$.
+\item Consider the map $f:A\rightarrow B$ where $A,B$ are finitely generated free abelian groups. Since the subgroup of free group is free, we may choose the finite generators of $\Ima(A)$, and we may choose the orthogonal subgroup $B'$ of $B$. Now for each generators $b\in \Ima(A)$ there is $a\in A$ such that $f(a)=b$. Define $s:B\rightarrow A$ as $s(b)=a$ if $b$ is a generator of $\Ima(A)$, and $s(b)=0$ if $b$ is a generator of $B'$. Then we get $d\circ s\circ d=d$.
+\end{enumerate}
+\end{solution}
+
+\begin{lemma}[Splitting lemma] Let
+\begin{equation}
+0\rightarrow A\xrightarrow{i} B\xrightarrow{j} C\rightarrow 0
+\end{equation}
+be a short exact sequence in $R-\mathsf{mod}$ category. Then the followings are equivalent.
+\begin{enumerate}
+\item The sequence $0\rightarrow A\rightarrow B$ splits.
+\item The sequence $B\rightarrow C\rightarrow 0$ splits.
+\item $A\oplus C\simeq B$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+($3\Rightarrow 1$) Since $A\oplus C\simeq B$, we may identify $A$ with $i(A)$. Define $s:B\rightarrow A$ as the projection operator. Then $i\circ s\circ i(a)=i(a)$ for all $a\in A$.
+
+($3\Rightarrow 2$) Since $A\oplus C\simeq B$, we may define $s:C\rightarrow B$ as the inclusion by identifying $C$ with $s(C)$. Suppose that $b=a+c$ for $b\in B, a\in A, c\in C$. Then $j\circ s\circ j(b)=j\circ s(c)=j(c)=j(b)$ for all $b\in B$.
+
+($1\Rightarrow 3$) First, since $i$ is injective, $i\circ s\circ i=i$ implies $s\circ i=1_A$. Consider $s:B\rightarrow A$ such that $i\circ s\circ s=i$. Choose $b\in B$. Now notice that $b=(b-i\circ s(b))+i\circ s(b)$. Notice that $i\circ s(b)\in \Ima(i)$, and $s(b-i\circ s(b))=s(b)-s\circ i\circ s(b)=s(b)-s(b)=0$ thus $b-i\circ s(b)\in \Ker(s)$. Now, suppose that $b\in \Ima(i)\cap \Ker(s)$. Then $i(a)=b$ for some $a\in A$ and $s(b)=0$, thus $s\circ i(a)=0$. Since $s\circ i=1_A$, $a=0$, $b=0$. Hence $B=\Ima(i)\oplus \Ker(s)$. Now since $i$ is injective, $\Ima(i)\simeq A$. Finally, consider $j:\Ker(s)\rightarrow C$ be the restricted map of $j$. For any $c\in C$ we have $b\in B$ such that $j(b)=c$, and then $j(b-i(s(b))=c$. Thus $j$ is injective. If $j(b)=0$, then $j\in \Ima(i)$, and since $\Ima(i)\cap \Ker(s)=0$, $b=0$. Thus $j:\Ker(s)\rightarrow C$ is an isomorphism, and $\Ker(s)\simeq C$.
+
+($2\Rightarrow 3$) First, since $j$ is surjective, $j\circ s\circ j=j$ implies $j\circ s=1_C$. Choose $b\in B$. Now notice that $b=(b-s\circ j(b))+s\circ j(b)$. Notice that $s\circ j(b)\in \Ima(s)$, and $j(b-s\circ j(b))=j(b)-j\circ s\circ j(b)=j(b)-j(b)=0$ thus $b-s\circ j(b)\in \Ker(j)$. Now, suppose that $b\in \Ima(s)\cap \Ker(j)$. Then $s(c)=b$ for some $c\in C$ and $j(b)=0$, thus $j\circ s(c)=0$. Since $j\circ s=1_C$, $c=0$. Hence $B=\Ima(s)\oplus \Ker(j)$. Now since $\Ima(i)\simeq \Ker(j)$ and $i$ is injective, $\Ker(j)\simeq A$. Finally, since $j\circ s$ is a bijection, $s$ is an injection, and thus $\Ima(s)\simeq C$.
+\end{proof}
+
+\begin{exer} Let $C$ be a chain complex, with boundaries $B_n$ and cycles $Z_n$ in $C_n$. Show that $C$ is split if and only if there are $R$-module decomposition $C_n\simeq Z_n\oplus B'_n$ and $Z_n\simeq B_n\oplus H'_n$. Show that $C$ is exact if and only if $H_n'=0$.
+\end{exer}
+\begin{solution} The first statement shows second statement directly.
+
+Suppose that $C$ is split with splitting map $s$. Consider the map $d:s\circ d(C_n)\rightarrow \Ima(d)=B_{n-1}$. If $d(c)=0$ for $c\in s\circ d(C_n)$ then we have $c'\in C_n$ such that $c=s\circ d(c')$, thus $d\circ s\circ d(c')=d(c')=0$ so $c=0$. Hence $\Ker(d)=0$. Also for all $c\in \Ima(d)$, i.e. $c=d(c')$, $d\circ s\circ d(c')=d(c')=c$. Thus this map is isomorphic, and $s\circ d(C_n)\simeq B_{n-1}$. Now consider the following short exact sequence.
+\begin{equation}
+0\rightarrow Z_n\rightarrow C_n\rightarrow B_{n-1}\rightarrow 0
+\end{equation}
+We may take the right splitting map $B_{n-1}\rightarrow C_n$ as the inclusion map $s\circ d(C_n)\hookrightarrow C_n$. This shows that $C_n\simeq Z_n\oplus B_{n-1}$ where $B'n\simeq B_{n-1}\simeq s\circ d(C_n)$.
+
+Now consider $c\in \Ima(d_{n+1})$, i.e. $c=d(c')$, then $c=d\circ s\circ d(c')$ thus $c\in d\circ s(C_n)$. Conversely if $c\in d\circ s(C_n)$ then $c\in \Ima(d_{n+1})$ obviously, therefore $d\circ s(C_n)=\Ima(d_{n+1})=B_n$. Now consider the following short exact sequence.
+\begin{equation}
+0\rightarrow B_n\rightarrow Z_n\rightarrow Z_n/B_n\rightarrow 0
+\end{equation}
+We may take the left splitting map $Z_n\rightarrow B_n\simeq d\circ s(C_n)$ as the map $d\circ s$. This shows that $Z_n\simeq B_n\oplus Z_n/B_n\simeq B_n\oplus H'_n$.
+
+Finally suppose that $C_n\simeq Z_n\oplus B'_{n}$ and $Z_n\simeq B_n\oplus H_n$. Define the splitting map $s:C_n\rightarrow C_{n+1}$ as $s|_{B_n}=1_{B_n}:B_n\mapsto B'_{n+1}\simeq B_n$, $s|_{H_n}=0$, and $s|_{B'_{n}}=0$. Notice that $d|_{B_n}=0, d|_{H_n}=0,$ and $d|_{B'_{n}}=1_{B'_{n}}:B'_{n}\simeq B_{n-1}\rightarrow B_{n-1}$. This shows that $d\circ s\circ d=d$.
+\begin{equation}
+\begin{tikzcd}
+C_{n+1}\arrow{d}{d}&H_{n+1}\arrow{rd}{0}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n+1}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ld}{0}&B'_{n+1}\arrow{ld}{\simeq}\\
+C_{n}\arrow{d}{d}&H_{n}\arrow{rd}{0}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ld}{0}&B'_{n}\arrow{ld}{\simeq}\\
+C_{n-1}&H_{n-1}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n-1}\arrow[white, dash]{r}[black,description]{\bigoplus}&B'_{n-1}\\
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\begin{tikzcd}
+C_{n+1}&H_{n+1}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n+1}\arrow[white, dash]{r}[black,description]{\bigoplus}&B'_{n+1}\\
+C_{n}\arrow{u}{s}&H_{n}\arrow{ru}{0}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ur}{\simeq}&B'_{n}\arrow[ull, crossing over,"0"]\\
+C_{n-1}\arrow{u}{s}&H_{n-1}\arrow{ru}{0}\arrow[white, dash]{r}[black,description]{\bigoplus}&0\arrow[white, dash]{r}[black,description]{\bigoplus}&B_{n-1}\arrow[white, dash]{r}[black,description]{\bigoplus}\arrow{ur}{\simeq}&B'_{n-1}\arrow[ull, crossing over,"0"]\\
+\end{tikzcd}
+\end{equation}
+\end{solution}
+\noindent\rule{\textwidth}{1pt}
+\newline
