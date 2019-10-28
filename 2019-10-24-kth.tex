@@ -1,0 +1,41 @@
+\mytitle{K-theory}
+\begin{lemma} A vector bundle $p:E\rightarrow X\times [a,b]$ is trivial if its restrictions over $X\times [a,c]$ and $X\times [c,b]$ are both trivial for some $c\in (a,b)$.
+\end{lemma}
+\begin{proof}
+Denote $h_1:E_1=p^{-1}(X\times [a,c])\rightarrow X\times [a,c]\times \mathbb{R}^n$ and $h_2:E_2=p^{-1}(X\times [c,b])\rightarrow X\times [c,b]\times \mathbb{R}^n$, where $h_i$ are vector bundle isomorphisms. Now consider $h_1 h_2^{-1}:X\times \{c\}\times \mathbb{R}^n\rightarrow X\times \{c\}\times \mathbb{R}^n$. We can extend this to $h:X\times [c,b]\times \mathbb{R}^n\rightarrow X\times [c,b]\times \mathbb{R}^n$. Then $h\circ h_2$ agrees with $h_1$ on $E_1\cap E_2$, which is a closed set, we can glue them and give a trivialization of $E$.
+\end{proof}
+
+\begin{lemma} For a vector bundle $p:E\rightarrow X\times I$, there is an open cover $\{U_\alpha\}$ of $X$ so that each restriction $p^{-1}(U_\alpha\times I)\rightarrow U_\alpha\times I$ is trivial.
+\end{lemma}
+\begin{proof}
+Since $\{x\}\times I$ is compact, there are open neighborhoods $U_{x,1},\cdots,U_{x,k}$ in $X$ and a partition $0=t_0<t_1<\cdots<t_k=1$ such that the  bundle is trivial over $U_{x,i}\times [t_{i-1},t]$. Then by previous lemma, the bundle is trivial over $(\cap_{i=1}^k U_{x,i})\times I$.
+\end{proof}
+
+\begin{prop} Let $X$ be a compact Hausdorff, or more generally, paracompact space. For a vector bundle $E\rightarrow X\times I$, the restriction over $X\times \{0\}$ and $X\times \{1\}$ are isomorphic.
+\end{prop}
+\begin{proof}
+First suppose that $X$ be a compact Hausdorff set. By previous lemma, we can choose an open cover $\{U_\alpha\}$ of $X$ so that $E$ is trivial over each $U_\alpha\times I$. Since $X$ is compact Hausdorff, there is a corresponding partition of unity by functions $\phi_i$ with the support of $\phi_i$ contained in $U_i$. For $i\geq 0$ let $\psi_i=\phi_1+\cdot+\phi_i$, so that $\psi_0=0$ and $\phi_m=1$. Let $X_i=\{(x,\psi_i(x)):x\in X\}$ and $p_i:E_i\rightarrow X_i$ be the restriction of the bundle $E$ over $X_i$. Since $E$ is trivial over $U_i\times I$, the natural projection homeomorphism $X_i\rightarrow X_{i-1}$ lifts to a homeomorphism $h_i:E_i\rightarrow E_{i-1}$ which is the identity outside $p^{-1}(U_i\times I)$, and which takes each fiber of $E_i$ isomorphically onto the corresponding fiber of $E_{i-1}$: Explicitly, on points $p^{-1}(U_i\times I)=U_i\times I\times \mathbb{R}^n$, we let $h_i(x,\phi_i(x),v)=(x,\phi_{i-1}(x),v)$. Then the composition $h=h_1\circ \cdots \circ h_m$ is an isomorphism from the restriction of $E$ over $X\times \{1\}$ to the restriction over $X\times \{0\}$.
+
+Now we consider $X$ be a paracompact space. Again we can choose an open cover $\{U_\alpha\}$ of $X$ so that $E$ is trivial over each $U_\alpha\times I$. Since $X$ is paracompact, by the following lemma, there is a countable cover $\{V_i\}_{i\geq 1}$ of $X$ and a partition of unity $\{\phi_i\}$ with $\phi_i$ supported in $V_i$, such that each $V_i$ is a disjoint union of open sets each contained in some $U_\alpha$.
+\end{proof}
+
+\begin{lemma} Given an open cover $\{U_\alpha\}$ of the paracompact space $X$, there is a countable open cover $\{V_k\}$ such that each $V_k$ is a disjoint union of open sets each contained in some $U_\alpha$, and there is a partition of unity $\{\phi_k\}$ with $\phi_k$ supported in $V_k$.
+\end{lemma}
+\begin{proof}
+Let $\{\phi_\beta\}$ be a partition of unity subordinate to $\{U_\alpha\}$. For each finite subset $S$ of $\{\phi_\beta\}$, Let $V_S=\{x\in X:\phi_s(x)>\phi_n,\forall \phi_s\in S, \phi_n\in S^c$. Since only finitely many $\phi_\beta$'s are nonzero near $x\in X$, $V_S$ is a finite intersection of open sets, thus open. Also $V_S\subset U_\alpha$ for any $U_\alpha$ containing the support of any $\phi_\beta\in S$, because $\phi_\beta\in S$ implies $\phi_\beta>$ on $V_S$. Let $V_k$ be the union of all the open sets $V_S$ such that $|S|=k$. Obviously $V_S$ are all disjoint, thus $V_k$ is a disjoint union of open sets each contained in some $U_\alpha$. Also the collection $\{V_k\}$ is a cover of $X$, since if $x\in X$ then $x\in V_S$ where $S=\{\phi_\beta|\phi_\beta(x)>0\}$. Now let $\{\phi_\gamma\}$ be a partition of unity subordinate to the cover $\{V_k\}$, and $\phi_k$ be the sum of those $\phi_\gamma$'s supported in $V_k$ but not in $V_j$ for $j<k$.
+\end{proof}
+
+\begin{thm} Let $A$ be a compact Hausdorff, or more generally, paracompact space. Given a vector bundle $p:E\rightarrow B$ and homotopic maps $f_0,f_1:A\rightarrow B$, then the induced bundles $f_0^*(E)$ and $f_1^*(E)$ are isomorphic.
+\end{thm}
+\begin{proof}
+Let $F:A\times I\rightarrow B$ be a homotopy from $f_0$ to $f_1$. The restrictions of $F^*(E)$ over $A\times \{0\}$ and $A\times \{1\}$ are then $f_0^*(E)$ and $f_1^*(E)$, which are isomorphic by the previous proposition.
+\end{proof}
+
+\begin{cor} A homotopy equivalence $f:A\rightarrow B$ of paracompact spaces induces a bijection $f^*:\textrm{Vect}^n(B)\rightarrow \textrm{Vect}^n(A)$. In particular, every vector bundle over a contractible paracompact base is trivial.
+\end{cor}
+\begin{proof}
+Let $g$ be a homotopy inverse of $f$. Then since $f\circ g$ and $g\circ f$ are homotopic with identities, $f^*\circ g^*=1$ and $g^*\circ f^*$ are identities.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

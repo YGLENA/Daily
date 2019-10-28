@@ -25,5 +25,50 @@ For the uniqueness, choose another vector bundle $p'':E''\rightarrow A$ with $f'
 \item Consider an $n$-dimensional vector bundle $E\rightarrow B$ and its flag bundle $F(E)$. Then the vectors in the $i$-th line form a line bundle $L_i\rightarrow F(E)$, and their direct sum, $L_1\oplus\cdots\oplus L_n$ is the pullback of $E$ by the projection $F(E)\rightarrow B$, since a point in the pullback consists of an $n$-tubple of lines $l_1\perp \cdots \perp l_n$ in a fiber of $E$ together with a vector $v$ in this fiber, and $v$ can be expressed uniquely as a sum $v=v_1+\cdots+v_n$ with $v_i\in l_i$. Thus we may pull an arbitrary bundle back to a sum of line bundles.
 \end{enumerate}
 \end{exmp}
+
+\begin{prop} For maps $g:A\rightarrow B, f:B\rightarrow C$ and vector bundles $E,E_1,E_2\rightarrow C$, the followings hold.
+\begin{enumerate}
+    \item $(f\circ g)^*(E)\simeq g^*(f^*(E))$
+    \item $1^*(E)\simeq E$
+    \item $f^*(E_1\oplus E_2)\simeq f^*(E_1)\oplus f^*(E_2)$
+    \item $f^*(E_1\otimes E_2)\simeq f^*(E_1)\otimes f^*(E_2)$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+~\begin{enumerate}
+    \item Consider the following diagram.
+    \begin{equation}
+        \begin{tikzcd}
+        g^*(f^*(E))\arrow[r]\arrow[d]& f^*(E)\arrow[r]\arrow[d] &E\arrow{d}{p}\\
+        A\arrow{r}{g}&B\arrow{r}{f}&C
+        \end{tikzcd}
+    \end{equation}
+    Two small squares commute, therefore the outer rectangle commutes. The uniqueness under isomorphism shows that $g^*(f^*(E))\simeq (f\circ g)^*(E)$.
+    \item Consider the following commuting diagram.
+    \begin{equation}
+        \begin{tikzcd}
+        E\arrow{r}{1_E}\arrow{d}{p} &E\arrow{d}{p}\\
+        C\arrow{r}{1_C}&C
+        \end{tikzcd}
+    \end{equation}
+    The uniqueness under isomorphism shows that $E\simeq 1^*(E)$.
+    \item Consider the following commuting diagram.
+    \begin{equation}
+        \begin{tikzcd}
+        f^*(E_1)\oplus f^*(E_2)\arrow[r]\arrow[d] &E_1\oplus E_2\arrow{d}{p_1\oplus p_2}\\
+        B\arrow{r}{f}&C
+        \end{tikzcd}
+    \end{equation}
+    The map $f^*(E_1)\oplus f^*(E_2)\rightarrow E_1\oplus E_2$ are defined with $f^*(E_i)\rightarrow E_i,i=1,2$. The uniqueness under isomorphism shows that $f^*(E_1\oplus E_2)\simeq f^*(E_1)\oplus f^*(E_2)$.
+    \item Consider the following commuting diagram.
+    \begin{equation}
+        \begin{tikzcd}
+        f^*(E_1)\otimes f^*(E_2)\arrow[r]\arrow[d] &E_1\otimes E_2\arrow{d}{p_1\otimes p_2}\\
+        B\arrow{r}{f}&C
+        \end{tikzcd}
+    \end{equation}
+     $f^*(E_1)\otimes f^*(E_2)\rightarrow E_1\otimes E_2$ are defined with $f^*(E_i)\rightarrow E_i,i=1,2$. The uniqueness under isomorphism shows that $f^*(E_1\otimes E_2)\simeq f^*(E_1)\otimes f^*(E_2)$.
+\end{enumerate}
+\end{proof}
 \noindent\rule{\textwidth}{1pt}
 \newline

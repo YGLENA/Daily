@@ -1,0 +1,35 @@
+\mytitle{K-theory}
+\begin{defn} Consider $S^k$ as the union of its upper and lower hemispheres, $D_+^k$ and $D_-^k$, with $D_+^k\cup D_-^k=S^{k-1}$. For a map $f:S^{k-1}\rightarrow GL_n(\mathbb{R})$\marginnote{We can use $\mathbb{C}$ rather then $\mathbb{R}$ also.}, let $E_f$ be the quotient of the disjoint union $D_+^k\times \mathbb{R}^n\sqcup D_-^k\times \mathbb{R}^n$, obtained by identifying $(x,v)\in \partial D_-^k\times \mathbb{R}^n$ with $(x,f(x)(v))\in \partial D_+^k\times \mathbb{R}^n$. Then there is a natural projection $E_f\rightarrow S^k$, which is an $n$-dimensional vector bundle.\marginnote{To show this, consider two hemispheres slightly larger, then the intersection becomes $S^{k-1}\times (-\epsilon,\epsilon)$. Then we can consider the construction is a gluing of vector bundles.} The map $f$ is a \textbf{clutching function} for $E_f$.
+\end{defn}
+
+\begin{exmp} Consider $S^2$. First choose a tangent vector at the north pole, and transport this along each meridian circle, so that the angle between vector and meridian is constant, on $D_+^2$. This gives the vector field $v_+$. By reflecting across the plane of the equator, we get the vector field $v_-$ on $D_-^2$. Now rotating each vector $v_+$ and $v_-$ by $\pi/2$ degrees counterclockwise viewed from outside of the sphere, we obtain vector fields $w_\pm$ on $D_\pm^2$ respectively. Then the vector fields $v_\pm, w_\pm$ gives trivializations of $TS^2$ over $D_\pm^2$, and so we can identify these two halves of $TS^2$ with $D_\pm^2\times \mathbb{R}^2$.Now we can reconstruct $TS^2$ as a quotient by using the clutching function $f:S^1\rightarrow GL_2(\mathbb{R})$, which rotates $(v_+,w_+)$ to $(v_-,w_-)$. Now notice that, if we parametrize the intersection $S^1$ by the angle $\theta$, then $f(\theta)$ is a rotation by $2\theta$. Thus rounding around the circle, we get the angle of rotation from $0$ to $4\pi$.
+\end{exmp}
+
+\begin{exmp} Consider the canonical complex line bundle over $\mathbb{C}P^1$. Since $\mathbb{C}P^1$ is the quotient of $\mathbb{C}^2-\{0\}$ under the equivalence relation $(z_0,z_1)\approx \lambda(z_0,z_1)$ for $\lambda\in \mathbb{C}-\{0\}$. Denote the equivalence class of $(z_0,z_1)$ as $[z_0,z_1]$. Then $[z_0,z_1]=[z_0/z_1,1]$ where $z_0/z_1\in \mathbb{C}\cup \{\infty\}=s^2$. Thus $\mathbb{C}P^1=S^2$, and we can split this into two disks: $D_0^2=\{[z,1]:|z|\leq 1\}$ and $D_\infty^2=\{[1,z]:|z|\leq 1\}$. Over $D_0^2$, a section of a canonical line bundle is $[z,1]\mapsto (z,1)$, and over $D_\infty^2$, $[1,z]\mapsto (1,z)$, which define trivializations of the canonical line bundle over those two disks. Now on their common boundary $S^1$, $[z,1]=[1,z^{-1}]$, and their vectors on the section are $(z,1)$ and $(1,z^{-1})$. Thus if we take $D_\infty^2=D_+^2$ and $D_0^2=D_-^2$, then the clutching function is $f:S^1\rightarrow GL_1(\mathbb{C})$ defined as $f(z)=(z)$. Conversely, if we take $D_0^2=D_+^2$ and $D_\infty^2=D_-^2$, then the clutching function is $f:S^1\rightarrow GL_1(\mathbb{C})$ defined as $f(z)=(z^{-1})$. 
+\end{exmp}
+
+\begin{prop} Consider two clutching functions $f,g:S^{k-1}\rightarrow GL_n(\mathbb{R})$. If $f,g$ are homotopic, then $E_f\simeq E_g$.
+\end{prop}
+\begin{prop}
+Consider a homotopy $F:S^{k-1}\times I\rightarrow GL_n(\mathbb{R})$ from $f$ to $g$. Then by using the same clutching construction, we can produce a vector bundle $E_F\rightarrow S^k\times I$, that restricts to $E_f$ over $S^k\times \{0\}$ and $E_g$ over $S^k\times \{1\}$. Hence $E_f$ and $E_g$ are isomorphic.
+\end{prop}
+
+\begin{defn} A set $[X,Y]$ is the set of homotopy classes of maps $X\rightarrow Y$.
+\end{defn}
+
+\begin{lemma} $GL_n(\mathbb{C})$ is path connected.
+\end{lemma}
+\begin{proof}
+Since every matrices are diagonalizable by repeating the process adding a scalar multiple of one row to another row, every matrices has a path to the set of diagonal matrices in $GL_n(\mathbb{C})$. But this set is path-connected, since it is homeomorphic to the product of $n$ path-connected spaces $\mathbb{C}-\{0\}$.
+\end{proof}
+
+\begin{prop} The map $\Phi:[S^{k-1},GL_n(\mathbb{C})]\rightarrow \textrm{Vect}_\mathbb{C}^n(S^k)$ sending a clutching function $f$ to the vector bundle $E_f$ is a bijection.\marginnote{This is not true for $\mathbb{R}$ case, since $GL_n(\mathbb{R})$ is not connected.}
+\end{prop}
+\begin{proof}
+We will construct an inverse $\Psi:\textrm{Vect}_\mathbb{C}^n(S^k)\rightarrow [S^{k-1},GL_n(\mathbb{C})]$. Consider an $n$-dimensional vector bundle $p:E\rightarrow S^k$, and its restrictions $E_+$ and $E_-$ over $D_+^k$ and $D_-^k$. Since $D_\pm^k$ are contractible, the vector bundles are contractible. Choose trivializations $h_\pm :E_\pm \rightarrow D_\pm^k \times \mathbb{C}^n$. Then $h_+\circ h_-^{-1}$ defines a map $S^{k-1}\rightarrow GL_n(\mathbb{C})$. Define its homotopy class as $\Psi(E)$.
+
+Now notice that any two choices of $h_\pm$ differ by a map $D_\pm^k\rightarrow GL_n(\mathbb{C})$. Since $D_\pm^k$ is contractible, those maps are homotopic to a constant map, and since $GL_n(\mathbb{C})$ is path connected, $h_\pm$ are unique up to homotopy. Therefore the composition $h_+ h_-^{-1}$ is also unique up to homotopy, and so $\Psi$ is a well-defined map. Also clearly, $\Psi$ and $\Phi$ are inverses of each other.
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+\newline
