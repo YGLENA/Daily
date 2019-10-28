@@ -1,0 +1,205 @@
+\mytitle{Compact operators}
+\begin{defn} Let $E,F$ are Banach spaces. A bounded operator $T\in \mathcal{L}(E,F)$ is \textbf{compact} if $T(B_E)$ has compact closure in $F$ in the strong topology. We write the set of all compact operators from $E$ to $F$ as $\mathcal{K}(E,F)$.
+\end{defn}
+
+\begin{prop} Let $E,F$ are Banach spaces and $T\in \mathcal{L}
+(E,F)$. Then The followings are equivalent.\marginnote{The statement 1~4 doesn't need completeness, but the statement 5 does.}
+\begin{enumerate}
+    \item $T$ is compact.
+    \item For any bounded subset $B\subset E$, $T(B)$ has compact closure in $F$.
+    \item There is a neighborhood $U$ of $0$ in $X$ and a compact subset $V\subset Y$ such that $T(U)\subset V$.
+    \item For any bounded sequence $\{x_n\}_{n\in \mathbb{N}}$ in $X$, the sequence $(Tx_n)_{n\in \mathbb{N}}$ contains a converging subsequence.
+    \item The image of any bounded subset of $X$ is totally bounded: that is, for every real number $\epsilon>0$, there is a finite collection of open balls of radius $\epsilon$ whose union covers the set.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+The only nontrivial point is to showing the fact that a set $B$ in a complete metric space $E$ has compact closure if and only if it is totally bounded. For one direction, if $\overline{B}$ is compact, then for a cover of $\overline{B}$, $\{B(b,\epsilon)\}_{b\in B}$, we can choose a finite subcover. Conversely, suppose that $B$ is totally bounded. Choose a sequence $\{x_i\}$ in $B$. If we cover $E$ by finitely many open balls of radius $1$, at least one of those balls has infinitely many elements from the sequence. Pick such a ball $B_1$, and let $i_1$ be the smallest index so that $x_{i_1}$ lies in this ball. Now the set $E\cap B_1$ is still totally bounded, and contains infinitely many elements from the sequence, we cover it by finitely many open balls of radius $1/2$ and choose a ball $B_2$ so that infinitely many elements of the sequence lie in $E\cap B_1\cap B_2$. Choose the smallest index $i_2$ so that $i_2>i_1$ and $x_{i_2}$ lies in $E\cap B_1\cap B_2$. Inductively, with indices $i_1<\cdots<i_n<\cdots$ and balls $B_n$ of radius $1/n$ with $x_{i_n}\in E\cap \bigcap_{j=1}^{n} B_{j}$, we cover $E\cap \bigcap_{j=1}^{n} B_{i_j}$ by finitely many balls of radius $1/(n+1)$ and choose one $B_{n+1}$ containing infinitely many elements of the sequence. Let $i_{n+1}$ be the first index so that $i_{n+1}>i_n$ and $x_{n+1}\in E\cap \bigcap_{j=1}^{n+1}B_{j}$. Now for $m<n$, $d(x_{i_m},x_{i_n})\leq \frac{1}{m}$, so this subsequence is Cauchy, thus converges.
+\end{proof}
+
+\begin{thm} The set $\mathcal{K}(E,F)$ is a closed linear subspace of $\mathcal{L}(E,F)$, in the topology associated to the norm $\|\cdot \|_{\mathcal{L}(E,F)}$.
+\end{thm}
+\begin{proof} Notice that the sum of two compact operators is a compact operator, by the proposition 14.4. Now suppose that there is a sequence of compact operators $\{T_n\}$ and we have $T$ a bounded operator such that $\|T_n-T\|_{\mathsf{L}(E,F)}\rightarrow 0$. By the proposition 14.5, we need to find a finite covering of $T(B_E)$ with balls of radius $\epsilon$. Fix $n$ such that $\|T_n-T\|_{\mathcal{L}(E,F)}<\epsilon$. Since $T_n(B_E)$ has compact closure, there is a finite covering of $T_n(B_E)$ by balls of radius $\epsilon$, $\{B(b_i,\epsilon)\}_{i\in I}$. Now choose $b\in B_E$. Then $\|T_n(b)-b_i\|<\epsilon$ for some $i\in I$, and $\|T(b)-T_n(b)\|<\epsilon$. Now $\|T(b)-b_i\|<\|T(b)-T_n(b)\|+\|T_n(b)-b_i\|<2\epsilon$.
+\end{proof}
+
+\begin{defn}
+An operator $T\in \mathcal{L}(E,F)$ is \textbf{finite rank} if the range of $T$ is finite dimensional.
+\end{defn}
+
+\begin{prop} Any finite rank operator is compact.
+\end{prop}
+\begin{proof}
+Since $T$ is bounded, it takes bounded set to bounded set, and by Heine-Borel, the closure of it is compact.
+\end{proof}
+
+\begin{cor} Let $\{T_n\}$ be a sequence of finite rank operators, and let $T\in \mathcal{L}(E,F)$ be such that $\|T_n-T\|_{\mathcal{L}(E,F)}\rightarrow 0$. Then $T\in \mathcal{K}(E,F)$.
+\end{cor}
+\begin{proof}
+Since $\mathcal{K}(E,F)$ is closed and $T_n$ are compact, $T$ is compact.
+\end{proof}
+
+\begin{defn} A Banach space $X$ is said to have the \textbf{approximation property} if, for every compact set $K$ in $X$ and every $\epsilon>0$, there is an operator $T:X\rightarrow X$ of finite rank so that $\|T(x)-x\|\leq \epsilon$ for every $x\in K$.
+\end{defn}
+
+\begin{thm} Let $X$ be a Banach space. Then $X$ has the approximation property if and only if for every Banach space $Y$, every compact $T\in L(Y,X)$ and every $\epsilon>0$, there is a finite rank operator $T_1\in L(Y,X)$ with $\|T-T_1\|<\epsilon$.
+\end{thm}
+\begin{proof}[in only one dimension] Suppose that $X$ has the approximation property and $T\in L(Y,X)$ is a compact operator. The set $K=\overline{T(B_Y)}$ is compact, thus for every $\epsilon>0$, there is a finite rank operator $T_1$ on $X$ such that $\|T_1(x)-x\|\leq \epsilon$ for $x\in K$. Then $\|T_1\circ T(x)-T(x)\| \leq\epsilon$.
+\end{proof}
+
+\begin{defn} Let $E$ be a Banach space. A sequence $\{e_n\}_{n\geq 1}$ is said to be a \textbf{Schauder basis} if for every $u\in E$ there is a unique sequence $\{\alpha_n\}_{n\geq 1}$ in $\mathbb{R}$ such that $u=\sum_{k=1}^\infty \alpha_k e_k$.
+\end{defn}
+
+\begin{prop} Every space with a Schauder basis has the approximation property.
+\end{prop}
+\begin{proof} Let $\{P_n\}_{n=1}^\infty$ are the projections associated to the basis. Due to the uniform boundedness principle, since $\sup_{n\in \mathbb{N}} \|P_n (x)\|<\infty$ on $C$, $K=\sup_{n\in \mathbb{N}}\|T_n\|<\infty$. Now we can choose finitely many $y_1,\cdots,y_l$ such that $\min \|x-y_i\|\leq \frac{\epsilon}{2(1+K)}$ for each $x\in C$.
+
+Let $x_0\in C$. Then there is $j\in \mathbb{N}$ such that $\|x_0-y_j\|\leq \frac{\epsilon}{2(1+K)}$. Now since $\lim_{n\rightarrow \infty} \|y_j-P_n(y_j)\|_X=0$, there is $N\in \mathbb{N}$ such that $\|y_j-P_n (y_j)\|_X\leq \frac{\epsilon}{2}$ for each $n\geq N$. Thus
+\begin{align}
+    \|P_n (x_0)-x_0\|&= \|y_j-x_0-P_n(y_j)+P_n(x_0)-y_j+P_n(y_j)\|\\
+    &=\|y_j-x_0\|+\|P_ny_j-P_nx_n\|+\|y_j-P_ny_j\|
+\end{align}
+Since $\|P_n y_j-P_n x_0\|\leq \|P_n\| \|y_j-x_0\|\leq K\|y_j-x_-\|$ and $\|y_j-P_n y_j\|\leq \frac{\epsilon}{2}$, we get
+\begin{equation}
+    \|P_n (x_0)-x_0\|\leq (1+K)\|y_j-x_-\|+\frac{\epsilon}{2}\leq \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{equation}
+\end{proof}
+
+\begin{exmp} 
+\begin{enumerate}
+    \item Every separable Hilbert spaces have the approximation property.
+    \item Every Banach space with Schauder basis is separable.
+    \item For all $1\leq p<2<p<\infty$, the spaces $l_p$ have subspaces which fail to have the approximation property. For every $2<p<\infty$, there are uncountably many of them.
+\end{enumerate}
+\end{exmp}
+
+\begin{prop} Every Hilbert space has the approximation property.
+\end{prop}
+\begin{proof} For a Hilbert space $X$, Take a compact subset $K$. For given $\epsilon>0$, there is a finite covering of $K$ with balls of radius $\epsilon$, which is $K\subset \bigcup_{i\in I} B(b_i,\epsilon)$. Let $G$ denote the vector space spanned by the $b_i$'s. Then for every $x\in K$, there is some $i\in I$ such that $\|x-b_i\|<\epsilon$, thus $\|P_G(x)-P_G(b_i)\|=\|P_G(x)-b_i\|<\epsilon$. Thus $\|P_G(x)-x\|\leq \|P_G(x)-b_i\|+\|b_i-x\|<2\epsilon$. 
+\end{proof}
+
+\begin{thm} Let $X$ be a topological space, $F$ be a Banach space, and $T:X\rightarrow F$ be a continuous map such that $T(X)$ has compact closure in $F$. For every $\epsilon>0$, there is a continuous map $T_\epsilon:X\rightarrow F$ of finite rank such that $\|T_\epsilon(x)-T(x)\|<\epsilon$.
+\end{thm}
+\begin{proof}
+Since $K\subset \overline{T(X)}$ is compact, there is a finite covering of $K$, $K\subset \bigcup_{i\in I} B(b_i,\epsilon)$. Set
+\begin{equation}
+    T_\epsilon(x)=\frac{\sum_{i\in I}q_i(x)f_i}{\sum_{i\in I} q_i(x)}
+\end{equation}
+with $q_i=\max\{\epsilon - \|T(x)-b_i\|,0\}$. Then
+\begin{equation}
+    \|T_\epsilon(x)-T(x)\|=\frac{\sum_{i\in I}q_i(x)\|b_i-T(x)\|}{\sum_{i\in I}q_i(x)}\leq \epsilon - \frac{\|b_i-T(x)\|^2}{\sum_{i\in I }q_i(x)}<\epsilon
+\end{equation}
+\end{proof}
+
+\begin{prop} Let $E,F,G$ be Banach spaces. Let $T\in \mathcal{L}(E,F)$ and $S\in \mathcal{K}(F,G)$, or $T\in \mathcal{K}(E,F)$ and $S\in \mathcal{L}(F,G)$. Then $S\circ T\in \mathcal{K}(E,G)$.\marginnote{This implies that $\mathcal{K}(E)$ is a two-sided ideal of $\mathcal{L}(E)$. Thus its quotient, $\mathcal{K}(E)/\mathcal{L}(E)$, is a simple algebra, called a Calkin algebra.}
+\end{prop}
+\begin{proof}
+For the first case, since $T$ is bounded, $T(B_E)$ is bounded, thus $\overline{S(T(B_E))}$ is compact. For the second case, $\overline{T(B_E)}$ is compact, thus $\overline{S(\overline{T(B_E)})}=\overline{S(T(B_E))}$ is compact.
+\end{proof}
+
+\begin{thm}[Schauder] $T\in \mathcal{K}(E,F)$ if and only if $T^*\in \mathcal{K}(F^*,E^*)$.
+\end{thm}
+\begin{proof}
+Suppose that $T$ is compact. Let $\{v_n\}$ be a sequence in $B_{F^*}$. Take $K=\overline{T(B_E)}$, which is a compact metric space. Now consider $\mathcal{H}\subset C(K)$ defined by
+\begin{equation}
+    \mathcal{H}=\{\phi_n:x\in K\mapsto \langle v_n,x\rangle:n\in \mathbb{N}\}
+\end{equation}
+Now since $|\langle v_n,x_1-x_2\rangle\leq \|x_1-x_2\|$, the assumptions of Ascoli-Arzela's theorem are satisfied, thus there is a subsequence, $\phi_{n_k}$, converging uniformly on $K$ to some continuous function $\phi\in C(K)$. Hence we have
+\begin{equation}
+    \sup_{u\in B_E}|\langle v_{n_k},T(u)\rangle-\phi(T(u))|\rightarrow 0
+\end{equation}
+Thus,
+\begin{equation}
+    \sup_{u\in B_E}|\langle v_{n_k},T(u)\rangle-\langle v_{n_l},T(u)\rangle|\rightarrow 0
+\end{equation}
+which means, $\|T^*(v_{n_k})-T^*(v_{n_l})\|\rightarrow 0$. Thus $T^* v_{n_k}$ converges in $E^*$.
+
+Conversely, suppose that $T^*$ is compact. Then $T^{**}$ is compact by previous proof. But $T(B_E)=T^{**}(B_E)$ and $F$ is closed in $F^**$, thus $T(B_E)$ has compact closure in $F$.
+\end{proof}
+
+\begin{prop} Let $E,F$ are Banach spaces, and $T\in \mathcal{K}(E,F)$. If $\{u_n\}$ converges weakly to $u\in E$, then $T(u_n)$ converges strongly to $T(u)$. Conversely, if $E$ is reflexive, and for all weakly converging sequences $\{u_n\}\rightarrow u$, $T(u_n)\rightarrow T(u)$ strongly, then $T$ is compact.
+\end{prop}
+\begin{proof} Since $u_n\rightarrow u$ weakly, $\|u_n\|$ is bounded, thus $T(u_n)$ must contain some strong convergent subsequence. Now this is true for all the subsequences of $\{u_n\}$, and all of them converges to same value $n$. Now suppose that this does not converges strongly, then for all $k$ there is $n_k>k$ satisfying $\|u_{n_k}-x\|\geq \epsilon$. Now the subsequence $\{u_{n_k}\}$ does not have any subsequence converging to $u$, contradiction.
+
+For opposite direction, suppose that $T$ is not compact. Then $T(B_X)$ is not totally bounded, so there is $\delta>0$ such that no finite number of balls with radius $\delta$ cover $T(B_X)$. Thus, choose $T(x_1)\in T(B_X)$, and for each $n$, choose $T(x_{n+1})\in T(B_X)\setminus \bigcup_{k=1}^n B[x_k;\delta]$, which is never empty. Thus we have a sequence $\{x_n\}\in B_X$ such that $\|T(x_n)-T(x_m)\|>\delta$. Now since $E$ is reflexive, $\{x_n\}$ has a weakly convergent subsequence, whose image does not strongly converges, contradiction.
+\end{proof}
+
+\begin{lemma}[Riesz's Lemma] Let $E$ be a normed vector space, and let $M\subset E$ be a closed linear space such that $M\neq E$. Then for all $\epsilon>0$, there is $u\in E$ such that $\|u\|=1$ and $d(u,M)\geq 1-\epsilon$.\marginnote{If $E$ is a Hilbert space, then if $M$ is not dense, we can choose an orthogonal complement of $M$ which gives the distance 1. Riesz's Lemma is the generalized version of this statement on normed vector space.It can be also used for the criteria of dense subspace: For a subspace $X$ of $E$, if there is $0<\epsilon<1$ such that for every $x\in E$ with $\|x\|=1$, one has $d(x,X)<\epsilon$, then $X$ is dense in $E$.}
+\end{lemma}
+\begin{proof}
+Let $v\in E$ with $v\not\in M$. Since $M$ is closed, $d=d(v,M)>0$. Now we may choose $m_0\in M$ such that $d\leq \|v-m_0\|\leq d/(1-\epsilon)$. Then take
+\begin{equation}
+    u=\frac{v-m_0}{\|v-m_0\|}
+\end{equation}
+Now, notice that $m_0+\|v-m_0\|m\in M$, since $M$ is a linear space. Thus
+\begin{equation}
+    \|u-m\|=\left\|\frac{v-m_0}{\|v-m_0\|}-m\right\|\geq \frac{d}{\|v-m_0\|}\geq 1-\epsilon
+\end{equation}
+\end{proof}
+
+\begin{prop} Let $E$ be a reflexive normed vector space. Then the statement of Riesz's Lemma holds for $\epsilon=0$.
+\end{prop}
+\begin{proof}
+Using the Second geometric form of Hahn-Banach Theorem for $x_0\in E\setminus M$ and $M$, then there is a closed hyperplane $[f=\alpha]$ that strictly separates them. Thus $f(x_0)$ and $f(M)$ are disjoint, and $f(M)$ is a proper subspace of the scalar field, thus $f(M)=0$ and $f(x_0)\neq 0$. We can consider the norm of $f$ as 1. Now since $E$ is a reflexive Banach space, its subspace $B_E$ is a bounded, closed, convex subset of $E$, and $f$ is a convex continuous function, There is $x\in E$ of norm 1 with $f(x)=1$. Thus $1=f(x)=f(x-m_0)\leq \|x-m_0\|$ for all $m_0\in M$.
+\end{proof}
+
+\begin{thm}[Riesz] Let $E$ be a normed vector space with compact $B_E$. Then $E$ is finite dimensional.
+\end{thm}
+\begin{proof} Suppose that $E$ is infinite dimensional. Then there is a sequence $\{E_n\}$ of finite dimensional subspaces of $E$ such that $E_{n-1}\subset E_n$ and $E_{n-1}\neq E_n$. By Riesz's Lemma, there is a sequence $\{u_n\}$ with $u_n\in E_n$ such that $\|u_n\|=1$ and $d(u_n,E_{n-1})\geq 1/2$. Then $\|u_n-u_m\|\geq 1/2$ for $m<n$. Thus $\{u_n\}$ has no convergent subsequence, contradicting the assumption that $B_E$ is compact.
+\end{proof}
+
+\begin{thm}[Fredholm alternative] Let $T\in \mathcal{K}(E)$. Then\marginnote{For the third property, it is obvious in finite dimensional spaces: a linear operator on finite dimensional space is injective if and only if it is surjective. However, in infinite dimensional spaces a bounded operator may be injective but not surjective or conversely: consider the right/left shift in $l^2$ space.}
+\begin{enumerate}
+    \item $\Ker(I-T)$ is finite dimensional.
+    \item $\Ima(I-T)$ is closed, and $\Ima(I-T)=\Ker(I-T^*)^\perp$.
+    \item $\Ker(I-T)=\{0\}$ if and only if $\Ima(I-T)=E$.
+    \item $\dim \Ker(I-T)=\dim \Ker(I-T^*)$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+~\begin{enumerate}
+    \item $B_{\Ker(I-T)}\subset T(B_E)$, thus $B_{E_1}$ is compact since it is closed subset of compact set. Thus $E_1$ is finite dimensional.
+    \item Let $f_n=u_n-T u_n\rightarrow f$. Set $d_n=d(u_n,\Ker(I-T))$. Then since $\Ker(I-T)$ is finite dimensional, there is $v_n\in \Ker(I-T)$ such that $d_n=\|u_n-v_n\|$. Then $f_n=(u_n-v_n)-T(u_n-v_n)$. Now suppose that $\|u_n-v_n\|$ is not bounded, so that there is a subsequence $\|u_{n_k}-v_{n_k}\|\rightarrow \infty$. Set $w_n=(u_n-v_n)/\|u_n-v_n\|$, then $w_{n_k}-T(w_{n_k})\rightarrow 0$. Since $T$ is compact operator, choosing a subsequence, we can say $T(w_{n_k})\rightarrow z$, Thus $w_{n_k}\rightarrow z$ and $z\in \Ker (I-T)$, so $d(w_{n_k},N(I-T))\rightarrow 0$. But since $v_n\in \Ker(I-T)$, $d(w_n,\Ker(I-T))=d(u_n,\Ker(I-T))/\|u_n-v_n\|=1$, contradiction. Thus $\|u_n-v_n\|$ is bounded, and since $T$ is compact, there is a subsequence $T(u_{n_k}-v_{n_k})$ converges to some limit $l$. Thus $u_{n_k}-v_{n_k}\rightarrow f+l$. Letting $g=f+l$, we have $g-Tg=f$, thus $f\in \Ima(I-T)$, hence $\Ima(I-T)$ is closed. Now by Theorem 2.19, $\Ima(I-T^*)$ is closed and $\Ima(I-T)=\Ker(I-T^*)^\perp, \Ima(I-T^*)=\Ker(I-T)^\perp$.
+    \item Let $\Ker(I-T)=\{0\}$. Suppose $E_1=\Ima(I-T)\neq E$. Then $E_1$ is a banach space and $T(E_1)\subset E_1$, since $T\circ (I-T)=(I-T)\circ T$. Thus $T|_{E_1}\in \mathcal{K}(E_1)$, and $E_2=(I-T)(E_1)$ is a closed subspace of $E_1$. Now for $x\notin (I-T)E$ and $y\in E$, $(I-T)x-(I-T)^2 y = (I-T)(x-(I-T)y)$. Since $I-T$ is injective, this is not zero, hence $E_2\neq E_1$. Repeating this inductively, we get $E_n=(I-T)^n(E)$, a strictly decreasing sequence of closed subspaces. Using Riesz's Lemma, we can construct a sequence $\{u_n\}$ such that $u_n\in E_n$, $\|u_n\|=1$, and $d(u_n,E_{n+1})\geq 1/2$. Now
+    \begin{equation}
+        T(u_n)-T(u_m)=-(u_n-T(u_n))+(u_m-T(u_m))+(u_n-u_m)
+    \end{equation}
+    and if $n>m$, $E_{n+1}\subset E_n\subset E_{m+1}\subset E_m$, thus
+    \begin{equation}
+        -(u_n - Tu_n)+(u_m - Tu_m)+u_n\in E_{m+1}
+    \end{equation}
+    Thus $\|T(u_n)-T(u_m)\|\geq d(u_m,E_{m+1})\geq 1/2$. But since $T$ is compact, this is impossible, thus $\Ima(I-T)=E$.
+    
+    Conversely, Suppose that $R(I-T)=E$. The corollary 2.18 shows that $N(I-T^*)=R(I-T)^\perp = \{0\}$. Since $T^*\in \mathcal{K}(E^*)$, we get $\Ima(I-T^*)=E^*$, applying above proof. Now using corollary 2.18 again, we conclude that $\Ker(I-T)=\Ima (I-T^*)^\perp = \{0\}$.
+    \item Set $d=\dim \Ker (I-T)$ and $d^*=\dim \Ker (I-T^*)$. Suppose that $d<d^*$. Since $\Ker (I-T)$ is finite dimensional, it admits a complement in $E$. Thus there is a continuous projection $P$ from $E$ onto $\Ker (I-T)$. Also, $\Ima (I-T)=\Ker (I-T^*)$ has finite codimension $d^*$, and thus it has a complement in $E$, denoted by $F$, with dimension $d^*$. Since $d<d^*$, there is a linear map $\Gamma:\Ker(I-T)\rightarrow F$ that is injective but not surjective. Now take $S=T+\Gamma\circ P$. Then $S\in \mathcal{K}(E)$, since $\Gamma\circ P$ has finite rank. Now, if $0=u-S(u)=u-T(u)-(\Gamma\circ P(u))$, then since $(I-T)u$ is in $\Ima(I-T)$ and $\Gamma\circ P(u)$ is in its complement, $u-Tu=0$ and $\Gamma\circ P(u)=0$. This implies $u\in \Ker(I-T)$ and $\Gamma(u)=0$, thus $u=0$. Hence $\Ker(I-S)=\{0\}$.
+    
+    By 3, $\Ima(I-S)=E$. But since there is $f\in F\setminus \Ima(\Gamma)$, $u-Su=f$ has no solution, contradiction. Hence $d^*\leq d$. Now using this fact to $T^*$, we get
+    \begin{equation}
+        \dim \Ker(I-T^{**})\leq \dim \Ker(I-T^*)\leq \dim \Ker(I-T)
+    \end{equation}
+    But since $\Ker(I-T)\subset \Ker(I-T^{**})$, $d=d^*$.
+    \end{enumerate}
+\end{proof}
+
+\begin{cor} For $T\in \mathcal{K}(E)$ and $f\in E$, the equation $u-Tu=f$ satisfies one of the two statements.
+\begin{enumerate}
+    \item For every $f\in E$ the equation $u-Tu=f$ has a unique solution.
+    \item The homogeneous equation $u-Tu=0$ admits $n$ linearly independent solutions, and then the inhomogeneous equation $u-Tu=f$ is solvable if and only if $f$ satisfies $n$ orthogonality conditions: $f\in N(I-T^*)^\perp$.
+\end{enumerate}
+\end{cor}
+
+\begin{defn} For two Banach spaces $E$ and $F$, $A\in \mathcal{L}(E,F)$ is a \textbf{Fredholm operator} if $\Ker(A)$ is finite dimensional and $\Ima(A)$ is closed with finite codimension. The \textbf{index} of $A$ is $\textrm{ind } A=\dim \Ker (A)-\textrm{co}\dim \Ima (A)$.
+\end{defn}
+
+\begin{exmp}
+~\begin{enumerate}
+\item If $E,F$ are finite, then every $T\in \mathcal{L}(E,F)$ is a Fredholm operator.
+\item $I-T$ for compact operator $T$ is a Fredholm operator.
+\item The class of Fredholm operators is an open subset of $\mathcal{L}(E,F)$, and the map $A\mapsto \textrm{ind } A$ is continuous.
+\item An operator $A\in \mathcal{L}(E,F)$ is Fredholm if and only if there is an operator $T\in \mathcal{L}(F,E)$ such that $I-T\circ A$ and $I-A\circ T$ are operators of finite rank.
+
+\item If $A:E\rightarrow F$ is Fredholm and $T:E\rightarrow F$ is compact, then $A+T$ is Fredholm and $\textrm{ind }(A+T)=\textrm{ind }A$. Indeed, an operator $A\in \mathcal{L}(X)$ is Fredholm if and only if $[A]$ has an inverse in the Calkin algebra.
+\item If $A:E\rightarrow F$ and $T:F\rightarrow G$ are Fredholm, then $B\circ A$ is Fredholm and $\textrm{ind }(B\circ A) = \textrm{ind }(A)+\textrm{ind }(B)$.
+\end{enumerate}
+\end{exmp}
+
+\noindent\rule{\textwidth}{1pt}
+\newline

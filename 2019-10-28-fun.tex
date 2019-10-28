@@ -1,0 +1,127 @@
+\mytitle{Functional Analysis}
+\begin{lemma} Let $C\subset E$ be a convex set. Then $\interior C$ is convex. If $\interior C$ is nonempty, then $\overline{C}=\overline{\interior C}$.
+\end{lemma}
+\begin{proof} Since $C$ is convex, $tC+(1-t)C\subset C$ for all $t\in 
+(0,1)$, thus $t\interior C+(1-t)\interior C\subset C$. But since $\interior C$ is open, $t\interior C+(1-t)\interior C$ is open, so $t\interior C+(1-t)\interior C\subset \interior C$. This shows that $\interior C$ is convex. Furthermore, $tC+(1-t)\interior C\subset \interior C$.
+
+Finally, taking the sequences of $\{x_n\}$ in $C$ and $\{y_n\}$ in $\interior C$, we get $tx+(1-t)y\in \overline{\interior C}$ for $x\in \overline{C}, y\in \overline{\interior C}$ and $t\in (0,1)$. Since $\overline{\interior C}$ is closed, taking $t$ to $0$, $x\in \overline{\interior C}$. Therefore $\overline{C}\subset \overline{\interior C}$, thus $\overline{C}=\overline{\interior C}$.
+\end{proof}
+
+\begin{thm}[Fenchel-Rockafellar] Let $\phi,\psi:E\rightarrow (-\infty,\infty]$ be two convex functions. Assume that there is some $x_0\in D(\phi)\cap D(\psi)$ such that $\psi$ is continuous at $x_0$. Then
+\begin{align*}
+    \inf_{x\in E}\{\phi(x)+\psi(x)\}&=\sup_{f\in E^*}\{-\phi^*(-f)-\psi^*(f)\}\\
+    &=\max_{f\in E^*}\{-\phi^*(-f)-\psi^*(f)\}\\
+    &=-\min_{f\in E^*}\{\psi^*(-f)+\psi^*(f)\}
+\end{align*}
+\end{thm}
+\begin{proof}
+Set $a=\inf \{\phi(x)+\psi(x)\}$ and $b=\sup_{f\in E^*}\{-\phi^*(-f)-\psi^*(f)\}$. Since $b=\sup_{f\in E^*}\{-\sup_{x,y\in E}\{\langle f,-x+y\rangle-\phi(x)-\psi(y)\}\}=\sup_{f\in E^*}\{\inf_{x,y\in E}\{\langle f,x-y\rangle+\phi(x)+\psi(y)\}\}\geq \sup_{f\in E^*}\{\inf_{x\in E}\{\phi(x)+\psi(x)\}\}=a$, $b\leq a$. If $a=-\infty$ then obviously $b=-\infty$, thus we assume $a\in \mathbb{R}$. Let $C=\textrm{epi}\phi$. Since $\phi$ is continuous at $x_0$, $\interior C \neq \emptyset$. Now apply First geometric form of Hahn-Banach Theorem with $A=\interior C$ and $B=\{[x,\lambda]\in E\times \mathbb{R}:\lambda\leq a-\psi(x)\}$. Indeed, they are nonempty convex sets, and if $[x,\lambda]\in A$, then $\lambda >\phi(x)$, and by definition of $a$, $\phi(x)\geq a-\psi(x)$, thus $[x,\lambda]\notin B$. Thus there is a closed hyperplane $H$ that separates $A$ and $B$.
+
+Writing $H=[\Phi=\alpha]$, we get $\Phi([x,\lambda])\leq \alpha$ for all $[x,\lambda]\in A$. Since $\Phi$ is continuous, $\Phi([x,\lambda])\leq \alpha$ for all $[x,\lambda]\in \overline{A}$. Now by previous Lemma, $\bar{A}=\bar{C}$, thus there is $\Phi\in E^*, k\in \mathbb{R}$, and $\alpha\in \mathbb{R}$ such that the hyperplane $H=[\Phi=\alpha]$ in $E\times \mathbb{R}$ separates $C$ and $B$, where
+\begin{equation}
+    \Phi([x,\lambda])=\langle f,x\rangle+k\lambda,\quad [x,\lambda]\in E\times \mathbb{R}
+\end{equation}
+Thus we have
+\begin{align}
+    \langle f,x\rangle+k\lambda&\geq \alpha,\quad [x,\lambda]\in C;\\
+    \langle f,x\rangle+k\lambda &\leq \alpha,\quad [x,\lambda]\in B
+\end{align}
+Choose $x=x_0$ and take $\lambda\rightarrow \infty$, we get $k\geq 0$. Suppose that $k=0$. Then since $\Phi\not\equiv 0$, $\|f\|\neq 0$, and we have
+\begin{align}
+    \langle f,x\rangle&\geq \alpha,\quad x\in D(\phi);\\
+    \langle f,x\rangle&\leq \alpha,\quad x\in D(\psi)
+\end{align}
+But $B(x_0,\epsilon_0)\subset D(\phi)$ for some small enough $\epsilon_0>0$, thus
+\begin{equation}
+    \langle f,x_0+\epsilon_0 z\rangle\geq \alpha,\quad z\in B(0,1)
+\end{equation}
+This implies $\langle f,x_0\rangle\geq \alpha+\epsilon_0\|f\|$. But since $x_0\in D(\psi)$, $\langle f,x_0\rangle\leq \alpha$, thus $\|f\|=0$, contradiction. Thus $k>0$.
+
+Now recall
+\begin{align}
+    \langle f,x\rangle+k\lambda&\geq \alpha,\quad [x,\lambda]\in C;\\
+    \langle f,x\rangle+k\lambda &\leq \alpha,\quad [x,\lambda]\in B
+\end{align}
+Then
+\begin{align}
+    \phi^*\left(-\frac{f}{k}\right)&\leq -\frac{\alpha}{k}\\
+    \psi^*\left(\frac{f}{k}\right)&\leq \frac{\alpha}{k}-a
+\end{align}
+Thus
+\begin{equation}
+    -\phi^*\left(-\frac{f}{k}\right)-\psi^*\left(\frac{f}{k}\right)\geq a
+\end{equation}
+Also by the definition of $b$,
+\begin{equation}
+    -\phi^*\left(-\frac{f}{k}\right)-\psi^*\left(\frac{f}{k}\right)\leq b
+\end{equation}
+Thus $a=b$.
+\end{proof}
+
+\begin{exmp} Let $K$ be a nonempty convex set. We  claim that for every $x_0\in E$, we have
+\begin{equation}
+    \textrm{dist}(x_0,K)=\inf_{x\in K}\|x-x_0\|=\max_{f\in E^*,\|f\|\leq 1}\{\langle f,x_0\rangle-I_K^*(f)\}
+\end{equation}
+Indeed, taking $\phi(x)=\|x-x_0\|$ and $\psi(x)=I_K(x)$, then we have 
+\begin{equation}
+    \inf_{x\in K}\|x-x_0\|=\inf_{x\in E}\{\phi(x)+\psi(x)\}
+\end{equation}
+Applying Fenchel-Rockafellar theorem, we obtain the previous result. If $K=M$ is a linear subspace, we get
+\begin{equation}
+    \textrm{dist}(x_0,M)=\inf_{x\in M}\|x-x_0\|=\max_{f\in M^\perp,\|f\|\leq 1}\langle f,x_0\rangle
+\end{equation}
+\end{exmp}
+
+\begin{exmp} Let $\phi:E\rightarrow \mathbb{R}$ be convex and continuous, and let $M\subset E$ be a linear subspace. Then we have
+\begin{equation}
+    \inf_{x\in M} \phi(x)=-\min_{f\in M^\perp}\phi^*(f)
+\end{equation}
+when we apply Fenchel-Rockafellar theorem with $\psi=I_M$.
+\end{exmp}
+
+\begin{thm}[Baire] Let $X$ be a complete metric space and let $(X_n)_{n\geq 1}$ be a sequence of closed subsets in $X$. Assume that $\interior X_n=\emptyset$ for every $n\geq 1$. Then
+\begin{equation}
+    \interior\left(\bigcup_{n=1}^{\infty}X_n\right)=\emptyset
+\end{equation}
+\end{thm}
+\begin{proof}
+Set $O_n=X_n^c$, then $O_n$ is open and dense in $X$ for every $n\geq 1$. Now we write $G=\cap_{n=1}^\infty O_n$. Let $\omega$ be a nonempty open set in $X$. We want to prove that $\omega\cap G\neq \emptyset$.
+
+Since $X$ is complete metric space, we can choose $x_0\in \omega$ and $r_0>0$ such that $\overline{B(x_0,r_0)}\subset \omega$. Then choose $x_1\in B(x_0,r_0)\cap O_1$ and $r_1>0$ such that
+\begin{equation}
+    \begin{cases}
+    \overline{B(x_1,r_1)}\subset B(x_0,r_0)\cap O_1\\
+    0<r_1<\frac{r_0}{2}
+    \end{cases}
+\end{equation}
+which is always possible since $O_1$ is open and dense. Now by induction we construct two sequences $\{x_n\}$ and $\{r_n\}$ such that
+\begin{equation}
+    \begin{cases}
+    \overline{B(x_{n+1},r_{n+1})}\subset B(x_n,r_n)\cap O_{n+1}\\
+    0<r_{n+1}<\frac{r_n}{2}
+    \end{cases}
+\end{equation}
+Then $\{x_n\}$ is a Cauchy sequence, which converges to some $x\in X$. Furthermore, since $x_{n+p}\in B(x_n,r_n)$ for every $n\geq 0$ and for every $p\geq 0$, we obtain $x\in \overline{B(x_n,r_n)}$ for all $n\geq 0$, that is, $x\in \omega\cap G$.
+\end{proof}
+
+\begin{defn} Let $E,F$ are two normed vector space. We write $\mathcal{L}(E,F)$ the space of \textbf{continuous linear operators} from $E$ to $F$, equipped with the norm
+\begin{equation}
+    \|T\|_{\mathcal{L}(E,F)}=\sup_{x\in E, \|x\|\leq 1}\|Tx\|
+\end{equation}
+\end{defn}
+
+\begin{thm}[Banach-Steinhaus, uniform boundedness principle] Let $E$ and $F$ be two Banach spaces, and let $(T_i)_{i\in I}$ be a family of continuous linear operators from $E$ into $F$. Assume that
+\begin{equation}
+    \sup_{i\in I}\|T_i x\|<\infty,\quad x\in E
+\end{equation}
+then
+\begin{equation}
+    \sup_{i\in I}\|T_i\|_{\mathcal{L}(E,F)}<\infty
+\end{equation}
+In other words, there is a constant $c$ such that
+\begin{equation}
+    \|T_i x\|\leq c\|x\|,\quad \forall x\in E, i\in I
+\end{equation}
+\end{thm}
+\noindent\rule{\textwidth}{1pt}
+\newline
